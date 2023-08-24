@@ -89,7 +89,7 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       name: 'error',
-      component: () => import('@/views/user/ErrorView.vue')
+      component: () => import('@/views/ErrorView.vue')
     }
   ]
 })
