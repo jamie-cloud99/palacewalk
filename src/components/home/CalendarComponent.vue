@@ -16,12 +16,12 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import { DatePicker } from 'v-calendar'
 import 'v-calendar/style.css'
 
 const date = ref(new Date())
-const tempAnnouncement = ref('活動通知吱吱吱吱吱吱')
+// const tempAnnouncement = ref('活動通知吱吱吱吱吱吱')
 const attributes = ref([
   {
     highlight: {
@@ -35,9 +35,6 @@ const attributes = ref([
   }
 ])
 
-watch(date, () => {
-  
-})
 
 </script>
 

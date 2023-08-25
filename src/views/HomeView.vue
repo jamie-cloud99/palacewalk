@@ -53,7 +53,7 @@
       </li>
     </ul>
     <div
-      class="absolute -bottom-20 md:-bottom-48 -z-10 w-screen h-[250px] bg-cover bg-bottom bg-[url(./images/home-bg-sm-2.webp)] md:bg-[url(./images/home-bg-2.webp)] md:h-[664px]"
+      class="absolute left-0 max-w-full -bottom-20 lg:-bottom-48 -z-10 w-screen h-[250px] bg-cover bg-bottom bg-[url(./images/home-bg-sm-2.webp)] md:bg-[url(./images/home-bg-2.webp)] md:h-[664px]"
     ></div>
   </div>
 
@@ -101,7 +101,11 @@
         </p> -->
       </div>
       <div class="col-span-5">
-        <CalendarComponent />
+        <div class="flex justify-center">
+          <div class="md:w-4/5 lg:w-full">
+            <CalendarComponent />
+          </div>
+        </div>
       </div>
     </div>
   </div>
