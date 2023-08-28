@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply font-serif text-dark;
+    @apply font-serif text-dark tracking-8 border-dark;
   }
 }
 
@@ -14,6 +14,6 @@
   }
 
   .btn {
-    @apply block rounded-full py-4 text-center text-lg font-bold
+    @apply block w-32 py-3 text-center text-lg font-bold transition-all duration-500
   }
 }

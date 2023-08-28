@@ -29,22 +29,24 @@ module.exports = {
         cormo: ['"Cormorant SC"', 'serif']
       },
       maxWidth: {
-        "screen-sm": "540px",
-        "screen-md": "720px",
-        "screen-lg": "960px",
-        "screen-xl": "1140px",
-        "screen-2xl": "1320px",
+        'screen-sm': '540px',
+        'screen-md': '720px',
+        'screen-lg': '960px',
+        'screen-xl': '1140px',
+        'screen-2xl': '1320px'
       },
       spacing: {
-        15: "60px",
-        22: "88px"
+        15: '60px',
+        22: '88px'
       },
       fontSize: {
         8: ['32px', '1.5'],
-        16: ['64px', '1.2'],
-
+        16: ['64px', '1.2']
+      },
+      letterSpacing: {
+        8: '0.08em'
       }
     }
   },
-  plugins: [require('tw-elements/dist/plugin.cjs')]
+  plugins: [require('tw-elements/dist/plugin.cjs'), require('@tailwindcss/forms')]
 }
