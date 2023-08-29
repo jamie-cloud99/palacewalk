@@ -4,12 +4,16 @@
 
 @layer base {
   html {
-    @apply font-serif text-dark;
+    @apply font-serif text-dark tracking-8 border-dark;
   }
 }
 
 @layer components {
   .container {
     @apply max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl;
+  }
+
+  .btn {
+    @apply block px-3 py-2 text-center font-semibold transition-all duration-500;
   }
 }
