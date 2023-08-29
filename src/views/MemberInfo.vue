@@ -11,7 +11,7 @@
         <button
           v-if="!isEdit"
           type="button"
-          class="block w-32 py-3 border border-dark transition-all duration-500 hover:bg-dark hover:text-white"
+          class="btn w-32 border border-dark transition-all duration-500 hover:bg-dark hover:text-white"
           @click="toggleEdit(true)"
         >
           修改會員資料
@@ -19,7 +19,7 @@
         <button
           v-else
           type="button"
-          class="block w-32 py-3 border border-dark transition-all duration-500 hover:bg-dark hover:text-white"
+          class="btn w-32 border border-dark transition-all duration-500 hover:bg-dark hover:text-white"
         >
           上傳圖片
         </button>
@@ -92,12 +92,12 @@
   <div v-if="isEdit" class="flex justify-center gap-6 mb-20 lg:mb-40">
     <button
       type="button"
-      class="btn border border-dark hover:bg-dark hover:text-white"
+      class="btn w-32 border border-dark hover:bg-dark hover:text-white"
       @click="toggleEdit(false)"
     >
       取消
     </button>
-    <button type="button" class="btn bg-primary text-white hover:bg-dark" @click="submitForm">
+    <button type="button" class="btn w-32 bg-primary text-white hover:bg-dark" @click="submitForm">
       確認修改
     </button>
   </div>

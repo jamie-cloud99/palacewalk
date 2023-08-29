@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-6 lg:pt-10">
+  <div class="container pt-6 lg:pt-12">
     <div class="lg:grid lg:grid-cols-12 gap-6">
       <div class="col-span-3">
         <div class="text-lg font-semibold mb-10 lg:mb-32">
