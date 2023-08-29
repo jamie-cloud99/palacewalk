@@ -43,6 +43,7 @@ const router = createRouter({
     {
       path: '/member',
       name: 'member',
+      redirect: { name: 'memberInfo' },
       component: () => import('@/views/MemberView.vue'),
       children: [
         {
