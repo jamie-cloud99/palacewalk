@@ -3,7 +3,7 @@
     <div class="container flex justify-between py-6">
       <RouterLink to="/" class="flex gap-2 items-center">
         <img src="/images/logo.svg" alt="故宮走走" class="w-12 h-12 block" />
-        <div >
+        <div>
           <h1 class="font-serif font-bold text-[28px] leading-tight tracking-widest">故宮走走</h1>
           <h2 class="text-[14px] leading-none font-serif font-medium tracking-wider">
             Content Curator
@@ -26,14 +26,17 @@
             >
               <i class="fa-regular fa-bell"></i>
             </button>
-            <div :class="menuClass.notice" class="absolute right-0 -bottom-6 translate-y-full transition-all duration-300">
+            <div
+              :class="menuClass.notice"
+              class="absolute right-0 -bottom-6 translate-y-full transition-all duration-300"
+            >
               <NoticeDropdown />
             </div>
-            
           </div>
           <button
             type="button"
-            class=" text-2xl lg:text-[28px] p-2 transition-all duration-300 hover:text-primary"
+            class="text-2xl lg:text-[28px] p-2 transition-all duration-300 hover:text-primary"
+            @click="enterMemberSpace"
           >
             <i class="fa-regular fa-circle-user"></i>
           </button>
@@ -46,7 +49,7 @@
           <i class="fa-solid fa-bars"></i>
         </button>
       </div>
-      <div v-if="isOpen.menu" >
+      <div v-if="isOpen.menu">
         <button type="button" class="text-2xl lg:text-[28px] p-2" @click="toggleMenu('menu')">
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -57,12 +60,17 @@
   <div :class="menuClass.menu" class="fixed top-[97px] z-[100] w-full transition-all duration-500">
     <MenuComponent @toggle="toggleMenu('menu')" menu-open="menu" />
   </div>
+
+  <SignInModal ref="signInModal" />
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import MenuComponent from './MenuComponent.vue'
 import NoticeDropdown from './NoticeDropdown.vue'
+import SignInModal from './SignInModal.vue'
+
+const signInModal = ref(null)
 
 const isOpen = reactive({
   menu: false,
@@ -71,20 +79,26 @@ const isOpen = reactive({
   search: false
 })
 
-const menuClass = reactive(
-  {
-    menu: 'max-0',
-    notice: 'max-0'
-  }
-)
+const menuClass = reactive({
+  menu: 'max-0',
+  notice: 'max-0'
+})
 
 const toggleMenu = (item) => {
   isOpen[item] = !isOpen[item]
 
-  for(const key in isOpen) {
-    if(key !== item) isOpen[key] = false
+  for (const key in isOpen) {
+    if (key !== item) isOpen[key] = false
     menuClass[key] = isOpen[key] ? 'max-h' : 'max-0'
   }
+}
+
+const enterMemberSpace = () => {
+  openModal()
+}
+
+const openModal = () => {
+  signInModal.value.curModal.show()
 }
 </script>
 
