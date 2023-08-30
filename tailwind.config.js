@@ -21,7 +21,11 @@ module.exports = {
           200: '#F2F2F2'
         },
         light: '#EFEFDA', // background
-        warning: '#E49130' // orange
+        warning: {
+          DEFAULT: '#E49130', // orange
+          600: '#B87107', // dark-yellow
+          800: '#714006' // brown
+        }
       },
       fontFamily: {
         serif: ['"Noto Serif TC"', 'serif'],
