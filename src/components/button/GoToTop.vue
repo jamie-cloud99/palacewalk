@@ -14,7 +14,6 @@ const scrollPosition = ref(0)
 
 const scrollFunction = () => {
   scrollPosition.value = window.scrollY
-  console.log('scrollPosition.value',scrollPosition.value)
   scrollPosition.value > 100 ?
   goToTopBtn.value.classList.remove("hidden") : goToTopBtn.value.classList.add("hidden")
 };

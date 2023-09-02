@@ -3,14 +3,20 @@
     bg-[url('/images/collection/collection-banner.png'),_url('/images/collection/banner-bg.jpg')]
     bg-[position:82%_-50%,_center_bottom]">
     <div class="container relative">
-      <h2 class="absolute top-[115px] text-3xl font-serif font-bold">精選展品</h2>
+      <h1 class="absolute top-[115px] pl-2 text-3xl font-serif font-bold">{{ title }}</h1>
       <BreadcrumbsComponent class="absolute top-[228px]" :nav-list="breadList"/>
     </div>
   </div>
 </template>
 <script setup>
 import { reactive } from 'vue'
+import { toRefs } from 'vue'
 import BreadcrumbsComponent from '../layout/BreadcrumbsComponent.vue'
+
+const props = defineProps({
+  title: String,
+})
+const { title } = toRefs(props)
 
 const breadList = reactive([
   {
@@ -22,7 +28,7 @@ const breadList = reactive([
     path: '/collections'
   },
   {
-    title: '精選展品',
+    title,
     path: '/collections/masterpieces'
   }
 ])
