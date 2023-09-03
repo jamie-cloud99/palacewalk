@@ -7,100 +7,104 @@
       <BreadcrumbsComponent class="absolute top-[228px]" :nav-list="breadList"/>
     </div>
   </div>
-  <div class="container mb-[60px]">
-    <div class="lg:grid grid-cols-12 gap-x-12">
-      <div class="col-span-3">
-        <h4 class="text-lg font-semibold">展覽</h4>
-        <h3 class="text-2xl font-semibold mb-1">Exhibits</h3>
-        <hr class="border-black" />
-        <ul class="mb-[54px]">
-          <li><a href="#" 
-            class="block px-2.5 py-4 leading-5 text-lg border-b border-dark-400 bg-primary text-white"
-            title="當期展覽">當期展覽</a></li>
-          <li><a href="#" 
-            class="block px-2.5 py-4 leading-5 text-lg border-b border-dark-400"
-            title="近期展覽">近期展覽</a></li>
-        </ul>
-        <h4 class="text-lg font-semibold">檢索</h4>
-        <h3 class="text-2xl font-semibold mb-1">SEARCH</h3>
-        <ul>
-          <li class="mb-3">
-            <input
-              type="text"
-              id="search"
-              class="form-input border-dark-800 w-full py-3 px-4 placeholder:text-dark-600"
-              placeholder="展覽檢索"
-            />
+  <div class="bg-[url('images/page-bg.svg')] bg-[position:0_216px,_left_top] bg-no-repeat">
+    <div class="container mb-[60px]">
+      <div class="lg:grid grid-cols-12 gap-x-12">
+        <div class="col-span-3">
+          <h4 class="text-lg font-semibold">展覽</h4>
+          <h3 class="text-2xl font-semibold mb-1 leading-8">EXHIBITS</h3>
+          <hr class="border-black" />
+          <ul class="mb-[54px]">
+            <li><a href="#" 
+              class="block px-2.5 py-4 leading-5 text-lg border-b border-dark-400 bg-primary text-white"
+              title="當期展覽">當期展覽</a></li>
+            <li><a href="#" 
+              class="block px-2.5 py-4 leading-5 text-lg border-b border-dark-400"
+              title="近期展覽">近期展覽</a></li>
+          </ul>
+          <h4 class="text-lg font-semibold">檢索</h4>
+          <h3 class="text-2xl font-semibold mb-1 leading-8">SEARCH</h3>
+          <ul>
+            <li class="mb-3">
+              <input
+                type="text"
+                id="search"
+                class="form-input border-dark-800 w-full py-3 px-4 placeholder:text-dark-600"
+                placeholder="展覽檢索"
+              />
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </li>
+            <li>
+              <input
+                type="text"
+                id="search"
+                class="form-input border-dark-800 w-full py-3 px-4 placeholder:text-dark-600"
+                placeholder="請選擇類別"
+              />
+              
           </li>
-          <li>
-            <input
-              type="text"
-              id="search"
-              class="form-input border-dark-800 w-full py-3 px-4 placeholder:text-dark-600"
-              placeholder="展覽檢索"
-            />
-        </li>
-        </ul>
-      </div>
-      <div class="col-span-9">
-        <ul class="flex mb-20 gap-6 overflow-hidden lg:grid grid-cols-12">
-          <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
-            <img src="images/exhibitions/exhibition-U001.jpg" class="w-full">
-            <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
-              <h3 class="font-semibold text-xl line-clamp-1 mb-1">士拿乎—清宮鼻煙壺的時尚風潮</h3>
-              <p class="font-medium">2023/06/20 至 2024/03/28</p>
-          </div>
-          </li>
-          <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
-            <img src="images/exhibitions/exhibition-U002.jpg" class="w-full">
-            <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
-              <h3 class="font-semibold text-xl line-clamp-1 mb-1">風格故事—琺瑯彩瓷特展</h3>
-              <p class="font-medium">2023/07/07 至 2024/07/16</p>
+          </ul>
+        </div>
+        <div class="col-span-9">
+          <ul class="flex mb-20 gap-6 overflow-hidden lg:grid grid-cols-12">
+            <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
+              <img src="images/exhibitions/exhibition-U001.jpg" class="w-full">
+              <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
+                <h3 class="font-semibold text-xl line-clamp-1 mb-1">士拿乎—清宮鼻煙壺的時尚風潮</h3>
+                <p class="font-medium">2023/06/20 至 2024/03/28</p>
             </div>
-          </li>
-          <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
-            <img src="images/exhibitions/exhibition-U003.jpg" class="w-full">
-            <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
-              <h3 class="font-semibold text-xl line-clamp-1 mb-1">故宮經典-藝術與文化策展</h3>
-              <p class="font-medium">2023/06/20 至 2024/03/28</p>
-          </div>
-          </li>
-          <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
-            <img src="images/exhibitions/exhibition-U001.jpg" class="w-full">
-            <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
-              <h3 class="font-semibold text-xl line-clamp-1 mb-1">風格故事—琺瑯彩瓷特展</h3>
-              <p class="font-medium">2023/07/07 至 2024/07/16</p>
+            </li>
+            <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
+              <img src="images/exhibitions/exhibition-U002.jpg" class="w-full">
+              <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
+                <h3 class="font-semibold text-xl line-clamp-1 mb-1">風格故事—琺瑯彩瓷特展</h3>
+                <p class="font-medium">2023/07/07 至 2024/07/16</p>
+              </div>
+            </li>
+            <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
+              <img src="images/exhibitions/exhibition-U003.jpg" class="w-full">
+              <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
+                <h3 class="font-semibold text-xl line-clamp-1 mb-1">故宮經典-藝術與文化策展</h3>
+                <p class="font-medium">2023/06/20 至 2024/03/28</p>
             </div>
-          </li>
-          <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
-            <img src="images/exhibitions/exhibition-U002.jpg" class="w-full">
-            <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
-              <h3 class="font-semibold text-xl line-clamp-1 mb-1">士拿乎—清宮鼻煙壺的時尚風潮</h3>
-              <p class="font-medium">2023/06/20 至 2024/03/28</p>
-          </div>
-          </li>
-          <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
-            <img src="images/exhibitions/exhibition-U003.jpg" class="w-full">
-            <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
-              <h3 class="font-semibold text-xl line-clamp-1 mb-1">故宮經典-藝術與文化策展</h3>
-              <p class="font-medium">2023/07/07 至 2024/07/16</p>
+            </li>
+            <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
+              <img src="images/exhibitions/exhibition-U001.jpg" class="w-full">
+              <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
+                <h3 class="font-semibold text-xl line-clamp-1 mb-1">風格故事—琺瑯彩瓷特展</h3>
+                <p class="font-medium">2023/07/07 至 2024/07/16</p>
+              </div>
+            </li>
+            <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
+              <img src="images/exhibitions/exhibition-U002.jpg" class="w-full">
+              <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
+                <h3 class="font-semibold text-xl line-clamp-1 mb-1">士拿乎—清宮鼻煙壺的時尚風潮</h3>
+                <p class="font-medium">2023/06/20 至 2024/03/28</p>
             </div>
-          </li>
-          <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
-            <img src="images/exhibitions/exhibition-U001.jpg" class="w-full">
-            <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
-              <h3 class="font-semibold text-xl line-clamp-1 mb-1">士拿乎—清宮鼻煙壺的時尚風潮</h3>
-              <p class="font-medium">2023/06/20 至 2024/03/28</p>
-          </div>
-          </li>
-          <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
-            <img src="images/exhibitions/exhibition-U002.jpg" class="w-full">
-            <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
-              <h3 class="font-semibold text-xl line-clamp-1 mb-1">風格故事—琺瑯彩瓷特展</h3>
-              <p class="font-medium">2023/07/07 至 2024/07/16</p>
+            </li>
+            <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
+              <img src="images/exhibitions/exhibition-U003.jpg" class="w-full">
+              <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
+                <h3 class="font-semibold text-xl line-clamp-1 mb-1">故宮經典-藝術與文化策展</h3>
+                <p class="font-medium">2023/07/07 至 2024/07/16</p>
+              </div>
+            </li>
+            <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
+              <img src="images/exhibitions/exhibition-U001.jpg" class="w-full">
+              <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
+                <h3 class="font-semibold text-xl line-clamp-1 mb-1">士拿乎—清宮鼻煙壺的時尚風潮</h3>
+                <p class="font-medium">2023/06/20 至 2024/03/28</p>
             </div>
-          </li>
-        </ul>
+            </li>
+            <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
+              <img src="images/exhibitions/exhibition-U002.jpg" class="w-full">
+              <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
+                <h3 class="font-semibold text-xl line-clamp-1 mb-1">風格故事—琺瑯彩瓷特展</h3>
+                <p class="font-medium">2023/07/07 至 2024/07/16</p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
