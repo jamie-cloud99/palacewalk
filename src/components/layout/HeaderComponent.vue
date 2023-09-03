@@ -13,7 +13,7 @@
       <div v-if="!isOpen.menu" class="flex gap-6 items-center lg:gap-10">
         <button
           type="button"
-          class="text-2xl lg:text-[28px] p-2 transition-all duration-300 hover:text-primary"
+          class="hidden lg:block text-2xl lg:text-[28px] p-2 transition-all duration-300 hover:text-primary"
         >
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
@@ -28,7 +28,7 @@
             </button>
             <div
               :class="menuClass.notice"
-              class="absolute right-0 -bottom-6 translate-y-full transition-all duration-300"
+              class="hidden lg:block absolute right-0 -bottom-6 translate-y-full transition-all duration-300"
             >
               <NoticeDropdown />
             </div>
@@ -57,41 +57,27 @@
     </div>
   </div>
 
-  <div :class="menuClass.menu" class="fixed top-[97px] z-[100] w-full transition-all duration-500">
+  <div :class="menuClass.menu" class="fixed top-[97px] z-[200] w-full transition-all duration-500">
     <MenuComponent @toggle="toggleMenu('menu')" menu-open="menu" />
   </div>
 
   <SignInModal ref="signInModal" />
+  <MobileBar @toggle-member="enterMemberSpace" />
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
+import { useStatusStore } from '../../stores/statusStore'
 import MenuComponent from './MenuComponent.vue'
 import NoticeDropdown from './NoticeDropdown.vue'
 import SignInModal from './SignInModal.vue'
+import MobileBar from './MobileBar.vue'
+import { storeToRefs } from 'pinia'
 
 const signInModal = ref(null)
-
-const isOpen = reactive({
-  menu: false,
-  notice: false,
-  member: false,
-  search: false
-})
-
-const menuClass = reactive({
-  menu: 'max-0',
-  notice: 'max-0'
-})
-
-const toggleMenu = (item) => {
-  isOpen[item] = !isOpen[item]
-
-  for (const key in isOpen) {
-    if (key !== item) isOpen[key] = false
-    menuClass[key] = isOpen[key] ? 'max-h' : 'max-0'
-  }
-}
+const statusStore = useStatusStore()
+const { isOpen, menuClass } = storeToRefs(statusStore)
+const { toggleMenu } = statusStore
 
 const enterMemberSpace = () => {
   openModal()
