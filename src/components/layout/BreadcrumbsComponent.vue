@@ -21,5 +21,3 @@ const props = defineProps({
 
 const { navList } = toRefs(props)
 </script>
-
-<style></style>
