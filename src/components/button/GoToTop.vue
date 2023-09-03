@@ -1,7 +1,7 @@
 <template>
   <button
     ref="goToTopBtn"
-    class="fixed bottom-[237px] right-10 btn bg-[#444] z-[100] hover:bg-primary">
+    class="fixed bottom-[80px] right-10 btn bg-[#444] z-[100] hover:bg-primary">
     <i class="fa-solid fa-chevron-up text-white"></i>
   </button>
 </template>

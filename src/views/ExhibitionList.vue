@@ -55,71 +55,35 @@
         </div>
         <div class="col-span-9">
           <ul class="flex mb-20 gap-6 overflow-hidden lg:grid grid-cols-12">
-            <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
-              <img src="images/exhibitions/exhibition-U001.jpg" class="w-full">
-              <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
-                <h3 class="font-semibold text-xl line-clamp-1 mb-1">士拿乎—清宮鼻煙壺的時尚風潮</h3>
-                <p class="font-medium">2023/06/20 至 2024/03/28</p>
-            </div>
-            </li>
-            <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
-              <img src="images/exhibitions/exhibition-U002.jpg" class="w-full">
-              <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
-                <h3 class="font-semibold text-xl line-clamp-1 mb-1">風格故事—琺瑯彩瓷特展</h3>
-                <p class="font-medium">2023/07/07 至 2024/07/16</p>
-              </div>
-            </li>
-            <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
-              <img src="images/exhibitions/exhibition-U003.jpg" class="w-full">
-              <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
-                <h3 class="font-semibold text-xl line-clamp-1 mb-1">故宮經典-藝術與文化策展</h3>
-                <p class="font-medium">2023/06/20 至 2024/03/28</p>
-            </div>
-            </li>
-            <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
-              <img src="images/exhibitions/exhibition-U001.jpg" class="w-full">
-              <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
-                <h3 class="font-semibold text-xl line-clamp-1 mb-1">風格故事—琺瑯彩瓷特展</h3>
-                <p class="font-medium">2023/07/07 至 2024/07/16</p>
-              </div>
-            </li>
-            <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
-              <img src="images/exhibitions/exhibition-U002.jpg" class="w-full">
-              <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
-                <h3 class="font-semibold text-xl line-clamp-1 mb-1">士拿乎—清宮鼻煙壺的時尚風潮</h3>
-                <p class="font-medium">2023/06/20 至 2024/03/28</p>
-            </div>
-            </li>
-            <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
-              <img src="images/exhibitions/exhibition-U003.jpg" class="w-full">
-              <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
-                <h3 class="font-semibold text-xl line-clamp-1 mb-1">故宮經典-藝術與文化策展</h3>
-                <p class="font-medium">2023/07/07 至 2024/07/16</p>
-              </div>
-            </li>
-            <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
-              <img src="images/exhibitions/exhibition-U001.jpg" class="w-full">
-              <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
-                <h3 class="font-semibold text-xl line-clamp-1 mb-1">士拿乎—清宮鼻煙壺的時尚風潮</h3>
-                <p class="font-medium">2023/06/20 至 2024/03/28</p>
-            </div>
-            </li>
-            <li class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative">
-              <img src="images/exhibitions/exhibition-U002.jpg" class="w-full">
-              <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
-                <h3 class="font-semibold text-xl line-clamp-1 mb-1">風格故事—琺瑯彩瓷特展</h3>
-                <p class="font-medium">2023/07/07 至 2024/07/16</p>
-              </div>
+            <li
+              v-for="i in 8"
+              :key="'i' + i"
+              class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative overflow-hidden "
+            >
+              <a href="#" class="ease-in-out duration-300 relative" title="">
+                <a href="#" class="absolute top-2 right-2 text-xl z-[1]" title="加入收藏">
+                  <i class="fa-regular fa-heart text-white"></i>
+                </a>
+                <img src="images/exhibitions/exhibition-U001.jpg" class="w-full ease-in-out duration-300 hover:scale-110 ">
+                <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
+                  <h3 class="font-semibold text-xl line-clamp-1 mb-1">士拿乎—清宮鼻煙壺的時尚風潮</h3>
+                  <p class="font-medium">2023/06/20 至 2024/03/28</p>
+                </div>
+              </a>
             </li>
           </ul>
+          <PageComponent :pages="pages" @change="turnPage" />
         </div>
       </div>
     </div>
   </div>
+  <GoToTop />
 </template>
 <script setup>
-import {  reactive } from 'vue'
+import { reactive } from 'vue'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
+import PageComponent from '../components/layout/PageComponent.vue'
+import GoToTop from '../components/button/GoToTop.vue'
 
 const breadList = reactive([
   {
