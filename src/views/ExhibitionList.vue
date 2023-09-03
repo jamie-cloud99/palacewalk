@@ -16,32 +16,40 @@
           <hr class="border-black" />
           <ul class="mb-[54px]">
             <li><a href="#" 
-              class="block px-2.5 py-4 leading-5 text-lg border-b border-dark-400 bg-primary text-white"
+              class="block px-2.5 py-4 leading-5 text-lg 
+              border-b border-dark-400 bg-primary text-white"
               title="當期展覽">當期展覽</a></li>
             <li><a href="#" 
-              class="block px-2.5 py-4 leading-5 text-lg border-b border-dark-400"
+              class="block px-2.5 py-4 leading-5 text-lg 
+              border-b border-dark-400"
               title="近期展覽">近期展覽</a></li>
           </ul>
           <h4 class="text-lg font-semibold">檢索</h4>
           <h3 class="text-2xl font-semibold mb-1 leading-8">SEARCH</h3>
           <ul>
-            <li class="mb-3">
+            <li class="mb-3 relative">
               <input
                 type="text"
                 id="search"
-                class="form-input border-dark-800 w-full py-3 px-4 placeholder:text-dark-600"
+                class="form-input border-dark-800 w-full 
+                py-3 pl-[12px] pr-12 placeholder:text-dark-600"
                 placeholder="展覽檢索"
               />
-              <i class="fa-solid fa-magnifying-glass"></i>
+              <a href="#"><i class="fa-solid fa-magnifying-glass 
+                absolute top-1/2 transform -translate-y-1/2 right-2.5"></i>
+              </a>
             </li>
-            <li>
+            <li class="relative">
               <input
                 type="text"
                 id="search"
-                class="form-input border-dark-800 w-full py-3 px-4 placeholder:text-dark-600"
+                class="form-input border-dark-800 w-full 
+                py-3 pl-[12px] pr-12 placeholder:text-dark-600"
                 placeholder="請選擇類別"
               />
-              
+              <a href="#"><i class="fa-solid fa-chevron-down 
+                absolute top-1/2 transform -translate-y-1/2 right-2.5"></i>
+              </a>
           </li>
           </ul>
         </div>
