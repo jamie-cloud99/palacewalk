@@ -45,31 +45,33 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
-import { useRouter } from 'vue-router'
+import { reactive, computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 
 const menuList = reactive([
   {
     title: '會員資料',
-    path: 'info'
+    path: 'info',
+    name: 'memberInfo'
   },
   {
     title: '收藏清單',
-    path: 'favorites'
+    path: 'favorites',
+    name: 'memberFavorites'
   },
   {
     title: '我的留言',
-    path: 'messages'
+    path: 'messages',
+    name: 'memberMessages'
   },
   {
     title: '登出'
   }
 ])
 
+const route = useRoute()
 const router = useRouter()
-
-const curPageTitle = ref('會員資料')
 
 const breadList = reactive([
   {
@@ -86,8 +88,11 @@ const breadList = reactive([
   }
 ])
 
+const curPageTitle = computed(() => {
+  return menuList.find((item) => item.name === route.name).title
+})
+
 const changeMenuItem = (page) => {
-  curPageTitle.value = page.title
   if (page.title !== '登出') {
     router.push(`/member/${page.path}`)
     breadList.pop()
