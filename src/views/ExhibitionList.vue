@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[260px] mb-[68px] lg:bg-[size:244px,_cover] md:bg-[size:0px,_cover] bg-no-repeat
+  <div class="h-[260px] mb-[68px] lg:bg-[size:244px,_cover] xs:bg-[size:200px,_cover] bg-no-repeat
     bg-[url('./images/exhibitions/exhibition-banner.png'),_url('./images/exhibitions/page-banner1-1.jpg')]
     bg-[position:82%_18px,_center_bottom]">
     <div class="container relative text-white">
@@ -39,7 +39,7 @@
                 absolute top-1/2 transform -translate-y-1/2 right-2.5"></i>
               </a>
             </li>
-            <li class="relative">
+            <li class="relative xs:mb-3">
               <input
                 type="text"
                 id="search"
@@ -54,16 +54,16 @@
           </ul>
         </div>
         <div class="col-span-9">
-          <ul class="flex mb-20 gap-6 overflow-hidden lg:grid grid-cols-12">
+          <ul class="flex flex-wrap mb-20 gap-6 overflow-hidden lg:grid grid-cols-12">
             <li
               v-for="i in 8"
               :key="'i' + i"
-              class="w-[300px] flex-shrink-0 md:w-[450px] col-span-6 lg:w-full relative overflow-hidden "
+              class="w-[300px] flex-shrink-0 md:w-[336px] xs:w-[100%] col-span-6 lg:w-full relative overflow-hidden "
             >
-              <a href="#" class="ease-in-out duration-300 relative" title="">
-                <a href="#" class="absolute top-2 right-2 text-xl z-[1]" title="加入收藏">
-                  <i class="fa-regular fa-heart text-white"></i>
-                </a>
+              <a href="#" class="ease-in-out duration-300 relative" title="士拿乎—清宮鼻煙壺的時尚風潮">
+                <div class="absolute top-2 right-2 text-xl z-[1]">
+                  <i class="fa-regular fa-heart text-white hover:text-primary ease-in-out duration-300"></i>
+                </div>
                 <img src="images/exhibitions/exhibition-U001.jpg" class="w-full ease-in-out duration-300 hover:scale-110 ">
                 <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
                   <h3 class="font-semibold text-xl line-clamp-1 mb-1">士拿乎—清宮鼻煙壺的時尚風潮</h3>
