@@ -12,11 +12,12 @@
               class="border-b border-x border-dark-600 col-span-1"
               v-for="item in menuList"
               :key="item.title"
-              :class="{ 'bg-primary text-white': item.title === curPageTitle }"
+              :class="{ 'bg-primary text-white': item.title === curPage.title }"
             >
               <RouterLink
                 to="#"
-                class="block text-center transition-all duration-300 w-full px-2 py-3 hover:bg-primary/10 lg:text-left"
+                class="block text-center transition-all duration-300 w-full px-2 py-3 lg:text-left"
+                :class="{ 'hover:bg-dark/10': curPage.title !== item.title }"
                 @click="changeMenuItem(item)"
               >
                 {{ item.title }}
@@ -26,7 +27,7 @@
           <RouterLink
             to="/curating"
             target="_blank"
-            class="btn flex justify-between w-full rounded-none bg-dark text-white text-left px-2 py-3 hover:bg-warning transition-all duration-500"
+            class="btn flex justify-between w-full rounded-none bg-dark text-white text-left px-2 py-3 hover:bg-primary transition-all duration-500"
           >
             <span>我要策展</span>
             <span><i class="fa-regular fa-user"></i></span>
@@ -35,7 +36,7 @@
       </div>
       <div class="col-span-9">
         <div class="flex flex-wrap justify-between items-center pb-3 border-b border-dark">
-          <h3 class="text-xl font-black">{{ curPageTitle }}</h3>
+          <h3 class="text-xl font-black">{{ curPage.title }}</h3>
           <BreadcrumbsComponent :nav-list="breadList" />
         </div>
         <RouterView />
@@ -45,24 +46,24 @@
 </template>
 
 <script setup>
-import { reactive, computed } from 'vue'
+import { reactive, computed, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 
 const menuList = reactive([
   {
     title: '會員資料',
-    path: 'info',
+    path: '/member/info',
     name: 'memberInfo'
   },
   {
     title: '收藏清單',
-    path: 'favorites',
+    path: '/member/favorites',
     name: 'memberFavorites'
   },
   {
     title: '我的留言',
-    path: 'messages',
+    path: '/member/messages',
     name: 'memberMessages'
   },
   {
@@ -88,15 +89,22 @@ const breadList = reactive([
   }
 ])
 
-const curPageTitle = computed(() => {
-  return menuList.find((item) => item.name === route.name).title
+const curPage = computed(() => {
+  return menuList.find((item) => item.name === route.name)
 })
+
+watch(
+  () => route.path,
+  () => {
+    breadList[breadList.length - 1] = curPage.value
+  },
+  { immediate: true }
+)
 
 const changeMenuItem = (page) => {
   if (page.title !== '登出') {
-    router.push(`/member/${page.path}`)
-    breadList.pop()
-    breadList.push(page)
+    router.push(page.path)
+    curPage.value = page
   }
 }
 </script>

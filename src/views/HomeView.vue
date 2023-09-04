@@ -11,7 +11,7 @@
         </h1>
         <button
           type="button"
-          class="py-3 px-10 bg-white rounded-full font-bold hover:bg-primary hover:text-white transition-all duration-300"
+          class="py-3 px-10 bg-white font-bold hover:bg-primary hover:text-white transition-all duration-300"
         >
           立即看展
         </button>
@@ -59,22 +59,7 @@
 
   <div class="container">
     <SectionTitle :text="section[2]" />
-    <ul class="flex mb-20 gap-6 overflow-hidden lg:grid grid-cols-12 lg:mb-24">
-      <li class="w-[300px] flex-shrink-0 lg:w-full lg:col-span-3" v-for="i in 4" :key="'i' + i">
-        <div class="p-6 bg-dark-200">
-          <div class="mb-4 flex gap-2 items-center">
-            <img src="/images/user-1.png" alt="" class="w-[50px] h-[50px] block flex-shrink-0" />
-            <div class="flex flex-wrap items-center gap-x-2">
-              <h4 class="text-dark-800 text-lg font-semibold line-clamp-1">文化探索者</h4>
-              <p class="text-dark-600">2023.08.08</p>
-            </div>
-          </div>
-          <p class="font-sans min-h-[96px] line-clamp-4">
-            之前去故宮看過一次這檔展覽，沒想到還有線上展可以重溫，琺瑯彩瓷的美歷經百年也不會褪色！
-          </p>
-        </div>
-      </li>
-    </ul>
+    <CommentCards />
     <hr class="hidden border-dark-400 mb-24 lg:block" />
 
     <h2 class="text-8 font-bold text-center mb-6 lg:text-4xl lg:text-left">公告訊息</h2>
@@ -83,27 +68,30 @@
       <div class="col-span-7">
         <ul class="mb-12 lg:mb-0">
           <li
-            v-for="i in 4"
-            :key="'i' + i"
+            v-for="item in newsList"
+            :key="item.title"
             class="font-sans py-3 border-b border-dark-400 first-of-type:pt-0"
           >
             <div class="space-y-2">
               <div class="flex items-center justify-between lg:justify-start lg:gap-x-2">
-                <p class="text-dark-600 lg:order-2">2023.08.08</p>
-                <p class="px-1 py-0.5 bg-primary rounded text-white">活動公告</p>
+                <p class="text-dark-600 lg:order-2">{{ item.date }}</p>
+                <p
+                  class="px-1 py-0.5 bg-primary rounded text-white"
+                  :class="{ '!bg-warning': item.category !== '活動公告' }"
+                >
+                  {{ item.category }}
+                </p>
               </div>
-              <p class="text-lg line-clamp-2 md:line-clamp-1">羅摩衍那–3D動畫放映</p>
+              <p class="text-lg line-clamp-2 md:line-clamp-1">{{ item.title }}</p>
             </div>
           </li>
         </ul>
-        <!-- <p class="py-6">
-          查看更多
-        </p> -->
+
       </div>
       <div class="col-span-5">
         <div class="flex justify-center">
-          <div class="md:w-4/5 lg:w-full">
-            <CalendarComponent />
+          <div class="w-full md:w-4/5 lg:w-full">
+            <CalendarComponent :news="newsList" />
           </div>
         </div>
       </div>
@@ -112,10 +100,11 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import CalendarComponent from '../components/home/CalendarComponent.vue'
 import SectionTitle from '../components/home/SectionTitle.vue'
 import ImageMarquee from '../components/home/ImageMarquee.vue'
+import CommentCards from '../components/home/CommentCards.vue'
 
 const section = reactive([
   {
@@ -131,4 +120,30 @@ const section = reactive([
     engTitle: 'Comment'
   }
 ])
+
+const newsList = ref([
+  {
+    category: '活動公告',
+    title: '「藝起來‧ 趣宮略」國小快閃活動報名申請須知',
+    date: '2023.09.10'
+  },
+  {
+    category: '館務通知',
+    title: '9月18日館內教育訓練，暫停線上、電話客服一日',
+    date: '2023.09.18'
+  },
+  {
+    category: '活動公告',
+    title: '親子同樂電影院：羅摩衍那–3D動畫放映',
+    date: '2023.09.20'
+  },
+  {
+    category: '活動公告',
+    title: '藝術家如何書寫大時代？專人導覽開團報名中',
+    date: '2023.09.29'
+  }
+])
+
+
+
 </script>
