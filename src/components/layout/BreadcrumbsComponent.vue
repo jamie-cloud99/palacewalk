@@ -26,5 +26,3 @@ const { navList } = toRefs(props)
 
 
 </script>
-
-<style></style>
