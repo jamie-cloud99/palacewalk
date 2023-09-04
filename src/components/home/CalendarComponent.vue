@@ -1,6 +1,6 @@
 <template>
   <DatePicker
-    v-model="date"
+    v-model="curDate"
     locale="zh-tw"
     color="red"
     expanded
@@ -9,33 +9,35 @@
     :min-date="new Date()"
     :attributes="attributes"
   >
-    <template #day-popover>
-      <div class="text-xs text-dark-800 font-sans">Using my own content now</div>
-    </template>
   </DatePicker>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref, toRefs } from 'vue'
 import { DatePicker } from 'v-calendar'
 import 'v-calendar/style.css'
+import { recoverDate } from '../../composables/format'
 
-const date = ref(new Date())
-// const tempAnnouncement = ref('活動通知吱吱吱吱吱吱')
-const attributes = ref([
-  {
+const props = defineProps({
+  news: Array
+})
+
+const curDate = ref('')
+
+const { news } = toRefs(props)
+
+const attributes = computed(() => [
+  ...news.value.map((item) => ({
+    dates: recoverDate(item.date),
+    popover: {
+      label: item.title
+    },
     highlight: {
       color: 'red',
       fillMode: 'light'
-    },
-    dates: [new Date(2023, 7, 29), new Date(2023, 8, 10), new Date(2023, 8, 2)],
-    popover: {
-       visibility: 'hover',
     }
-  }
+  }))
 ])
-
-
 </script>
 
 <style>

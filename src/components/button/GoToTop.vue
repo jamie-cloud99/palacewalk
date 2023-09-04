@@ -1,7 +1,7 @@
 <template>
   <button
     ref="goToTopBtn"
-    class="fixed hidden bottom-[237px] right-10 btn bg-dark-200 z-[100] hover:bg-primary">
+    class="fixed hidden bottom-20 right-6 lg:right-10 btn bg-dark-200 z-[100] hover:text-white lg:hover:bg-primary">
     <i class="fa-solid fa-chevron-up"></i>
   </button>
 </template>
@@ -20,6 +20,7 @@ const scrollFunction = () => {
 const backToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 };
+
 onMounted(() => {
   window.addEventListener('scroll', scrollFunction)
   goToTopBtn.value.addEventListener('click', backToTop)
