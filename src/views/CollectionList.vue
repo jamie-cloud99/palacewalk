@@ -1,11 +1,11 @@
 <template>
-  <!-- TODO: 背景圖片, pagination, rwd-->
+  <!-- TODO: 背景圖片, pagination, rwd, hover效果, 路由-->
   <CollectionBanner :title="'精選目錄'" />
   <div class="container flex lg:gap-6">
     <!-- Left Side -->
     <div class="min-w-[25%] min-h-screen">
-      <p class="flex flex-col text-6 font-bold">展品類別
-        <span class="font-cormo font-bold text-6">CATEGORY</span>
+      <p class="flex flex-col text-lg font-bold">展品類別
+        <span class="font-cormo font-bold text-2xl">CATEGORY</span>
       </p>
       <ul class="font-bold">
         <li @click="selectedCategory(el.category)" class="py-[18px] pl-2.5 hover:bg-dark-200 cursor-pointer text-lg"

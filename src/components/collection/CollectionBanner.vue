@@ -3,7 +3,7 @@
     bg-[url('/images/collection/collection-banner.png'),_url('/images/collection/banner-bg.jpg')]
     bg-[position:82%_-50%,_center_bottom]">
     <div class="container relative">
-      <h1 class="absolute top-[115px] pl-2 text-3xl font-serif font-bold">{{ title }}</h1>
+      <h2 class="absolute top-[115px] pl-2 text-3xl font-serif font-bold">{{ title }}</h2>
       <BreadcrumbsComponent class="absolute top-[228px]" :nav-list="breadList"/>
     </div>
   </div>
