@@ -8,6 +8,7 @@
     trim-weeks
     :min-date="new Date()"
     :attributes="attributes"
+    class="!font-serif !bg-light/10 !rounded-none !border-0"
   >
   </DatePicker>
 </template>
@@ -42,7 +43,7 @@ const attributes = computed(() => [
 
 <style>
 .vc-header {
-  @apply mb-4;
+  @apply mb-4 font-bold text-dark;
 }
 
 .vc-weeks {
