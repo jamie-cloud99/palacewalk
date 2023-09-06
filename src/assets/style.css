@@ -22,6 +22,9 @@
   .scrollbar-hidden::-webkit-scrollbar {
     width: 0;
     display: none;
-}
+  }
 
+  .stretched-link {
+    @apply after:absolute after:inset-0 after:cursor-pointer;
+  }
 }

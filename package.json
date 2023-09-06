@@ -12,8 +12,10 @@
   "dependencies": {
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@popperjs/core": "^2.11.8",
+    "aos": "^2.3.4",
     "gsap": "^3.12.2",
     "pinia": "^2.1.4",
+    "swiper": "^10.2.0",
     "tw-elements": "^1.0.0-beta2",
     "v-calendar": "^3.0.3",
     "vue": "^3.3.4",
