@@ -6,10 +6,14 @@
     </button>
   </div>
   <ul class="space-y-5">
-    <li v-for="i in 5" :key="i+ 'i'">
+    <li v-for="i in 5" :key="i + 'i'">
       <div class="border-y border-dark-600 px-2">
-        <div class="flex justify-between items-center gap-2 flex-wrap pt-4 pb-2 border-b border-dark">
-          <h3 class="text-warning-600 text-lg font-black line-clamp-1 lg:text-2xl">風格故事—琺瑯彩瓷特展</h3>
+        <div
+          class="flex justify-between items-center gap-2 flex-wrap pt-4 pb-2 border-b border-dark"
+        >
+          <h3 class="text-warning-600 text-lg font-black line-clamp-1 lg:text-2xl">
+            風格故事—琺瑯彩瓷特展
+          </h3>
           <div class="hidden lg:flex justify-end flex-grow gap-2">
             <button
               type="button"
@@ -45,15 +49,21 @@
           </div>
           <div class="flex justify-between items-center">
             <div class="flex gap-2">
-              <button type="button" class="btn pl-0 text-dark-600 hover:text-dark"
-              @click="toggleReply(i)">
+              <button
+                type="button"
+                class="btn pl-0 text-dark-600 hover:text-dark"
+                @click="toggleReply(i)"
+              >
                 <span v-if="isOpen === i">顯示</span><span v-else>隱藏</span>回覆
               </button>
               <a href="" class="btn pl-0 text-dark-600 hover:text-dark">查看原始留言</a>
             </div>
             <p class="text-dark-600">2023/08/10</p>
           </div>
-          <div class="max-h-0 overflow-hidden transition-all duration-500" :class="{'!max-h-[500px]': isOpen===i}">
+          <div
+            class="max-h-0 overflow-hidden transition-all duration-500"
+            :class="{ '!max-h-[500px]': isOpen === i }"
+          >
             <hr class="border-dark-400 mb-3" />
             <div class="flex items-start gap-2">
               <img src="https://fakeimg.pl/36" alt="" class="block flex-shrink-0 rounded-full" />
@@ -80,7 +90,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useMemberStore } from '../stores/memberStore';
+import { useMemberStore } from '../stores/memberStore'
 import PageComponent from '../components/layout/PageComponent.vue'
 
 const memberStore = useMemberStore()
@@ -89,7 +99,6 @@ const { pages, turnPage } = memberStore
 const isOpen = ref('')
 
 const toggleReply = (id) => {
-  isOpen.value = isOpen.value===id ? '' : id
+  isOpen.value = isOpen.value === id ? '' : id
 }
-
 </script>

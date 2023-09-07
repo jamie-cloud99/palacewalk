@@ -9,7 +9,7 @@
   >
     <div
       data-te-modal-dialog-ref
-      class="scrollbar-hidden overflow-auto h-[480px] w-[480px] rounded-sm opacity-0 transition-all duration-300 ease-in-out"
+      class="scrollbar-hidden overflow-auto h-[480px] w-[calc(100vw-1.5rem)] max-w-[480px] rounded-sm opacity-0 transition-all duration-300 ease-in-out"
     >
       <div class="rounded-sm bg-white shadow-lg">
         <div class="grid grid-cols-2 text-center">
@@ -100,7 +100,9 @@
             取消
           </button>
 
-          <button type="button" class="btn w-24 bg-primary text-white hover:bg-dark"><span v-if="hasAccount">登入</span> <span v-else>註冊</span></button>
+          <button type="button" class="btn w-24 bg-primary text-white hover:bg-dark">
+            <span v-if="hasAccount">登入</span> <span v-else>註冊</span>
+          </button>
         </div>
       </div>
     </div>
