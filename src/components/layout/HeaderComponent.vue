@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white sticky top-0 z-[100] border-b border-dark-600">
+  <div class="bg-white sticky top-0 w-screen z-[100] border-b border-dark-600">
     <div class="container flex justify-between py-6">
       <RouterLink to="/" class="flex gap-2 items-center">
         <img src="/images/logo.svg" alt="故宮走走" class="w-12 h-12 block" />
@@ -14,6 +14,7 @@
         <button
           type="button"
           class="hidden lg:block text-2xl lg:text-[28px] p-2 transition-all duration-300 hover:text-primary"
+          @click="startSearch"
         >
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
@@ -62,7 +63,8 @@
   </div>
 
   <SignInModal ref="signInModal" />
-  <MobileBar @toggle-member="enterMemberSpace" />
+  <MobileBar @toggle-member="enterMemberSpace" @toggle-search="startSearch" />
+  <SearchModal ref="searchModal" />
 </template>
 
 <script setup>
@@ -71,20 +73,26 @@ import { useStatusStore } from '../../stores/statusStore'
 import MenuComponent from './MenuComponent.vue'
 import NoticeDropdown from './NoticeDropdown.vue'
 import SignInModal from './SignInModal.vue'
+import SearchModal from './SearchModal.vue'
 import MobileBar from './MobileBar.vue'
 import { storeToRefs } from 'pinia'
 
 const signInModal = ref(null)
+const searchModal = ref(null)
 const statusStore = useStatusStore()
 const { isOpen, menuClass } = storeToRefs(statusStore)
 const { toggleMenu } = statusStore
 
 const enterMemberSpace = () => {
-  openModal()
+  openModal(signInModal)
 }
 
-const openModal = () => {
-  signInModal.value.curModal.show()
+const startSearch = () => {
+  openModal(searchModal)
+}
+
+const openModal = (modal) => {
+  modal.value.curModal.show()
 }
 </script>
 
