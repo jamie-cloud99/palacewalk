@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white sticky top-0 w-screen z-[100] border-b border-dark-600">
+  <div class="bg-white sticky top-0 max-w-screen z-[100] border-b border-dark-600">
     <div class="container flex justify-between py-6 w-full">
       <RouterLink to="/" class="flex gap-2 items-center">
         <img src="/images/logo.svg" alt="故宮走走" class="w-12 h-12 block" />
@@ -50,7 +50,7 @@
           <i class="fa-solid fa-bars"></i>
         </button>
       </div>
-      <div class="" v-if="isOpen.menu">
+      <div v-if="isOpen.menu">
         <button type="button" class="text-2xl lg:text-[28px] p-2" @click="toggleMenu('menu')">
           <i class="fa-solid fa-xmark"></i>
         </button>

@@ -2,10 +2,12 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useMemberStore = defineStore('member', () => {
+  const memberList = ref([{}])
+
   const member = ref({
-    name: '王曉明',
+    name: '文化探索者',
     email: 'abcd1@gmail.com',
-    password: 'er35660d32'
+    password: 'er35660d32',
   })
 
   const pages = ref({
@@ -22,5 +24,5 @@ export const useMemberStore = defineStore('member', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  return { member, pages, turnPage }
+  return { member, pages, memberList, turnPage }
 })

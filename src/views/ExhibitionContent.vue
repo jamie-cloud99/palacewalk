@@ -1,30 +1,58 @@
 <template>
-  <ol class="bg-light/50">
-    <li
-      v-for="item in collectionList"
-      :key="item.id"
-      class="bg-[url('../images/home-bg-2.webp')] bg-cover relative"
+  <div class="bg-light/50 overflow-hidden">
+    <swiper-container
+      id="lightgallery"
+      ref="swiperEl"
+      init="false"
+      :slides-per-view="1"
+      :draggable="true"
+      :mousewheel="true"
+      :keyboard="true"
     >
-      <div class="pt-12 pb-6 px-3 md:px-10 lg:absolute top-0 left-16 text-dark">
-        <p class="text-2xl lg:text-4xl font-bold mb-1 lg:text-right lg:mb-4 drop-shadow">01</p>
-        <h1
-          class="text-2xl lg:text-4xl font-bold drop-shadow lg:max-h-[400px] lg:[writing-mode:vertical-rl] max-w-[300px]"
-        >
-          清 翠玉白菜
-        </h1>
-      </div>
-      <div
-        class="flex justify-center lg:items-center h-screen lg:px-40"
-        :class="{ '!justify-start': isOpen.exhibitionMenu, '!justify-end': isOpen.collectionText }"
+      <swiper-slide
+        v-for="(item, index) in collectionList"
+        :key="item.id"
+        class="slide bg-[url('../images/home-bg-2.webp')] bg-light bg-cover relative"
+        :data-src="`/images/collection/collection-${item.imgId}.jpg`"
       >
-        <img
-          class="w-auto h-3/5 md:h-4/5 lg:h-[90%] object-cover object-center shadow-lg"
-          :src="`/images/collection/collection-${item.imgId}.jpg`"
-          :alt="item.title"
-        />
-      </div>
-    </li>
-  </ol>
+        <div class="pt-12 pb-6 px-3 md:px-10 lg:absolute top-0 left-16 text-dark">
+          <p class="text-2xl lg:text-4xl font-bold mb-1 lg:text-right lg:mb-4 drop-shadow">
+            {{ getZeroBaseOrder(index + 1) }}
+          </p>
+          <h1
+            class="text-2xl lg:text-4xl font-bold drop-shadow lg:max-h-[400px] lg:[writing-mode:vertical-rl] max-w-[300px]"
+          >
+            {{ item.title }}
+          </h1>
+        </div>
+        <div
+          class="flex justify-center lg:items-center h-screen lg:px-40"
+          :class="{
+            '!justify-start': isOpen.exhibitionMenu,
+            '!justify-end': isOpen.collectionText
+          }"
+        >
+          <img
+            ref="slideImage"
+            class="w-auto h-3/5 md:h-4/5 lg:h-[90%] object-cover object-center shadow-lg"
+            :src="`/images/collection/collection-${item.imgId}.jpg`"
+            :alt="item.title"
+          />
+        </div>
+      </swiper-slide>
+    </swiper-container>
+
+    <!-- <ul id="selector1" class="flex gap-3">
+      <li
+        class="item"
+        v-for="item in collectionList"
+        :key="item.id"
+        :data-src="`/images/collection/collection-${item.imgId}.jpg`"
+      >
+        <img :src="`/images/collection/collection-${item.imgId}.jpg`" alt="" />
+      </li>
+    </ul> -->
+  </div>
 
   <div v-if="!isOpen.collectionText" class="fixed right-6 lg:right-10 top-10 z-[800]">
     <button
@@ -48,9 +76,9 @@
 
   <div
     :class="menuClass.exhibitionMenu"
-    class="fixed top-0 right-0 h-screen z-[500] transition-all duration-500"
+    class="fixed top-0 right-0 h-screen z-[500] transition-all duration-500 overflow-hidden"
   >
-    <ExhibitionMenu />
+    <ExhibitionMenu :collection-list="collectionList"/>
   </div>
 
   <div
@@ -58,25 +86,30 @@
     class="fixed bottom-0 right-0 w-full lg:w-fit z-[1000] lg:z-[400] lg:bottom-12 lg:right-24"
   >
     <div
-      class="flex items-center justify-center lg:justify-end gap-4 px-10 pt-1 pb-5 bg-dark-200 shadow-[0_35px_60px_15px_rgba(0,0,0,0.3)] lg:rounded-full lg:shadow-inner"
+      class="flex items-center justify-center lg:justify-end gap-4 px-10 pt-1 pb-2 lg:pb-5 whitespace-nowrap bg-dark-200 shadow-[0_35px_60px_15px_rgba(0,0,0,0.3)] lg:rounded-full lg:shadow-inner"
     >
       <button
         type="button"
-        class="btn w-20 h-15 font-bold text-2xl lg:text-8 hover:text-primary -mt-2"
+        class="btn w-20 h-15 font-bold text-2xl lg:text-8 hover:text-primary -mt-2 lg:-mt-3"
+        @click="viewGallery"
       >
         <i class="fa-solid fa-magnifying-glass-plus drop-shadow-lg"></i>
         <p class="text-xs drop-shadow-sm">查看細節</p>
       </button>
       <button
         type="button"
-        class="btn w-20 h-15 font-bold text-2xl lg:text-8 hover:text-primary -mt-2"
+        class="btn w-20 h-15 font-bold text-2xl lg:text-8 hover:text-primary -mt-2 lg:-mt-3 disabled:text-dark/50"
+        @click="goPrev"
+        :disabled="!slides.havePrev"
       >
         <i class="fa-solid fa-circle-arrow-left drop-shadow-lg"></i>
         <p class="text-xs drop-shadow-sm">上一個</p>
       </button>
       <button
         type="button"
-        class="btn w-20 h-15 font-bold text-2xl lg:text-8 hover:text-primary -mt-2"
+        class="btn w-20 h-15 font-bold text-2xl lg:text-8 hover:text-primary -mt-2 lg:-mt-3 disabled:text-dark/50"
+        :disabled="!slides.haveNext"
+        @click="goNext"
       >
         <i class="fa-solid fa-circle-arrow-right drop-shadow-lg"></i>
         <p class="text-xs drop-shadow-sm">下一個</p>
@@ -84,7 +117,7 @@
       <button
         type="button"
         @click="toggleSideMenu('collectionText')"
-        class="btn w-20 h-15 font-bold text-2xl lg:text-8 hover:text-primary -mt-2"
+        class="btn w-20 h-15 font-bold text-2xl lg:text-8 hover:text-primary -mt-2 lg:-mt-3"
       >
         <i class="fa-solid fa-book-open drop-shadow-lg"></i>
         <p class="text-xs drop-shadow-sm">展品資訊</p>
@@ -106,26 +139,119 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import lightGallery from 'lightgallery'
+import lgThumbnail from 'lightgallery/plugins/thumbnail'
+import lgZoom from 'lightgallery/plugins/zoom'
+
+import { ref, onMounted, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useStatusStore } from '../stores/statusStore.js'
+import { getZeroBaseOrder } from '../composables/format'
 import ExhibitionMenu from '../components/exhibition/ExhibitionMenu.vue'
 import CollectionText from '../components/exhibition/CollectionText.vue'
+
+import { register } from 'swiper/element/bundle'
+register()
 
 const statusStore = useStatusStore()
 const { isOpen, menuClass, exhibitionMenuCount } = storeToRefs(statusStore)
 const { toggleSideMenu } = statusStore
 
+const swiperEl = ref(null)
+const slideImage = ref(null)
 const collectionList = ref([
   {
     id: '1',
-    title: '翠玉白菜',
+    title: '清 翠玉白菜',
     imgId: 'U001'
+  },
+  {
+    id: '2',
+    title: '清 肉形石',
+    imgId: 'U002'
+  },
+  {
+    id: '3',
+    title: '漢 銅熊尊',
+    imgId: 'U003'
+  },
+  {
+    id: '4',
+    title: '清 乾隆 玉熊尊',
+    imgId: 'U004'
+  },
+  {
+    id: '5',
+    title: '東漢 玉辟邪',
+    imgId: 'U005'
   }
 ])
+
+const params = {
+  effect: 'creative',
+  creativeEffect: {
+    prev: {
+      shadow: true,
+      translate: [0, 0, -400]
+    },
+    next: {
+      translate: ['100%', 0, 0]
+    }
+  }
+}
+
+const slides = ref({
+  totalSlides: collectionList.value.length,
+  curSlide: 1,
+  haveNext: true,
+  havePrev: false
+})
+
+watch(
+  () => slides.value.curSlide,
+  () => {
+    slides.value.havePrev = slides.value.curSlide <= 1 ? false : true
+    slides.value.haveNext = slides.value.curSlide >= slides.value.totalSlides ? false : true
+  }
+)
+
+const goNext = () => {
+  swiperEl.value.swiper.slideNext()
+  slides.value.curSlide++
+}
+
+const goPrev = () => {
+  swiperEl.value.swiper.slidePrev()
+  slides.value.curSlide--
+}
+
+// const viewGallery = () => {
+//   lightGallery(document.getElementById('selector1'), {
+//     selector: '.item',
+//     plugins: [lgZoom, lgThumbnail],
+//     controls: true
+//   })
+// }
+
+// const viewGallery = () => {
+//   lightGallery(swiperEl.value.swiper.el.querySelector('.swiper-wrapper'), {
+//     selector: '.slide',
+//     plugins: [lgZoom, lgThumbnail],
+//     controls: true
+//   })
+// }
+
+onMounted(() => {
+  Object.assign(swiperEl.value, params)
+  swiperEl.value.initialize()
+})
 </script>
 
 <style>
+@import 'lightgallery/css/lightgallery.css';
+@import 'lightgallery/css/lg-thumbnail.css';
+@import 'lightgallery/css/lg-zoom.css';
+
 :root {
   --dark-800: #525252;
   --dark: #121212;
