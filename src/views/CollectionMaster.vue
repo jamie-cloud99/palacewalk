@@ -2,13 +2,13 @@
   <!-- TODO: pagination, RWD, 背景圖片 -->
   <CollectionBanner :title="'精選展品'" />
   <div class="container">
-    <div class="counter flex flex-wrap -mx-3">
+    <div class="counter flex flex-wrap -mx-3 items-start">
       <div class="relative flex flex-wrap w-1/2 px-3 mb-[26px]" v-for="item in masterList" :key="item.id">
         <h3 class="w-full mb-4 pl-8 bg-dark-800 text-white font-bold text-2xl">{{ item.title }}</h3>
         <img class="w-1/2" :src='`/images/collection/collection-${item.collectionId}.jpg`' :alt="item.title">
         <p class="bg-dark-200 p-3 w-1/2">{{ item.content }}</p>
         <router-link class="absolute right-3 bottom-0 py-3 px-10 btn bg-primary text-white hover:bg-black"
-          :to="{name: 'collectionInfo', params: {collectionId: item.id}}">
+          :to="{name: 'collectionInfo', params: {collectionId: item.collectionId}}">
           查看展品
         </router-link>
       </div>

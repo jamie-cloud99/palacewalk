@@ -3,7 +3,7 @@
   <CollectionBanner :title="'精選目錄'" />
   <div class="container flex lg:gap-6">
     <!-- Left Side -->
-    <div class="min-w-[25%] min-h-screen">
+    <div class="min-w-[305px] min-h-screen">
       <p class="flex flex-col text-lg font-bold">展品類別
         <span class="font-cormo font-bold text-2xl">CATEGORY</span>
       </p>
@@ -16,8 +16,8 @@
       </ul>
     </div>
     <!-- Right Side -->
-    <div class="w-3/4 flex flex-col">
-      <div class="lg:mb-10 flex justify-between">
+    <div class="w-3/4 flex flex-col mx-auto">
+      <div class="mb-10 flex justify-between">
         <div class="w-1/4">
           <svg class="inline mr-[15px] cursor-pointer" width="24px" height="24x" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#525252">
             <g id="SVGRepo_bgCarrier" stroke-width="0"/>
@@ -33,15 +33,17 @@
         <div class="w-3/4 relative">
           <input class="w-full" type="search" aria-label="Search" name="search" placeholder="請輸入產品名稱 、關鍵字">
           <button><i class="absolute right-14 top-3 fa-solid fa-magnifying-glass"></i></button>
-          <button><i class="absolute right-0 top-0 fa-solid fa-filter text-white bg-black px-3 py-[2.5%]"></i></button>
+          <button><i class="absolute right-0 top-0 fa-solid fa-filter text-white bg-black px-3 py-3"></i></button>
         </div>
       </div>
-      <div class="flex lg:gap-6">
+      <div class="flex flex-wrap -mx-3">
         <ul class="flex cursor-pointer" v-for="item in selectionData" :key="item.id">
-          <li><img class="h-[215px] object-cover" :src='`/images/collection/collection-${item.collectionId}.jpg`' :alt="item.title"></li>
-          <li class="hidden">{{ item.title }}</li>
-          <li class="hidden">{{ item.author }}</li>
-          <li class="hidden">{{ item.time }}</li>
+          <router-link :to="{name: 'collectionInfo', params: {collectionId: item.collectionId}}" class="mb-[26px]">
+            <img class="lg:px-3 lg:w-[305px] h-[215px] object-cover" :src='`/images/collection/collection-${item.collectionId}.jpg`' :alt="item.title">
+          </router-link>
+          <li class="hidden mb-[26px]">{{ item.title }}</li>
+          <li class="hidden mb-[26px]">{{ item.author }}</li>
+          <li class="hidden mb-[26px]">{{ item.time }}</li>
         </ul>
       </div>
 
@@ -96,16 +98,16 @@ const collectionList = reactive([
       {
         id: '1',
         collectionId: 'P001',
-        title: '春風如沐圖',
-        author: '鞏賢',
-        time: '明末清初'
+        title: '春山圖',
+        author: '王原祁',
+        time: '清'
       },
       {
         id: '2',
         collectionId: 'P002',
-        title: '洛陽樓圖',
-        author: '李昭道',
-        time: '唐'
+        title: '宋人洛陽耆英會圖',
+        author: '不詳',
+        time: '不詳'
       },
       {
         id: '3',
@@ -113,7 +115,70 @@ const collectionList = reactive([
         title: '寶積賓伽羅佛像',
         author: '吳道子',
         time: '唐'
-      }
+      },
+      {
+        id: '4',
+        collectionId: 'P004',
+        title: '洗馬圖',
+        author: '韓幹',
+        time: '唐'
+      },
+      {
+        id: '5',
+        collectionId: 'P005',
+        title: '宋徽宗溪山秋色圖',
+        author: '宋徽宗,趙佶',
+        time: '宋'
+      },
+      {
+        id: '6',
+        collectionId: 'P006',
+        title: '唐周昉內人雙陸圖',
+        author: '周昉',
+        time: '唐'
+      },
+      {
+        id: '7',
+        collectionId: 'P007',
+        title: '唐盧鴻草堂十志圖',
+        author: '盧鴻',
+        time: '唐'
+      },
+      {
+        id: '8',
+        collectionId: 'P008',
+        title: '唐尉遲乙僧護國天王像',
+        author: '尉遲乙僧',
+        time: '唐'
+      },
+      {
+        id: '9',
+        collectionId: 'P009',
+        title: '唐人宮樂圖',
+        author: '不詳',
+        time: '唐'
+      },
+      {
+        id: '10',
+        collectionId: 'P010',
+        title: '五代南唐徐熙玉堂富貴圖',
+        author: '徐熙',
+        time: '五代十國'
+      },
+      {
+        id: '11',
+        collectionId: 'P011',
+        title: '五代南唐徐熙蓉雀',
+        author: '徐熙',
+        time: '五代十國'
+      },
+      {
+        id: '12',
+        collectionId: 'P012',
+        title: '五代南唐顧德謙弄簫圖',
+        author: '徐熙',
+        time: '五代十國'
+      },
     ]
   },
   {
@@ -245,7 +310,7 @@ const selectedCategory = (option) => {
   selectionData = collectionList.find(item => item.category === selectedOption.value).data
   return { selectionData, selectedOption }
 }
-selectedCategory(1);
+selectedCategory(2);
 
 </script>
 
