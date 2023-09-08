@@ -1,164 +1,204 @@
 <template>
-  <main>
-    首頁
-    <h3 class="text-teal-200">124</h3>
+  <div class="container relative pt-6 pb-20 mb-12 lg:mb-16 lg:px-15 md:max-w-full overflow-hidden">
+    <div
+      class="absolute inset-0 z-[1] bg-[url(../images/home-bg-sm-1.webp)] bg-cover bg-bottom md:bg-[url(../images/home-bg-1.webp)]"
+    ></div>
 
-    <div class="flex space-x-2">
-      <div>
-        <a
-          class="mr-1.5 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
-          data-te-offcanvas-toggle
-          href="#offcanvasExample"
-          role="button"
-          aria-controls="offcanvasExample"
-          data-te-ripple-init
-          data-te-ripple-color="light"
-        >
-          Link with href
-        </a>
+    <div
+      data-aos="fade-up"
+      data-aos-delay="50"
+      class="relative z-10 flex justify-center items-center h-[360px] w-full bg-cover bg-no-repeat bg-center bg-[url(../images/banner/index-bn-sm-2.png)] md:bg-[url(../images/banner/bn-2.webp)] md:block md:h-[400px]"
+    >
+      <div
+        data-aos="fade-up"
+        data-aos-delay="300"
+        class="absolute inset-0 bg-[position:right_3rem_center] bg-[url(../images/banner/emperor-1.png)] bg-no-repeat"
+      ></div>
+      <div
+        data-aos="fade-up"
+        data-aos-delay="800"
+        data-aos-duration="1200"
+        class="relative z-20 space-y-4 text-center md:text-left md:p-20 md:space-y-6 xl:space-y-10"
+      >
+        <h1 class="font-serif font-bold text-white text-3xl lg:text-[40px]">
+          故宮漫遊，重塑古典風華
+        </h1>
         <button
-          class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
           type="button"
-          data-te-offcanvas-toggle
-          data-te-target="#offcanvasExample"
-          aria-controls="offcanvasExample"
-          data-te-ripple-init
-          data-te-ripple-color="light"
+          class="py-3 px-10 bg-white font-bold hover:bg-primary hover:text-white transition-all duration-300"
         >
-          Button with data-te-target
+          立即看展
         </button>
+      </div>
+    </div>
+  </div>
 
-        <div
-          class="invisible fixed bottom-0 left-0 top-0 z-[1045] flex w-96 max-w-full -translate-x-full flex-col border-none bg-white bg-clip-padding text-neutral-700 shadow-sm outline-none transition duration-300 ease-in-out dark:bg-neutral-800 dark:text-neutral-200 [&[data-te-offcanvas-show]]:transform-none"
-          tabindex="-1"
-          id="offcanvasExample"
-          aria-labelledby="offcanvasExampleLabel"
-          data-te-offcanvas-init
-        >
-          <div class="flex items-center justify-between p-4">
-            <h5 class="mb-0 font-semibold leading-normal" id="offcanvasExampleLabel">Offcanvas</h5>
-            <button
-              type="button"
-              class="box-content rounded-none border-none opacity-50 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
-              data-te-offcanvas-dismiss
+  <div class="overflow-x-hidden">
+    <div class="container">
+      <SectionTitle data-aos="zoom-in" :text="section[0]" />
+    </div>
+    <div class="container relative mb-20">
+      <ExhibitionSlides data-aos="fade-up" :exhibition-list="recentExhibitionList" />
+    </div>
+    <div class="container">
+      <SectionTitle data-aos="zoom-in" :text="section[1]" />
+    </div>
+  </div>
+
+  <div class="relative mb-40 lg:mb-[312px]">
+    <ul class="space-y-1 lg:space-y-4 overflow-hidden">
+      <li data-aos="fade-left">
+        <ImageMarquee :translate="false" />
+      </li>
+      <li data-aos="fade-right">
+        <ImageMarquee :translate="true" />
+      </li>
+    </ul>
+    <div
+      class="absolute left-0 max-w-full -bottom-20 lg:-bottom-48 -z-10 w-screen h-[250px] bg-cover bg-bottom bg-[url(../images/home-bg-sm-2.webp)] md:bg-[url(../images/home-bg-2.webp)] md:h-[664px]"
+    ></div>
+  </div>
+
+  <div class="overflow-hidden">
+    <div class="container">
+      <SectionTitle
+        data-aos-anchor-placement="center-bottom"
+        data-aos="zoom-in"
+        :text="section[2]"
+      />
+      <div class="overflow-hidden">
+        <CommentCards data-aos="fade-up" data-aos-anchor-placement="center-bottom" />
+      </div>
+      <hr class="hidden border-dark-400 mb-24 lg:block" />
+      <h2 data-aos="zoom-in" class="text-8 font-bold text-center mb-6 lg:text-4xl lg:text-left">
+        公告訊息
+      </h2>
+      <hr class="border-dark-600 mb-3 lg:mb-8" />
+      <div class="lg:grid grid-cols-12 gap-x-12 mb-12 lg:mb-16">
+        <div data-aos="fade-up" class="col-span-7">
+          <ul class="mb-12 lg:mb-0">
+            <li
+              v-for="item in newsList"
+              :key="item.title"
+              class="py-3 border-b border-dark-400 first-of-type:pt-0"
             >
-              <span
-                class="w-[1em] focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="h-6 w-6"
-                >
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </span>
-            </button>
-          </div>
-          <div class="flex-grow overflow-y-auto p-4">
-            <div>
-              Some text as placeholder. In real life you can have the elements you have chosen.
-              Like, text, images, lists, etc.
-            </div>
-            <div class="relative mt-4" data-te-dropdown-ref>
-              <button
-                class="flex items-center whitespace-nowrap rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] motion-reduce:transition-none"
-                type="button"
-                id="dropdownMenuButton"
-                data-te-dropdown-toggle-ref
-                data-te-ripple-init
-                data-te-ripple-color="light"
-              >
-                Dropdown button
-                <span class="ml-2 w-2">
-                  <svg
-                    aria-hidden="true"
-                    focusable="false"
-                    data-prefix="fas"
-                    data-icon="caret-down"
-                    role="img"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 320 512"
+              <div class="space-y-2">
+                <div class="flex items-center justify-between lg:justify-start lg:gap-x-2">
+                  <p class="text-dark-600 lg:order-2">{{ item.date }}</p>
+                  <p
+                    class="px-1 py-0.5 bg-primary rounded text-white"
+                    :class="{ '!bg-warning': item.category !== '活動公告' }"
                   >
-                    <path
-                      fill="currentColor"
-                      d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                    ></path>
-                  </svg>
-                </span>
-              </button>
-              <ul
-                class="absolute z-[1000] float-left m-0 hidden min-w-max list-none rounded-lg border-none bg-white bg-clip-padding py-2 text-left text-base shadow-lg dark:bg-neutral-700 dark:text-neutral-200 [&[data-te-dropdown-show]]:block"
-                aria-labelledby="dropdownMenuButton"
-                data-te-dropdown-menu-ref
-              >
-                <li>
-                  <a
-                    class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-100 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500"
-                    href="#"
-                    data-te-dropdown-item-ref
-                    >Action
-                  </a>
-                </li>
-                <li>
-                  <a
-                    class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-100 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500"
-                    href="#"
-                    data-te-dropdown-item-ref
-                    >Another action
-                  </a>
-                </li>
-                <li>
-                  <a
-                    class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-100 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500"
-                    href="#"
-                    data-te-dropdown-item-ref
-                    >Something else here
-                  </a>
-                </li>
-              </ul>
+                    {{ item.category }}
+                  </p>
+                </div>
+                <p class="text-lg font-medium line-clamp-2 md:line-clamp-1">{{ item.title }}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="300" class="col-span-5">
+          <div class="flex justify-center">
+            <div class="w-full md:w-4/5 lg:w-full">
+              <CalendarComponent :news="newsList" />
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="box bg-green-500"></div>
-    <div class="box bg-blue-800"></div>
-    <div class="box bg-gray-400"></div>
-  </main>
+  </div>
 </template>
 
-<script>
-import { Offcanvas, Ripple, Dropdown, initTE } from 'tw-elements'
-import { gsap } from 'gsap'
+<script setup>
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
-export default {
-  mounted() {
-    initTE({ Offcanvas, Ripple, Dropdown })
-    gsap.from('.box', {
-      opacity: 0,
-      y: 100,
-      duration: 1
-    })
+import { reactive, ref, onMounted } from 'vue'
+import CalendarComponent from '../components/home/CalendarComponent.vue'
+import SectionTitle from '../components/home/SectionTitle.vue'
+import ImageMarquee from '../components/home/ImageMarquee.vue'
+import CommentCards from '../components/home/CommentCards.vue'
+import ExhibitionSlides from '../components/home/ExhibitionSlides.vue'
+
+const section = reactive([
+  {
+    title: '近期展覽',
+    engTitle: 'Recent'
   },
-  created() {
-    
+  {
+    title: '藝術展品',
+    engTitle: 'Gallery'
+  },
+  {
+    title: '精選留言',
+    engTitle: 'Comment'
   }
-}
+])
+
+const newsList = ref([
+  {
+    category: '活動公告',
+    title: '「藝起來‧ 趣宮略」國小快閃活動報名申請須知',
+    date: '2023.09.10'
+  },
+  {
+    category: '館務通知',
+    title: '9月18日館內教育訓練，暫停線上、電話客服一日',
+    date: '2023.09.18'
+  },
+  {
+    category: '活動公告',
+    title: '親子同樂電影院：羅摩衍那–3D動畫放映',
+    date: '2023.09.20'
+  },
+  {
+    category: '活動公告',
+    title: '藝術家如何書寫大時代？專人導覽開團報名中',
+    date: '2023.09.29'
+  }
+])
+
+const recentExhibitionList = [
+  {
+    id: 1,
+    title: '士拿乎—清宮鼻煙壺的時尚風潮',
+    startDate: '2023.07.07',
+    endDate: '2024.07.16',
+    imgId: 'U001'
+  },
+  {
+    id: 2,
+    title: '風格故事—琺瑯彩瓷特展',
+    startDate: '2023.06.20',
+    endDate: '2024.03.28',
+    imgId: 'U002'
+  },
+  {
+    id: 3,
+    title: '故宮經典-藝術與文化策展',
+    startDate: '2023.09.10',
+    endDate: '2024.08.18',
+    imgId: 'U003'
+  },
+  {
+    id: 4,
+    title: '故宮經典-藝術與文化策展',
+    startDate: '2023.09.10',
+    endDate: '2024.08.18',
+    imgId: 'U001'
+  },
+  {
+    id: 5,
+    title: '故宮經典-藝術與文化策展',
+    startDate: '2023.09.10',
+    endDate: '2024.08.18',
+    imgId: 'U002'
+  }
+]
+
+onMounted(() => {
+  AOS.init({
+    duration: 800
+  })
+})
 </script>
-
-<style>
-body {
-  margin: 10px;
-}
-
-.box {
-  display: block;
-  width: 100px;
-  height: 100px;
-}
-</style>

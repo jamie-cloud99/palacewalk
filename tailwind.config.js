@@ -21,7 +21,11 @@ module.exports = {
           200: '#F2F2F2'
         },
         light: '#EFEFDA', // background
-        warning: '#E49130' // orange
+        warning: {
+          DEFAULT: '#E49130', // orange
+          600: '#B87107', // dark-yellow
+          800: '#714006' // brown
+        }
       },
       fontFamily: {
         serif: ['"Noto Serif TC"', 'serif'],
@@ -29,13 +33,29 @@ module.exports = {
         cormo: ['"Cormorant SC"', 'serif']
       },
       maxWidth: {
-        "screen-sm": "540px",
-        "screen-md": "720px",
-        "screen-lg": "960px",
-        "screen-xl": "1140px",
-        "screen-2xl": "1320px",
+        'screen-sm': '540px',
+        'screen-md': '720px',
+        'screen-lg': '960px',
+        'screen-xl': '1140px',
+        'screen-2xl': '1320px'
       },
+      spacing: {
+        15: '60px',
+        22: '88px'
+      },
+      fontSize: {
+        '2xl': ['24px', '1.5'],
+        8: ['32px', '1.5'],
+        16: ['64px', '1.2']
+      },
+      letterSpacing: {
+        8: '0.08em'
+      }
     }
   },
-  plugins: [require('tw-elements/dist/plugin.cjs')]
+  plugins: [
+    require('tw-elements/dist/plugin.cjs'),
+    require('@tailwindcss/forms'),
+    require('tailwind-scrollbar')({ nocompatible: true })
+  ]
 }

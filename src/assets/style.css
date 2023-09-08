@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply font-serif text-dark;
+    @apply font-serif text-dark tracking-8 border-dark;
   }
 }
 
@@ -13,17 +13,18 @@
     @apply max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl;
   }
 
-
-  /*curating exPage*/
   .btn {
-    @apply py-[10px] min-w-[108px] text-center cursor-pointer;
+    @apply block px-3 py-2 text-center font-semibold transition-all duration-500;
   }
-  
-  .filterBtn {
-    @apply bg-[#E4E4E4];
+}
+
+@layer utilities {
+  .scrollbar-hidden::-webkit-scrollbar {
+    width: 0;
+    display: none;
   }
 
-  .filterBtn-active {
-    @apply bg-[#525252] text-white;
+  .stretched-link {
+    @apply after:absolute after:inset-0 after:cursor-pointer;
   }
 }
