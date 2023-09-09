@@ -1,11 +1,11 @@
 <template>
-  <li v-for="item in exhibitList" :key="item.id"
+  <li v-for="(item, index) in exhibitList" :key="item.id"
     class="w-[300px] flex-shrink-0 md:w-[336px] xs:w-[100%] col-span-6 lg:w-full relative overflow-hidden ">
-    <div class="absolute top-2 right-2 text-xl z-[1]">
-      {{changeIcon.isActive}}
-      <i class="fa-regular fa-heart icon-style" 
-        v-if="changeIcon.isActive"
-      ></i>
+    <div class="absolute top-2 right-2 text-xl z-[1]" @click="addClass(index)">
+      <i 
+        class="fa-regular fa-heart icon-style" 
+        v-if="isActive !== index">
+      </i>
       <i class="fa-solid fa-heart icon-style" v-else></i>
     </div>
     <router-link to="exhibitionIntro" class="ease-in-out duration-300 relative">
@@ -20,16 +20,17 @@
 </template>
 
 <script setup>
-import { toRefs } from 'vue'
+import { ref,toRefs } from 'vue'
 
 const props = defineProps({
   exhibitList: Array
 })
 
-const changeIcon = [{
-  isActive: false,
-}]
-  
+const isActive = ref('')
+
+const addClass = (id) => {
+  isActive.value = isActive.value === id ? '' : id
+}
 
 const { exhibitList } = toRefs(props)
 </script>
