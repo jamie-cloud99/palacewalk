@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-white sticky top-0 max-w-screen z-[100] border-b border-dark-600">
+  <div class="bg-white sticky top-0 w-screen max-w-full z-[100] border-b border-dark-600">
     <div class="container flex justify-between py-6 w-full">
-      <RouterLink to="/" class="flex gap-2 items-center">
+      <RouterLink to="/" class="flex gap-2 items-center flex-grow">
         <img src="/images/logo.svg" alt="故宮走走" class="w-12 h-12 block" />
         <div>
           <h1 class="font-serif font-bold text-[28px] leading-tight tracking-widest">故宮走走</h1>
@@ -50,11 +50,9 @@
           <i class="fa-solid fa-bars"></i>
         </button>
       </div>
-      <div v-if="isOpen.menu">
-        <button type="button" class="text-2xl lg:text-[28px] p-2" @click="toggleMenu('menu')">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
+      <button v-else type="button" class="text-2xl lg:text-[28px] p-2" @click="toggleMenu('menu')">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </div>
   </div>
 
