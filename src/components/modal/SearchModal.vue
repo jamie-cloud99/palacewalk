@@ -9,7 +9,7 @@
   >
     <div
       data-te-modal-dialog-ref
-      class="scrollbar-hidden overflow-auto h-[480px] w-[calc(100vw-1.5rem)] max-w-[480px] lg:max-w-[700px] rounded-sm opacity-0 transition-all duration-300 ease-in-out"
+      class="scrollbar-hidden overflow-auto h-[580px] w-[calc(100vw-1.5rem)] max-w-[480px] lg:max-w-[700px] rounded-sm opacity-0 transition-all duration-300 ease-in-out"
     >
       <div class="relative rounded-sm bg-white shadow-lg">
         <div
@@ -54,15 +54,15 @@
             <div v-if="searchType === '展品'" class="flex gap-6 flex-wrap">
               <div class="w-1/2">
                 <label class="block font-bold text-2xl mb-4" for="name">品名</label>
-                <input class="w-full" type="text" id="name" name="name" placeholder="請輸入品名">
+                <input class="bg-dark-200 w-full" type="text" id="name" name="name" placeholder="請輸入品名">
               </div>
               <div>
                 <label class="block font-bold text-2xl mb-4" for="author">作者</label>
-                <input type="text" id="author" name="author" placeholder="若為不詳可不填寫">
+                <input class="bg-dark-200" type="text" id="author" name="author" placeholder="請輸入作者">
               </div>
               <div class="w-1/2">
                 <label class="block font-bold text-2xl mb-4" for="category">分類</label>
-                <select class="block w-full" data-te-select-init>
+                <select class="bg-dark-200 block w-full" data-te-select-init>
                   <option :value="null">請選擇</option>
                   <option value="1">精選展品</option>
                   <option value="2">繪畫</option>
@@ -74,7 +74,7 @@
               </div>
               <div>
                 <label class="block font-bold text-2xl mb-4" for="order">排序</label>
-                <select class="block" data-te-select-init>
+                <select class="block bg-dark-200" data-te-select-init>
                   <option :value="null">請選擇</option>
                   <option value="2">依照朝代(由新到舊)</option>
                   <option value="3">依照朝代（由舊到新）</option>
@@ -85,7 +85,7 @@
               </div>
               <div class="w-full">
                 <input @change="handleChange" class="w-full cursor-pointer accent-warning" list="tickmarks" value="50" type="range" min="0" max="100" step="5"/>
-                <span class="p-1 bg-[#D9D9D9]" v-text="yearly"></span>
+                <span class="inline-block p-1 bg-[#D9D9D9]" v-text="yearly"></span>
                 <datalist id="tickmarks" >
                   <option value="0"></option>
                   <option value="5"></option>
