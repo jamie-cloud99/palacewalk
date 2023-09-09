@@ -3,7 +3,7 @@
     <div class="col-span-4" :class="{ 'order-2': isEdit }">
       <div class="flex flex-col items-center bg-dark-200 pt-10 lg:pt-14 pb-10 font-semibold">
         <p v-if="isEdit" class="text-center mb-4">更換大頭貼</p>
-        <img src="/images/user-1.png" alt="" class="block mb-4 w-32 h-32" />
+        <img src="/images/user-1.webp" alt="" class="block mb-4 w-32 h-32" />
         <p class="mb-6 text-xl" :class="{ '!mb-16': !isEdit }">{{ member.name }}</p>
         <p v-if="isEdit" class="text-dark-600 mb-10 px-2 lg:px-6 lg:mb-16">
           圖片尺寸限制為 1024px * 1024px 以下
@@ -64,10 +64,10 @@
             />
           </div>
           <div class="mb-4 lg:mb-6">
-            <label for="password" class="block mb-2 lg:mb-4">變更密碼</label>
+            <label for="password-new" class="block mb-2 lg:mb-4">變更密碼</label>
             <input
               type="password"
-              id="password"
+              id="password-new"
               class="form-input border-dark-600 w-full py-3 px-4 placeholder:text-dark-600"
               :class="{ 'bg-dark-200 !border-0': !tempMember.newPassword }"
               placeholder="請輸入新密碼"

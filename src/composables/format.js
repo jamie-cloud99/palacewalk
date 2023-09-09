@@ -18,3 +18,7 @@ export const recoverDate = (formatDate) => {
   const day = parseInt(parts[2])
   return new Date(year, month, day)
 }
+
+export const getZeroBaseOrder = (num) => {
+  return num < 10 ? `0${num}` : `${num}`
+}

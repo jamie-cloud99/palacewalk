@@ -4,6 +4,7 @@
       <button
         type="button"
         class="text-2xl lg:text-[28px] py-2 px-3 transition-all duration-300 rounded active:bg-white/80"
+        @click="emit('toggleSearch')"
       >
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
@@ -43,7 +44,7 @@ const statusStore = useStatusStore()
 const { menuClass } = storeToRefs(statusStore)
 const { toggleMenu } = statusStore
 
-const emit = defineEmits(['toggleMember'])
+const emit = defineEmits(['toggleMember', 'toggleSearch'])
 </script>
 
 <style></style>
