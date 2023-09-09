@@ -17,3 +17,14 @@
     @apply block px-3 py-2 text-center font-semibold transition-all duration-500;
   }
 }
+
+@layer utilities {
+  .scrollbar-hidden::-webkit-scrollbar {
+    width: 0;
+    display: none;
+  }
+
+  .stretched-link {
+    @apply after:absolute after:inset-0 after:cursor-pointer;
+  }
+}

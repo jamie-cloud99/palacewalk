@@ -4,7 +4,10 @@
       <RouterLink
         :to="item.path"
         class="inline-block px-2 font-medium"
-        :class="{'hover:text-primary hover:underline': item.title }"
+        :class="{
+          'hover:underline': item.title,
+          '!no-underline cursor-text': item.path === route.path
+        }"
         >{{ item.title }}</RouterLink
       >
       <span v-if="index !== navList.length - 1">></span>
@@ -14,6 +17,9 @@
 
 <script setup>
 import { toRefs } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 const props = defineProps({
   navList: Array
@@ -21,5 +27,3 @@ const props = defineProps({
 
 const { navList } = toRefs(props)
 </script>
-
-<style></style>

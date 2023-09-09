@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-white sticky top-0 z-[100] border-b border-dark-600">
-    <div class="container flex justify-between py-6">
+  <div class="bg-white sticky top-0 max-w-screen z-[100] border-b border-dark-600">
+    <div class="container flex justify-between py-6 w-full">
       <RouterLink to="/" class="flex gap-2 items-center">
         <img src="/images/logo.svg" alt="故宮走走" class="w-12 h-12 block" />
         <div>
@@ -13,7 +13,8 @@
       <div v-if="!isOpen.menu" class="flex gap-6 items-center lg:gap-10">
         <button
           type="button"
-          class="text-2xl lg:text-[28px] p-2 transition-all duration-300 hover:text-primary"
+          class="hidden lg:block text-2xl lg:text-[28px] p-2 transition-all duration-300 hover:text-primary"
+          @click="startSearch"
         >
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
@@ -28,7 +29,7 @@
             </button>
             <div
               :class="menuClass.notice"
-              class="absolute right-0 -bottom-6 translate-y-full transition-all duration-300"
+              class="hidden lg:block absolute right-0 -bottom-6 translate-y-full transition-all duration-300"
             >
               <NoticeDropdown />
             </div>
@@ -57,48 +58,41 @@
     </div>
   </div>
 
-  <div :class="menuClass.menu" class="fixed top-[97px] z-[100] w-full transition-all duration-500">
+  <div :class="menuClass.menu" class="fixed top-[97px] z-[200] w-full transition-all duration-500">
     <MenuComponent @toggle="toggleMenu('menu')" menu-open="menu" />
   </div>
 
   <SignInModal ref="signInModal" />
+  <MobileBar @toggle-member="enterMemberSpace" @toggle-search="startSearch" />
+  <SearchModal ref="searchModal" />
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
+import { useStatusStore } from '../../stores/statusStore'
 import MenuComponent from './MenuComponent.vue'
 import NoticeDropdown from './NoticeDropdown.vue'
 import SignInModal from './SignInModal.vue'
+import SearchModal from './SearchModal.vue'
+import MobileBar from './MobileBar.vue'
+import { storeToRefs } from 'pinia'
 
 const signInModal = ref(null)
-
-const isOpen = reactive({
-  menu: false,
-  notice: false,
-  member: false,
-  search: false
-})
-
-const menuClass = reactive({
-  menu: 'max-0',
-  notice: 'max-0'
-})
-
-const toggleMenu = (item) => {
-  isOpen[item] = !isOpen[item]
-
-  for (const key in isOpen) {
-    if (key !== item) isOpen[key] = false
-    menuClass[key] = isOpen[key] ? 'max-h' : 'max-0'
-  }
-}
+const searchModal = ref(null)
+const statusStore = useStatusStore()
+const { isOpen, menuClass } = storeToRefs(statusStore)
+const { toggleMenu } = statusStore
 
 const enterMemberSpace = () => {
-  openModal()
+  openModal(signInModal)
 }
 
-const openModal = () => {
-  signInModal.value.curModal.show()
+const startSearch = () => {
+  openModal(searchModal)
+}
+
+const openModal = (modal) => {
+  modal.value.curModal.show()
 }
 </script>
 

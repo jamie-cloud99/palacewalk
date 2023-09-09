@@ -44,6 +44,7 @@ module.exports = {
         22: '88px'
       },
       fontSize: {
+        '2xl': ['24px', '1.5'],
         8: ['32px', '1.5'],
         16: ['64px', '1.2']
       },
@@ -52,5 +53,9 @@ module.exports = {
       }
     }
   },
-  plugins: [require('tw-elements/dist/plugin.cjs'), require('@tailwindcss/forms')]
+  plugins: [
+    require('tw-elements/dist/plugin.cjs'),
+    require('@tailwindcss/forms'),
+    require('tailwind-scrollbar')({ nocompatible: true })
+  ]
 }
