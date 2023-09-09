@@ -1,13 +1,16 @@
 <template>
-  <!-- TODO: pagination, RWD, 背景圖片 -->
+  <!-- TODO: pagination -->
   <CollectionBanner :title="'精選展品'" />
+  <div class="absolute left-0 right-0 top-1/2 -z-10 h-full bg-[url('../images/home-bg-2.webp')] bg-cover bg-center bg-no-repeat"></div>
   <div class="container">
-    <div class="counter flex flex-wrap -mx-3 items-start">
-      <div class="relative flex flex-wrap w-1/2 px-3 mb-[26px]" v-for="item in masterList" :key="item.id">
+    <div class="counter flex lg:flex-row flex-col flex-wrap -mx-3 items-start">
+      <div class="relative flex flex-wrap w-full h-full lg:w-1/2 px-3 mb-[26px]" v-for="item in masterList" :key="item.id">
         <h3 class="w-full mb-4 pl-8 bg-dark-800 text-white font-bold text-2xl">{{ item.title }}</h3>
-        <img class="w-1/2" :src='`/images/collection/collection-${item.collectionId}.jpg`' :alt="item.title">
-        <p class="bg-dark-200 p-3 w-1/2">{{ item.content }}</p>
-        <router-link class="absolute right-3 bottom-0 py-3 px-10 btn bg-primary text-white hover:bg-black"
+        <figure class="w-full md:w-1/2 h-[345px]">
+          <img class="w-full h-full object-cover object-center" :src='`/images/collection/collection-${item.collectionId}.jpg`' :alt="item.title">
+        </figure>
+        <p class="bg-dark-200 p-3 w-full md:w-1/2 md:h-[345px]">{{ item.content }}</p>
+        <router-link class="w-full xl:absolute xl:w-[148px] right-3 bottom-0 py-3 btn bg-primary text-white hover:bg-black"
           :to="{name: 'collectionInfo', params: {collectionId: item.collectionId}}">
           查看展品
         </router-link>
@@ -25,7 +28,6 @@ import CollectionBanner from '../components/collection/CollectionBanner.vue'
 import GoToTop from '../components/button/GoToTop.vue'
 import PageComponent from '../components/layout/PageComponent.vue'
 
-// TODO: 先寫假資料，到時候資料來源改從API取得
 const masterList = reactive([
   {
     id: '1',
@@ -37,7 +39,7 @@ const masterList = reactive([
     id: '2',
     collectionId: 'U002',
     title: '清 肉形石',
-    content: '此件肉形石乍看之下，像不像是一塊令人垂涎三尺、肥瘦相間的「東坡肉」？瑪瑙類礦物在大自然中，由於經過漫長歲月的累積，在不同的時間點，雜質影響乃至生成的顏色不同，呈現一層一層不同的色澤，製作此件肉形石的工匠，將原來質感豐富的石材加工琢磨，並將表面的石皮染色，做成了這件肉皮、肥肉、瘦肉層次分明，毛孔和肌理都逼真展現的作品。'
+    content: '此件肉形石乍看之下，像不像是一塊令人垂涎三尺、肥瘦相間的「東坡肉」？瑪瑙類礦物在大自然中，由於經過漫長歲月的累積，在不同的時間點，雜質影響乃至生成的顏色不同，呈現一層一層不同的色澤，製作此件肉形石的工匠，將原來質感豐富的石材加工琢磨，毛孔和肌理都逼真展現的作品。'
   },
   {
     id: '3',

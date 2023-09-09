@@ -1,5 +1,7 @@
 <template>
+  <!-- TODO: prev/next custom, recommend swiper-->
   <CollectionBanner :title="'展品介紹'" />
+  <div class="absolute left-0 right-0 top-1/2 -z-10 h-full bg-[url('../images/home-bg-2.webp')] bg-cover bg-center bg-no-repeat"></div>
   <div class="container overflow-hidden">
     <swiper-container
       class="mb-10"
@@ -35,7 +37,7 @@
       <div>
         <i class="fa-regular fa-heart mr-[18px]"></i>
         <i class="fa-solid fa-link mr-[18px]"></i>
-        <i class="fa-regular fa-share-nodes"></i>
+        <i class="fa-solid fa-share-nodes"></i>
       </div>
     </div>
     <div class="font-semibold mb-11">
@@ -70,14 +72,14 @@
           <span class="mr-6">主題類型</span>
           <span>山水</span>
         </div>
-        <div class="border-5 border-black border-b border-dashed py-[26px]">
+        <div class="border-5 border-black border-b border-dashed py-[26px] col-span-2">
           <span class="mr-6">規格</span>
-          <span>69.5x26.4  【尺寸】(公分)</span>
+          <span>69.5x26.4 (公分)</span>
         </div>
-        <div class="border-5 border-black border-b border-dashed py-[26px] text-center">
-          <span class="mr-6">現收藏地</span>
-          <span>故宮博物院</span>
-        </div>
+        <!-- <div class="border-5 border-black border-b border-dashed py-[26px] text-center"> -->
+          <!-- <span class="mr-6">現收藏地</span>
+          <span>故宮博物院</span> -->
+        <!-- </div> -->
       </div>
       <h3 class="text-2xl font-bold mb-4">精選展品推薦</h3>
       <swiper-container
@@ -110,7 +112,7 @@
       </swiper-slide>
     </swiper-container>
     </div>
-    <router-link :to="previousPage" v-slot="{ navigate }">
+    <router-link :to="previousPage">
       <button @click="previousPage" class="btn hover:bg-primary hover:text-white font-semibold border border-black mx-auto">
         回前一頁
       </button>
@@ -134,8 +136,19 @@ const router = useRouter()
 const swiperEl = ref(null)
 const detail = reactive([
   {
-
-  }
+    data: [
+      {
+        id: '1',
+        collectionId: 'P001',
+        title: '秋山疊翠',
+        author: '朱叔重',
+        time: '元順帝至正二十五年(1365)',
+        ingredient : '紙',
+        type: '山水',
+        size: '69.5x26.4 (公分)',
+      },
+    ]
+  },
 ])
 const previousPage = () => {
   router.back()
