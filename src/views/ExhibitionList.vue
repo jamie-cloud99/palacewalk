@@ -55,24 +55,9 @@
         </div>
         <div class="col-span-9">
           <ul class="flex flex-wrap mb-20 gap-6 overflow-hidden lg:grid grid-cols-12">
-            <li
-              v-for="item in exhibitList"
-              :key="item.id"
-              class="w-[300px] flex-shrink-0 md:w-[336px] xs:w-[100%] col-span-6 lg:w-full relative overflow-hidden "
-            >
-              <router-link to="exhibitionIntro" class="ease-in-out duration-300 relative">
-                <div class="absolute top-2 right-2 text-xl z-[1]">
-                  <i class="fa-regular fa-heart text-white hover:text-primary ease-in-out duration-300"></i>
-                </div>
-                <img :src="`images/exhibitions/exhibition-${ item.exhibitionId }.jpg`" class="w-full ease-in-out duration-300 hover:scale-110 ">
-                <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
-                  <h3 class="font-semibold text-xl line-clamp-1 mb-1">{{ item.title }}</h3>
-                  <p class="font-medium">{{ item.date }}</p>
-                </div>
-              </router-link>
-            </li>
+            <ExhibitionListItem :exhibit-list="exhibitList" />
           </ul>
-          <PageComponent :pages="pages" @change="turnPage" />
+          <!-- <PageComponent :pages="pages" @change="turnPage" /> -->
         </div>
       </div>
     </div>
@@ -82,7 +67,7 @@
 <script setup>
 import { reactive } from 'vue'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
-import PageComponent from '../components/layout/PageComponent.vue'
+import ExhibitionListItem from '../components/exhibition/ExhibitionListItem.vue'
 import GoToTop from '../components/button/GoToTop.vue'
 
 const breadList = reactive([
@@ -105,19 +90,36 @@ const exhibitList = reactive([
     id: '1',
     exhibitionId: 'U001',
     title: '士拿乎—清宮鼻煙壺的時尚風潮',
-    date: '2023.6.20 至 2024.3.28'
+    startDate: '2023.6.20',
+    endDate: '2024.3.28',
   },
   {
     id: '2',
     exhibitionId: 'U002',
     title: '風格故事—琺瑯彩瓷特展 ',
-    date: '2023.7.7 至 2024.7.16'
+    startDate: '2023.7.7',
+    endDate: '2024.7.16',
   },
   {
     id: '3',
     exhibitionId: 'U003',
     title: '故宮經典-藝術與文化策展',
-    date: '2023.6.20 至 2024.3.28'
+    startDate: '2023.6.20',
+    endDate: '2024.3.28',
+  },
+  {
+    id: '4',
+    exhibitionId: 'U004',
+    title: '繽彩燒窯—開光雙連瓶藝術展',
+    startDate: '2023.6.24',
+    endDate: '2024.5.28',
+  },
+  {
+    id: '5',
+    exhibitionId: 'U005',
+    title: '釉瓷之美：太平有象瓷尊特展',
+    startDate: '2023.5.20',
+    endDate: '2024.8.19',
   }
 ])
 </script>
