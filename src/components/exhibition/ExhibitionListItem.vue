@@ -2,7 +2,11 @@
   <li v-for="item in exhibitList" :key="item.id"
     class="w-[300px] flex-shrink-0 md:w-[336px] xs:w-[100%] col-span-6 lg:w-full relative overflow-hidden ">
     <div class="absolute top-2 right-2 text-xl z-[1]">
-      <i class="fa-regular fa-heart icon-style"></i>
+      {{changeIcon.isActive}}
+      <i class="fa-regular fa-heart icon-style" 
+        v-if="changeIcon.isActive"
+      ></i>
+      <i class="fa-solid fa-heart icon-style" v-else></i>
     </div>
     <router-link to="exhibitionIntro" class="ease-in-out duration-300 relative">
       <img :src="`images/exhibitions/exhibition-${item.exhibitionId}.jpg`"
@@ -21,6 +25,11 @@ import { toRefs } from 'vue'
 const props = defineProps({
   exhibitList: Array
 })
+
+const changeIcon = [{
+  isActive: false,
+}]
+  
 
 const { exhibitList } = toRefs(props)
 </script>
