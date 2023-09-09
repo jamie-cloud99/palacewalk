@@ -50,6 +50,16 @@ module.exports = {
       },
       letterSpacing: {
         8: '0.08em'
+      },
+      keyframes: {
+        bgSlowIn: {
+          '0%': { width: '0%' },
+          '50%': { width: '50%' },
+          '100%': { width: '90%' },
+        }
+      },
+      animation: {
+        bgSlowIn: 'wiggle 1.2s ease-in-out 1',
       }
     }
   },

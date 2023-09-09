@@ -73,7 +73,7 @@ import { useStatusStore } from '../../stores/statusStore'
 import MenuComponent from './MenuComponent.vue'
 import NoticeDropdown from './NoticeDropdown.vue'
 import SignInModal from './SignInModal.vue'
-import SearchModal from './SearchModal.vue'
+import SearchModal from '../modal/SearchModal.vue'
 import MobileBar from './MobileBar.vue'
 import { storeToRefs } from 'pinia'
 

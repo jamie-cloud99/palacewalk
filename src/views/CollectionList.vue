@@ -1,9 +1,10 @@
 <template>
-  <!-- TODO: 背景圖片, pagination, rwd, hover效果, 路由-->
+  <!-- TODO: pagination, query, other category(except painting) layout, 展品分類（全部）-->
   <CollectionBanner :title="'精選目錄'" />
-  <div class="container flex lg:gap-6">
+  <div class="absolute left-0 right-0 top-1/2 -z-10 h-full bg-[url('../images/home-bg-2.webp')] bg-cover bg-center bg-no-repeat"></div>
+  <div class="container flex gap-6 xl:gap-8 flex-col lg:flex-row">
     <!-- Left Side -->
-    <div class="min-w-[25%] min-h-screen">
+    <div class="w-[305px] lg:min-w-1/4 lg:min-h-screen sm:min-h-50 ">
       <p class="flex flex-col text-lg font-bold">展品類別
         <span class="font-cormo font-bold text-2xl">CATEGORY</span>
       </p>
@@ -16,9 +17,9 @@
       </ul>
     </div>
     <!-- Right Side -->
-    <div class="w-3/4 flex flex-col">
-      <div class="lg:mb-10 flex justify-between">
-        <div class="w-1/4">
+    <div class="w-full lg:w-3/4 flex flex-col">
+      <div class="mb-10 flex justify-between">
+        <div>
           <svg class="inline mr-[15px] cursor-pointer" width="24px" height="24x" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#525252">
             <g id="SVGRepo_bgCarrier" stroke-width="0"/>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
@@ -30,18 +31,28 @@
             <g id="SVGRepo_iconCarrier"><title>單欄</title> <g><g><path d="M0,0v512h512V0H0z M462.452,462.452H49.548V49.548h412.903V462.452z"/></g></g><g><g><rect x="305.548" y="99.097" width="66.065" height="313.806"/></g></g><g><g><rect x="140.387" y="99.097" width="66.065" height="313.806"/></g></g></g>
           </svg>
         </div>
-        <div class="w-3/4 relative">
+        <!-- 搜尋框 -->
+        <!-- <div class="w-3/4 relative">
           <input class="w-full" type="search" aria-label="Search" name="search" placeholder="請輸入產品名稱 、關鍵字">
           <button><i class="absolute right-14 top-3 fa-solid fa-magnifying-glass"></i></button>
-          <button><i class="absolute right-0 top-0 fa-solid fa-filter text-white bg-black px-3 py-[2.5%]"></i></button>
-        </div>
+          <button><i class="absolute right-0 top-0 fa-solid fa-filter text-white bg-black px-3 py-3"></i></button>
+        </div> -->
       </div>
-      <div class="flex lg:gap-6">
-        <ul class="flex cursor-pointer" v-for="item in selectionData" :key="item.id">
-          <li><img class="h-[215px] object-cover" :src='`/images/collection/collection-${item.collectionId}.jpg`' :alt="item.title"></li>
-          <li class="hidden">{{ item.title }}</li>
-          <li class="hidden">{{ item.author }}</li>
-          <li class="hidden">{{ item.time }}</li>
+      <div class="flex flex-wrap flex-col lg:flex-row">
+        <ul class="group relative flex cursor-pointer flex-col" v-for="item in selectionData" :key="item.id">
+          <router-link class="mb-[26px]" :to="{name: 'collectionInfo', params: {collectionId: item.collectionId}}">
+            <img class="w-full lg:px-3 lg:w-[305px] h-[215px] object-cover object-center" :src='`/images/collection/collection-${item.collectionId}.jpg`' :alt="item.title">
+          </router-link>
+          <li class="group-hover:bg-dark group-hover:opacity-50 z-100 absolute left-0 lg:left-3 w-full lg:w-[280px] h-[215px] group-hover:animate-bgSlowIn"></li>
+          <li class="opacity-0 group-hover:opacity-100 group-hover:transition-all group-hover:duration-1000
+            absolute top-[108px] left-6 mb-[26px]
+            font-bold text-white
+            after:inline-block after:ml-[18px] after:w-28 after:h-px after:bg-white
+            after:group-hover:transition-all after:group-hover:duration-1000">
+            {{ item.title }}
+          </li>
+          <li class="opacity-0 group-hover:opacity-100 group-hover:transition-all group-hover:duration-1000 group-hover:ease-in-out absolute top-[138px] left-6 mb-[26px] text-white">{{ item.author }}</li>
+          <li class="hover-style absolute top-[162px] right-6 mb-[26px] text-white">{{ item.time }}</li>
         </ul>
       </div>
 
@@ -62,7 +73,6 @@ import GoToTop from '../components/button/GoToTop.vue'
 
 const { category } = collectionConstant
 
-// TODO: 先寫假資料，到時候資料再從API取得
 const collectionList = reactive([
   {
     category: 1, // 精選展品
@@ -96,16 +106,16 @@ const collectionList = reactive([
       {
         id: '1',
         collectionId: 'P001',
-        title: '春風如沐圖',
-        author: '鞏賢',
-        time: '明末清初'
+        title: '春山圖',
+        author: '王原祁',
+        time: '清'
       },
       {
         id: '2',
         collectionId: 'P002',
-        title: '洛陽樓圖',
-        author: '李昭道',
-        time: '唐'
+        title: '洛陽耆英會圖',
+        author: '不詳',
+        time: '宋'
       },
       {
         id: '3',
@@ -113,7 +123,70 @@ const collectionList = reactive([
         title: '寶積賓伽羅佛像',
         author: '吳道子',
         time: '唐'
-      }
+      },
+      {
+        id: '4',
+        collectionId: 'P004',
+        title: '洗馬圖',
+        author: '韓幹',
+        time: '唐'
+      },
+      {
+        id: '5',
+        collectionId: 'P005',
+        title: '溪山秋色圖',
+        author: '宋徽宗,趙佶',
+        time: '宋'
+      },
+      {
+        id: '6',
+        collectionId: 'P006',
+        title: '內人雙陸圖',
+        author: '周昉',
+        time: '唐'
+      },
+      {
+        id: '7',
+        collectionId: 'P007',
+        title: '草堂十志圖',
+        author: '盧鴻',
+        time: '唐'
+      },
+      {
+        id: '8',
+        collectionId: 'P008',
+        title: '護國天王像',
+        author: '尉遲乙僧',
+        time: '唐'
+      },
+      {
+        id: '9',
+        collectionId: 'P009',
+        title: '人宮樂圖',
+        author: '不詳',
+        time: '唐'
+      },
+      {
+        id: '10',
+        collectionId: 'P010',
+        title: '玉堂富貴圖',
+        author: '徐熙',
+        time: '五代十國'
+      },
+      {
+        id: '11',
+        collectionId: 'P011',
+        title: '蓉雀',
+        author: '徐熙',
+        time: '五代南唐'
+      },
+      {
+        id: '12',
+        collectionId: 'P012',
+        title: '顧德謙弄簫圖',
+        author: '徐熙',
+        time: '五代南唐'
+      },
     ]
   },
   {
@@ -136,7 +209,7 @@ const collectionList = reactive([
       {
         id: '3',
         collectionId: 'A003',
-        title: '西洋藍地灑金星玻璃瓶',
+        title: '藍地灑金星玻璃瓶',
         author: '不詳',
         time: '歐洲 十八世紀'
       }
@@ -245,12 +318,15 @@ const selectedCategory = (option) => {
   selectionData = collectionList.find(item => item.category === selectedOption.value).data
   return { selectionData, selectedOption }
 }
-selectedCategory(1);
+selectedCategory(2);
 
 </script>
 
 <style scoped>
 .selected {
   @apply bg-primary text-white;
+}
+.hover-style {
+  @apply opacity-0 group-hover:opacity-100 group-hover:transition-all group-hover:duration-1000 group-hover:ease-in-out;
 }
 </style>
