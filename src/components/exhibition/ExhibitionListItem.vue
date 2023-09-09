@@ -8,8 +8,10 @@
       </i>
       <i class="fa-solid fa-heart icon-style" v-else></i>
     </div>
-    <router-link to="exhibitionIntro" class="ease-in-out duration-300 relative">
-      <img :src="`images/exhibitions/exhibition-${item.exhibitionId}.jpg`"
+    <router-link
+      :to="{name: 'exhibitionIntro', params: {exhibitionId: item.exhibitionId}}"
+      class="ease-in-out duration-300 relative">
+      <img :src="`/images/exhibitions/exhibition-${item.exhibitionId}.jpg`"
         class="w-full ease-in-out duration-300 hover:scale-110 ">
       <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
         <h3 class="font-semibold text-xl line-clamp-1 mb-1">{{ item.title }}</h3>
