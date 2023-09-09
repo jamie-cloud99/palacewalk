@@ -52,15 +52,15 @@
           <div class="container relative z-10">
             <!-- 展品 -->
             <div v-if="searchType === '展品'" class="flex gap-6 flex-wrap">
-              <div class="w-1/2">
+              <div class="w-full lg:w-1/2">
                 <label class="block font-bold text-2xl mb-4" for="name">品名</label>
                 <input class="bg-dark-200 w-full" type="text" id="name" name="name" placeholder="請輸入品名">
               </div>
-              <div>
+              <div class="w-full lg:w-1/2">
                 <label class="block font-bold text-2xl mb-4" for="author">作者</label>
-                <input class="bg-dark-200" type="text" id="author" name="author" placeholder="請輸入作者">
+                <input class="bg-dark-200 w-full" type="text" id="author" name="author" placeholder="請輸入作者">
               </div>
-              <div class="w-1/2">
+              <div class="w-full lg:w-1/2">
                 <label class="block font-bold text-2xl mb-4" for="category">分類</label>
                 <select class="bg-dark-200 block w-full" data-te-select-init>
                   <option :value="null">請選擇</option>
@@ -72,9 +72,9 @@
                   <option value="6">其他文物</option>
                 </select>
               </div>
-              <div>
+              <div class="w-full lg:w-1/2">
                 <label class="block font-bold text-2xl mb-4" for="order">排序</label>
-                <select class="block bg-dark-200" data-te-select-init>
+                <select class="block bg-dark-200 w-full" data-te-select-init>
                   <option :value="null">請選擇</option>
                   <option value="2">依照朝代(由新到舊)</option>
                   <option value="3">依照朝代（由舊到新）</option>
