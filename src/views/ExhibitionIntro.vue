@@ -54,7 +54,7 @@
           </ul>
         </div>
         <div class="col-span-9">
-          <img class="w-full h-[340px] object-cover object-center mb-4" src='images/exhibitions/exhibition-U001.jpg'>
+          <img class="w-full h-[340px] object-cover object-center mb-4" src='/images/exhibitions/exhibition-U001.jpg'>
           <div class="flex justify-between mb-8">
             <div>
               <h2 class="text-2xl font-bold mb-4">風格故事—琺瑯彩瓷特展</h2>
