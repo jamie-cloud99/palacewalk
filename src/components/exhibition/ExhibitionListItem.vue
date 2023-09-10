@@ -1,12 +1,13 @@
 <template>
-  <li v-for="(item, index) in exhibitList" :key="item.id"
+  <li v-for="(item) in exhibitList" :key="item.id"
     class="w-[300px] flex-shrink-0 md:w-[336px] xs:w-[100%] col-span-6 lg:w-full relative overflow-hidden ">
-    <div class="absolute top-2 right-2 text-xl z-[1]" @click="addClass(index)">
+    <div class="absolute top-2 right-2 text-xl z-[1]">
       <i 
         class="fa-regular fa-heart icon-style" 
-        v-if="isActive !== index">
+        @click="toggleClass(item.id)"
+        :class="{ 'fa-solid': item.isActive }"
+        :id="item.id">
       </i>
-      <i class="fa-solid fa-heart icon-style" v-else></i>
     </div>
     <router-link
       :to="{name: 'exhibitionIntro', params: {exhibitionId: item.exhibitionId}}"
@@ -22,22 +23,26 @@
 </template>
 
 <script setup>
-import { ref,toRefs } from 'vue'
+import { toRefs } from 'vue'
 
 const props = defineProps({
   exhibitList: Array
 })
 
-const isActive = ref('')
-
-const addClass = (id) => {
-  isActive.value = isActive.value === id ? '' : id
-}
-
 const { exhibitList } = toRefs(props)
+
+const toggleClass = (id) => {
+  const item = exhibitList.value.find((exhibit) => exhibit.id === id)
+  if (item) {
+    item.isActive = !item.isActive
+  }
+}
 </script>
 <style>
 .icon-style{
   @apply text-white hover:text-primary ease-in-out duration-300;
+}
+.active {
+  color: red; /* 更改活动状态的颜色样式 */
 }
 </style>
