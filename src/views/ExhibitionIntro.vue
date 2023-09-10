@@ -13,12 +13,13 @@
         <div class="col-span-3">
           <ExhibitionSort />
         </div>
-        <div class="col-span-9">
+        <div class="col-span-9 font-semibold	">
+          {{ id }}
           <img class="w-full h-[340px] object-cover object-center mb-4" src='/images/exhibitions/exhibition-U001.jpg'>
           <div class="flex justify-between mb-8">
             <div>
-              <h2 class="text-2xl font-bold mb-4">風格故事—琺瑯彩瓷特展</h2>
-              <time datetime="" class="font-medium">2023/07/07 至 2024/07/16</time>
+              <h2 class="text-2xl font-bold mb-4">{{ exhibitionTitle }}</h2>
+              <time datetime="" class="font-bold">{{ startDate }} - {{ endDate }}</time>
             </div>
             <div class="flex flex-col">
               <div class="flex mb-2">
@@ -34,14 +35,112 @@
           </div>
           <div>
             <h3 class="font-bold mb-2">展覽概述：</h3>
-            <p class="mb-8">《風格故事—琺瑯彩瓷特展》誠摯邀請您蒞臨，探索中國古老而獨特的琺瑯彩瓷藝術。這次特展將帶您穿越時空，深入琺瑯彩瓷的璀璨世界，展示其精湛的工藝和千年來的藝術演變。透過這些精心挑選的珍貴展品，我們將向您展示琺瑯彩瓷的輝煌之旅，並探索其對中國文化和藝術的深遠影響。</p>
+            <p class="mb-8">{{ description }}</p>
             <h3 class="font-bold mb-2">展覽亮點：</h3>
-            <ol class="list-decimal pl-6">
-              <li>深入解讀琺瑯彩瓷：我們將以詳盡而生動的方式，解釋琺瑯彩瓷的歷史背景、製作過程和獨特之處。您將了解到琺瑯彩瓷的源起和它在中國陶瓷藝術中的重要地位。</li>
-              <li>精選珍品展示：特展中將展出一系列匠心獨具的琺瑯彩瓷珍品，包括來自不同朝代的精美瓷器。這些作品不僅展示了技藝高超的製作工藝，更融合了各時期的藝術風格和主題，展現出琺瑯彩瓷的多樣性和豐富性。</li>
-              <li>互動體驗與工作坊：我們提供一系列互動體驗和工作坊，讓您親身體驗琺瑯彩瓷的魅力。您可以親自參與製作過程，與藝術家互動，感受琺瑯彩瓷的獨特之處，並帶回一份屬於您自己的創作。</li>
-              <li>導覽和講座：我們將提供導覽服務和專題講座，由專業的策展人和藝術專家帶領您深入了解琺瑯彩瓷的文化背景、藝術價值和技術特點。您將有機會與他們進行互動</li>
-            </ol>
+            <div v-html="content" class="content mb-8"></div>
+            <h3 class="font-bold mb-2">展品資訊：</h3>
+            <div  class="overflow-hidden mb-8">
+              <swiper-container
+                class="mb-10"
+                :space-between="24"
+                :navigation="true"
+                :pagination="true"
+                :slides-per-view="1"
+                :breakpoints="{ 1024: { slidesPerView: 3 } }"
+                ref="swiperEl"
+              >
+                <swiper-slide>
+                  <figure class="exhibit-item">
+                    <img class="w-full h-full object-cover object-centers" :src='`/images/exhibitions/exhibition-U006.jpg`' alt="U006">
+                    <figcaption class="exhibit-item-title">明 永樂 青花人物紋如意耳扁壺</figcaption>
+                  </figure>
+                </swiper-slide>
+                <swiper-slide>
+                  <figure class="exhibit-item">
+                    <img class="w-full h-full object-cover object-center" :src='`/images/exhibitions/exhibition-U007.jpg`' alt="U007">
+                    <figcaption class="exhibit-item-title">北宋 汝窯 青瓷蓮花式溫碗</figcaption>
+                  </figure>
+                </swiper-slide>
+                <swiper-slide>
+                  <figure class="exhibit-item">
+                    <img class="w-full h-full object-cover object-center" :src='`/images/exhibitions/exhibition-U008.jpg`' alt="U008">
+                    <figcaption class="exhibit-item-title">清 翠玉白菜</figcaption>
+                  </figure>
+                </swiper-slide>
+                <swiper-slide>
+                  <figure class="exhibit-item">
+                    <img class="w-full h-full object-cover object-center" :src='`/images/exhibitions/exhibition-U003.jpg`' alt="U004">
+                    <figcaption class="exhibit-item-title">明 唐寅採蓮圖</figcaption>
+                  </figure>
+                </swiper-slide>
+              </swiper-container>
+            </div>
+            <h4 class="font-bold mb-2">展覽留言<span class="comment-num">(2)</span></h4>
+            <div class="relative border-b pb-[24px] mb-3">
+              <input
+                type="text"
+                id="comment"
+                class="form-input bg-transparent border-dark-400 rounded-3xl w-full py-2 px-4 placeholder:text-dark-600"
+                placeholder="新增留言"
+              />
+              <a href="#">
+                <i class="fa-solid fa-paper-plane absolute right-4 top-[12px]"></i>
+              </a>
+            </div>
+            <ul class="space-y-5">
+              <li v-for="i in 3" :key="i + 'i'">
+                <div class="border-b border-dark-400 px-2">
+                  <div class="pt-4 pb-2">
+                    <div class="flex items-center">
+                      <div class="w-[36px] h-[36px] mr-2">
+                        <img src="/images/user-3.webp" class="object-cover object-center" alt="文化探索者">
+                      </div>
+                      <div class=" mr-2">文化探索者</div>
+                      <time class="text-primary">2023/08/10</time>
+                    </div>
+                  </div>
+                  <div class="pt-4 pb-2">
+                    <p class="pb-2 pl-11 lg:pb-4 min-h-[50px] font-medium">
+                      之前去故宮看過一次這檔展覽，沒想到還有線上展可以重溫，琺瑯彩瓷的美歷經百年也不會褪色！
+                    </p>
+                    <div class="flex justify-end flex-grow gap-2 mb-3 lg:hidden">
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <div class="flex gap-2 pl-11">
+                        <button
+                          type="button"
+                          class="btn pl-0 text-dark-600 hover:text-dark"
+                          @click="toggleReply(i)"
+                        >
+                          <span v-if="isOpen === i">顯示</span><span v-else>隱藏</span>回覆
+                        </button>
+                        <a href="" class="btn pl-0 text-dark-600 hover:text-dark">查看原始留言</a>
+                      </div>
+                    </div>
+                    <div
+                      class="max-h-0 overflow-hidden transition-all duration-500"
+                      :class="{ '!max-h-[500px]': isOpen === i }"
+                    >
+                      <hr class="border-dark-400 mb-3" />
+                      <div class="pl-6 gap-2">
+                        <div class="flex items-center">
+                          <div class="w-[36px] h-[36px] mr-2">
+                            <img src="/images/user-2.webp" class="object-cover object-center" alt="策展者">
+                          </div>
+                          <p class="text-warning-800 font-black leading-[36px]">策展人</p>
+                          <time class="text-primary">2023/08/10</time>
+                        </div>
+                        <div class="pt-4 pb-2">
+                          <p class="pl-11">
+                            銅胎畫琺瑯方盤是康熙御製的傑作，看來你跟皇帝有同樣獨到的眼光呢！
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -50,10 +149,50 @@
   <GoToTop />
 </template>
 <script setup>
-import { reactive } from 'vue'
+import { ref,reactive,computed } from 'vue'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 import ExhibitionSort from '../components/exhibition/ExhibitionSort.vue'
 import GoToTop from '../components/button/GoToTop.vue'
+
+import { storeToRefs } from 'pinia'
+import { exhibitionStore } from '../stores/exhibitsStore'
+
+const exhibitsStore = exhibitionStore()
+const { exhibition } = storeToRefs(exhibitsStore)
+
+const isOpen = ref('')
+
+const toggleReply = (id) => {
+  isOpen.value = isOpen.value === id ? '' : id
+}
+
+const tempExhibition = ref({})
+
+const exhibitionTitle = computed({
+  get: () => {
+    return exhibition.value[0].title
+  }
+})
+const startDate = computed({
+  get: () => {
+    return exhibition.value[0].startDate
+  }
+})
+const endDate = computed({
+  get: () => {
+    return exhibition.value[0].endDate
+  }
+})
+const description = computed({
+  get: () => {
+    return exhibition.value[0].description
+  }
+})
+const content = computed({
+  get: () => {
+    return exhibition.value[0].content
+  }
+})
 
 const breadList = reactive([
   {
@@ -75,3 +214,19 @@ const breadList = reactive([
 ])
 
 </script>
+<style>
+  .content ol{
+    list-style-type: decimal;
+    padding-left: 24px;
+    line-height: 1.5;
+  }
+  .content li{
+    margin-bottom: 8px;
+  }
+  .exhibit-item{
+    @apply w-full h-[300px] lg:h-[306px] relative;
+  }
+  .exhibit-item-title{
+    @apply font-bold bg-amber-400 px-2 inline-block absolute left-0 bottom-2;
+  }
+</style>
