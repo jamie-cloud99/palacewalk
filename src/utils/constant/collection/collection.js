@@ -1,5 +1,6 @@
 export default Object.freeze({
   category: {
+    ALL: 0,
     MASTERPIECES: 1,
     PAINTING: 2,
     JADE: 3,

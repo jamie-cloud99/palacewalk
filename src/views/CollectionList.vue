@@ -75,6 +75,9 @@ const { category } = collectionConstant
 
 const collectionList = reactive([
   {
+    category: 0, // 全部
+  },
+  {
     category: 1, // 精選展品
     data: [
       {
@@ -295,8 +298,16 @@ const collectionList = reactive([
   },
 ])
 
+let total = ref(0)
+collectionList[0].data = collectionList
+  .filter(item => item.category !== 0)
+  .flatMap(el => el.data);
+total.value = collectionList[0].data.length
+
 const categoryList = (type) => {
   switch (type) {
+    case category.ALL:
+      return '全部';
     case category.MASTERPIECES:
       return '精選展品';
     case category.PAINTING:
@@ -311,6 +322,7 @@ const categoryList = (type) => {
       return '其他文物';
   }
 }
+
 const selectedOption = ref('')
 let selectionData = reactive([])
 const selectedCategory = (option) => {
