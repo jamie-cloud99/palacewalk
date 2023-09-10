@@ -18,6 +18,7 @@
         <div class="relative z-10 flex justify-between items-start mb-2">
           <h3 class="text-8 font-bold pt-5 px-14">快速搜尋</h3>
           <button
+            @click="closeModal"
             type="button"
             class="btn bg-dark text-white w-20 h-20 text-[28px]"
             data-te-modal-dismiss
@@ -51,17 +52,17 @@
           <div class="absolute inset-0 bg-dark-200 opacity-50"></div>
           <div class="container relative z-10">
             <!-- 展品 -->
-            <div v-if="searchType === '展品'" class="flex gap-6 flex-wrap">
-              <div class="w-full lg:w-1/2">
-                <label class="block font-bold text-2xl mb-4" for="name">品名</label>
+            <div v-if="searchType === '展品'" class="flex flex-wrap -mx-3">
+              <div class="w-full lg:w-1/2 px-3 mb-4 lg:mb-6">
+                <label class="form-label" for="name">品名</label>
                 <input class="bg-dark-200 w-full" type="text" id="name" name="name" placeholder="請輸入品名">
               </div>
-              <div class="w-full lg:w-1/2">
-                <label class="block font-bold text-2xl mb-4" for="author">作者</label>
+              <div class="w-full lg:w-1/2 px-3 mb-4 lg:mb-6">
+                <label class="form-label" for="author">作者</label>
                 <input class="bg-dark-200 w-full" type="text" id="author" name="author" placeholder="請輸入作者">
               </div>
-              <div class="w-full lg:w-1/2">
-                <label class="block font-bold text-2xl mb-4" for="category">分類</label>
+              <div class="w-full lg:w-1/2 px-3 mb-4 lg:mb-6">
+                <label class="form-label" for="category">分類</label>
                 <select class="bg-dark-200 block w-full" data-te-select-init>
                   <option :value="null">請選擇</option>
                   <option value="1">精選展品</option>
@@ -72,18 +73,18 @@
                   <option value="6">其他文物</option>
                 </select>
               </div>
-              <div class="w-full lg:w-1/2">
-                <label class="block font-bold text-2xl mb-4" for="order">排序</label>
+              <div class="w-full lg:w-1/2 px-3 mb-4 lg:mb-6">
+                <label class="form-label" for="order">排序</label>
                 <select class="block bg-dark-200 w-full" data-te-select-init>
                   <option :value="null">請選擇</option>
                   <option value="2">依照朝代(由新到舊)</option>
                   <option value="3">依照朝代（由舊到新）</option>
                 </select>
               </div>
-              <div class="w-3/4">
-                <h3 class="font-bold text-2xl">朝代</h3>
+              <div class="w-3/4 px-3">
+                <h3 class="form-label">朝代</h3>
               </div>
-              <div class="w-full">
+              <div class="w-full px-3">
                 <input @change="handleChange" class="w-full cursor-pointer accent-warning" list="tickmarks" value="50" type="range" min="0" max="100" step="5"/>
                 <span class="inline-block p-1 bg-[#D9D9D9]" v-text="yearly"></span>
                 <datalist id="tickmarks" >
@@ -113,14 +114,14 @@
 
             </div>
             <!-- 展覽 -->
-            <div v-else>
-              <div class="mb-5">
-                <label class="block font-bold text-2xl mb-4" for="name">展名</label>
-                <input type="text" id="name" name="name">
+            <div v-else class="flex flex-wrap -mx-3">
+              <div class="w-full lg:w-1/2 px-3 mb-4 lg:mb-6">
+                <label class="form-label" for="name">展名</label>
+                <input class="bg-dark-200 w-full" type="text" id="name" name="name" placeholder="請輸入展名">
               </div>
-              <div>
-                <label class="block font-bold text-2xl mb-4" for="order">排序</label>
-                <select class="block" data-te-select-init>
+              <div class="w-full lg:w-1/2 px-3 mb-4 lg:mb-6">
+                <label class="form-label" for="order">排序</label>
+                <select class="block bg-dark-200 w-full" data-te-select-init>
                   <option :value="null">請選擇</option>
                   <option value="2">依照朝代(由新到舊)</option>
                   <option value="3">依照朝代（由舊到新）</option>
@@ -167,7 +168,7 @@ const closeModal = () => {
   curModal.value.hide()
 }
 
-initTE({ Modal, Select })
+initTE({ Modal, Select }) // Select 無效
 
 onMounted(() => {
   curModal.value = new Modal(modal.value)
@@ -206,5 +207,8 @@ const handleChange = (val) => {
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0.4;
+}
+.form-label {
+  @apply block font-bold text-xl lg:text-2xl mb-2 lg:mb-4;
 }
 </style>
