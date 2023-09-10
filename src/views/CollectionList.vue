@@ -1,5 +1,5 @@
 <template>
-  <!-- TODO: pagination, query, other category(except painting) layout, 展品分類（全部）-->
+  <!-- TODO: query, other category(except painting) layout -->
   <CollectionBanner :title="'精選目錄'" />
   <div class="absolute left-0 right-0 top-1/2 -z-10 h-full bg-[url('../images/home-bg-2.webp')] bg-cover bg-center bg-no-repeat"></div>
   <div class="container flex gap-6 xl:gap-8 flex-col lg:flex-row">
@@ -55,21 +55,24 @@
           <li class="hover-style absolute top-[162px] right-6 mb-[26px] text-white">{{ item.time }}</li>
         </ul>
       </div>
-
+      <PageComponent class="self-start my-15" :pages="pages" @change="turnPage" />
     </div>
-    <!-- <div class="flex py-10 lg:py-15"> -->
-      <!-- <PageComponent :pages="pages" @change="turnPage" /> -->
-    <!-- </div> -->
   </div>
   <GoToTop />
 </template>
 
 <script setup>
 import { ref, reactive } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useCollectionStore } from '../stores/collectionStore'
 import collectionConstant from '../utils/constant/collection/collection'
 import CollectionBanner from '../components/collection/CollectionBanner.vue'
 import GoToTop from '../components/button/GoToTop.vue'
-// import PageComponent from '../components/layout/PageComponent.vue'
+import PageComponent from '../components/layout/PageComponent.vue'
+
+const collectionStore = useCollectionStore()
+const { pages } = storeToRefs(collectionStore)
+const { turnPage } = collectionStore
 
 const { category } = collectionConstant
 
