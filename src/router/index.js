@@ -76,16 +76,16 @@ const router = createRouter({
     {
       path: '/curating/edit/:previewId/',
       name: 'curatingEdit',
-      component: () => import('@/views/curatingEdit.vue')
+      component: () => import('@/views/CuratingEdit.vue')
     },
     {
       path: '/curating/:memberId/:previewId',
-      component: () => import('@/views/curatingPreview.vue')
+      component: () => import('@/views/CuratingPreview.vue')
     },
     {
       path: '/curating/:exhibitionId/messages',
       name: 'curatingMessages',
-      component: () => import('@/views/curatingMessages.vue')
+      component: () => import('@/views/CuratingMessages.vue')
     },
     {
       path: '/:pathMatch(.*)*',
