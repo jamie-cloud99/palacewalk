@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white h-screen md:flex justify-center overflow-y-scroll">
+  <div class="bg-white h-screen md:flex justify-center overflow-y-auto">
     <div class="container px-5 md:w-3/4 xl:w-1/2">
       <div class="md:grid grid-cols-2 justify-center items-start gap-x-20 pt-4 pb-8">
         <div class="col-span-1">
@@ -26,7 +26,7 @@
               <p class="text-dark-800 text-8 mb-4">02-2881-2021</p>
               <ul class="text-dark-800 space-y-1">
                 <li>平日 12:00-19:00</li>
-                <li>週六、週日、節假日 9:00-19:00</li>
+                <li>週末 09:00-19:00</li>
               </ul>
             </div>
             <RouterLink
