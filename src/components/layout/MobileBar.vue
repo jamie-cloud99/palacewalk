@@ -1,5 +1,7 @@
 <template>
-  <div class="fixed bottom-0 left-0 right-0 z-20 bg-dark-200 h-15 shadow-[0_35px_60px_15px_rgba(0,0,0,0.3)] lg:hidden">
+  <div
+    class="fixed bottom-0 left-0 right-0 z-20 bg-dark-200 h-15 shadow-[0_35px_60px_15px_rgba(0,0,0,0.3)] md:hidden"
+  >
     <div class="flex justify-between items-center h-full px-6">
       <button
         type="button"
@@ -18,7 +20,7 @@
         </button>
         <div
           :class="menuClass.notice"
-          class="fixed left-0  bottom-15 text-dark transition-all duration-300"
+          class="fixed left-0 bottom-15 text-dark transition-all duration-300"
         >
           <NoticeDropdown />
         </div>
@@ -31,7 +33,6 @@
         <i class="fa-regular fa-circle-user"></i>
       </button>
     </div>
-    
   </div>
 </template>
 

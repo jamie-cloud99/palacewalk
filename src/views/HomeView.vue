@@ -26,7 +26,8 @@
         <button
           type="button"
           class="py-3 px-10 bg-white font-bold hover:bg-primary hover:text-white transition-all duration-300"
-        >
+          @click="router.push('/exhibitions')"
+          >
           立即看展
         </button>
       </div>
@@ -114,11 +115,14 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 import { reactive, ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import CalendarComponent from '../components/home/CalendarComponent.vue'
 import SectionTitle from '../components/home/SectionTitle.vue'
 import ImageMarquee from '../components/home/ImageMarquee.vue'
 import CommentCards from '../components/home/CommentCards.vue'
 import ExhibitionSlides from '../components/home/ExhibitionSlides.vue'
+
+const router = useRouter()
 
 const section = reactive([
   {
