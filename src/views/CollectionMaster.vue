@@ -1,5 +1,4 @@
 <template>
-  <!-- TODO: pagination -->
   <CollectionBanner :title="'精選展品'" />
   <div class="absolute left-0 right-0 top-1/2 -z-10 h-full bg-[url('../images/home-bg-2.webp')] bg-cover bg-center bg-no-repeat"></div>
   <div class="container">
@@ -15,18 +14,22 @@
           查看展品
         </router-link>
       </div>
-    </div>
-    <div class="flex py-10 lg:py-15">
-      <PageComponent :pages="pages" @change="turnPage" />
+      <PageComponent class="self-start my-15" :pages="pages" @change="turnPage" />
     </div>
   </div>
   <GoToTop />
 </template>
 <script setup>
 import { reactive } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useCollectionStore } from '../stores/collectionStore'
 import CollectionBanner from '../components/collection/CollectionBanner.vue'
 import GoToTop from '../components/button/GoToTop.vue'
 import PageComponent from '../components/layout/PageComponent.vue'
+
+const collectionStore = useCollectionStore()
+const { pages } = storeToRefs(collectionStore)
+const { turnPage } = collectionStore
 
 const masterList = reactive([
   {
