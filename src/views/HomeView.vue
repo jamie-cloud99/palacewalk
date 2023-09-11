@@ -27,7 +27,7 @@
           type="button"
           class="py-3 px-10 bg-white font-bold hover:bg-primary hover:text-white transition-all duration-300"
           @click="router.push('/exhibitions')"
-          >
+        >
           立即看展
         </button>
       </div>
@@ -166,15 +166,16 @@ const recentExhibitionList = [
   {
     id: 1,
     title: '士拿乎—清宮鼻煙壺的時尚風潮',
-    startDate: '2023.07.07',
-    endDate: '2024.07.16',
+    startDate: '2023.06.20',
+    endDate: '2024.03.28',
     imgId: 'U001'
   },
   {
     id: 2,
     title: '風格故事—琺瑯彩瓷特展',
-    startDate: '2023.06.20',
-    endDate: '2024.03.28',
+    startDate: '2023.07.07',
+    endDate: '2024.07.16',
+
     imgId: 'U002'
   },
   {

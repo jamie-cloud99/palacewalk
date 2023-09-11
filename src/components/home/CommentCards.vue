@@ -7,7 +7,7 @@
     class="mb-20 lg:mb-24"
   >
     <swiper-slide
-      class="max-w-[300px] flex-shrink-0 lg:w-full"
+      class="flex-shrink-0 sm:max-w-[300px] lg:max-w-[280px]"
       v-for="(item, i) in comments"
       :key="item.content"
     >

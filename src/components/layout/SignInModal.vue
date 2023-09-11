@@ -100,8 +100,16 @@
             取消
           </button>
 
-          <button type="button" class="btn w-24 bg-primary text-white hover:bg-dark">
-            <span v-if="hasAccount">登入</span> <span v-else>註冊</span>
+          <button
+            v-if="hasAccount"
+            type="button"
+            class="btn w-24 bg-primary text-white hover:bg-dark"
+            @click="logIn"
+          >
+            登入
+          </button>
+          <button v-else type="button" class="btn w-24 bg-primary text-white hover:bg-dark">
+            註冊
           </button>
         </div>
       </div>
@@ -112,10 +120,14 @@
 <script setup>
 import { Modal, initTE } from 'tw-elements'
 import { ref, onMounted } from 'vue'
+import { useMemberStore } from '../../stores/memberStore'
+import { storeToRefs } from 'pinia'
 
 const modal = ref(null)
 const curModal = ref(null)
 const hasAccount = ref(true)
+const memberStore = useMemberStore()
+const { isLoggedIn } = storeToRefs(memberStore)
 
 defineExpose({
   curModal
@@ -127,6 +139,11 @@ const closeModal = () => {
 
 const changeForm = (status) => {
   hasAccount.value = status
+}
+
+const logIn = () => {
+  isLoggedIn.value = true
+  curModal.value.hide()
 }
 
 initTE({ Modal })

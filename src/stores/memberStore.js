@@ -4,6 +4,8 @@ import { defineStore } from 'pinia'
 export const useMemberStore = defineStore('member', () => {
   const memberList = ref([{}])
 
+  const isLoggedIn = ref(false)
+
   const member = ref({
     name: '文化探索者',
     email: 'abcd1@gmail.com',
@@ -24,5 +26,5 @@ export const useMemberStore = defineStore('member', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  return { member, pages, memberList, turnPage }
+  return { member, pages, memberList,isLoggedIn, turnPage }
 })
