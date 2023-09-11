@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[260px] mb-[68px] lg:bg-[size:350px,_cover] md:bg-[size:0px,_cover] bg-no-repeat
+  <div class="h-[260px] mb-[68px] lg:bg-[size:350px,_cover] bg-[size:0px,_cover] bg-no-repeat
     bg-[url('/images/collection/collection-banner.png'),_url('/images/collection/banner-bg.jpg')]
     bg-[position:82%_-50%,_center_bottom]">
     <div class="container relative">

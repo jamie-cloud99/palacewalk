@@ -29,5 +29,6 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', scrollFunction)
   goToTopBtn.value.removeEventListener('click', backToTop)
+  goToTopBtn.value.classList.add('animate-hideBtn')
 })
 </script>
