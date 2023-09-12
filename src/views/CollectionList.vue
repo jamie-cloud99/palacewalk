@@ -1,9 +1,10 @@
 <template>
-  <!-- TODO: query, other category(except painting) layout -->
+  <!-- TODO: router-view, query, other category(except painting) layout -->
   <CollectionBanner :title="'精選目錄'" />
   <div class="absolute left-0 right-0 top-1/2 -z-10 h-full bg-[url('../images/home-bg-2.webp')] bg-cover bg-center bg-no-repeat"></div>
   <div class="container flex gap-6 xl:gap-8 flex-col lg:flex-row">
     <!-- Left Side -->
+    <!-- TODO: 小螢幕左側欄改成兩欄 -->
     <div class="w-[305px] lg:min-w-1/4 lg:min-h-screen sm:min-h-50 ">
       <p class="flex flex-col text-lg font-bold">展品類別
         <span class="font-cormo font-bold text-2xl">CATEGORY</span>
@@ -38,12 +39,26 @@
           <button><i class="absolute right-0 top-0 fa-solid fa-filter text-white bg-black px-3 py-3"></i></button>
         </div> -->
       </div>
-      <div class="flex flex-wrap flex-col lg:flex-row">
-        <ul class="group relative flex cursor-pointer flex-col" v-for="item in selectionData" :key="item.id">
-          <router-link class="mb-[26px]" :to="{name: 'collectionInfo', params: {collectionId: item.collectionId}}">
+      <!-- TODO: 共用元件？ -->
+      <ul class="flex flex-wrap flex-col lg:flex-row">
+        <li class="group relative flex cursor-pointer flex-col mb-[26px]" v-for="item in selectionData" :key="item.id">
+          <router-link class="stretched-link" :to="{name: 'collectionInfo', params: {collectionId: item.collectionId}}">
             <img class="w-full lg:px-3 lg:w-[305px] h-[215px] object-cover object-center" :src='`/images/collection/collection-${item.collectionId}.jpg`' :alt="item.title">
           </router-link>
-          <li class="group-hover:bg-dark group-hover:opacity-50 z-100 absolute left-0 lg:left-3 w-full lg:w-[280px] h-[215px] group-hover:animate-bgSlowIn"></li>
+          <div class="opacity-0 group-hover:opacity-100 group-hover:transition-all group-hover:duration-1000
+            absolute top-[108px] left-6 mb-[26px]
+            font-bold text-white
+            after:inline-block after:ml-[18px] after:w-28 after:h-px after:bg-white
+            after:group-hover:transition-all after:group-hover:duration-1000">
+            {{ item.title }}
+          </div>
+          <div class="opacity-0 group-hover:opacity-100 group-hover:transition-all group-hover:duration-1000 group-hover:ease-in-out absolute top-[138px] left-6 mb-[26px] text-white">{{ item.author }}</div>
+          <div class="hover-style absolute top-[162px] right-6 mb-[26px] text-white">{{ item.time }}</div>
+        </li>
+        <!-- <ul class="group relative flex cursor-pointer flex-col" v-for="item in selectionData" :key="item.id">
+          <li class="mb-[26px] relative">
+          </li>
+          <li class="group-hover:bg-dark group-hover:opacity-50 absolute left-0 lg:left-3 w-full lg:w-[280px] h-[215px] group-hover:animate-bgSlowIn"></li>
           <li class="opacity-0 group-hover:opacity-100 group-hover:transition-all group-hover:duration-1000
             absolute top-[108px] left-6 mb-[26px]
             font-bold text-white
@@ -53,12 +68,12 @@
           </li>
           <li class="opacity-0 group-hover:opacity-100 group-hover:transition-all group-hover:duration-1000 group-hover:ease-in-out absolute top-[138px] left-6 mb-[26px] text-white">{{ item.author }}</li>
           <li class="hover-style absolute top-[162px] right-6 mb-[26px] text-white">{{ item.time }}</li>
-        </ul>
-      </div>
+        </ul> -->
+      </ul>
+      <!-- <CollectionListItem :selected-option="selectedOption" /> -->
       <PageComponent class="self-start my-15" :pages="pages" @change="turnPage" />
     </div>
   </div>
-  <GoToTop />
 </template>
 
 <script setup>
@@ -67,8 +82,8 @@ import { storeToRefs } from 'pinia'
 import { useCollectionStore } from '../stores/collectionStore'
 import collectionConstant from '../utils/constant/collection/collection'
 import CollectionBanner from '../components/collection/CollectionBanner.vue'
-import GoToTop from '../components/button/GoToTop.vue'
 import PageComponent from '../components/layout/PageComponent.vue'
+import CollectionListItem from '../components/collection/CollectionListItem.vue'
 
 const collectionStore = useCollectionStore()
 const { pages } = storeToRefs(collectionStore)
@@ -301,11 +316,9 @@ const collectionList = reactive([
   },
 ])
 
-let total = ref(0)
 collectionList[0].data = collectionList
   .filter(item => item.category !== 0)
   .flatMap(el => el.data);
-total.value = collectionList[0].data.length
 
 const categoryList = (type) => {
   switch (type) {
@@ -327,11 +340,12 @@ const categoryList = (type) => {
 }
 
 const selectedOption = ref('')
-let selectionData = reactive([])
+const selectionData = ref([])
 const selectedCategory = (option) => {
   selectedOption.value = option
-  selectionData = collectionList.find(item => item.category === selectedOption.value).data
-  return { selectionData, selectedOption }
+  selectionData.value = collectionList.find(item => item.category === selectedOption.value).data
+  // console.log('selectedOption.value list', selectedOption.value);
+  return {  selectedOption, selectionData }
 }
 selectedCategory(2);
 

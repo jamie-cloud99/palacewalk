@@ -17,14 +17,12 @@
       <PageComponent class="self-start my-15" :pages="pages" @change="turnPage" />
     </div>
   </div>
-  <GoToTop />
 </template>
 <script setup>
 import { reactive } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useCollectionStore } from '../stores/collectionStore'
 import CollectionBanner from '../components/collection/CollectionBanner.vue'
-import GoToTop from '../components/button/GoToTop.vue'
 import PageComponent from '../components/layout/PageComponent.vue'
 
 const collectionStore = useCollectionStore()

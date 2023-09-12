@@ -122,13 +122,11 @@
       <PageComponent :pages="pages" @change="turnPage" />
     </div>
   </div>
-  <GoToTop />
 </template>
 
 <script setup>
 import { ref, reactive } from 'vue'
 import CollectionBanner from '../components/collection/CollectionBanner.vue'
-import GoToTop from '../components/button/GoToTop.vue'
 import PageComponent from '../components/layout/PageComponent.vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
