@@ -1,79 +1,70 @@
 <template>
-  <!-- TODO: router-view, query, other category(except painting) layout -->
   <CollectionBanner :title="'精選目錄'" />
-  <div class="absolute left-0 right-0 top-1/2 -z-10 h-full bg-[url('../images/home-bg-2.webp')] bg-cover bg-center bg-no-repeat"></div>
-  <div class="container flex gap-6 xl:gap-8 flex-col lg:flex-row">
-    <!-- Left Side -->
-    <!-- TODO: 小螢幕左側欄改成兩欄 -->
-    <div class="w-[305px] lg:min-w-1/4 lg:min-h-screen sm:min-h-50 ">
-      <p class="flex flex-col text-lg font-bold">展品類別
-        <span class="font-cormo font-bold text-2xl">CATEGORY</span>
-      </p>
-      <ul class="font-bold">
-        <li @click="selectedCategory(el.category)" class="py-[18px] pl-2.5 hover:bg-dark-200 cursor-pointer text-lg"
-        :class="{ 'selected': selectedOption === el.category }"
-        v-for="el in collectionList" :key="el.id">
-          {{ `${categoryList(el.category)}(${el.data.length})` }}
-        </li>
-      </ul>
-    </div>
-    <!-- Right Side -->
-    <div class="w-full lg:w-3/4 flex flex-col">
-      <div class="mb-10 flex justify-between">
-        <div>
-          <svg class="inline mr-[15px] cursor-pointer" width="24px" height="24x" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#525252">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-            <g id="SVGRepo_iconCarrier"><title>三欄</title><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-104.000000, -935.000000)" fill="#525252"><path d="M128,935 L124,935 C121.791,935 120,936.791 120,939 L120,943 C120,945.209 121.791,947 124,947 L128,947 C130.209,947 132,945.209 132,943 L132,939 C132,936.791 130.209,935 128,935 L128,935 Z M128,951 L124,951 C121.791,951 120,952.791 120,955 L120,959 C120,961.209 121.791,963 124,963 L128,963 C130.209,963 132,961.209 132,959 L132,955 C132,952.791 130.209,951 128,951 L128,951 Z M112,951 L108,951 C105.791,951 104,952.791 104,955 L104,959 C104,961.209 105.791,963 108,963 L112,963 C114.209,963 116,961.209 116,959 L116,955 C116,952.791 114.209,951 112,951 L112,951 Z M112,935 L108,935 C105.791,935 104,936.791 104,939 L104,943 C104,945.209 105.791,947 108,947 L112,947 C114.209,947 116,945.209 116,943 L116,939 C116,936.791 114.209,935 112,935 L112,935 Z" id="grid" sketch:type="MSShapeGroup"></path></g></g></g>
-          </svg>
-          <svg class="inline cursor-pointer" fill="#525252" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" width="24px" height="24px" stroke="#525252" stroke-width="30.72">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-            <g id="SVGRepo_iconCarrier"><title>單欄</title> <g><g><path d="M0,0v512h512V0H0z M462.452,462.452H49.548V49.548h412.903V462.452z"/></g></g><g><g><rect x="305.548" y="99.097" width="66.065" height="313.806"/></g></g><g><g><rect x="140.387" y="99.097" width="66.065" height="313.806"/></g></g></g>
-          </svg>
+  <!-- TODO: router-view, query, other category(except painting) layout -->
+  <div class="container">
+    <div class="lg:grid grid-cols-12 gap-6">
+      <!-- Left Side -->
+      <div class="col-span-3">
+        <div class="text-lg font-semibold">
+          <p class="flex flex-col border-b border-dark">
+            展品類別
+            <span class="font-cormo text-2xl">CATEGORY</span>
+          </p>
+          <ul class="grid grid-cols-2 lg:block mb-4 lg:mb-20">
+            <li
+              class="col-span-1"
+              v-for="el in collectionList"
+              :key="el.id"
+              @click="selectedCategory(el.category)"
+            >
+              <button
+                type="button"
+                class="btn block text-center transition-all duration-300 w-full border-b border-x border-dark-400 px-2 py-3 lg:text-left lg:border-x-0"
+                :class="{ 'selected': selectedOption === el.category }"              >
+                {{ `${categoryList(el.category)}(${el.data.length})` }}
+              </button>
+            </li>
+          </ul>
         </div>
-        <!-- 搜尋框 -->
-        <!-- <div class="w-3/4 relative">
-          <input class="w-full" type="search" aria-label="Search" name="search" placeholder="請輸入產品名稱 、關鍵字">
-          <button><i class="absolute right-14 top-3 fa-solid fa-magnifying-glass"></i></button>
-          <button><i class="absolute right-0 top-0 fa-solid fa-filter text-white bg-black px-3 py-3"></i></button>
-        </div> -->
       </div>
-      <!-- TODO: 共用元件？ -->
-      <ul class="flex flex-wrap flex-col lg:flex-row">
-        <li class="group relative flex cursor-pointer flex-col mb-[26px]" v-for="item in selectionData" :key="item.id">
-          <router-link class="stretched-link" :to="{name: 'collectionInfo', params: {collectionId: item.collectionId}}">
-            <img class="w-full lg:px-3 lg:w-[305px] h-[215px] object-cover object-center" :src='`/images/collection/collection-${item.collectionId}.jpg`' :alt="item.title">
-          </router-link>
-          <div class="opacity-0 group-hover:opacity-100 group-hover:transition-all group-hover:duration-1000
-            absolute top-[108px] left-6 mb-[26px]
-            font-bold text-white
-            after:inline-block after:ml-[18px] after:w-28 after:h-px after:bg-white
-            after:group-hover:transition-all after:group-hover:duration-1000">
-            {{ item.title }}
+      <!-- Right Side -->
+      <div class="col-span-9">
+        <div class="mb-10 flex justify-between">
+          <div>
+            <svg class="inline mr-[15px] cursor-pointer" width="24px" height="24x" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#525252">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+              <g id="SVGRepo_iconCarrier"><title>三欄</title><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-104.000000, -935.000000)" fill="#525252"><path d="M128,935 L124,935 C121.791,935 120,936.791 120,939 L120,943 C120,945.209 121.791,947 124,947 L128,947 C130.209,947 132,945.209 132,943 L132,939 C132,936.791 130.209,935 128,935 L128,935 Z M128,951 L124,951 C121.791,951 120,952.791 120,955 L120,959 C120,961.209 121.791,963 124,963 L128,963 C130.209,963 132,961.209 132,959 L132,955 C132,952.791 130.209,951 128,951 L128,951 Z M112,951 L108,951 C105.791,951 104,952.791 104,955 L104,959 C104,961.209 105.791,963 108,963 L112,963 C114.209,963 116,961.209 116,959 L116,955 C116,952.791 114.209,951 112,951 L112,951 Z M112,935 L108,935 C105.791,935 104,936.791 104,939 L104,943 C104,945.209 105.791,947 108,947 L112,947 C114.209,947 116,945.209 116,943 L116,939 C116,936.791 114.209,935 112,935 L112,935 Z" id="grid" sketch:type="MSShapeGroup"></path></g></g></g>
+            </svg>
+            <svg class="inline cursor-pointer" fill="#525252" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" width="24px" height="24px" stroke="#525252" stroke-width="30.72">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+              <g id="SVGRepo_iconCarrier"><title>單欄</title> <g><g><path d="M0,0v512h512V0H0z M462.452,462.452H49.548V49.548h412.903V462.452z"/></g></g><g><g><rect x="305.548" y="99.097" width="66.065" height="313.806"/></g></g><g><g><rect x="140.387" y="99.097" width="66.065" height="313.806"/></g></g></g>
+            </svg>
           </div>
-          <div class="opacity-0 group-hover:opacity-100 group-hover:transition-all group-hover:duration-1000 group-hover:ease-in-out absolute top-[138px] left-6 mb-[26px] text-white">{{ item.author }}</div>
-          <div class="hover-style absolute top-[162px] right-6 mb-[26px] text-white">{{ item.time }}</div>
-        </li>
-        <!-- <ul class="group relative flex cursor-pointer flex-col" v-for="item in selectionData" :key="item.id">
-          <li class="mb-[26px] relative">
+          <!-- 搜尋框 -->
+          <!-- <div class="w-3/4 relative">
+            <input class="w-full" type="search" aria-label="Search" name="search" placeholder="請輸入產品名稱 、關鍵字">
+            <button><i class="absolute right-14 top-3 fa-solid fa-magnifying-glass"></i></button>
+            <button><i class="absolute right-0 top-0 fa-solid fa-filter text-white bg-black px-3 py-3"></i></button>
+          </div> -->
+        </div>
+        <ul class="grid grid-cols-12 gap-4">
+          <li
+            v-for="item in selectedData"
+            :key="item.id"
+            class="col-span-12 md:col-span-6 lg:col-span-4"
+          >
+            <CollectionListItem :collection-item="item" />
           </li>
-          <li class="group-hover:bg-dark group-hover:opacity-50 absolute left-0 lg:left-3 w-full lg:w-[280px] h-[215px] group-hover:animate-bgSlowIn"></li>
-          <li class="opacity-0 group-hover:opacity-100 group-hover:transition-all group-hover:duration-1000
-            absolute top-[108px] left-6 mb-[26px]
-            font-bold text-white
-            after:inline-block after:ml-[18px] after:w-28 after:h-px after:bg-white
-            after:group-hover:transition-all after:group-hover:duration-1000">
-            {{ item.title }}
-          </li>
-          <li class="opacity-0 group-hover:opacity-100 group-hover:transition-all group-hover:duration-1000 group-hover:ease-in-out absolute top-[138px] left-6 mb-[26px] text-white">{{ item.author }}</li>
-          <li class="hover-style absolute top-[162px] right-6 mb-[26px] text-white">{{ item.time }}</li>
-        </ul> -->
-      </ul>
-      <!-- <CollectionListItem :selected-option="selectedOption" /> -->
-      <PageComponent class="self-start my-15" :pages="pages" @change="turnPage" />
+        </ul>
+        <div class="flex py-10 lg:py-15">
+          <PageComponent :pages="pages" @change="turnPage" />
+        </div>
+      </div>
     </div>
   </div>
+  <div class="absolute left-0 right-0 top-[600px] h-[800px] w-full -z-10 bg-[url('../images/page-bg.svg')] bg-cover bg-center bg-no-repeat"></div>
 </template>
 
 <script setup>
@@ -317,7 +308,7 @@ const collectionList = reactive([
 ])
 
 collectionList[0].data = collectionList
-  .filter(item => item.category !== 0)
+  .filter(item => item.category !== category.ALL)
   .flatMap(el => el.data);
 
 const categoryList = (type) => {
@@ -340,12 +331,11 @@ const categoryList = (type) => {
 }
 
 const selectedOption = ref('')
-const selectionData = ref([])
+const selectedData = ref([])
 const selectedCategory = (option) => {
   selectedOption.value = option
-  selectionData.value = collectionList.find(item => item.category === selectedOption.value).data
-  // console.log('selectedOption.value list', selectedOption.value);
-  return {  selectedOption, selectionData }
+  selectedData.value = collectionList.find(item => item.category === selectedOption.value).data
+  return {  selectedOption, selectedData }
 }
 selectedCategory(2);
 
