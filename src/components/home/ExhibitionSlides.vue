@@ -34,7 +34,7 @@
       <button
         type="button"
         @click="goPrev"
-        class="btn-prev btn-shadow btn hidden bg-white w-15 h-15 rounded-full disabled:opacity-50 lg:block"
+        class="btn-prev btn-shadow btn hidden bg-white w-15 h-15 rounded-full disabled:opacity-50 hover:text-primary lg:block"
         :disabled="!slides.havePrev"
       >
         <i class="fa-solid fa-arrow-left align-middle leading-normal"></i>
@@ -42,7 +42,7 @@
       <button
         type="button"
         @click="goNext"
-        class="btn-next btn-shadow btn hidden bg-white w-15 h-15 rounded-full disabled:opacity-50 lg:block"
+        class="btn-next btn-shadow btn hidden bg-white w-15 h-15 rounded-full disabled:opacity-50 hover:text-primary lg:block"
         :disabled="!slides.haveNext"
       >
         <i class="fa-solid fa-arrow-right align-middle"></i>

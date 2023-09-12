@@ -7,21 +7,17 @@
     <div
       data-aos="fade-up"
       data-aos-delay="50"
-      class="relative z-10 flex justify-center items-center h-[360px] w-full bg-cover bg-no-repeat bg-center bg-[url(../images/banner/index-bn-sm-2.png)] md:bg-[url(../images/banner/bn-2.webp)] md:block md:h-[400px]"
+      class="relative z-10 flex justify-center items-center h-[360px] w-full bg-cover bg-no-repeat bg-center bg-[url(../images/banner/bn.jpg)] md:block md:h-[400px]"
     >
-      <div
-        data-aos="fade-up"
-        data-aos-delay="300"
-        class="absolute inset-0 bg-[position:right_3rem_center] bg-[url(../images/banner/emperor-1.png)] bg-no-repeat"
-      ></div>
+      
       <div
         data-aos="fade-up"
         data-aos-delay="800"
         data-aos-duration="1200"
-        class="relative z-20 space-y-4 text-center md:text-left md:p-20 md:space-y-6 xl:space-y-10"
+        class="relative z-20 space-y-4 text-center md:text-left md:p-20 md:space-y-6 lg:pt-32"
       >
-        <h1 class="font-serif font-bold text-white text-3xl lg:text-[40px]">
-          故宮漫遊，重塑古典風華
+        <h1 class="font-serif font-bold text-light drop-shadow-lg text-3xl lg:text-[40px] leading-normal">
+          故宮漫遊，尋覓古典之美
         </h1>
         <button
           type="button"
@@ -49,10 +45,10 @@
   <div class="relative mb-40 lg:mb-[312px]">
     <ul class="space-y-1 lg:space-y-4 overflow-hidden">
       <li data-aos="fade-left">
-        <ImageMarquee :translate="false" />
+        <ImageMarquee :translate="false" :collection-list="featuredCollectionList.slice(0,8)"/>
       </li>
       <li data-aos="fade-right">
-        <ImageMarquee :translate="true" />
+        <ImageMarquee :translate="true" :collection-list="featuredCollectionList.slice(8,16)"/>
       </li>
     </ul>
     <div
@@ -114,8 +110,10 @@
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-import { reactive, ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import { useHomeStore } from '../stores/homeStore'
 import CalendarComponent from '../components/home/CalendarComponent.vue'
 import SectionTitle from '../components/home/SectionTitle.vue'
 import ImageMarquee from '../components/home/ImageMarquee.vue'
@@ -123,8 +121,10 @@ import CommentCards from '../components/home/CommentCards.vue'
 import ExhibitionSlides from '../components/home/ExhibitionSlides.vue'
 
 const router = useRouter()
+const homeStore = useHomeStore()
+const { newsList, recentExhibitionList, featuredCollectionList } = storeToRefs(homeStore)
 
-const section = reactive([
+const section = ref([
   {
     title: '近期展覽',
     engTitle: 'Recent'
@@ -139,67 +139,6 @@ const section = reactive([
   }
 ])
 
-const newsList = ref([
-  {
-    category: '活動公告',
-    title: '「藝起來‧ 趣宮略」國小快閃活動報名申請須知',
-    date: '2023.09.10'
-  },
-  {
-    category: '館務通知',
-    title: '9月18日館內教育訓練，暫停線上、電話客服一日',
-    date: '2023.09.18'
-  },
-  {
-    category: '活動公告',
-    title: '親子同樂電影院：羅摩衍那–3D動畫放映',
-    date: '2023.09.20'
-  },
-  {
-    category: '活動公告',
-    title: '藝術家如何書寫大時代？專人導覽開團報名中',
-    date: '2023.09.29'
-  }
-])
-
-const recentExhibitionList = [
-  {
-    id: 1,
-    title: '士拿乎—清宮鼻煙壺的時尚風潮',
-    startDate: '2023.06.20',
-    endDate: '2024.03.28',
-    imgId: 'U001'
-  },
-  {
-    id: 2,
-    title: '風格故事—琺瑯彩瓷特展',
-    startDate: '2023.07.07',
-    endDate: '2024.07.16',
-
-    imgId: 'U002'
-  },
-  {
-    id: 3,
-    title: '故宮經典-藝術與文化策展',
-    startDate: '2023.09.10',
-    endDate: '2024.08.18',
-    imgId: 'U003'
-  },
-  {
-    id: 4,
-    title: '故宮經典-藝術與文化策展',
-    startDate: '2023.09.10',
-    endDate: '2024.08.18',
-    imgId: 'U001'
-  },
-  {
-    id: 5,
-    title: '故宮經典-藝術與文化策展',
-    startDate: '2023.09.10',
-    endDate: '2024.08.18',
-    imgId: 'U002'
-  }
-]
 
 onMounted(() => {
   AOS.init({
