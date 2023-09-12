@@ -4,7 +4,10 @@
 	<hr class="border-black" />
 	<ul class="mb-[54px]">
 		<li v-for="item in menuContent" :key="item.title" >
-			<router-link :to="item.path" class="sort-item">
+			<router-link :to="item.path" 
+				class="sort-item" 
+				@click="selectedCategory(item.category)"
+				:class="{ 'selected': selectedOption === item.category }">
 				{{ item.title }}
 			</router-link>
 		</li>
@@ -26,18 +29,30 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { ref,reactive } from 'vue'
 
 const menuContent = reactive([
 	{
 		title: '當期展覽',
-		path: '/exhibitions/?="當期展覽"'
+		path: '/exhibitions/?="當期展覽"',
+		category: 0, //當期展覽
 	},
 	{
 		title: '近期展覽',
-		path: '/exhibitions/?="近期展覽"'
+		path: '/exhibitions/?="近期展覽"',
+		category: 1, //近期展覽
 	}
 ])
+
+
+const selectedOption = ref('')
+let selectionData = reactive([])
+const selectedCategory = (option) => {
+  selectedOption.value = option
+  selectionData = menuContent.find(item => item.category === selectedOption.value)
+  return { selectionData, selectedOption }
+}
+selectedCategory(0);
 
 </script>
 
@@ -45,7 +60,7 @@ const menuContent = reactive([
 .sort-item {
 	@apply block px-2.5 py-4 leading-5 text-lg border-b border-dark-400;
 }
-.sort-item.active{
+.sort-item.selected{
 	@apply bg-primary text-white;
 }
 

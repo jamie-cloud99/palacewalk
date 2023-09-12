@@ -22,14 +22,12 @@
       </div>
     </div>
   </div>
-  <GoToTop />
 </template>
 <script setup>
 import { reactive } from 'vue'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 import ExhibitionSort from '../components/exhibition/ExhibitionSort.vue'
 import ExhibitionListItem from '../components/exhibition/ExhibitionListItem.vue'
-import GoToTop from '../components/button/GoToTop.vue'
 
 const breadList = reactive([
   {

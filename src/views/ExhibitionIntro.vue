@@ -146,13 +146,11 @@
       </div>
     </div>
   </div>
-  <GoToTop />
 </template>
 <script setup>
 import { ref,reactive,computed } from 'vue'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 import ExhibitionSort from '../components/exhibition/ExhibitionSort.vue'
-import GoToTop from '../components/button/GoToTop.vue'
 
 import { storeToRefs } from 'pinia'
 import { exhibitionStore } from '../stores/exhibitsStore'
