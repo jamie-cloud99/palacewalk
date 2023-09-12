@@ -42,7 +42,4 @@ const toggleClass = (id) => {
 .icon-style{
   @apply text-white hover:text-primary ease-in-out duration-300;
 }
-.active {
-  color: red; /* 更改活动状态的颜色样式 */
-}
 </style>
