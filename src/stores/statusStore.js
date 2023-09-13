@@ -14,6 +14,7 @@ export const useStatusStore = defineStore('status', () => {
   const menuClass = ref({
     menu: 'max-0',
     notice: 'max-0',
+    member: 'max-0',
     exhibitionMenu: 'max-w-0',
     collectionText: 'max-w-0'
   })

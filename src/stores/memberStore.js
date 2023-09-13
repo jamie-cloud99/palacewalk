@@ -4,6 +4,7 @@ import { defineStore } from 'pinia'
 export const useMemberStore = defineStore('member', () => {
   const memberList = ref([{}])
   const isLoggedIn = ref(false)
+  
   const member = ref({
     name: '文化探索者',
     email: 'abcd1@gmail.com',

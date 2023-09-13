@@ -2,9 +2,9 @@
   <div class="container pt-6 lg:pt-12">
     <div class="md:flex justify-between items-center space-y-3 md:space-y-0 lg:mb-1">
       <BreadcrumbsComponent :nav-list="breadList" class="-ml-2 order-2" />
-      <h1 class="font-bold text-2xl lg:text-8 order-1">我的展覽</h1>
+      <h2 class="font-bold text-2xl lg:text-8 order-1">我的展覽</h2>
     </div>
-    <h2 class="mb-4 text-lg font-semibold lg:mb-6 lg:text-xl">故宮走走，讓你也能成為策展大師</h2>
+    <h3 class="mb-4 text-lg font-semibold lg:mb-6 lg:text-xl">故宮走走，讓你也能成為策展大師</h3>
     <p class="border-t-2 border-dark py-2 md:py-3 lg:text-lg">
       利用故宮的珍貴展品，結合你的獨特視角，打造屬於自己的展覽。翻閱千年文物，選擇你心儀的藝術品，並按照自己的喜好、主題或故事串聯起來，營造出一場獨一無二的展覽體驗。
     </p>
@@ -12,9 +12,9 @@
       <button type="button" class="btn w-full bg-black text-white order-2">新增展覽</button>
     </div>
     <div class="md:flex justify-between mb-6 lg:mb-8">
-      <button type="button" class="hidden btn bg-black text-white order-2 px-6 md:block">
+      <RouterLink to="/curating/new" class="hidden btn bg-black text-white order-2 px-6 md:block">
         新增展覽
-      </button>
+      </RouterLink>
       <ul class="flex divide-x divide-dark-600">
         <li v-for="item in statusList" :key="item.code" class="flex-grow">
           <div v-if="item.subType" class="relative">
@@ -76,22 +76,22 @@
         <div class="col-span-1">
           <div class="flex flex-col justify-between py-6 px-4 lg:pl-0 lg:pr-6 h-full">
             <div class="mb-6">
-              <p class="text-2xl font-bold mb-2 text-warning-600">{{ item.title }}</p>
+              <h4 class="text-2xl font-bold mb-2 text-warning-600">{{ item.title }}</h4>
               <p class="text-dark-800">
                 <time class="mr-1">{{ item.startDate }}</time
                 >-<time class="ml-1">{{ item.endDate }}</time>
               </p>
             </div>
             <div v-if="item.status === 'released'" class="flex gap-x-5">
-              <button
-                type="button"
+              <RouterLink
+                to="/curating/1/messages"
                 class="btn px-6 border border-dark hover:bg-dark hover:text-white"
               >
                 查看留言
-              </button>
-              <button type="button" class="btn px-6 text-white bg-primary hover:bg-dark">
+              </RouterLink>
+              <RouterLink to="#" class="btn px-6 text-white bg-primary hover:bg-dark">
                 前往展覽
-              </button>
+              </RouterLink>
             </div>
             <div v-else class="flex gap-x-5">
               <button
@@ -208,9 +208,9 @@ const curStatus = ref({
 const curatingList = ref([
   {
     id: '1',
-    title: '士拿乎—清宮鼻煙壺的時尚風潮',
-    startDate: '2023.06.20',
-    endDate: '2024.03.28',
+    title: '風格故事—琺瑯彩瓷特展',
+    startDate: '2023.07.07',
+    endDate: '2024.07.16',
     status: 'released',
     imgId: 'U001'
   },
