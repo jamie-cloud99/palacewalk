@@ -151,7 +151,7 @@
 <script setup>
 import { ref,reactive,computed } from 'vue'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
-import ExhibitionSort from '../components/exhibition/ExhibitionSort.vue
+import ExhibitionSort from '../components/exhibition/ExhibitionSort.vue'
 import { useRouter } from 'vue-router'
 
 
