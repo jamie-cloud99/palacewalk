@@ -2,8 +2,8 @@
 	<h4 class="text-lg font-semibold">展覽</h4>
 	<h3 class="text-2xl font-semibold mb-1 leading-8">EXHIBITS</h3>
 	<hr class="border-black" />
-	<ul class="mb-[54px]">
-		<li v-for="item in menuContent" :key="item.title" >
+	<ul class="flex lg:block mb-[24px] lg:mb-[56px]">
+		<li v-for="item in menuContent" :key="item.title" class="w-1/2 border-x lg:border-0 border-gray-200 lg:w-full ">
 			<router-link :to="item.path" 
 				class="sort-item" 
 				@click="selectedCategory(item.category)"
@@ -12,20 +12,22 @@
 			</router-link>
 		</li>
 	</ul>
-	<h4 class="text-lg font-semibold">檢索</h4>
-	<h3 class="text-2xl font-semibold mb-1 leading-8">SEARCH</h3>
-	<ul>
-		<li class="mb-3 relative">
-			<input type="text" id="search" class="search-input" placeholder="展覽檢索" />
-			<a href="#"><i class="fa-solid fa-magnifying-glass input-icon"></i>
-			</a>
-		</li>
-		<li class="relative xs:mb-3">
-			<input type="text" id="search" class="search-input" placeholder="請選擇類別" />
-			<a href="#"><i class="fa-solid fa-chevron-down input-icon"></i>
-			</a>
-		</li>
-	</ul>
+	<div class="hidden lg:block">
+		<h4 class="text-lg font-semibold">檢索</h4>
+		<h3 class="text-2xl font-semibold mb-1 leading-8">SEARCH</h3>
+		<ul>
+			<li class="mb-3 relative">
+				<input type="text" id="search" class="search-input" placeholder="展覽檢索" />
+				<a href="#"><i class="fa-solid fa-magnifying-glass input-icon"></i>
+				</a>
+			</li>
+			<li class="relative xs:mb-3">
+				<input type="text" id="search" class="search-input" placeholder="請選擇類別" />
+				<a href="#"><i class="fa-solid fa-chevron-down input-icon"></i>
+				</a>
+			</li>
+		</ul>
+	</div>
 </template>
 
 <script setup>
