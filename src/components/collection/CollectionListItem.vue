@@ -7,12 +7,12 @@
     />
     <div class="absolute inset-0 bg-dark/50 hover-style">
       <div class="flex flex-col justify-end h-full pb-15 px-4">
-        <div class="relative mb-2 hover-style">
+        <div class="relative mb-2">
           <h4 class="font-bold text-lg">{{ collectionItem.title }}</h4>
           <div class="absolute bottom-0 right-0 w-22 h-px bg-white"></div>
         </div>
-        <h5 class="font-medium hover-style">{{ collectionItem.author }}</h5>
-        <p class="self-end hover-style">{{ collectionItem.time }}</p>
+        <h5 class="font-medium ">{{ collectionItem.author }}</h5>
+        <p class="self-end">{{ collectionItem.time }}</p>
       </div>
     </div>
     <div class="absolute top-2 right-2 text-xl z-[1] hover-style">
