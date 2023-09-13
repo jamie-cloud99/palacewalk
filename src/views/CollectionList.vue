@@ -335,7 +335,6 @@ const selectedData = ref([])
 const selectedCategory = (option) => {
   selectedOption.value = option
   selectedData.value = collectionList.find(item => item.category === selectedOption.value).data
-  return {  selectedOption, selectedData }
 }
 selectedCategory(2);
 

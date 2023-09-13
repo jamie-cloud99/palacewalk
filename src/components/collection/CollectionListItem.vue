@@ -9,10 +9,10 @@
       <div class="flex flex-col justify-end h-full pb-15 px-4">
         <div class="flex flex-nowrap items-center justify-between mb-2">
           <h4 class="font-bold text-lg">{{ collectionItem.title }}</h4>
-          <div class=" w-22 h-px bg-white"></div>
+          <div class="w-22 h-px bg-white"></div>
         </div>
         <div class="flex items-center justify-between">
-          <h5 class="font-medium ">{{ collectionItem.author }}</h5>
+          <h5 class="font-medium">{{ collectionItem.author }}</h5>
           <p class="self-end">{{ collectionItem.time }}</p>
         </div>
       </div>
@@ -31,11 +31,6 @@
       >
       </i>
     </button>
-      <!-- <i
-      class="fa-regular fa-heart icon-style cursor-pointer"
-      @click="showFavorite(collectionItem)"
-      :class="{ 'fa-solid': collectionItem.isActive }"></i> -->
-
     <RouterLink
       class="stretched-link"
       :to="{ name: 'collectionInfo', params: { collectionId: collectionItem.collectionId } }"
