@@ -31,35 +31,35 @@ export const useHomeStore = defineStore('home', () => {
       title: '士拿乎—清宮鼻煙壺的時尚風潮',
       startDate: '2023.06.20',
       endDate: '2024.03.28',
-      imgId: 'U001'
+      exhibitionId: 'U001'
     },
     {
       id: 2,
       title: '風格故事—琺瑯彩瓷特展',
       startDate: '2023.07.07',
       endDate: '2024.07.16',
-      imgId: 'U002'
+      exhibitionId: 'U002'
     },
     {
       id: 3,
       title: '故宮經典—藝術與文化策展',
       startDate: '2023.06.20',
       endDate: '2024.03.28',
-      imgId: 'U003'
+      exhibitionId: 'U003'
     },
     {
-      id: 4,
+      id: '4',
+      exhibitionId: 'U004',
       title: '繽彩燒窯—開光雙連瓶藝術展',
-      startDate: '2023.06.24',
-      endDate: '2024.05.28',
-      imgId: 'U004'
+      startDate: '2023.6.24',
+      endDate: '2024.5.28'
     },
     {
-      id: 5,
-      title: '釉瓷之美—太平有象瓷尊特展',
-      startDate: '2023.05.20',
-      endDate: '2024.08.19',
-      imgId: 'U005'
+      id: '5',
+      exhibitionId: 'U005',
+      title: '釉瓷之美：太平有象瓷尊特展',
+      startDate: '2023.5.20',
+      endDate: '2024.8.19'
     }
   ])
 
@@ -67,39 +67,38 @@ export const useHomeStore = defineStore('home', () => {
     {
       id: '13',
       collectionId: 'P013',
-      title: '明文伯仁方壺圖 軸',
+      title: '方壺圖 軸',
       author: '文伯仁',
       time: '明'
     },
     {
       id: '14',
       collectionId: 'P014',
-      title: '清錢維城畫春花三種 軸',
+      title: '畫春花三種 軸',
       author: '錢維城',
       time: '清'
     },
     {
       id: '1',
       collectionId: 'U001',
-      title: '清 翠玉白菜',
+      title: '翠玉白菜',
       author: '不詳',
       time: '明末清初'
     },
     {
       id: '15',
       collectionId: 'P015',
-      title: '民國徐悲鴻奔馬行空　單片',
+      title: '奔馬行空　單片',
       author: '徐悲鴻',
       time: '民國'
     },
     {
       id: '16',
       collectionId: 'P016',
-      title: '清弘旿翠巘高秋圖　軸',
+      title: '翠巘高秋圖　軸',
       author: '愛新覺羅弘旿',
       time: '清'
     },
-    
     {
       id: '201',
       collectionId: 'A005',
@@ -117,28 +116,28 @@ export const useHomeStore = defineStore('home', () => {
     {
       id: '18',
       collectionId: 'P018',
-      title: '元趙孟頫畫山水 軸',
+      title: '畫山水 軸',
       author: '趙孟頫',
       time: '元'
     },
     {
       id: '401',
       collectionId: 'K004',
-      title: '清緙繡九羊啟泰 軸',
+      title: '緙繡九羊啟泰 軸',
       author: '不詳',
       time: '清'
     },
     {
       id: '19',
       collectionId: 'P019',
-      title: '明仇英漢宮春曉 卷',
+      title: '漢宮春曉 卷',
       author: '仇英',
       time: '明'
     },
     {
       id: '20',
       collectionId: 'P020',
-      title: '元王蒙具區林屋 軸',
+      title: '具區林屋 軸',
       author: '王蒙',
       time: '元'
     },
@@ -152,15 +151,15 @@ export const useHomeStore = defineStore('home', () => {
     {
       id: '21',
       collectionId: 'P021',
-      title: '清郎世寧八駿圖　軸',
+      title: '八駿圖　軸',
       author: '郎世寧',
       time: '清'
     },
-    
+
     {
       id: '22',
       collectionId: 'P022',
-      title: '清 丁觀鵬摹顧愷之洛神圖 卷',
+      title: '摹顧愷之洛神圖 卷',
       author: '丁觀鵬',
       time: '清'
     },
@@ -174,12 +173,11 @@ export const useHomeStore = defineStore('home', () => {
     {
       id: '23',
       collectionId: 'P023',
-      title: '民國鄭曼青紅牡丹　單片',
+      title: '紅牡丹　單片',
       author: '鄭曼青',
       time: '民國'
-    },
+    }
   ])
-
 
   return { newsList, recentExhibitionList, featuredCollectionList }
 })

@@ -1,5 +1,7 @@
 <template>
-  <div class="container relative pt-6 pb-20 mb-12 lg:mb-16 lg:px-15 md:max-w-full overflow-hidden">
+  <div
+    class="container relative lg:pt-6 pb-20 mb-12 lg:mb-16 lg:px-15 md:max-w-full overflow-hidden"
+  >
     <div
       class="absolute inset-0 z-[1] bg-[url(../images/home-bg-sm-1.webp)] bg-cover bg-bottom md:bg-[url(../images/home-bg-1.webp)]"
     ></div>
@@ -7,17 +9,19 @@
     <div
       data-aos="fade-up"
       data-aos-delay="50"
-      class="relative z-10 flex justify-center items-center h-[360px] w-full bg-cover bg-no-repeat bg-center bg-[url(../images/banner/bn.jpg)] md:block md:h-[400px]"
+      class="relative z-10 flex lg:justify-center items-center h-[500px] w-full bg-cover bg-no-repeat bg-[position:right_-10rem_bottom_1rem] lg:bg-center bg-[url(../images/banner/bn.jpg)] md:block md:h-[400px] 2xl:h-[550px]"
     >
-      
       <div
         data-aos="fade-up"
         data-aos-delay="800"
         data-aos-duration="1200"
-        class="relative z-20 space-y-4 text-center md:text-left md:p-20 md:space-y-6 lg:pt-32"
+        class="relative flex flex-col justify-center items-start h-full z-20 space-y-4 md:space-y-6 px-10 md:px-20"
       >
-        <h1 class="font-serif font-bold text-light drop-shadow-lg text-3xl lg:text-[40px] leading-normal">
-          故宮漫遊，尋覓古典之美
+        <h1
+          class="font-serif font-bold lg:text-light drop-shadow-lg text-3xl lg:text-[40px] leading-normal"
+        >
+          故宮漫遊
+          <span class="block 2xl:inline-block 2xl:ml-4"> 尋覓古典之美 </span>
         </h1>
         <button
           type="button"
@@ -45,10 +49,10 @@
   <div class="relative mb-40 lg:mb-[312px]">
     <ul class="space-y-1 lg:space-y-4 overflow-hidden">
       <li data-aos="fade-left">
-        <ImageMarquee :translate="false" :collection-list="featuredCollectionList.slice(0,8)"/>
+        <ImageMarquee :translate="false" :collection-list="featuredCollectionList.slice(0, 8)" />
       </li>
       <li data-aos="fade-right">
-        <ImageMarquee :translate="true" :collection-list="featuredCollectionList.slice(8,16)"/>
+        <ImageMarquee :translate="true" :collection-list="featuredCollectionList.slice(8, 16)" />
       </li>
     </ul>
     <div
@@ -66,7 +70,7 @@
       <div class="overflow-hidden">
         <CommentCards data-aos="fade-up" data-aos-anchor-placement="center-bottom" />
       </div>
-      <hr class="hidden border-dark-400 mb-24 lg:block" />
+
       <h2 data-aos="zoom-in" class="text-8 font-bold text-center mb-6 lg:text-4xl lg:text-left">
         公告訊息
       </h2>
@@ -138,7 +142,6 @@ const section = ref([
     engTitle: 'Comment'
   }
 ])
-
 
 onMounted(() => {
   AOS.init({
