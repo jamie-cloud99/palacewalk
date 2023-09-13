@@ -11,10 +11,10 @@
     </div>
     <router-link
       :to="{name: 'exhibitionIntro', params: {exhibitionId: item.exhibitionId}}"
-      class="ease-in-out duration-300 relative">
+      class="ease-in-out duration-300">
       <img :src="`/images/exhibitions/exhibition-${item.exhibitionId}.jpg`"
         class="w-full ease-in-out duration-300 hover:scale-110 ">
-      <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
+      <div class="block w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
         <h3 class="font-semibold text-xl line-clamp-1 mb-1">{{ item.title }}</h3>
         <p class="font-medium">{{ item.startDate }} - {{ item.endDate }}</p>
       </div>

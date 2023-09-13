@@ -13,7 +13,7 @@
         <div class="col-span-3">
           <ExhibitionSort />
         </div>
-        <div class="col-span-9 font-semibold	">
+        <div class="col-span-9 font-semibold">
           {{ id }}
           <img class="w-full h-[340px] object-cover object-center mb-4" src='/images/exhibitions/exhibition-U001.jpg'>
           <div class="flex justify-between mb-8">
@@ -51,20 +51,20 @@
               >
                 <swiper-slide>
                   <figure class="exhibit-item">
-                    <img class="w-full h-full object-cover object-centers" :src='`/images/exhibitions/exhibition-U006.jpg`' alt="U006">
-                    <figcaption class="exhibit-item-title">明 永樂 青花人物紋如意耳扁壺</figcaption>
+                    <img class="w-full h-full object-cover object-centers" :src='`/images/exhibitions/exhibition-U009.jpg`' alt="U009">
+                    <figcaption class="exhibit-item-title">清 雍正 銅胎畫琺瑯黑地五彩流雲玉兔秋香鼻煙壺</figcaption>
                   </figure>
                 </swiper-slide>
                 <swiper-slide>
                   <figure class="exhibit-item">
-                    <img class="w-full h-full object-cover object-center" :src='`/images/exhibitions/exhibition-U007.jpg`' alt="U007">
-                    <figcaption class="exhibit-item-title">北宋 汝窯 青瓷蓮花式溫碗</figcaption>
+                    <img class="w-full h-full object-cover object-center" :src='`/images/exhibitions/exhibition-U010.jpg`' alt="U010">
+                    <figcaption class="exhibit-item-title">清 雍正 白色料鼻煙壺 帶銅胎畫琺瑯黑地夔龍紋套匣</figcaption>
                   </figure>
                 </swiper-slide>
                 <swiper-slide>
                   <figure class="exhibit-item">
-                    <img class="w-full h-full object-cover object-center" :src='`/images/exhibitions/exhibition-U008.jpg`' alt="U008">
-                    <figcaption class="exhibit-item-title">清 翠玉白菜</figcaption>
+                    <img class="w-full h-full object-cover object-center" :src='`/images/exhibitions/exhibition-U011.jpg`' alt="U011">
+                    <figcaption class="exhibit-item-title">清 乾隆 金屬胎掐絲琺瑯與畫琺瑯西洋人物雙耳鼻煙壺</figcaption>
                   </figure>
                 </swiper-slide>
                 <swiper-slide>
@@ -112,9 +112,8 @@
                           class="btn pl-0 text-dark-600 hover:text-dark"
                           @click="toggleReply(i)"
                         >
-                          <span v-if="isOpen === i">顯示</span><span v-else>隱藏</span>回覆
+                          <span v-if="isOpen === i">隱藏</span><span v-else>顯示</span>回覆
                         </button>
-                        <a href="" class="btn pl-0 text-dark-600 hover:text-dark">查看原始留言</a>
                       </div>
                     </div>
                     <div
@@ -168,27 +167,27 @@ const tempExhibition = ref({})
 
 const exhibitionTitle = computed({
   get: () => {
-    return exhibition.value[0].title
+    return exhibition.value[0].data[0].title
   }
 })
 const startDate = computed({
   get: () => {
-    return exhibition.value[0].startDate
+    return exhibition.value[0].data[0].startDate
   }
 })
 const endDate = computed({
   get: () => {
-    return exhibition.value[0].endDate
+    return exhibition.value[0].data[0].endDate
   }
 })
 const description = computed({
   get: () => {
-    return exhibition.value[0].description
+    return exhibition.value[0].data[0].description
   }
 })
 const content = computed({
   get: () => {
-    return exhibition.value[0].content
+    return exhibition.value[0].data[0].content
   }
 })
 
