@@ -28,7 +28,7 @@
     <div class="col-span-5">
       <div class="pt-5 font-medium">
         <div class="mb-4 lg:mb-6">
-          <label for="name" class="block mb-2 lg:mb-4">顯示暱稱</label>
+          <label for="name" class="block font-semibold mb-2 lg:mb-4">顯示暱稱</label>
           <input
             type="text"
             id="name"
@@ -40,7 +40,7 @@
           />
         </div>
         <div class="mb-4 lg:mb-6">
-          <label for="email" class="block mb-2 lg:mb-4"> 會員信箱</label>
+          <label for="email" class="block font-semibold mb-2 lg:mb-4"> 會員信箱</label>
           <input
             type="email"
             id="email"

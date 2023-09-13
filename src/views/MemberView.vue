@@ -7,7 +7,7 @@
             <h2>會員專區</h2>
             <p class="font-cormo lg:text-2xl uppercase">Member Area</p>
           </div>
-          <ul class="grid grid-cols-2 lg:block mb-4 lg:mb-[90px]">
+          <ul class="grid grid-cols-2 lg:block mb-4 lg:mb-20">
             <li
               class="border-b border-x border-dark-600 col-span-1"
               v-for="item in menuList"
