@@ -77,8 +77,8 @@
                 <label class="form-label" for="order">排序</label>
                 <select class="block bg-dark-200 w-full" data-te-select-init>
                   <option :value="null">請選擇</option>
-                  <option value="2">依照朝代(由新到舊)</option>
-                  <option value="3">依照朝代（由舊到新）</option>
+                  <option value="2">依照日期(由新到舊)</option>
+                  <option value="3">依照日期（由舊到新）</option>
                 </select>
               </div>
               <div class="w-3/4 px-3">
