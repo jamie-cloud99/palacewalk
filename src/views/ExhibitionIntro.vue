@@ -14,7 +14,6 @@
           <ExhibitionSort />
         </div>
         <div class="col-span-9 font-semibold">
-          {{ id }}
           <img class="w-full h-[340px] object-cover object-center mb-2 lg:mb-4" src='/images/exhibitions/exhibition-U001.jpg'>
           <div class="flex flex-col justify-between mb-8 lg:flex-row">
             <div class="mb-4 lg:mb-0">
@@ -24,7 +23,10 @@
             <div class="flex flex-row-reverse justify-between lg:flex-col lg:justify-start">
               <div class="flex mb-2">
                 <button type="button" class="btn border border-dark-800 px-5 mr-4">回列表</button>
-                <button type="button" class="btn bg-primary text-white">前往看展</button>
+                <button type="button" 
+                  class="btn bg-primary text-white"
+                  @click="router.push('/exhibitions/1/content')"
+                >前往看展</button>
               </div>
               <ul class="flex justify-end text-2xl">
                 <li class="me-4"><a href="#"><i class="fa-regular fa-calendar"></i></a></li>
@@ -149,10 +151,14 @@
 <script setup>
 import { ref,reactive,computed } from 'vue'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
-import ExhibitionSort from '../components/exhibition/ExhibitionSort.vue'
+import ExhibitionSort from '../components/exhibition/ExhibitionSort.vue
+import { useRouter } from 'vue-router'
+
 
 import { storeToRefs } from 'pinia'
 import { exhibitionStore } from '../stores/exhibitsStore'
+
+const router = useRouter()
 
 const exhibitsStore = exhibitionStore()
 const { exhibition } = storeToRefs(exhibitsStore)
