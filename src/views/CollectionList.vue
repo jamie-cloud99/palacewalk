@@ -29,7 +29,7 @@
       </div>
       <!-- Right Side -->
       <div class="col-span-9">
-        <div class="mb-10 flex justify-between">
+        <!-- <div class="mb-10 flex justify-between">
           <div>
             <svg class="inline mr-[15px] cursor-pointer" width="24px" height="24x" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#525252">
               <g id="SVGRepo_bgCarrier" stroke-width="0"/>
@@ -42,13 +42,13 @@
               <g id="SVGRepo_iconCarrier"><title>單欄</title> <g><g><path d="M0,0v512h512V0H0z M462.452,462.452H49.548V49.548h412.903V462.452z"/></g></g><g><g><rect x="305.548" y="99.097" width="66.065" height="313.806"/></g></g><g><g><rect x="140.387" y="99.097" width="66.065" height="313.806"/></g></g></g>
             </svg>
           </div>
-          <!-- 搜尋框 -->
-          <!-- <div class="w-3/4 relative">
+          // 搜尋框
+          <div class="w-3/4 relative">
             <input class="w-full" type="search" aria-label="Search" name="search" placeholder="請輸入產品名稱 、關鍵字">
             <button><i class="absolute right-14 top-3 fa-solid fa-magnifying-glass"></i></button>
             <button><i class="absolute right-0 top-0 fa-solid fa-filter text-white bg-black px-3 py-3"></i></button>
-          </div> -->
-        </div>
+          </div>
+        </div> -->
         <ul class="grid grid-cols-12 gap-4">
           <li
             v-for="item in selectedData"
