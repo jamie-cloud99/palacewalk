@@ -150,8 +150,6 @@ import { getZeroBaseOrder } from '../composables/format'
 import ExhibitionMenu from '../components/exhibition/ExhibitionMenu.vue'
 import CollectionText from '../components/exhibition/CollectionText.vue'
 
-import { register } from 'swiper/element/bundle'
-register()
 
 const statusStore = useStatusStore()
 const { isOpen, menuClass, exhibitionMenuCount } = storeToRefs(statusStore)

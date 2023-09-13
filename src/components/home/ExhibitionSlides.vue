@@ -13,8 +13,8 @@
     >
       <div class="group overflow-hidden w-full h-[210px] lg:h-[385px] mb-3 lg:mb-4">
         <img
-          :src="`/images/exhibitions/exhibition-${item.imgId}.jpg`"
-          class="w-full h-full group-hover:scale-110 transition-all duration-300"
+          :src="`/images/exhibitions/exhibition-${item.exhibitionId}.jpg`"
+          class="w-full h-full object-cover group-hover:scale-110 transition-all duration-300"
         />
         <a href="#" class="stretched-link"></a>
       </div>
@@ -53,9 +53,6 @@
 
 <script setup>
 import { toRefs, ref, watch } from 'vue'
-import { register } from 'swiper/element/bundle'
-
-register()
 
 const props = defineProps({
   exhibitionList: Array
