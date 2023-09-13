@@ -1,6 +1,5 @@
 <template>
   <CollectionBanner :title="'精選展品'" />
-  <div class="absolute left-0 right-0 top-1/2 -z-10 h-full bg-[url('../images/home-bg-2.webp')] bg-cover bg-center bg-no-repeat"></div>
   <div class="container">
     <div class="counter flex lg:flex-row flex-col flex-wrap -mx-3 items-start">
       <div class="relative flex flex-wrap w-full h-full lg:w-1/2 px-3 mb-[26px]" v-for="item in masterList" :key="item.id">
@@ -17,6 +16,7 @@
       <PageComponent class="self-start my-15" :pages="pages" @change="turnPage" />
     </div>
   </div>
+  <div class="absolute left-0 right-0 top-[550px] h-[800px] w-full -z-10 bg-[url('../images/page-bg.svg')] bg-cover bg-center bg-no-repeat"></div>
 </template>
 <script setup>
 import { reactive } from 'vue'
