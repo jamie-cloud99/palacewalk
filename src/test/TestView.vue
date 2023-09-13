@@ -14,7 +14,7 @@
             <li
               class="col-span-1"
               v-for="el in collectionList"
-              :key="el.id"
+              :key="el.collectionId"
               @click="selectedCategory(el.category)"
             >
               <!-- * 因為網頁文字行高比設計稿大， 所以會相應減少 padding -->
@@ -38,7 +38,7 @@
             class="col-span-12 md:col-span-6 lg:col-span-4"
           >
             <!-- * 元件跟格線分離 -->
-            <TestComponent :item="item" />
+            <TestComponent :collection-item="item" />
           </li>
         </ul>
         <div class="flex py-10 lg:py-15">

@@ -2,39 +2,68 @@
   <div class="group relative h-[300px] lg:h-[250px] text-white">
     <img
       class="object-cover object-center h-full w-full"
-      :src="`/images/collection/collection-${item.collectionId}.jpg`"
-      :alt="item.title"
+      :src="`/images/collection/collection-${collectionItem.collectionId}.jpg`"
+      :alt="collectionItem.title"
     />
     <div class="hidden absolute inset-0 bg-dark/50 group-hover:block">
       <div class="flex flex-col justify-end h-full pb-15 px-4">
-        <div class="relative mb-2">
-          <h4 class="font-bold text-lg">{{ item.title }}</h4>
-          <div class="absolute bottom-0 right-0 w-22 h-px bg-white"></div>
+        <div class="flex flex-nowrap items-center justify-between mb-2">
+          <h4 class="font-bold text-lg">{{ collectionItem.title }}</h4>
+          <div class="w-22 h-px bg-white"></div>
         </div>
-        <h5 class="font-medium">{{ item.author }}</h5>
-        <p class="self-end">{{ item.time }}</p>
+        <div class="flex items-center justify-between">
+          <h5 class="font-medium">{{ collectionItem.author }}</h5>
+          <p class="">{{ collectionItem.time }}</p>
+        </div>
       </div>
     </div>
-    <div v-if="showFavorite" class="absolute top-2 right-2 text-xl z-[1]">
-      <i class="fa-regular fa-heart icon-style" :id="item.id"> </i>
-    </div>
+
+    <!-- * saveFavorites 第一個參數之後打 api 應該會改成傳 id，暫時先傳整個物件 -->
+    <button
+      v-if="showFavorite"
+      type="button"
+      class="absolute top-0 right-0 p-2 text-xl z-[1] group-hover:text-primary"
+      :class="{
+        '!fa-solid': favCollections.find(
+          (item) => item.collectionId === collectionItem.collectionId
+        )
+      }"
+      @click="saveFavorites(collectionItem, 'collection')"
+    >
+      <i
+        class="fa-regular fa-heart icon-style"
+        :id="collectionItem.collectionId"
+        :class="{
+          'fa-solid': favCollections.find(
+            (item) => item.collectionId === collectionItem.collectionId
+          )
+        }"
+      >
+      </i>
+    </button>
     <RouterLink
       class="stretched-link"
-      :to="{ name: 'collectionInfo', params: { collectionId: item.collectionId } }"
+      :to="{ name: 'collectionInfo', params: { collectionId: collectionItem.collectionId } }"
     />
   </div>
 </template>
 
 <script setup>
 import { toRefs } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useMemberStore } from '../stores/memberStore'
+
+const memberStore = useMemberStore()
+const { saveFavorites } = memberStore
+const { favCollections } = storeToRefs(memberStore)
 
 const props = defineProps({
-  item: Object,
+  collectionItem: Object,
   showFavorite: {
     type: Boolean,
     default: true
   }
 })
 
-const { item, showFavorite } = toRefs(props)
+const { collectionItem, showFavorite } = toRefs(props)
 </script>

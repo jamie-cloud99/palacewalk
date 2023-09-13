@@ -4,7 +4,7 @@
       <li class="col-span-1" v-for="item in tabList" :key="item.title">
         <button
           type="button"
-          class="btn w-full border-b-4 border-dark-600"
+          class="btn w-full font-semibold text-lg border-b-4 border-dark-600 lg:text-xl"
           :class="{ '!border-warning': curTab.title === item.title }"
           @click="changeTab(item)"
         >
@@ -12,31 +12,16 @@
         </button>
       </li>
     </ul>
-    <ul v-if="curTab.title === tabList[0].title" class="grid grid-cols-2 gap-6">
-      <li v-for="i in 10" :key="i + 'i'" class="col-span-2 lg:col-span-1">
-        <div class="relative">
-          <!-- card 元件 -->
-          <div class="bg-dark-600 h-[250px]"></div>
-          <div class="group absolute top-2 right-3">
-            <button type="button" class="">
-              <span class="text-primary text-xl"><i class="fa-solid fa-heart"></i></span>
-            </button>
-            <div
-              class="hidden absolute -top-9 -left-1 -translate-x-1/2 pointer-events-none group-hover:block"
-            >
-              <p class="whitespace-nowrap bg-dark text-white p-1 triangle">取消收藏</p>
-              <span></span>
-            </div>
-          </div>
-        </div>
-      </li>
+    <ul v-if="curTab.title === tabList[0].title" class="flex flex-wrap lg:grid grid-cols-12 gap-6">
+      <ExhibitionListItem :exhibit-list="favExhibitions" />
     </ul>
-    <ul v-else class="grid grid-cols-6 gap-6">
-      <li v-for="i in 10" :key="i + 'i'" class="col-span-6 md:col-span-3 xl:col-span-2">
-        <div class="relative">
-          <!-- card 元件 -->
-          <div class="bg-dark-600 h-[250px]"></div>
-        </div>
+    <ul v-else class="grid grid-cols-6 gap-4">
+      <li
+        v-for="item in favCollections"
+        :key="item.collectionId"
+        class="col-span-6 md:col-span-3 xl:col-span-2"
+      >
+        <TestComponent :collection-item="item" />
       </li>
     </ul>
   </div>
@@ -47,12 +32,15 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
+import { storeToRefs } from 'pinia'
 import { useMemberStore } from '../stores/memberStore'
 import PageComponent from '../components/layout/PageComponent.vue'
-import { storeToRefs } from 'pinia'
+import ExhibitionListItem from '../components/exhibition/ExhibitionListItem.vue'
+// for test
+import TestComponent from '../test/TestComponent.vue'
 
 const memberStore = useMemberStore()
-const { pages } = storeToRefs(memberStore)
+const { pages, favCollections, favExhibitions } = storeToRefs(memberStore)
 const { turnPage } = memberStore
 
 const tabList = reactive([
@@ -69,9 +57,3 @@ const changeTab = (tab) => {
   curTab.value = tab
 }
 </script>
-
-<style>
-.triangle::after {
-  @apply content-[''] block absolute left-[55%]  border-8 border-x-transparent border-b-0 border-dark;
-}
-</style>
