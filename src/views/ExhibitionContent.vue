@@ -163,16 +163,16 @@ const collectionList = ref([
 ])
 
 const params = {
-  // effect: 'creative',
-  // creativeEffect: {
-  //   prev: {
-  //     shadow: true,
-  //     translate: [0, 0, -400]
-  //   },
-  //   next: {
-  //     translate: ['100%', 0, 0]
-  //   }
-  // }
+  effect: 'creative',
+  creativeEffect: {
+    prev: {
+      shadow: true,
+      translate: [0, 0, -400]
+    },
+    next: {
+      translate: ['100%', 0, 0]
+    }
+  }
 }
 
 const slides = ref({
@@ -214,10 +214,6 @@ onMounted(() => {
 
 .max-w {
   max-width: 500px;
-}
-
-.bg-radial-dark {
-  background: radial-gradient(farthest-corner at 40px 200px, var(--dark-800), var(--dark));
 }
 
 .shadow-twinkle {
