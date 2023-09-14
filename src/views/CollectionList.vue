@@ -1,5 +1,5 @@
 <template>
-  <CollectionBanner :title="'精選目錄'" />
+  <CollectionBanner :title="'展品目錄'" />
   <!-- TODO: router-view, other category(except painting) layout -->
   <div class="container">
     <div class="lg:grid grid-cols-12 gap-6">
