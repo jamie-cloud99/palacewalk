@@ -14,7 +14,7 @@
       :key="collection.collectionId"
       :class="{ '-translate-x-20 md:-translate-x-40': translate }"
     >
-      <TestComponent class="w-[250px]" :collection-item="collection" :show-favorite="false" />
+      <CollectionListItem class="w-[250px]" :collection-item="collection" :show-fav-icon="false" />
     </div>
   </Vue3Marquee>
 </template>
@@ -22,8 +22,7 @@
 <script setup>
 import { computed, toRefs } from 'vue'
 import { Vue3Marquee } from 'vue3-marquee'
-// for test
-import TestComponent from '../../test/TestComponent.vue'
+import CollectionListItem from '../collection/CollectionListItem.vue';
 
 const props = defineProps({
   translate: {

@@ -21,7 +21,7 @@
         :key="item.collectionId"
         class="col-span-6 md:col-span-3 xl:col-span-2"
       >
-        <TestComponent :collection-item="item" />
+        <CollectionListItem :collection-item="item" />
       </li>
     </ul>
   </div>
@@ -36,8 +36,7 @@ import { storeToRefs } from 'pinia'
 import { useMemberStore } from '../stores/memberStore'
 import PageComponent from '../components/layout/PageComponent.vue'
 import ExhibitionListItem from '../components/exhibition/ExhibitionListItem.vue'
-// for test
-import TestComponent from '../test/TestComponent.vue'
+import CollectionListItem from '../components/collection/CollectionListItem.vue'
 
 const memberStore = useMemberStore()
 const { pages, favCollections, favExhibitions } = storeToRefs(memberStore)
