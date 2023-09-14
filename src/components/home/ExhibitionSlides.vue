@@ -16,7 +16,7 @@
           :src="`/images/exhibitions/exhibition-${item.exhibitionId}.jpg`"
           class="w-full h-full object-cover group-hover:scale-110 transition-all duration-300"
         />
-        <a href="#" class="stretched-link"></a>
+        <RouterLink to="/exhibitions/1" class="stretched-link"></RouterLink>
       </div>
       <div class="flex gap-2 items-start">
         <div class="w-4 h-4 bg-primary mt-3 flex-shrink-0"></div>

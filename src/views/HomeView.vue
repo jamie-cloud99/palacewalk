@@ -85,13 +85,13 @@
             >
               <div class="space-y-2">
                 <div class="flex items-center justify-between lg:justify-start lg:gap-x-2">
-                  <p class="text-dark-600 lg:order-2">{{ item.date }}</p>
                   <p
                     class="px-1 py-0.5 bg-primary rounded text-white"
                     :class="{ '!bg-warning': item.category !== '活動公告' }"
                   >
                     {{ item.category }}
                   </p>
+                  <p class="text-dark-600">{{ item.date }}</p>
                 </div>
                 <p class="text-lg font-medium line-clamp-2 md:line-clamp-1">{{ item.title }}</p>
               </div>
@@ -130,7 +130,7 @@ const { newsList, recentExhibitionList, featuredCollectionList } = storeToRefs(h
 
 const section = ref([
   {
-    title: '近期展覽',
+    title: '當期展覽',
     engTitle: 'Recent'
   },
   {
