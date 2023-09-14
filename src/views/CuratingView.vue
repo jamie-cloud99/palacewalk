@@ -89,7 +89,7 @@
               >
                 查看留言
               </RouterLink>
-              <RouterLink to="#" class="btn px-6 text-white bg-primary hover:bg-dark">
+              <RouterLink to="/exhibitions/1" class="btn px-6 text-white bg-primary hover:bg-dark">
                 前往展覽
               </RouterLink>
             </div>

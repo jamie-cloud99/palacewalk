@@ -23,7 +23,8 @@ export const useStatusStore = defineStore('status', () => {
 
   const toggleMenu = (item) => {
     isOpen.value[item] = !isOpen.value[item]
-    preventBodyScroll()
+    // if(item === 'menu') preventBodyScroll()
+    
     for (const key in isOpen.value) {
       if (key !== item) isOpen.value[key] = false
       menuClass.value[key] = isOpen.value[key] ? 'max-h' : 'max-0'
@@ -39,23 +40,23 @@ export const useStatusStore = defineStore('status', () => {
     }
   }
 
-  const preventBodyScroll = () => {
-    let allowScroll = true
-    for (const key in isOpen.value) {
-      if (isOpen.value[key] === true) allowScroll = false
-    }
+  // const preventBodyScroll = () => {
+  //   let allowScroll = true
+  //   for (const key in isOpen.value) {
+  //     if (isOpen.value[key] === true) allowScroll = false
+  //   }
 
-    if (!allowScroll) {
-      // When the modal is shown, we want a fixed body
-      document.body.style.position = 'fixed'
-      document.body.style.top = `-${window.scrollY}px`
-    } else {
-      const scrollY = document.body.style.top
-      document.body.style.position = 'static'
-      document.body.style.top = ''
-      window.scrollTo(0, parseInt(scrollY || '0') * -1)
-    }
-  }
+  //   if (!allowScroll) {
+  //     // When the modal is shown, we want a fixed body
+  //     document.body.style.position = 'fixed'
+  //     document.body.style.top = `-${window.scrollY}px`
+  //   } else {
+  //     const scrollY = document.body.style.top
+  //     document.body.style.position = 'static'
+  //     document.body.style.top = ''
+  //     window.scrollTo(0, parseInt(scrollY || '0') * -1)
+  //   }
+  // }
 
   const changeSearchType = (type) => {
     searchType.value = type
