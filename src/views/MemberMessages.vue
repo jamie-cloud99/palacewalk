@@ -54,7 +54,7 @@
                 class="btn pl-0 text-dark-600 hover:text-dark"
                 @click="toggleReply(comment.id)"
               >
-                <span v-if="isOpen !== i">顯示</span><span v-else>隱藏</span>回覆
+                <span v-if="isOpen !== comment.id">顯示</span><span v-else>隱藏</span>回覆
               </button>
               <a href="" class="btn pl-0 text-dark-600 hover:text-dark">查看原始留言</a>
             </div>
