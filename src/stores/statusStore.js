@@ -23,7 +23,8 @@ export const useStatusStore = defineStore('status', () => {
 
   const toggleMenu = (item) => {
     isOpen.value[item] = !isOpen.value[item]
-    preventBodyScroll()
+    if(item === 'menu') preventBodyScroll()
+    
     for (const key in isOpen.value) {
       if (key !== item) isOpen.value[key] = false
       menuClass.value[key] = isOpen.value[key] ? 'max-h' : 'max-0'

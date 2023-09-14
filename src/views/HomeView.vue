@@ -1,6 +1,6 @@
 <template>
   <div
-    class="container relative lg:pt-6 pb-20 mb-12 lg:mb-16 lg:px-15 md:max-w-full overflow-hidden"
+    class="container relative lg:pt-6 pb-20 mb-8 lg:mb-16 lg:px-15 md:max-w-full overflow-hidden"
   >
     <div
       class="absolute inset-0 z-[1] bg-[url(../images/home-bg-sm-1.webp)] bg-cover bg-bottom md:bg-[url(../images/home-bg-1.webp)]"
@@ -9,7 +9,7 @@
     <div
       data-aos="fade-up"
       data-aos-delay="50"
-      class="relative z-10 flex lg:justify-center items-center h-[500px] w-full bg-cover bg-no-repeat bg-[position:right_-10rem_bottom_1rem] lg:bg-center bg-[url(../images/banner/bn.jpg)] md:block md:h-[400px] 2xl:h-[550px]"
+      class="relative z-10 flex h-[500px] w-full bg-cover bg-no-repeat bg-[position:right_-10rem_bottom_1rem] lg:bg-center bg-[url(../images/banner/bn.jpg)] md:block md:h-[400px] 2xl:h-[550px]"
     >
       <div
         data-aos="fade-up"
