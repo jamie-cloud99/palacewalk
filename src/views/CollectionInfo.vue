@@ -1,7 +1,7 @@
 <template>
   <!-- TODO: prev/next custom, recommend swiper-->
   <CollectionBanner :title="'展品介紹'" />
-  <div class="absolute left-0 right-0 top-1/2 -z-10 h-full bg-[url('../images/home-bg-2.webp')] bg-cover bg-center bg-no-repeat"></div>
+  <div class="absolute left-0 right-0 top-[570px] h-[800px] w-full -z-10 bg-[url('../images/page-bg.svg')] bg-cover bg-center bg-no-repeat"></div>
   <div class="container overflow-hidden">
     <swiper-container
       class="mb-10"
@@ -122,13 +122,11 @@
       <PageComponent :pages="pages" @change="turnPage" />
     </div>
   </div>
-  <GoToTop />
 </template>
 
 <script setup>
 import { ref, reactive } from 'vue'
 import CollectionBanner from '../components/collection/CollectionBanner.vue'
-import GoToTop from '../components/button/GoToTop.vue'
 import PageComponent from '../components/layout/PageComponent.vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
