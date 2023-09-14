@@ -1,7 +1,6 @@
 <template>
   <div class="bg-light/50 overflow-hidden">
     <swiper-container
-      id="lightgallery"
       ref="swiperEl"
       init="false"
       :slides-per-view="1"
@@ -25,13 +24,7 @@
             {{ item.title }}
           </h1>
         </div>
-        <div
-          class="flex justify-center lg:items-center h-screen lg:px-40"
-          :class="{
-            '!justify-start': isOpen.exhibitionMenu,
-            '!justify-end': isOpen.collectionText
-          }"
-        >
+        <div class="flex justify-center lg:items-center h-screen lg:px-40">
           <img
             ref="slideImage"
             class="w-auto h-3/5 md:h-4/5 lg:h-[90%] object-cover object-center shadow-lg"
@@ -41,17 +34,6 @@
         </div>
       </swiper-slide>
     </swiper-container>
-
-    <!-- <ul id="selector1" class="flex gap-3">
-      <li
-        class="item"
-        v-for="item in collectionList"
-        :key="item.id"
-        :data-src="`/images/collection/collection-${item.imgId}.jpg`"
-      >
-        <img :src="`/images/collection/collection-${item.imgId}.jpg`" alt="" />
-      </li>
-    </ul> -->
   </div>
 
   <div v-if="!isOpen.collectionText" class="fixed right-6 lg:right-10 top-10 z-[800]">
@@ -78,7 +60,7 @@
     :class="menuClass.exhibitionMenu"
     class="fixed top-0 right-0 h-screen z-[500] transition-all duration-500 overflow-hidden"
   >
-    <ExhibitionMenu :collection-list="collectionList"/>
+    <ExhibitionMenu :collection-list="collectionList" />
   </div>
 
   <div
@@ -139,17 +121,12 @@
 </template>
 
 <script setup>
-import lightGallery from 'lightgallery'
-import lgThumbnail from 'lightgallery/plugins/thumbnail'
-import lgZoom from 'lightgallery/plugins/zoom'
-
 import { ref, onMounted, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useStatusStore } from '../stores/statusStore.js'
 import { getZeroBaseOrder } from '../composables/format'
 import ExhibitionMenu from '../components/exhibition/ExhibitionMenu.vue'
 import CollectionText from '../components/exhibition/CollectionText.vue'
-
 
 const statusStore = useStatusStore()
 const { isOpen, menuClass, exhibitionMenuCount } = storeToRefs(statusStore)
@@ -186,16 +163,16 @@ const collectionList = ref([
 ])
 
 const params = {
-  effect: 'creative',
-  creativeEffect: {
-    prev: {
-      shadow: true,
-      translate: [0, 0, -400]
-    },
-    next: {
-      translate: ['100%', 0, 0]
-    }
-  }
+  // effect: 'creative',
+  // creativeEffect: {
+  //   prev: {
+  //     shadow: true,
+  //     translate: [0, 0, -400]
+  //   },
+  //   next: {
+  //     translate: ['100%', 0, 0]
+  //   }
+  // }
 }
 
 const slides = ref({
@@ -223,22 +200,6 @@ const goPrev = () => {
   slides.value.curSlide--
 }
 
-// const viewGallery = () => {
-//   lightGallery(document.getElementById('selector1'), {
-//     selector: '.item',
-//     plugins: [lgZoom, lgThumbnail],
-//     controls: true
-//   })
-// }
-
-// const viewGallery = () => {
-//   lightGallery(swiperEl.value.swiper.el.querySelector('.swiper-wrapper'), {
-//     selector: '.slide',
-//     plugins: [lgZoom, lgThumbnail],
-//     controls: true
-//   })
-// }
-
 onMounted(() => {
   Object.assign(swiperEl.value, params)
   swiperEl.value.initialize()
@@ -246,10 +207,6 @@ onMounted(() => {
 </script>
 
 <style>
-@import 'lightgallery/css/lightgallery.css';
-@import 'lightgallery/css/lg-thumbnail.css';
-@import 'lightgallery/css/lg-zoom.css';
-
 :root {
   --dark-800: #525252;
   --dark: #121212;
