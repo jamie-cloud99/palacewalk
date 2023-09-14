@@ -41,6 +41,16 @@ export const useMemberStore = defineStore('member', () => {
           startDate: '2023.6.24',
           endDate: '2024.5.28'
         }
+      },
+      {
+        savedAt: '2023.08.29',
+        exhibition: {
+          id: '5',
+          exhibitionId: 'U005',
+          title: '釉瓷之美：太平有象瓷尊特展',
+          startDate: '2023.5.20',
+          endDate: '2024.8.19',
+        }
       }
     ],
     collections: [

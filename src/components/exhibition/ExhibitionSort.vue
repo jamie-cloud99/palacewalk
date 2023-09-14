@@ -3,14 +3,11 @@
 	<h3 class="text-2xl font-semibold mb-1 leading-8">EXHIBITS</h3>
 	<hr class="border-black" />
 	<ul class="flex lg:block mb-[24px] lg:mb-[56px]">
-		<li v-for="item in menuContent" :key="item.title" class="w-1/2 border-x lg:border-0 border-gray-200 lg:w-full ">
-			<router-link :to="item.path" 
-				class="sort-item" 
-				@click="selectedCategory(item.category)"
-				:class="{ 'selected': selectedOption === item.category }">
-				{{ item.title }}
-			</router-link>
-		</li>
+		<SortList
+			:menu="menuContent"
+			:selectedOption="curMenuItem"
+			@select-item="changeMenuItem"
+		></SortList>
 	</ul>
 	<div class="hidden lg:block">
 		<h4 class="text-lg font-semibold">檢索</h4>
@@ -21,10 +18,13 @@
 				<a href="#"><i class="fa-solid fa-magnifying-glass input-icon"></i>
 				</a>
 			</li>
-			<li class="relative xs:mb-3">
-				<input type="text" id="search" class="search-input" placeholder="請選擇類別" />
-				<a href="#"><i class="fa-solid fa-chevron-down input-icon"></i>
-				</a>
+			<li class="relative xs:mb-3"> 
+				<select name="" id="search" class="form-select search-input">
+					<option class="text-dark-600" value="" disabled selected>請選擇類別</option>
+					<option class="text-dark" value="">藝術</option>
+					<option class="text-dark" value="">文物</option>
+					<option class="text-dark" value="">綜合</option>
+				</select>
 			</li>
 		</ul>
 	</div>
@@ -32,29 +32,28 @@
 
 <script setup>
 import { ref,reactive } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import SortList from '../layout/SortList.vue'
+
+const route = useRoute()
+const router = useRouter()
 
 const menuContent = reactive([
-	{
-		title: '當期展覽',
-		path: '/exhibitions/?="當期展覽"',
-		category: 0, //當期展覽
-	},
-	{
-		title: '近期展覽',
-		path: '/exhibitions/?="近期展覽"',
-		category: 1, //近期展覽
-	}
+{
+    code: 'recent',
+    title: '當期展覽'
+  },
+  {
+    code: 'coming',
+    title: '近期展覽'
+  }
 ])
 
-
-const selectedOption = ref('')
-let selectionData = reactive([])
-const selectedCategory = (option) => {
-  selectedOption.value = option
-  selectionData = menuContent.find(item => item.category === selectedOption.value)
-  return { selectionData, selectedOption }
+const curMenuItem = ref(menuContent[0])
+const changeMenuItem = (item) => {
+  curMenuItem.value = item
+  router.push({ path: `${route.path}`, query: { period: item.title } })
 }
-selectedCategory(0);
 
 </script>
 

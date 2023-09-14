@@ -1,12 +1,5 @@
 <template>
-  <div class="h-[260px] mb-[68px] lg:bg-[size:244px,_cover] xs:bg-[size:200px,_cover] bg-no-repeat
-    bg-[url('../images/exhibitions/exhibition-banner.png'),_url('../images/exhibitions/page-banner1-1.jpg')]
-    bg-[position:82%_18px,_center_bottom]">
-    <div class="container relative text-white">
-      <h2 class="absolute top-[115px] text-3xl font-serif font-bold">展覽空間-當期展覽</h2>
-      <BreadcrumbsComponent class="absolute top-[228px]" :nav-list="breadList"/>
-    </div>
-  </div>
+  <ExhibitionBanner />  
   <div class="bg-[url('/images/page-bg.svg')] bg-[position:0_216px,_left_top] bg-no-repeat">
     <div class="container mb-[60px]">
       <div class="lg:grid grid-cols-12 gap-x-12">
@@ -149,8 +142,7 @@
   </div>
 </template>
 <script setup>
-import { ref,reactive,computed } from 'vue'
-import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
+import { ref,computed } from 'vue'
 import ExhibitionSort from '../components/exhibition/ExhibitionSort.vue'
 import { useRouter } from 'vue-router'
 
@@ -168,8 +160,6 @@ const isOpen = ref('')
 const toggleReply = (id) => {
   isOpen.value = isOpen.value === id ? '' : id
 }
-
-const tempExhibition = ref({})
 
 const exhibitionTitle = computed({
   get: () => {
@@ -196,26 +186,6 @@ const content = computed({
     return exhibition.value[0].data[0].content
   }
 })
-
-const breadList = reactive([
-  {
-    title: '首頁',
-    path: '/'
-  },
-  {
-    title: '展覽空間',
-    path: '/exhibitions'
-  },
-  {
-    title: '當期展覽',
-    path: '/exhibitions'
-  },
-  {
-    title: '展覽簡介',
-    path: '/exhibitions'
-  }
-])
-
 </script>
 <style>
   .content ol{
