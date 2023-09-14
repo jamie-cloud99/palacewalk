@@ -1,13 +1,13 @@
 <template>
   <div class="h-[260px] mb-[68px] lg:bg-[size:244px,_cover] xs:bg-[size:200px,_cover] bg-no-repeat
-    bg-[url('./images/exhibitions/exhibition-banner.png'),_url('./images/exhibitions/page-banner1-1.jpg')]
+    bg-[url('../images/exhibitions/exhibition-banner.png'),_url('../images/exhibitions/page-banner1-1.jpg')]
     bg-[position:82%_18px,_center_bottom]">
     <div class="container relative text-white">
       <h2 class="absolute top-[115px] text-3xl font-serif font-bold">展覽空間-當期展覽</h2>
       <BreadcrumbsComponent class="absolute top-[228px]" :nav-list="breadList"/>
     </div>
   </div>
-  <div class="bg-[url('images/page-bg.svg')] bg-[position:0_216px,_left_top] bg-no-repeat">
+  <div class="bg-[url('/images/page-bg.svg')] bg-[position:0_216px,_left_top] bg-no-repeat">
     <div class="container mb-[60px]">
       <div class="lg:grid grid-cols-12 gap-x-12">
         <div class="col-span-3">
@@ -22,14 +22,12 @@
       </div>
     </div>
   </div>
-  <GoToTop />
 </template>
 <script setup>
 import { reactive } from 'vue'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 import ExhibitionSort from '../components/exhibition/ExhibitionSort.vue'
 import ExhibitionListItem from '../components/exhibition/ExhibitionListItem.vue'
-import GoToTop from '../components/button/GoToTop.vue'
 
 const breadList = reactive([
   {
