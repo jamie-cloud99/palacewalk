@@ -1,6 +1,6 @@
 <template>
   <CollectionBanner :title="'精選目錄'" />
-  <!-- TODO: router-view, query, other category(except painting) layout -->
+  <!-- TODO: router-view, other category(except painting) layout -->
   <div class="container">
     <div class="lg:grid grid-cols-12 gap-6">
       <!-- Left Side -->
@@ -17,12 +17,12 @@
               :key="el.id"
               @click="selectedCategory(el.category)"
             >
-              <button
-                type="button"
+              <router-link :to="{ query: { category: categoryList(el.category) } }"
                 class="btn block text-center transition-all duration-300 w-full border-b border-x border-dark-400 px-2 py-3 lg:text-left lg:border-x-0"
-                :class="{ 'selected': selectedOption === el.category }"              >
+                :class="{ 'selected': selectedOption === el.category }"
+              >
                 {{ `${categoryList(el.category)}(${el.data.length})` }}
-              </button>
+              </router-link>
             </li>
           </ul>
         </div>

@@ -1,18 +1,18 @@
 <template>
-  <!-- TODO: prev/next custom, recommend swiper-->
+  <!-- TODO: recommend swiper-->
   <CollectionBanner :title="'展品介紹'" />
   <div class="absolute left-0 right-0 top-[570px] h-[800px] w-full -z-10 bg-[url('../images/page-bg.svg')] bg-cover bg-center bg-no-repeat"></div>
-  <div class="container overflow-hidden">
+  <div class="container">
     <swiper-container
-      class="mb-10"
+      class="mb-10 pxs-0 lg:px-[15px] overflow-visible lg:overflow-hidden"
       :space-between="24"
-      navigation="true"
       :slides-per-view="2"
       :breakpoints="{ 1024: { slidesPerView: 2 } }"
       ref="swiperEl"
-    >
+      navigation="true"
+      >
 
-      <swiper-slide>
+      <swiper-slide class="w-[300px]">
         <figure class="w-full h-[210px] lg:h-[360px]">
           <img class="w-full h-full object-cover object-center" :src='`/images/collection/collection-P001.jpg`' alt="P001">
         </figure>
@@ -29,7 +29,7 @@
       </swiper-slide>
     </swiper-container>
     <h2 class="text-3xl font-bold">元朱叔重秋山疊翠 軸</h2>
-    <div class="flex justify-between border-black border-solid border-0 border-b py-[10px] mb-6">
+    <div class="flex justify-between border-black border-solid border-0 border-b py-[15px] mb-6">
       <div class="text-dark-600">
         <span class="mr-4">朱叔重</span>
         <span>元順帝至正二十五年(1365)</span>
@@ -83,7 +83,7 @@
       </div>
       <h3 class="text-2xl font-bold mb-4">精選展品推薦</h3>
       <swiper-container
-      class="mb-10"
+      class="mb-10 lg:overflow-hidden"
       :space-between="24"
       :scrollbar="true"
       :slides-per-view="2"
@@ -117,7 +117,6 @@
         回前一頁
       </button>
     </router-link>
-
     <div class="flex py-10 lg:py-15 border-1">
       <PageComponent :pages="pages" @change="turnPage" />
     </div>
@@ -125,7 +124,7 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, watch } from 'vue'
 import CollectionBanner from '../components/collection/CollectionBanner.vue'
 import PageComponent from '../components/layout/PageComponent.vue'
 import { useRouter } from 'vue-router'
@@ -148,13 +147,43 @@ const detail = reactive([
     ]
   },
 ])
+const slides = ref({
+  totalSlides: 3,
+  curSlide: 1,
+  haveNext: true,
+  havePrev: false
+})
+
+watch(
+  () => slides.value.curSlide,
+  () => {
+    slides.value.havePrev = slides.value.curSlide <= 1 ? false : true
+    slides.value.haveNext = slides.value.curSlide >= slides.value.totalSlides - 1 ? false : true
+  }
+)
+
 const previousPage = () => {
   router.back()
 }
 </script>
 
-<style>
-swiper-container::part(container) {
-  overflow: initial;
+<style scoped>
+swiper-container::part(button-next),
+swiper-container::part(button-prev) {
+  color: black;
+  width: 20px;
+  height: 20px;
+  stroke-width: 20px;
+  @apply hidden lg:block p-0;
+}
+
+swiper-container::part(button-next) {
+  position: absolute;
+  right: -20px;
+}
+
+swiper-container::part(button-prev) {
+  position: absolute;
+  left: -20px;
 }
 </style>
