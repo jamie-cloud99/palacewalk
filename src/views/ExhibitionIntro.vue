@@ -1,19 +1,16 @@
 <template>
   <div class="mb-6 lg:mb-[68px]">
-		<ExhibitionBanner :banner-content="curBannerContent" />
-	</div>
+    <ExhibitionBanner :banner-content="curBannerContent" />
+  </div>
   <div class="bg-[url('/images/page-bg.svg')] bg-[position:0_216px,_left_top] bg-no-repeat">
     <div class="container mb-[60px]">
       <div class="lg:grid grid-cols-12 gap-x-12">
         <div class="col-span-3">
-          <ExhibitionSort 
-						:menu="menuContent" 
-						:selectedOption="curMenuItem" 
-						@select-item="changeMenuItem" 
-					/>
+          <ExhibitionSort :menu="menuContent" :selectedOption="curMenuItem" @select-item="changeMenuItem" />
         </div>
         <div class="col-span-9 font-semibold">
-          <img class="w-full h-[340px] object-cover object-center mb-2 lg:mb-4" src='/images/exhibitions/exhibition-U001.jpg'>
+          <img class="w-full h-[340px] object-cover object-center mb-2 lg:mb-4"
+            src='/images/exhibitions/exhibition-U001.jpg'>
           <div class="flex flex-col justify-between mb-8 lg:flex-row">
             <div class="mb-4 lg:mb-0">
               <h2 class="text-2xl font-bold mb-4">{{ exhibitionTitle }}</h2>
@@ -22,10 +19,8 @@
             <div class="flex flex-row-reverse justify-between lg:flex-col lg:justify-start">
               <div class="flex mb-2">
                 <button type="button" class="btn border border-dark-800 px-5 mr-4">回列表</button>
-                <button type="button" 
-                  class="btn bg-primary text-white"
-                  @click="router.push('/exhibitions/1/content')"
-                >前往看展</button>
+                <button type="button" class="btn bg-primary text-white"
+                  @click="router.push('/exhibitions/1/content')">前往看展</button>
               </div>
               <ul class="flex justify-end text-2xl">
                 <li class="me-4"><a href="#"><i class="fa-regular fa-calendar"></i></a></li>
@@ -40,17 +35,14 @@
             <h3 class="font-bold mb-2">展覽亮點：</h3>
             <div v-html="content" class="content mb-8"></div>
             <h3 class="font-bold mb-2">展品資訊：</h3>
-            <div  class="overflow-hidden mb-8">
-							<CollectionSlides />
+            <div class="relative overflow-hidden mb-8">
+              <CollectionSlides />
             </div>
             <h4 class="font-bold mb-2">展覽留言<span class="comment-num">(2)</span></h4>
             <div class="relative border-b pb-[24px] mb-3">
-              <input
-                type="text"
-                id="comment"
+              <input type="text" id="comment"
                 class="form-input bg-transparent border-dark-400 rounded-3xl w-full py-2 px-4 placeholder:text-dark-600"
-                placeholder="新增留言"
-              />
+                placeholder="新增留言" />
               <a href="#">
                 <i class="fa-solid fa-paper-plane absolute right-4 top-[12px]"></i>
               </a>
@@ -75,19 +67,13 @@
                     </div>
                     <div class="flex justify-between items-center">
                       <div class="flex gap-2 pl-11">
-                        <button
-                          type="button"
-                          class="btn pl-0 text-dark-600 hover:text-dark"
-                          @click="toggleReply(i)"
-                        >
+                        <button type="button" class="btn pl-0 text-dark-600 hover:text-dark" @click="toggleReply(i)">
                           <span v-if="isOpen === i">隱藏</span><span v-else>顯示</span>回覆
                         </button>
                       </div>
                     </div>
-                    <div
-                      class="max-h-0 overflow-hidden transition-all duration-500"
-                      :class="{ '!max-h-[500px]': isOpen === i }"
-                    >
+                    <div class="max-h-0 overflow-hidden transition-all duration-500"
+                      :class="{ '!max-h-[500px]': isOpen === i }">
                       <hr class="border-dark-400 mb-3" />
                       <div class="pl-6 gap-2">
                         <div class="flex items-center">
@@ -115,7 +101,7 @@
   </div>
 </template>
 <script setup>
-import { ref, reactive,computed } from 'vue'
+import { ref, reactive, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import ExhibitionBanner from '../components/exhibition/ExhibitionBanner.vue'
 import ExhibitionSort from '../components/exhibition/ExhibitionSort.vue'
@@ -128,43 +114,43 @@ const route = useRoute()
 const router = useRouter()
 
 const breadList = reactive([
-	{
-		title: '首頁',
-		path: '/'
-	},
-	{
-		title: '展覽空間',
-		path: '/exhibitions'
-	},
-	{
-		title: '當期展覽',
-		path: '/exhibitions'
-	},
-	{
-		title: '展覽簡介',
-		path: '/exhibitionIntro'
-	}
+  {
+    title: '首頁',
+    path: '/'
+  },
+  {
+    title: '展覽空間',
+    path: '/exhibitions'
+  },
+  {
+    title: '當期展覽',
+    path: '/exhibitions'
+  },
+  {
+    title: '展覽簡介',
+    path: '/exhibitionIntro'
+  }
 ])
 const menuContent = reactive([
-	{
-		code: 'recent',
-		title: '當期展覽'
-	},
-	{
-		code: 'coming',
-		title: '近期展覽'
-	}
+  {
+    code: 'recent',
+    title: '當期展覽'
+  },
+  {
+    code: 'coming',
+    title: '近期展覽'
+  }
 ])
 const curMenuItem = ref(menuContent[0])
 const curBannerContent = computed(() => {
-	return { title: `展覽空間 — ${curMenuItem.value.title}`, breadList }
+  return { title: `展覽空間 — ${curMenuItem.value.title}`, breadList }
 })
 
 
 const changeMenuItem = (item) => {
-	curMenuItem.value = item
-	breadList[breadList.length - 1].title = item.title
-	router.push({ path: `${route.path}`, query: { period: item.title } })
+  curMenuItem.value = item
+  breadList[breadList.length - 1].title = item.title
+  router.push({ path: `${route.path}`, query: { period: item.title } })
 }
 
 const exhibitsStore = exhibitionStore()
@@ -203,12 +189,13 @@ const content = computed({
 })
 </script>
 <style>
-  .content ol{
-    list-style-type: decimal;
-    padding-left: 24px;
-    line-height: 1.5;
-  }
-  .content li{
-    margin-bottom: 8px;
-  }
+.content ol {
+  list-style-type: decimal;
+  padding-left: 24px;
+  line-height: 1.5;
+}
+
+.content li {
+  margin-bottom: 8px;
+}
 </style>
