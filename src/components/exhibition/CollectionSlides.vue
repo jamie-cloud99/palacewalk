@@ -88,7 +88,7 @@ onMounted(() => {
 
 <style>
 .exhibit-item {
-  @apply w-full h-[300px] lg: h-[306px] relative;
+  @apply w-full h-[300px] lg:h-[306px] relative;
 }
 
 .exhibit-item-title {
