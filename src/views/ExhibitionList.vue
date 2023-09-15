@@ -2,59 +2,58 @@
   <div class="mb-6 md:mb-10 lg:mb-[68px]">
     <ExhibitionBanner :banner-content="curBannerContent" />
   </div>
-  <div class="bg-[url('/images/page-bg.svg')] bg-[position:0_216px,_left_top] bg-no-repeat">
-    <div class="container mb-[60px]">
-      <div class="lg:grid grid-cols-12 gap-x-6">
-        <div class="col-span-3">
-          <h3 class="hidden lg:flex flex-col text-lg font-semibold">
-            展覽
-            <span class="font-cormo text-2xl">EXHIBITS</span>
-          </h3>
-          <hr class="border-b border-dark-400 lg:border-dark" />
-          <div class="mb-6 lg:mb-20">
-            <SortList
-              :menu="menuContent"
-              :selectedOption="curMenuItem"
-              @select-item="changeMenuItem"
-            ></SortList>
-          </div>
-          <div class="hidden lg:block">
-            <h3 class="flex flex-col text-lg">
-              檢索
-              <span class="font-cormo text-2xl">SEARCH</span>
-            </h3>
-            <ul class="mb-4">
-              <li class="mb-3 relative">
-                <input type="text" id="search" class="form-input search" placeholder="展覽檢索" />
-                <button
-                  type="button"
-                  class="btn absolute top-1/2 right-0 -translate-y-1/2 hover:text-primary"
-                >
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-              </li>
-              <li class="relative">
-                <select name="" id="search" class="form-select search">
-                  <option class="text-dark-600" value="" disabled selected>請選擇類別</option>
-                  <option class="text-dark" value="">藝術</option>
-                  <option class="text-dark" value="">文物</option>
-                  <option class="text-dark" value="">綜合</option>
-                </select>
-              </li>
-            </ul>
-          </div>
+  <div class="container mb-[60px]">
+    <div class="lg:grid grid-cols-12 gap-x-6">
+      <div class="col-span-3">
+        <h3 class="hidden lg:flex flex-col text-lg font-semibold">
+          展覽
+          <span class="font-cormo text-2xl">EXHIBITS</span>
+        </h3>
+        <hr class="border-b border-dark-400 lg:border-dark" />
+        <div class="mb-6 lg:mb-20">
+          <SortList
+            :menu="menuContent"
+            :selectedOption="curMenuItem"
+            @select-item="changeMenuItem"
+          ></SortList>
         </div>
-        <div class="col-span-9">
-          <ul class="grid grid-cols-12 gap-4">
-            <li v-for="item in exhibitList" :key="item.id" class="col-span-12 md:col-span-6">
-              <ExhibitionListItem :exhibition-item="item" />
+        <div class="hidden lg:block">
+          <h3 class="flex flex-col text-lg">
+            檢索
+            <span class="font-cormo text-2xl">SEARCH</span>
+          </h3>
+          <ul class="mb-4">
+            <li class="mb-3 relative">
+              <input type="text" id="search" class="form-input search" placeholder="展覽檢索" />
+              <button
+                type="button"
+                class="btn absolute top-1/2 right-0 -translate-y-1/2 hover:text-primary"
+              >
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </li>
+            <li class="relative">
+              <select name="" id="search" class="form-select search">
+                <option class="text-dark-600" value="" disabled selected>請選擇類別</option>
+                <option class="text-dark" value="">藝術</option>
+                <option class="text-dark" value="">文物</option>
+                <option class="text-dark" value="">綜合</option>
+              </select>
             </li>
           </ul>
-          <!-- <PageComponent :pages="pages" @change="turnPage" /> -->
         </div>
+      </div>
+      <div class="col-span-9">
+        <ul class="grid grid-cols-12 gap-4">
+          <li v-for="item in exhibitList" :key="item.id" class="col-span-12 md:col-span-6">
+            <ExhibitionListItem :exhibition-item="item" />
+          </li>
+        </ul>
+        <!-- <PageComponent :pages="pages" @change="turnPage" /> -->
       </div>
     </div>
   </div>
+  <BackgroundComponent />
 </template>
 <script setup>
 import { computed, reactive, ref } from 'vue'
@@ -62,6 +61,7 @@ import { useRouter, useRoute } from 'vue-router'
 import ExhibitionBanner from '../components/exhibition/ExhibitionBanner.vue'
 import SortList from '../components/layout/SortList.vue'
 import ExhibitionListItem from '../components/exhibition/ExhibitionListItem.vue'
+import BackgroundComponent from '../components/background/BackgroundComponent.vue'
 
 const route = useRoute()
 const router = useRouter()
