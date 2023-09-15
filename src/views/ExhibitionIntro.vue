@@ -39,41 +39,8 @@
             <h3 class="font-bold mb-2">展覽亮點：</h3>
             <div v-html="content" class="content mb-8"></div>
             <h3 class="font-bold mb-2">展品資訊：</h3>
-            <div  class="overflow-hidden mb-8">
-              <swiper-container
-                class="mb-10"
-                :space-between="24"
-                :navigation="true"
-                :pagination="true"
-                :slides-per-view="1"
-                :breakpoints="{ 1024: { slidesPerView: 3 } }"
-                ref="swiperEl"
-              >
-                <swiper-slide>
-                  <figure class="exhibit-item">
-                    <img class="w-full h-full object-cover object-centers" :src='`/images/exhibitions/exhibition-U006.jpg`' alt="U006">
-                    <figcaption class="exhibit-item-title">明 永樂 青花人物紋如意耳扁壺</figcaption>
-                  </figure>
-                </swiper-slide>
-                <swiper-slide>
-                  <figure class="exhibit-item">
-                    <img class="w-full h-full object-cover object-center" :src='`/images/exhibitions/exhibition-U007.jpg`' alt="U007">
-                    <figcaption class="exhibit-item-title">北宋 汝窯 青瓷蓮花式溫碗</figcaption>
-                  </figure>
-                </swiper-slide>
-                <swiper-slide>
-                  <figure class="exhibit-item">
-                    <img class="w-full h-full object-cover object-center" :src='`/images/exhibitions/exhibition-U008.jpg`' alt="U008">
-                    <figcaption class="exhibit-item-title">清 翠玉白菜</figcaption>
-                  </figure>
-                </swiper-slide>
-                <swiper-slide>
-                  <figure class="exhibit-item">
-                    <img class="w-full h-full object-cover object-center" :src='`/images/exhibitions/exhibition-U003.jpg`' alt="U004">
-                    <figcaption class="exhibit-item-title">明 唐寅採蓮圖</figcaption>
-                  </figure>
-                </swiper-slide>
-              </swiper-container>
+            <div  class="relative pb-8 overflow-hidden mb-8">
+              <CollectionSlides />
             </div>
             <h4 class="font-bold mb-2">展覽留言<span class="comment-num">(2)</span></h4>
             <div class="relative border-b pb-[24px] mb-3">
@@ -146,13 +113,14 @@
       </div>
     </div>
   </div>
-  <GoToTop />
+
 </template>
 <script setup>
 import { ref,reactive,computed } from 'vue'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 import ExhibitionSort from '../components/exhibition/ExhibitionSort.vue'
-import GoToTop from '../components/button/GoToTop.vue'
+import CollectionSlides from '../components/exhibition/CollectionSlides.vue'
+
 
 import { storeToRefs } from 'pinia'
 import { exhibitionStore } from '../stores/exhibitsStore'
@@ -165,8 +133,6 @@ const isOpen = ref('')
 const toggleReply = (id) => {
   isOpen.value = isOpen.value === id ? '' : id
 }
-
-const tempExhibition = ref({})
 
 const exhibitionTitle = computed({
   get: () => {
@@ -222,11 +188,5 @@ const breadList = reactive([
   }
   .content li{
     margin-bottom: 8px;
-  }
-  .exhibit-item{
-    @apply w-full h-[300px] lg:h-[306px] relative;
-  }
-  .exhibit-item-title{
-    @apply font-bold bg-amber-400 px-2 inline-block absolute left-0 bottom-2;
   }
 </style>
