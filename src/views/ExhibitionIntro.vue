@@ -100,7 +100,7 @@
               </a>
             </div>
             <ul class="space-y-5">
-              <li v-for="i in 3" :key="i + 'i'">
+              <li v-for="i in 1" :key="i + 'i'">
                 <div class="border-b border-dark-400 px-2">
                   <div class="pt-4 pb-2">
                     <div class="flex items-center">
@@ -219,7 +219,7 @@ const changeMenuItem = (item) => {
 const exhibitsStore = exhibitionStore()
 const { exhibition } = storeToRefs(exhibitsStore)
 
-const isOpen = ref('')
+const isOpen = ref(1)
 
 const toggleReply = (id) => {
   isOpen.value = isOpen.value === id ? '' : id
