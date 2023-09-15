@@ -7,7 +7,7 @@
     class="mb-20 lg:mb-24"
   >
     <swiper-slide
-      class="flex-shrink-0 sm:max-w-[300px] lg:max-w-[280px]"
+      class="flex-shrink-0 sm:max-w-[300px]"
       v-for="(item, i) in comments"
       :key="item.content"
     >
@@ -23,7 +23,7 @@
             <p class="text-dark-600">{{ item.date }}</p>
           </div>
         </div>
-        <p class="font-sans min-h-[96px] line-clamp-4">
+        <p class="min-h-[96px] line-clamp-4">
           {{ item.content }}
         </p>
       </div>
@@ -33,9 +33,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import { register } from 'swiper/element/bundle'
-
-register()
 
 const comments = ref([
   {

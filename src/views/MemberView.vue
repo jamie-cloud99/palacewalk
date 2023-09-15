@@ -4,20 +4,18 @@
       <div class="col-span-3">
         <div class="text-lg font-semibold mb-10 lg:mb-32">
           <div class="pb-2 font-bold border-b border-dark">
-            <h2>會員專區</h2>
+            <h2 class="text-lg">會員專區</h2>
             <p class="font-cormo lg:text-2xl uppercase">Member Area</p>
           </div>
           <ul class="grid grid-cols-2 lg:block mb-4 lg:mb-20">
-            <li
-              class="border-b border-x border-dark-600 col-span-1"
-              v-for="item in menuList"
-              :key="item.title"
-              :class="{ 'bg-primary text-white': item.title === curPage.title }"
-            >
+            <li class="col-span-1" v-for="item in menuList" :key="item.title">
               <RouterLink
                 to="#"
-                class="block text-center transition-all duration-300 w-full px-2 py-3 lg:text-left"
-                :class="{ 'hover:bg-dark/10': curPage.title !== item.title }"
+                class="block text-center transition-all duration-300 w-full border-b border-x border-dark-400 px-2 py-3 lg:text-left lg:border-x-0"
+                :class="{
+                  'hover:bg-dark/10': curPage.title !== item.title,
+                  'bg-primary text-white': item.title === curPage.title
+                }"
                 @click="changeMenuItem(item)"
               >
                 {{ item.title }}
@@ -35,9 +33,11 @@
         </div>
       </div>
       <div class="col-span-9">
-        <div class="flex flex-wrap justify-between items-center pb-3 border-b border-dark">
-          <h3 class="text-xl font-black">{{ curPage.title }}</h3>
-          <BreadcrumbsComponent :nav-list="breadList" />
+        <div
+          class="md:flex justify-between items-center pb-3 border-b border-dark space-y-2 md:space-y-0"
+        >
+          <BreadcrumbsComponent :nav-list="breadList" class="order-2 -mx-2" />
+          <h3 class="text-xl font-black order-1">{{ curPage.title }}</h3>
         </div>
         <RouterView />
       </div>
