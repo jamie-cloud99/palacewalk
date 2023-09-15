@@ -12,8 +12,10 @@
         </button>
       </li>
     </ul>
-    <ul v-if="curTab.title === tabList[0].title" class="flex flex-wrap lg:grid grid-cols-12 gap-6">
-      <ExhibitionListItem :exhibit-list="favExhibitions" />
+    <ul v-if="curTab.title === tabList[0].title" class="grid grid-cols-12 gap-4">
+      <li class="col-span-12 md:col-span-6" v-for="item in favExhibitions" :key="item.exhibitionId">
+        <ExhibitionListItem :exhibition-item="item" />
+      </li>
     </ul>
     <ul v-else class="grid grid-cols-6 gap-4">
       <li
