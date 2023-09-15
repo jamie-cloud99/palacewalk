@@ -1,6 +1,6 @@
 <template>
   <div
-    class="container relative lg:pt-6 pb-20 mb-8 lg:mb-16 lg:px-15 md:max-w-full overflow-hidden"
+    class="relative px-3 md:px-8 lg:pt-6 pb-20 mb-8 lg:mb-16 lg:px-15 md:max-w-full overflow-hidden"
   >
     <div
       class="absolute inset-0 z-[1] bg-[url(../images/home-bg-sm-1.webp)] bg-cover bg-bottom md:bg-[url(../images/home-bg-1.webp)]"
@@ -9,16 +9,16 @@
     <div
       data-aos="fade-up"
       data-aos-delay="50"
-      class="relative z-10 flex h-[500px] w-full bg-cover bg-no-repeat bg-[position:right_-10rem_bottom_1rem] lg:bg-center bg-[url(../images/banner/bn.jpg)] md:block md:h-[400px] 2xl:h-[550px]"
+      class="relative z-10 h-[500px] w-full bg-cover bg-no-repeat bg-[position:right_-10rem_bottom_1rem] md:bg-center bg-[url(../images/banner/bn.jpg)] md:block md:h-[400px] 2xl:h-[550px]"
     >
       <div
         data-aos="fade-up"
         data-aos-delay="800"
         data-aos-duration="1200"
-        class="relative flex flex-col justify-center items-start h-full z-20 space-y-4 md:space-y-6 px-10 md:px-20"
+        class="relative flex flex-col justify-center items-start h-full z-20 space-y-4 md:space-y-6 px-10 md:px-15 lg:px-20"
       >
         <h1
-          class="font-serif font-bold lg:text-light drop-shadow-lg text-3xl lg:text-[40px] leading-normal"
+          class="font-serif font-bold md:text-light drop-shadow-lg text-3xl lg:text-[40px] leading-normal"
         >
           故宮漫遊
           <span class="block 2xl:inline-block 2xl:ml-4"> 尋覓古典之美 </span>

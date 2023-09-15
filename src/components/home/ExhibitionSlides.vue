@@ -7,11 +7,11 @@
     class=""
   >
     <swiper-slide
-      class="max-w-[300px] flex-shrink-0 md:max-w-[480px] lg:max-w-full relative"
+      class="max-w-[400px] flex-shrink-0 md:max-w-[480px] lg:max-w-full relative"
       v-for="item in exhibitionList"
       :key="item.id"
     >
-      <div class="group overflow-hidden w-full h-[210px] lg:h-[385px] mb-3 lg:mb-4">
+      <div class="group overflow-hidden w-full h-[250px] md:h-[300px] lg:h-[320px] mb-3 lg:mb-4">
         <img
           :src="`/images/exhibitions/exhibition-${item.exhibitionId}.jpg`"
           class="w-full h-full object-cover group-hover:scale-110 transition-all duration-300"

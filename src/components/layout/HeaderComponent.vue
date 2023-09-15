@@ -29,7 +29,7 @@
             </button>
             <div
               :class="menuClass.notice"
-              class="hidden lg:block absolute right-0 -bottom-6 translate-y-full transition-all duration-300"
+              class="hidden md:block absolute right-0 -bottom-6 translate-y-full transition-all duration-300"
             >
               <NoticeDropdown />
             </div>
@@ -44,7 +44,7 @@
             </button>
             <div
               :class="menuClass.member"
-              class="hidden lg:block absolute right-0 -bottom-6 translate-y-full transition-all duration-300"
+              class="hidden md:block absolute right-0 -bottom-6 translate-y-full transition-all duration-300"
             >
               <MemberDropdown />
             </div>
