@@ -17,13 +17,13 @@
         </div>
       </div>
     </div>
-      <!-- * saveFavorites 第一個參數之後打 api 應該會改成傳 id，暫時先傳整個物件 -->
-      <button
-        v-if="showFavIcon"
-        @click="saveFavorites(collectionItem, 'collection')"
-        type="button"
-        class="absolute top-2 right-2 text-xl z-[1] group-hover:text-primary"
-      >
+    <!-- * saveFavorites 第一個參數之後打 api 應該會改成傳 id，暫時先傳整個物件 -->
+    <button
+      v-if="showFavIcon"
+      @click="saveFavorites(collectionItem, 'collection')"
+      type="button"
+      class="absolute top-2 right-2 text-xl z-[1] group-hover:text-primary"
+    >
       <i
         :id="collectionItem.collectionId"
         class="fa-regular fa-heart icon-style"
@@ -54,10 +54,12 @@ const props = defineProps({
     default: true
   }
 })
-const { collectionItem, showFavIcon }  = toRefs(props)
+const { collectionItem, showFavIcon } = toRefs(props)
 
 const showFavorite = computed(() => {
-  return favCollections.value.some(item => item.collectionId === collectionItem.value.collectionId)
+  return favCollections.value.some(
+    (item) => item.collectionId === collectionItem.value.collectionId
+  )
 })
 </script>
 

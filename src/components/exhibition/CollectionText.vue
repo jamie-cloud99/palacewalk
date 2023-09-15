@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-image bg-dark text-white bg-center w-full max-w-[450px] xl:max-w-[500px] h-full overflow-hidden"
+    class="bg-image bg-dark text-white bg-center w-full max-w-[450px] xl:max-w-[500px] h-full overflow-hidden after:bg-dark"
   >
     <div class="relative z-10 py-10 px-6 lg:px-14">
       <div class="flex justify-between">
@@ -14,7 +14,9 @@
         </button>
       </div>
       <h2 class="text-4xl font-bold mb-6">清 翠玉白菜</h2>
-      <div class="max-h-[600px] lg:max-h-[350px] scrollbar-thin scrollbar-thumb-dark-200 scrollbar-track-rounded scrollbar-thumb-rounded overflow-y-scroll leading-7 space-y-4">
+      <div
+        class="max-h-[600px] lg:max-h-[350px] scrollbar-thin scrollbar-thumb-dark-200 scrollbar-track-rounded scrollbar-thumb-rounded overflow-y-scroll leading-7 space-y-4"
+      >
         <p>
           這件與真實白菜相似度幾乎百分百的作品，是由翠玉所琢碾而成，親切的題材、潔白的菜身與翠綠的葉子，都讓人感覺十分熟悉而親近，別忘了看看菜葉上停留的兩隻昆蟲，它們可是寓意多子多孫的螽斯和蝗蟲。
         </p>
@@ -52,6 +54,5 @@ const { toggleSideMenu } = statusStore
   position: absolute;
   inset: 0;
   background-image: url('../images/exhibitions/text-bg.webp');
-  opacity: 0.5;
 }
 </style>

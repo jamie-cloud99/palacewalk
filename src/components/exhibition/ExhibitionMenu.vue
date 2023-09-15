@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-image bg-orange-800 w-full text-white bg-center h-screen overflow-y-auto scrollbar-thin scrollbar-thumb-dark-200 scrollbar-track-rounded  scrollbar-thumb-rounded"
+    class="bg-image  w-full text-white bg-center h-screen overflow-y-auto scrollbar-thin scrollbar-thumb-dark-200 scrollbar-track-rounded scrollbar-thumb-rounded after:bg-orange-800"
   >
     <div class="relative z-10 py-10 px-6 lg:px-10">
       <h2 class="text-4xl font-bold !leading-[3rem] mb-10 w-4/5">國寶精選：珍奇賞玩特展</h2>
@@ -34,6 +34,5 @@ const { collectionList } = toRefs(props)
   position: absolute;
   inset: 0;
   background-image: url('../images/exhibitions/text-bg.webp');
-  opacity: 0.5;
 }
 </style>
