@@ -17,9 +17,10 @@
               :key="el.id"
               @click="selectedCategory(el.category)"
             >
-              <router-link :to="{ query: { category: categoryList(el.category) } }"
+              <router-link
+                :to="{ query: { category: categoryList(el.category) } }"
                 class="btn block text-center transition-all duration-300 w-full border-b border-x border-dark-400 px-2 py-3 lg:text-left lg:border-x-0"
-                :class="{ 'selected': selectedOption === el.category }"
+                :class="{ selected: selectedOption === el.category }"
               >
                 {{ `${categoryList(el.category)}(${el.data.length})` }}
               </router-link>
@@ -64,7 +65,7 @@
       </div>
     </div>
   </div>
-  <div class="absolute left-0 right-0 top-[600px] h-[800px] w-full -z-10 bg-[url('../images/page-bg.svg')] bg-cover bg-center bg-no-repeat"></div>
+  <BackgroundComponent />
 </template>
 
 <script setup>
@@ -75,6 +76,7 @@ import collectionConstant from '../utils/constant/collection/collection'
 import CollectionBanner from '../components/collection/CollectionBanner.vue'
 import PageComponent from '../components/layout/PageComponent.vue'
 import CollectionListItem from '../components/collection/CollectionListItem.vue'
+import BackgroundComponent from '../components/background/BackgroundComponent.vue'
 
 const collectionStore = useCollectionStore()
 const { pages } = storeToRefs(collectionStore)
@@ -84,7 +86,7 @@ const { category } = collectionConstant
 
 const collectionList = reactive([
   {
-    category: 0, // 全部
+    category: 0 // 全部
   },
   {
     category: 1, // 精選展品
@@ -198,7 +200,7 @@ const collectionList = reactive([
         title: '顧德謙弄簫圖',
         author: '徐熙',
         time: '五代南唐'
-      },
+      }
     ]
   },
   {
@@ -287,7 +289,7 @@ const collectionList = reactive([
         collectionId: 'T001',
         title: '畫柳枝山鳥 成扇',
         author: '邊景昭',
-        time: '明末',
+        time: '明末'
       },
       {
         id: '2',
@@ -304,29 +306,29 @@ const collectionList = reactive([
         time: '十八世紀晚期'
       }
     ]
-  },
+  }
 ])
 
 collectionList[0].data = collectionList
-  .filter(item => item.category !== category.ALL)
-  .flatMap(el => el.data);
+  .filter((item) => item.category !== category.ALL)
+  .flatMap((el) => el.data)
 
 const categoryList = (type) => {
   switch (type) {
     case category.ALL:
-      return '全部';
+      return '全部'
     case category.MASTERPIECES:
-      return '精選展品';
+      return '精選展品'
     case category.PAINTING:
-      return '繪畫';
+      return '繪畫'
     case category.JADE:
-      return '器物';
+      return '器物'
     case category.COIN:
-      return '硬幣古錢';
+      return '硬幣古錢'
     case category.KNIT:
-      return '織品絲繡';
+      return '織品絲繡'
     case category.OTHER:
-      return '其他文物';
+      return '其他文物'
   }
 }
 
@@ -334,10 +336,9 @@ const selectedOption = ref('')
 const selectedData = ref([])
 const selectedCategory = (option) => {
   selectedOption.value = option
-  selectedData.value = collectionList.find(item => item.category === selectedOption.value).data
+  selectedData.value = collectionList.find((item) => item.category === selectedOption.value).data
 }
-selectedCategory(2);
-
+selectedCategory(2)
 </script>
 
 <style scoped>
