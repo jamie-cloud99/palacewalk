@@ -110,7 +110,7 @@
 
     <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <li class="col-span-1" v-for="item in collectionList" :key="item.collectionId">
-        <div class="h-[250px]">
+        <div class="h-full">
           <CollectionListItem :collection-item="item" :show-fav-icon="false" />
         </div>
       </li>
