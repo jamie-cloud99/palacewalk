@@ -41,40 +41,7 @@
             <div v-html="content" class="content mb-8"></div>
             <h3 class="font-bold mb-2">展品資訊：</h3>
             <div  class="overflow-hidden mb-8">
-              <swiper-container
-                class="mb-10"
-                :space-between="24"
-                :navigation="true"
-                :pagination="true"
-                :slides-per-view="1"
-                :breakpoints="{ 1024: { slidesPerView: 3 } }"
-                ref="swiperEl"
-              >
-                <swiper-slide>
-                  <figure class="exhibit-item">
-                    <img class="w-full h-full object-cover object-centers" :src='`/images/exhibitions/exhibition-U009.jpg`' alt="U009">
-                    <figcaption class="exhibit-item-title">清 雍正 銅胎畫琺瑯黑地五彩流雲玉兔秋香鼻煙壺</figcaption>
-                  </figure>
-                </swiper-slide>
-                <swiper-slide>
-                  <figure class="exhibit-item">
-                    <img class="w-full h-full object-cover object-center" :src='`/images/exhibitions/exhibition-U010.jpg`' alt="U010">
-                    <figcaption class="exhibit-item-title">清 雍正 白色料鼻煙壺 帶銅胎畫琺瑯黑地夔龍紋套匣</figcaption>
-                  </figure>
-                </swiper-slide>
-                <swiper-slide>
-                  <figure class="exhibit-item">
-                    <img class="w-full h-full object-cover object-center" :src='`/images/exhibitions/exhibition-U011.jpg`' alt="U011">
-                    <figcaption class="exhibit-item-title">清 乾隆 金屬胎掐絲琺瑯與畫琺瑯西洋人物雙耳鼻煙壺</figcaption>
-                  </figure>
-                </swiper-slide>
-                <swiper-slide>
-                  <figure class="exhibit-item">
-                    <img class="w-full h-full object-cover object-center" :src='`/images/exhibitions/exhibition-U003.jpg`' alt="U004">
-                    <figcaption class="exhibit-item-title">明 唐寅採蓮圖</figcaption>
-                  </figure>
-                </swiper-slide>
-              </swiper-container>
+							<CollectionSlides />
             </div>
             <h4 class="font-bold mb-2">展覽留言<span class="comment-num">(2)</span></h4>
             <div class="relative border-b pb-[24px] mb-3">
@@ -152,6 +119,7 @@ import { ref, reactive,computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import ExhibitionBanner from '../components/exhibition/ExhibitionBanner.vue'
 import ExhibitionSort from '../components/exhibition/ExhibitionSort.vue'
+import CollectionSlides from '../components/exhibition/CollectionSlides.vue'
 
 import { storeToRefs } from 'pinia'
 import { exhibitionStore } from '../stores/exhibitsStore'
@@ -242,11 +210,5 @@ const content = computed({
   }
   .content li{
     margin-bottom: 8px;
-  }
-  .exhibit-item{
-    @apply w-full h-[300px] lg:h-[306px] relative;
-  }
-  .exhibit-item-title{
-    @apply font-bold bg-amber-400 px-2 inline-block absolute left-0 bottom-2;
   }
 </style>
