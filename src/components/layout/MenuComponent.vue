@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white h-screen md:flex justify-center overflow-y-auto">
     <div class="container px-5 md:w-3/4 xl:w-1/2">
-      <div class="md:grid grid-cols-2 justify-center items-start gap-x-20 pt-4 pb-8">
+      <div class="md:grid grid-cols-2 justify-center items-start gap-x-20 pt-4 pb-40 md:pb-8">
         <div class="col-span-1">
           <ul class="space-y-8 flex-grow mb-4">
             <li v-for="category in menuContent" :key="category.title">
@@ -32,7 +32,7 @@
             <RouterLink
               to="/curating"
               @click="emit('toggle', menuOpen)"
-              class="btn w-full md:w-[300px] bg-primary text-white hover:bg-dark"
+              class="btn w-full lg:w-[300px] bg-primary text-white hover:bg-dark"
             >
               我要策展
             </RouterLink>
