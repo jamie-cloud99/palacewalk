@@ -1,5 +1,7 @@
 <template>
-  <ExhibitionBanner />  
+  <div class="mb-6 lg:mb-[68px]">
+		<ExhibitionBanner :banner-content="curBannerContent" />
+	</div>
   <div class="bg-[url('/images/page-bg.svg')] bg-[position:0_216px,_left_top] bg-no-repeat">
     <div class="container mb-[60px]">
       <div class="lg:grid grid-cols-12 gap-x-12">
@@ -142,15 +144,55 @@
   </div>
 </template>
 <script setup>
-import { ref,computed } from 'vue'
+import { ref, reactive,computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import ExhibitionBanner from '../components/exhibition/ExhibitionBanner.vue'
 import ExhibitionSort from '../components/exhibition/ExhibitionSort.vue'
-import { useRouter } from 'vue-router'
-
 
 import { storeToRefs } from 'pinia'
 import { exhibitionStore } from '../stores/exhibitsStore'
 
+const route = useRoute()
 const router = useRouter()
+
+const breadList = reactive([
+	{
+		title: '首頁',
+		path: '/'
+	},
+	{
+		title: '展覽空間',
+		path: '/exhibitions'
+	},
+	{
+		title: '當期展覽',
+		path: '/exhibitions'
+	},
+	{
+		title: '展覽簡介',
+		path: '/exhibitionIntro'
+	}
+])
+const menuContent = reactive([
+	{
+		code: 'recent',
+		title: '當期展覽'
+	},
+	{
+		code: 'coming',
+		title: '近期展覽'
+	}
+])
+const curMenuItem = ref(menuContent[0])
+const curBannerContent = computed(() => {
+	return { title: `展覽空間 — ${curMenuItem.value.title}`, breadList }
+})
+
+const changeMenuItem = (item) => {
+	curMenuItem.value = item
+	breadList[breadList.length - 1].title = item.title
+	router.push({ path: `${route.path}`, query: { period: item.title } })
+}
 
 const exhibitsStore = exhibitionStore()
 const { exhibition } = storeToRefs(exhibitsStore)
