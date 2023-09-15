@@ -6,11 +6,17 @@
 		<div class="container mb-[60px]">
 			<div class="lg:grid grid-cols-12 gap-x-12">
 				<div class="col-span-3">
-					<ExhibitionSort :menu="menuContent" :selectedOption="curMenuItem" @select-item="changeMenuItem" />
+					<ExhibitionSort 
+						:menu="menuContent" 
+						:selectedOption="curMenuItem" 
+						@select-item="changeMenuItem" 
+					/>
 				</div>
 				<div class="col-span-9">
 					<ul class="flex flex-wrap mb-20 gap-6 overflow-hidden lg:grid grid-cols-12">
-						<ExhibitionListItem :exhibit-list="exhibitList" />
+						<li v-for="item in exhibitList" :key="item.id" class="col-span-12 md:col-span-6">
+							<ExhibitionListItem :exhibition-item="item" />
+						</li>
 					</ul>
 					<!-- <PageComponent :pages="pages" @change="turnPage" /> -->
 				</div>
@@ -62,7 +68,6 @@ const changeMenuItem = (item) => {
 	breadList[breadList.length - 1].title = item.title
 	router.push({ path: `${route.path}`, query: { period: item.title } })
 }
-
 const exhibitList = ref([
 	{
 		id: '1',

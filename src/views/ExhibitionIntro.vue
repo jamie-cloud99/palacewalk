@@ -6,7 +6,11 @@
     <div class="container mb-[60px]">
       <div class="lg:grid grid-cols-12 gap-x-12">
         <div class="col-span-3">
-          <ExhibitionSort />
+          <ExhibitionSort 
+						:menu="menuContent" 
+						:selectedOption="curMenuItem" 
+						@select-item="changeMenuItem" 
+					/>
         </div>
         <div class="col-span-9 font-semibold">
           <img class="w-full h-[340px] object-cover object-center mb-2 lg:mb-4" src='/images/exhibitions/exhibition-U001.jpg'>
@@ -187,6 +191,7 @@ const curMenuItem = ref(menuContent[0])
 const curBannerContent = computed(() => {
 	return { title: `展覽空間 — ${curMenuItem.value.title}`, breadList }
 })
+
 
 const changeMenuItem = (item) => {
 	curMenuItem.value = item
