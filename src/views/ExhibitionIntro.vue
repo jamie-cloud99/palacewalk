@@ -84,7 +84,7 @@
             <h3 class="font-bold mb-2">展覽亮點：</h3>
             <div v-html="content" class="content mb-8"></div>
             <h3 class="font-bold mb-2">展品資訊：</h3>
-            <div class="overflow-hidden mb-8">
+            <div class="relative overflow-hidden mb-8">
               <CollectionSlides />
             </div>
             <h4 class="font-bold mb-2">展覽留言<span class="comment-num">(2)</span></h4>
@@ -167,7 +167,7 @@
 </template>
 <script setup>
 import { ref, reactive, computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 import ExhibitionBanner from '../components/exhibition/ExhibitionBanner.vue'
 import SortList from '../components/layout/SortList.vue'
 import CollectionSlides from '../components/exhibition/CollectionSlides.vue'
@@ -175,7 +175,6 @@ import CollectionSlides from '../components/exhibition/CollectionSlides.vue'
 import { storeToRefs } from 'pinia'
 import { exhibitionStore } from '../stores/exhibitsStore'
 
-const route = useRoute()
 const router = useRouter()
 
 const breadList = reactive([
