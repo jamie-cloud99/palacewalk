@@ -95,7 +95,11 @@
               <i class="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
-          <select name="sort" id="sort" class="form-select inline-block w-full max-w-[144px] lg:w-1/2 lg:flex-grow">
+          <select
+            name="sort"
+            id="sort"
+            class="form-select inline-block w-full max-w-[144px] lg:w-1/2 lg:flex-grow"
+          >
             <option value="" disabled selected>排序</option>
             <option value="">由新到舊</option>
             <option value="">由舊到新</option>
@@ -105,8 +109,10 @@
     </div>
 
     <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <li class="col-span-1" v-for="i in 8" :key="'i' +i">
-        <div class="bg-dark-200 h-[250px]"></div>
+      <li class="col-span-1" v-for="item in collectionList" :key="item.collectionId">
+        <div class="h-[250px]">
+          <CollectionListItem :collection-item="item" :show-fav-icon="false" />
+        </div>
       </li>
     </ul>
 
@@ -120,6 +126,7 @@
 import { reactive, ref } from 'vue'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 import PageComponent from '../components/layout/PageComponent.vue'
+import CollectionListItem from '../components/collection/CollectionListItem.vue'
 
 const pages = ref({
   totalPages: 3,
@@ -147,6 +154,65 @@ const breadList = reactive([
   {
     title: '新增展覽',
     path: '/curating/new'
+  }
+])
+
+const collectionList = ref([
+  {
+    id: '20',
+    collectionId: 'P020',
+    title: '具區林屋 軸',
+    author: '王蒙',
+    time: '元'
+  },
+  {
+    id: '204',
+    collectionId: 'A004',
+    title: '白套紅玻璃包袱紋鼻煙壺',
+    author: '不詳',
+    time: '清'
+  },
+  {
+    id: '21',
+    collectionId: 'P021',
+    title: '八駿圖　軸',
+    author: '郎世寧',
+    time: '清'
+  },
+  {
+    id: '16',
+    collectionId: 'P016',
+    title: '翠巘高秋圖　軸',
+    author: '愛新覺羅弘旿',
+    time: '清'
+  },
+  {
+    id: '201',
+    collectionId: 'A005',
+    title: '琺瑯彩柳燕碗',
+    author: '不詳',
+    time: '清'
+  },
+  {
+    id: '22',
+    collectionId: 'P022',
+    title: '摹顧愷之洛神圖 卷',
+    author: '丁觀鵬',
+    time: '清'
+  },
+  {
+    id: '206',
+    collectionId: 'A006',
+    title: '金胎內填兼畫琺瑯西方仕女圖執壺',
+    author: '不詳',
+    time: '清'
+  },
+  {
+    id: '23',
+    collectionId: 'P023',
+    title: '紅牡丹　單片',
+    author: '鄭曼青',
+    time: '民國'
   }
 ])
 </script>
