@@ -1,46 +1,60 @@
 <template>
   <!-- TODO: recommend swiper-->
   <CollectionBanner :title="'展品介紹'" />
-  <div
-    class="absolute left-0 right-0 top-[570px] h-[800px] w-full -z-10 bg-[url('../images/page-bg.svg')] bg-cover bg-center bg-no-repeat"></div>
   <div class="container">
-    <swiper-container
-      class="mb-10 px-0 lg:px-4 overflow-visible lg:overflow-hidden"
-      :space-between="16"
-      :slides-per-view="2"
-      :breakpoints="{ 1024: { slidesPerView: 2 } }"
-      navigation="true"
+    <div class="mb-6 lg:mb-10 overflow-hidden">
+      <swiper-container
+        class="px-0 lg:px-[15px] overflow-visible lg:overflow-hidden"
+        :space-between="16"
+        :slides-per-view="1"
+        :breakpoints="{ 768: { slidesPerView: 2 } }"
+        navigation="true"
+      >
+        <swiper-slide class="w-[300px]">
+          <figure class="w-full h-[210px] lg:h-[360px] bg-gradient-to-b from-dark/80 to-dark/90">
+            <img
+              class="w-full h-full object-contain object-center"
+              :src="`/images/collection/collection-P024.jpg`"
+              alt="元朱叔重秋山疊翠 軸"
+            />
+          </figure>
+        </swiper-slide>
+        <swiper-slide v-for="i in 3" :key="i + 'i'" class="w-[300px]">
+          <figure class="w-full h-[210px] lg:h-[360px]">
+            <img
+              class="w-full h-full object-cover object-center"
+              :src="`/images/collection/collection-P024-${i}.jpg`"
+              alt="元朱叔重秋山疊翠 軸"
+            />
+          </figure>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+    <h2 class="text-2xl lg:text-3xl font-bold mb-1 md:mb-0">秋山疊翠 軸</h2>
+    <div
+      class="md:flex justify-between items-center border-black border-solid border-0 border-b mb-2"
     >
-      <swiper-slide class="w-[300px]">
-        <figure class="w-full h-[210px] lg:h-[360px] bg-gradient-to-b from-dark/80 to-dark/90">
-          <img
-            class="w-full h-full object-contain object-center"
-            :src="`/images/collection/collection-P024.jpg`"
-            alt="元朱叔重秋山疊翠 軸"
-          />
-        </figure>
-      </swiper-slide>
-      <swiper-slide v-for="i in 3" :key="i + 'i'" class="w-[300px]">
-        <figure class="w-full h-[210px] lg:h-[360px]">
-          <img
-            class="w-full h-full object-cover object-center"
-            :src="`/images/collection/collection-P024-${i}.jpg`"
-            alt="元朱叔重秋山疊翠 軸"
-          />
-        </figure>
-      </swiper-slide>
-    </swiper-container>
-    <h2 class="text-3xl font-bold">元朱叔重秋山疊翠 軸</h2>
-    <div class="flex justify-between border-black border-solid border-0 border-b py-[15px] mb-6">
-      <div class="text-dark-600">
+      <div class="text-dark-600 font-semibold">
         <span class="mr-4">朱叔重</span>
         <span>元順帝至正二十五年(1365)</span>
       </div>
-      <div>
-        <i class="fa-regular fa-heart mr-[18px]"></i>
-        <i class="fa-solid fa-link mr-[18px]"></i>
-        <i class="fa-solid fa-share-nodes"></i>
-      </div>
+      <ul class="flex justify-end md:gap-x-1 md:text-xl lg: text-2xl">
+        <li>
+          <button type="button" class="btn hover:text-primary">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn hover:text-primary">
+            <i class="fa-solid fa-link"></i>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn hover:text-primary">
+            <i class="fa-solid fa-share-nodes"></i>
+          </button>
+        </li>
+      </ul>
     </div>
     <div class="font-semibold mb-11">
       <p class="font-bold mb-2">
@@ -98,14 +112,14 @@
         <!-- </div> -->
       </div>
       <h3 class="text-2xl font-bold mb-4">精選推薦</h3>
-      <div class="mb-10">
+      <div class="mb-10 overflow-hidden">
         <CollectionMasterSlides />
       </div>
     </div>
     <router-link :to="previousPage">
       <button
         @click="previousPage"
-        class="btn hover:bg-primary hover:text-white font-semibold border border-black mx-auto"
+        class="btn hover:bg-primary hover:text-white font-semibold border border-black mx-auto hover:border-primary"
       >
         回前一頁
       </button>
@@ -114,6 +128,8 @@
       <PageComponent :pages="pages" @change="turnPage" />
     </div>
   </div>
+
+  <BackgroundComponent />
 </template>
 
 <script setup>
@@ -122,27 +138,26 @@ import { useRouter } from 'vue-router'
 import CollectionBanner from '../components/collection/CollectionBanner.vue'
 import PageComponent from '../components/layout/PageComponent.vue'
 import CollectionMasterSlides from '../components/collection/CollectionMasterSlides.vue'
-
+import BackgroundComponent from '../components/background/BackgroundComponent.vue'
 
 const router = useRouter()
 
 const detail = reactive([
-  {
-    data: [
-      {
-        id: '1',
-        collectionId: 'P001',
-        title: '秋山疊翠',
-        author: '朱叔重',
-        time: '元順帝至正二十五年(1365)',
-        ingredient: '紙',
-        type: '山水',
-        size: '69.5x26.4 (公分)'
-      }
-    ]
-  }
+    {
+      data: [
+        {
+          id: '1',
+          collectionId: 'P001',
+          title: '秋山疊翠',
+          author: '朱叔重',
+          time: '元順帝至正二十五年(1365)',
+          ingredient: '紙',
+          type: '山水',
+          size: '69.5x26.4 (公分)'
+        }
+      ]
+    }
 ])
-
 
 const previousPage = () => {
   router.back()
