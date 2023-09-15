@@ -22,7 +22,7 @@
       v-if="showFavIcon"
       @click="saveFavorites(collectionItem, 'collection')"
       type="button"
-      class="absolute top-2 right-2 text-xl z-[1] group-hover:text-primary"
+      class="absolute top-2 right-2 text-xl z-[1] hover:text-primary"
     >
       <i
         :id="collectionItem.collectionId"
