@@ -81,7 +81,7 @@
         朱叔重對後世影響深遠，不僅在藝術上對山水畫風有重要影響，更在文化思想上提倡以內心修養為主的藝術創作理念。他的藝術作品充滿詩情畫意，為中國山水畫的發展做出了卓越的貢獻。
       </p>
       <h3 class="text-2xl font-bold mb-4">詳細資訊</h3>
-      <div class="mb-[42px] inline-grid grid-rows-2 grid-cols-4 w-full text-dark-800">
+      <div class="mb-[42px] inline-grid grid-rows-2 lg:grid-rows-4 lg:grid-cols-4 w-full text-dark-800">
         <div class="border-5 border-black border-b border-dashed py-[26px] col-span-1">
           <span class="mr-6">中文名</span>
           <span>秋山疊翠</span>
@@ -90,7 +90,7 @@
           <span class="mr-6">作者</span>
           <span>朱叔重</span>
         </div>
-        <div class="border-5 border-black border-b border-dashed py-[26px] col-span-2">
+        <div class="border-5 border-black border-b border-dashed py-[26px] col-span-2 whitespace-nowrap">
           <span class="mr-6">創作年代</span>
           <span class="mr-[90px]">元順帝至正二十五年(1365)</span>
         </div>
