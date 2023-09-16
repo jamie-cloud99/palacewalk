@@ -55,14 +55,18 @@
           </div>
           <div class="flex flex-row-reverse justify-between lg:flex-col lg:justify-start">
             <div class="flex mb-2">
-              <button type="button" class="btn border border-dark-800 px-5 mr-4">回列表</button>
-              <button
-                type="button"
-                class="btn bg-primary text-white"
-                @click="router.push('/exhibitions/1/content')"
+              <RouterLink
+                to="/exhibitions"
+                class="btn border border-dark-800 px-5 mr-4 hover:border-primary hover:text-primary"
+                >回列表</RouterLink
+              >
+              <RouterLink
+                to="/exhibitions/1/content"
+                target="_blank"
+                class="btn bg-primary text-white hover:bg-dark"
               >
                 前往看展
-              </button>
+              </RouterLink>
             </div>
             <ul class="flex justify-end text-2xl">
               <li class="me-4">
@@ -94,9 +98,9 @@
               class="form-input bg-transparent border-dark-400 rounded-3xl w-full py-2 px-4 placeholder:text-dark-600"
               placeholder="新增留言"
             />
-            <a href="#">
-              <i class="fa-solid fa-paper-plane absolute right-4 top-[12px]"></i>
-            </a>
+            <button type="button" class="absolute right-4 top-2 hover:text-primary">
+              <i class="fa-solid fa-paper-plane "></i>
+            </button>
           </div>
           <ul class="space-y-5">
             <li v-for="i in 1" :key="i + 'i'">
@@ -110,7 +114,7 @@
                         alt="文化探索者"
                       />
                     </div>
-                    <div class="mr-2">文化探索者</div>
+                    <div class="font-semibold mr-2">文化探索者</div>
                     <time class="text-primary">2023/08/10</time>
                   </div>
                 </div>
@@ -144,7 +148,7 @@
                             alt="策展者"
                           />
                         </div>
-                        <p class="text-warning-800 font-black leading-[36px]">策展人</p>
+                        <p class="font-semibold mr-2">策展人</p>
                         <time class="text-primary">2023/08/10</time>
                       </div>
                       <div class="pt-4 pb-2">
