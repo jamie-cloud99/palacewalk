@@ -111,7 +111,28 @@ const collectionList = reactive([
         title: '銅熊尊',
         author: '不詳',
         time: '漢'
-      }
+      },
+      {
+        id: '4',
+        collectionId: 'U004',
+        title: '玉熊尊',
+        author: '乾隆',
+        time: '清'
+      },
+      {
+        id: '5',
+        collectionId: 'U005',
+        title: '玉辟邪',
+        author: '不詳',
+        time: '東漢'
+      },
+      {
+        id: '6',
+        collectionId: 'U006',
+        title: '玉蟬',
+        author: '不詳',
+        time: '西漢'
+      },
     ]
   },
   {
@@ -208,21 +229,21 @@ const collectionList = reactive([
     data: [
       {
         id: '1',
-        collectionId: 'A001',
+        collectionId: 'B001',
         title: '白瓷劃花螭紋碟',
         author: '不詳',
         time: '西元12-13世紀'
       },
       {
         id: '2',
-        collectionId: 'A002',
+        collectionId: 'B002',
         title: '青花鬥彩蓮塘紋瓷碗',
         author: '不詳',
-        time: '西元1522-1566年'
+        time: '西元15-16世紀'
       },
       {
         id: '3',
-        collectionId: 'A003',
+        collectionId: 'B003',
         title: '藍地灑金星玻璃瓶',
         author: '不詳',
         time: '歐洲 十八世紀'
@@ -275,9 +296,9 @@ const collectionList = reactive([
       {
         id: '3',
         collectionId: 'K003',
-        title: '人丹楓呦鹿',
-        author: '不詳',
-        time: '五代'
+        title: '乾隆御製呦鹿等詠鹿詩 成扇',
+        author: '彭元瑞',
+        time: '清'
       }
     ]
   },
