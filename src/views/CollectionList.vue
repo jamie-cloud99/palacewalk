@@ -140,10 +140,10 @@ const collectionList = reactive([
     data: [
       {
         id: '1',
-        collectionId: 'P001',
-        title: '春山圖',
-        author: '王原祁',
-        time: '清'
+        collectionId: 'P024',
+        title: '秋山疊翠 軸',
+        author: '朱叔重',
+        time: '元'
       },
       {
         id: '2',
