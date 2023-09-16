@@ -10,7 +10,6 @@
         :breakpoints="{ 768: { slidesPerView: 2 } }"
         navigation="true"
       >
-<<<<<<< Updated upstream
         <swiper-slide class="w-[300px]">
           <figure class="w-full h-[210px] lg:h-[360px] bg-gradient-to-b from-dark/80 to-dark/90">
             <img
@@ -36,28 +35,6 @@
       class="md:flex justify-between items-center border-black border-solid border-0 border-b mb-2"
     >
       <div class="text-dark-600 font-semibold">
-=======
-
-      <swiper-slide class="w-[300px]">
-        <figure class="w-full h-[210px] lg:h-[360px]">
-          <img class="w-full h-full object-cover object-center" :src='`/images/collection/collection-P001.jpg`' alt="P001">
-        </figure>
-      </swiper-slide>
-      <swiper-slide>
-        <figure class="w-full h-[210px] lg:h-[360px]">
-          <img class="w-full h-full object-cover object-center" :src='`/images/collection/collection-P002.jpg`' alt="P002">
-        </figure>
-      </swiper-slide>
-      <swiper-slide>
-        <figure class="w-full h-[210px] lg:h-[360px]">
-          <img class="w-full h-full object-cover object-center" :src='`/images/collection/collection-P003.jpg`' alt="P003">
-        </figure>
-      </swiper-slide>
-    </swiper-container>
-    <h2 class="text-xl lg:text-3xl font-bold">元朱叔重秋山疊翠 軸</h2>
-    <div class="flex flex-col lg:flex-row justify-between border-black border-solid border-0 border-b py-[15px] mb-6">
-      <div class="text-dark-600 mb-6 lg:mb-0">
->>>>>>> Stashed changes
         <span class="mr-4">朱叔重</span>
         <span class="text-sm">元順帝至正二十五年(1365)</span>
       </div>
