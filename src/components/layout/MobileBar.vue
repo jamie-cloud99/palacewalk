@@ -20,7 +20,7 @@
         </button>
         <div
           :class="menuClass.notice"
-          class="fixed left-0 right-0 bottom-15 text-dark transition-all duration-300"
+          class="fixed left-0 right-0 bottom-15 text-dark transition-all duration-300 sm:px-10"
         >
           <NoticeDropdown />
         </div>
