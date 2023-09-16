@@ -15,7 +15,7 @@
       </div>
       <h2 class="text-4xl font-bold mb-6">清 翠玉白菜</h2>
       <div
-        class="max-h-[600px] lg:max-h-[350px] scrollbar-thin scrollbar-thumb-dark-200 scrollbar-track-rounded scrollbar-thumb-rounded overflow-y-scroll leading-7 space-y-4"
+        class="max-h-[600px] md:max-h-[1000px] lg:max-h-[800px] xl:h-[900px] 2xl:h-[1000px] scrollbar-thin scrollbar-thumb-dark-200 scrollbar-track-rounded scrollbar-thumb-rounded overflow-y-scroll leading-7 space-y-4"
       >
         <p>
           這件與真實白菜相似度幾乎百分百的作品，是由翠玉所琢碾而成，親切的題材、潔白的菜身與翠綠的葉子，都讓人感覺十分熟悉而親近，別忘了看看菜葉上停留的兩隻昆蟲，它們可是寓意多子多孫的螽斯和蝗蟲。
@@ -33,7 +33,7 @@
           不過相信無論是此位宮廷作坊中的工匠，或是製作翠玉白菜的玉匠，都只是發揮創意、巧藝，為順應贊助者喜好而創作，但是由於並未留下相關的資料記載，也留給觀者更多想像的空間。
         </p>
 
-        <div class="py-3 pr-3">
+        <div class="pt-3 pb-40 md:pb-60 pr-3">
           <img class="w-full h-auto" src="/images/collection/collection-U001.jpg" alt="" />
         </div>
       </div>
