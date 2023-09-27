@@ -13,12 +13,12 @@
     />
     <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
       <h3 class="font-semibold text-xl line-clamp-1 mb-1">{{ exhibitionItem.title }}</h3>
-      <p class="font-medium">{{ exhibitionItem.startDate }} - {{ exhibitionItem.endDate }}</p>
+      <p class="font-medium">{{ usePeriod(exhibitionItem.startDate, exhibitionItem.endDate)}}</p>
     </div>
 
     <RouterLink
       class="stretched-link"
-      :to="{ name: 'exhibitionIntro', params: { exhibitionId: exhibitionItem.exhibitionId } }"
+      :to="{ name: 'exhibitionIntro', params: { exhibitionId: exhibitionItem.id } }"
     />
   </div>
 </template>
@@ -27,6 +27,7 @@
 import { toRefs, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMemberStore } from '../../stores/memberStore'
+import { usePeriod } from '../../composables/format';
 
 const props = defineProps({
   exhibitionItem: Object
