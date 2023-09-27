@@ -48,7 +48,13 @@
 <script setup>
 import { reactive, computed, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { useMemberStore } from '../stores/memberStore';
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
+import { storeToRefs } from 'pinia';
+
+const memberStore = useMemberStore()
+const { isLoggedIn } = storeToRefs(memberStore)
+const { checkLogin } = memberStore
 
 const menuList = reactive([
   {
@@ -70,7 +76,6 @@ const menuList = reactive([
     title: '登出'
   }
 ])
-
 const route = useRoute()
 const router = useRouter()
 
@@ -107,4 +112,18 @@ const changeMenuItem = (page) => {
     curPage.value = page
   }
 }
+
+checkLogin()
+
+watch (
+  () => isLoggedIn,
+  () => {
+    if(!isLoggedIn.value) {
+      router.push('/')
+    }
+  },
+  {immediate: true }
+)
+
+
 </script>

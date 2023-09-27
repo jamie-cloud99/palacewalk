@@ -39,8 +39,12 @@
               type="button"
               class="text-2xl lg:text-[28px] p-2 transition-all duration-300 hover:text-primary"
               @click="enterMemberSpace('member')"
-            >
-              <i class="fa-regular fa-circle-user"></i>
+            > 
+            <div v-if="isLoggedIn"  class="h-[42px] flex items-center">
+            <img :src="member.imageUrl" :alt="member.name" class="w-9 h-9 object-cover rounded-full">
+          </div>
+              
+              <i v-else class="fa-regular fa-circle-user"></i>
             </button>
             <div
               :class="menuClass.member"
@@ -89,7 +93,7 @@ const signInModal = ref(null)
 const searchModal = ref(null)
 const memberStore = useMemberStore()
 const statusStore = useStatusStore()
-const { isLoggedIn } = storeToRefs(memberStore)
+const { isLoggedIn, member } = storeToRefs(memberStore)
 const { isOpen, menuClass } = storeToRefs(statusStore)
 const { toggleMenu } = statusStore
 

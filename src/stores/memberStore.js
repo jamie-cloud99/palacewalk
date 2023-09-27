@@ -1,14 +1,16 @@
 import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
+import axios from 'axios'
+
+const { VITE_JSON_SERVER, VITE_API, VITE_PATH } = import.meta.env
 
 export const useMemberStore = defineStore('member', () => {
   const memberList = ref([{}])
   const isLoggedIn = ref(false)
-
+  const tempMember = ref({})
   const member = ref({
-    name: '文化探索者',
-    email: 'abcd1@gmail.com',
-    password: 'er35660d32'
+    imageUrl:
+      'https://images.unsplash.com/photo-1638803040283-7a5ffd48dad5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80'
   })
   const favoriteList = ref({
     exhibitions: [
@@ -49,7 +51,7 @@ export const useMemberStore = defineStore('member', () => {
           exhibitionId: 'U005',
           title: '釉瓷之美：太平有象瓷尊特展',
           startDate: '2023.5.20',
-          endDate: '2024.8.19',
+          endDate: '2024.8.19'
         }
       }
     ],
@@ -184,7 +186,93 @@ export const useMemberStore = defineStore('member', () => {
     }
   }
 
+  // todo upload photo
+  const uploadImage = (imgFile) => {
+    const api = `${VITE_API}api/${VITE_PATH}/admin/upload`
+    // const img = this.$refs.fileInput.files[0]
+    const formData = new FormData()
+    formData.append('file-to-upload', img)
+
+    axios.post(api, formData).then((res) => {
+      if (res.data.success) {
+      }
+    })
+  }
+  const signUp = async (user) => {
+    const apiUrl = `${VITE_JSON_SERVER}users`
+    try {
+      await axios.post(apiUrl, user)
+      const account = { email: user.email, password: user.password }
+      logIn(account)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const logIn = async (account) => {
+    const apiUrl = `${VITE_JSON_SERVER}login`
+    try {
+      const res = await axios.post(apiUrl, account)
+      member.value = res.data.user
+      localStorage.setItem('userId', res.data.user.id)
+      isLoggedIn.value = true
+      console.log(isLoggedIn.value)
+      const token = res.data.accessToken
+      //set cookie expireation to 1 hour
+      document.cookie = `palaceToken=${token};max-age=3600;`
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const logOut = () => {
+    isLoggedIn.value = false
+    document.cookie = 'palaceToken=;max-age=0;'
+    member.value = {}
+  }
+
+  const getToken = () => {
+    const token = document.cookie.replace(/(?:(?:^|.*;\s*)palaceToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
+    if (token) {
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`
+      isLoggedIn.value = true
+    } else {
+      isLoggedIn.value = false
+    }
+  }
+
+  const fetchMember = async () => {
+    const id = localStorage.getItem('userId')
+    const apiUrl = `${VITE_JSON_SERVER}600/users/${id}`
+    try {
+      const res = await axios.get(apiUrl)
+      member.value = res.data
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const UpdateMember = async (user) => {
+    // todo: check the orginPassword
+    const id = localStorage.getItem('userId')
+    const apiUrl = `${VITE_JSON_SERVER}600/users/${id}`
+    try {
+      await axios.patch(apiUrl, user)
+      await fetchMember()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const checkLogin = async () => {
+    getToken()
+    if (isLoggedIn.value) {
+      await fetchMember()
+    }
+  }
+
   return {
+    tempMember,
     member,
     pages,
     memberList,
@@ -192,6 +280,13 @@ export const useMemberStore = defineStore('member', () => {
     favExhibitions,
     favCollections,
     turnPage,
-    saveFavorites
+    saveFavorites,
+    uploadImage,
+    signUp,
+    logIn,
+    getToken,
+    checkLogin,
+    logOut,
+    UpdateMember
   }
 })
