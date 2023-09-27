@@ -45,7 +45,11 @@
       </div>
       <div class="col-span-9">
         <ul class="grid grid-cols-12 gap-4">
-          <li v-for="item in exhibitList" :key="item.id" class="col-span-12 md:col-span-6">
+          <li
+            v-for="item in exhibitionList"
+            :key="item.exhibitionId"
+            class="col-span-12 md:col-span-6"
+          >
             <ExhibitionListItem :exhibition-item="item" />
           </li>
         </ul>
@@ -63,8 +67,14 @@ import SortList from '../components/layout/SortList.vue'
 import ExhibitionListItem from '../components/exhibition/ExhibitionListItem.vue'
 import BackgroundComponent from '../components/background/BackgroundComponent.vue'
 
+import { useExhibitionStore } from '../stores/exhibitsStore'
+import { storeToRefs } from 'pinia'
+
 const route = useRoute()
 const router = useRouter()
+const exhibitionStore = useExhibitionStore()
+const { exhibitionList } = storeToRefs(exhibitionStore)
+const { fetchExhibitionsAll } = exhibitionStore
 
 const breadList = reactive([
   {
@@ -137,6 +147,8 @@ const exhibitList = ref([
     endDate: '2024.8.19'
   }
 ])
+
+fetchExhibitionsAll()
 </script>
 
 <style>
