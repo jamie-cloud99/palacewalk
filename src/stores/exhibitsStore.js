@@ -1,12 +1,17 @@
 import { ref } from 'vue'
-import { defineStore } from 'pinia'
+import { defineStore, storeToRefs } from 'pinia'
 import axios from 'axios'
+import { useCollectionStore } from './collectionStore'
 
 const { VITE_JSON_SERVER } = import.meta.env
 
 export const useExhibitionStore = defineStore('exhibition', () => {
   const exhibitionList = ref([])
   const exhibition = ref({})
+  const collectionStore = useCollectionStore()
+  const { fetchCollectionsAll } = collectionStore
+  const { collectionsAll } = storeToRefs(collectionStore)
+  const exhibitionCollections = ref([])
 
   const pages = ref({
     totalPages: 3,
@@ -34,14 +39,30 @@ export const useExhibitionStore = defineStore('exhibition', () => {
   }
 
   const fetchExhibition = async (id) => {
-    const apiUrl = `${VITE_JSON_SERVER}exhibitions/${id}`
+    const exhibtionApiUrl = `${VITE_JSON_SERVER}exhibitions/${id}`
     try {
-      const res = await axios.get(apiUrl)
+      const res = await axios.get(exhibtionApiUrl)
       exhibition.value = res.data
+      fetchExhibitionCollections(res.data.id)
     } catch (error) {
       console.log(error)
     }
   }
 
-  return { pages, exhibitionList, exhibition, turnPage, fetchExhibitionsAll, fetchExhibition }
+  const fetchExhibitionCollections = async(id) => {
+    if(collectionsAll.value.length === 0) await fetchCollectionsAll()
+    const exhibitCollectionsApi = `${VITE_JSON_SERVER}exhibitionCollections?exhibitionId=${id}`
+  try {
+     const res = await axios.get(exhibitCollectionsApi)
+     console.log(res)
+    const collectionIdList = res.data[0].collectionId
+    exhibitionCollections.value = collectionsAll.value.filter(collection => collectionIdList.some(id => id === collection.id))
+    console.log(exhibitionCollections.value)
+  } catch (error) {
+    console.log(error)
+  }
+   
+  }
+
+  return { pages, exhibitionList, exhibition,exhibitionCollections, turnPage, fetchExhibitionsAll, fetchExhibition, fetchExhibitionCollections }
 })

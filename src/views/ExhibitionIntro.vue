@@ -11,11 +11,11 @@
         </h3>
         <hr class="border-b border-dark-400 lg:border-dark" />
         <div class="mb-6 lg:mb-20">
-          <SortList
+          <SideMenu
             :menu="menuContent"
             :selectedOption="curMenuItem"
             @select-item="changeMenuItem"
-          ></SortList>
+          />
         </div>
         <div class="hidden lg:block">
           <h3 class="flex flex-col text-lg">
@@ -51,7 +51,9 @@
         <div class="flex flex-col justify-between mb-8 lg:flex-row">
           <div class="mb-4 lg:mb-0">
             <h2 class="text-2xl font-bold mb-4">{{ exhibition.title }}</h2>
-            <time datetime="" class="font-bold">{{ usePeriod(exhibition.startDate, exhibition.endDate) }}</time>
+            <time datetime="" class="font-bold">{{
+              usePeriod(exhibition.startDate, exhibition.endDate)
+            }}</time>
           </div>
           <div class="flex flex-row-reverse justify-between lg:flex-col lg:justify-start">
             <div class="flex mb-2">
@@ -99,7 +101,7 @@
               placeholder="新增留言"
             />
             <button type="button" class="absolute right-4 top-2 hover:text-primary">
-              <i class="fa-solid fa-paper-plane "></i>
+              <i class="fa-solid fa-paper-plane"></i>
             </button>
           </div>
           <ul class="space-y-5">
@@ -171,17 +173,20 @@
 <script setup>
 import { ref, reactive, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { usePeriod} from '../composables/format'
+import { usePeriod } from '../composables/format'
 import ExhibitionBanner from '../components/exhibition/ExhibitionBanner.vue'
-import SortList from '../components/layout/SortList.vue'
+import SideMenu from '../components/layout/SideMenu.vue'
 import CollectionSlides from '../components/exhibition/CollectionSlides.vue'
 import BackgroundComponent from '../components/background/BackgroundComponent.vue'
 
 import { storeToRefs } from 'pinia'
 import { useExhibitionStore } from '../stores/exhibitsStore'
+import { useRouterStore } from '../stores/routerStore'
+
+const routerStore = useRouterStore()
+const { exhibitionId } = storeToRefs(routerStore)
 
 const router = useRouter()
-const route = useRoute()
 
 const breadList = reactive([
   {
@@ -222,9 +227,6 @@ const curBannerContent = computed(() => {
   return { title: `展覽空間 — ${breadList[breadList.length - 1].title}`, breadList }
 })
 
-const routeId = computed(() => {
-  return route.params.exhibitionId
-})
 
 const exhibitionStore = useExhibitionStore()
 const { exhibition } = storeToRefs(exhibitionStore)
@@ -236,14 +238,10 @@ const toggleReply = (id) => {
   isOpen.value = isOpen.value === id ? '' : id
 }
 
-fetchExhibition(routeId.value)
-
-
-
+fetchExhibition(exhibitionId.value)
 </script>
 
 <style>
-
 .content ol {
   list-style-type: decimal;
   padding-left: 24px;
