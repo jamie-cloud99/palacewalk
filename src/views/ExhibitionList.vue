@@ -11,11 +11,11 @@
         </h3>
         <hr class="border-b border-dark-400 lg:border-dark" />
         <div class="mb-6 lg:mb-20">
-          <SortList
+          <SideMenu
             :menu="menuContent"
             :selectedOption="curMenuItem"
             @select-item="changeMenuItem"
-          ></SortList>
+          />
         </div>
         <div class="hidden lg:block">
           <h3 class="flex flex-col text-lg">
@@ -53,7 +53,6 @@
             <ExhibitionListItem :exhibition-item="item" />
           </li>
         </ul>
-        <!-- <PageComponent :pages="pages" @change="turnPage" /> -->
       </div>
     </div>
   </div>
@@ -63,7 +62,7 @@
 import { computed, reactive, ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import ExhibitionBanner from '../components/exhibition/ExhibitionBanner.vue'
-import SortList from '../components/layout/SortList.vue'
+import SideMenu from '../components/layout/SideMenu.vue'
 import ExhibitionListItem from '../components/exhibition/ExhibitionListItem.vue'
 import BackgroundComponent from '../components/background/BackgroundComponent.vue'
 
@@ -110,43 +109,6 @@ const changeMenuItem = (item) => {
   breadList[breadList.length - 1].title = item.title
   router.push({ path: `${route.path}`, query: { period: item.title } })
 }
-const exhibitList = ref([
-  {
-    id: '1',
-    exhibitionId: 'U001',
-    title: '士拿乎—清宮鼻煙壺的時尚風潮',
-    startDate: '2023.6.20',
-    endDate: '2024.3.28'
-  },
-  {
-    id: '2',
-    exhibitionId: 'U002',
-    title: '風格故事—琺瑯彩瓷特展 ',
-    startDate: '2023.7.7',
-    endDate: '2024.7.16'
-  },
-  {
-    id: '3',
-    exhibitionId: 'U003',
-    title: '故宮經典-藝術與文化策展',
-    startDate: '2023.6.20',
-    endDate: '2024.3.28'
-  },
-  {
-    id: '4',
-    exhibitionId: 'U004',
-    title: '繽彩燒窯—開光雙連瓶藝術展',
-    startDate: '2023.6.24',
-    endDate: '2024.5.28'
-  },
-  {
-    id: '5',
-    exhibitionId: 'U005',
-    title: '釉瓷之美：太平有象瓷尊特展',
-    startDate: '2023.5.20',
-    endDate: '2024.8.19'
-  }
-])
 
 fetchExhibitionsAll()
 </script>
