@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 
 export const useSlideStore = defineStore('slide', () => {
   const swiperEl = ref(null)
-
+  const curSlideShowed = ref(1)
   const slides = ref({
     totalSlides: 4,
     curSlide: 1,
@@ -30,5 +30,11 @@ export const useSlideStore = defineStore('slide', () => {
     slides.value.slideShowed = showed
   }
 
-  return { swiperEl, slides, goNext, goPrev, getSlide }
+  const turnSlide = () => {
+    slides.value.havePrev = slides.value.curSlide > 1
+    slides.value.haveNext =
+      slides.value.curSlide < slides.value.totalSlides - (curSlideShowed.value - 1)
+  }
+
+  return { swiperEl, slides, curSlideShowed, goNext, goPrev, getSlide, turnSlide }
 })
