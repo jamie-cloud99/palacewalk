@@ -31,10 +31,9 @@ export const useSlideStore = defineStore('slide', () => {
   }
 
   const turnSlide = () => {
-    slides.value.havePrev = slides.value.curSlide <= 1 ? false : true
+    slides.value.havePrev = slides.value.curSlide > 1
     slides.value.haveNext =
-      slides.value.curSlide >= slides.value.totalSlides - (curSlideShowed.value - 1) ? false : true
-      console.log(slides.value)
+      slides.value.curSlide < slides.value.totalSlides - (curSlideShowed.value - 1)
   }
 
   return { swiperEl, slides, curSlideShowed, goNext, goPrev, getSlide, turnSlide }

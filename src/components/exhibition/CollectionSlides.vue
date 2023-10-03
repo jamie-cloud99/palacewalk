@@ -6,6 +6,18 @@
     :breakpoints="{ 768: { slidesPerView: 2 }, 1280: { slidesPerView: 3 } }"
     ref="swiperEl"
   >
+    <swiper-slide v-for="item in exhibitionCollections" :key="item.id">
+      <figure class="exhibit-item">
+        <img
+          class="w-full h-full object-cover object-centers"
+          :src="item.images.main"
+          alt="item.title"
+        />
+        <figcaption class="exhibit-item-title">
+          {{ item.title }}
+        </figcaption>
+      </figure>
+    </swiper-slide>
     <swiper-slide>
       <figure class="exhibit-item">
         <img
@@ -88,45 +100,49 @@
 </template>
 
 <script setup>
-import { onMounted, watch } from 'vue'
-import { useSlideStore } from '@/stores/slideStore'
 import { storeToRefs } from 'pinia'
-
+import { onMounted, watch, nextTick, ref } from 'vue'
+import { useSlideStore } from '@/stores/slideStore'
 import { useExhibitionStore } from '@/stores/exhibitsStore'
-import { useRouterStore } from '@/stores/routerStore'
 
 const exhbitionStore = useExhibitionStore()
-
-const routerStore = useRouterStore()
-const { exhibitionId } = storeToRefs(routerStore)
+const { exhibitionCollections } = storeToRefs(exhbitionStore)
 
 const slideStore = useSlideStore()
 const { swiperEl, slides, curSlideShowed } = storeToRefs(slideStore)
-const { goPrev, goNext, getSlide, turnSlide } = slideStore
+const { goPrev, goNext, turnSlide } = slideStore
 
-
-
-// totolSlides, rwdSlidePerView
-getSlide(4, {
-  default: 1,
-  md: 2,
-  lg: 3
+const breakpoints = ref({
+  md: 768,
+  lg: 1280
 })
+
+watch(
+  () => exhibitionCollections,
+  async () => {
+    await nextTick()
+    swiperEl.value.swiper.update()
+  },
+  { deep: true }
+)
 
 watch(() => slides.value.curSlide, turnSlide)
 
-const changeSlidesPerView = () => {
-  if (window.innerWidth < 768) {
-      curSlideShowed.value = slides.value.slideShowed.default
-    } else if (window.innerWidth < 1280) {
-      curSlideShowed.value = slides.value.slideShowed.md
-    } else {
-      curSlideShowed.value = slides.value.slideShowed.lg
-    }
+const changeSlidesPerView = (windowWidth) => {
+  if (windowWidth < breakpoints.value?.md) {
+    curSlideShowed.value = slides.value.slideShowed.default
+  } else if (windowWidth < breakpoints.value?.lg) {
+    curSlideShowed.value = slides.value.slideShowed.md
+  } else {
+    curSlideShowed.value = slides.value.slideShowed.lg
+  }
 }
 
 onMounted(() => {
-  window.addEventListener('resize', () => changeSlidesPerView())
+  window.addEventListener('resize', () => {
+    const windowWidth = window.innerWidth
+    changeSlidesPerView(windowWidth)
+  })
 })
 </script>
 

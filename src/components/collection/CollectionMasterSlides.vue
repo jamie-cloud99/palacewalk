@@ -73,6 +73,12 @@ const slides = ref({
   }
 })
 
+const breakpoints = ref({
+  sm: 576,
+  md: 1024,
+  lg: 1280
+})
+
 const goNext = () => {
   swiper2.value.swiper.slideNext()
   slides.value.curSlide++
@@ -108,12 +114,12 @@ watch(
 
 watch(() => slides.value.curSlide, turnSlide)
 
-const changeSlidesPerView = () => {
-  if (window.innerWidth < 576) {
+const changeSlidesPerView = (windowWidth) => {
+  if (windowWidth < breakpoints.value?.sm) {
     curSlideShowed.value = slides.value.slideShowed.default
-  } else if (window.innerWidth < 1024) {
+  } else if (windowWidth < breakpoints.value?.md) {
     curSlideShowed.value = slides.value.slideShowed.md
-  } else if (window.innerWidth < 1280) {
+  } else if (windowWidth < breakpoints.value?.lg) {
     curSlideShowed.value = slides.value.slideShowed.lg
   } else {
     curSlideShowed.value = slides.value.slideShowed.xl
@@ -121,6 +127,9 @@ const changeSlidesPerView = () => {
 }
 
 onMounted(() => {
-  window.addEventListener('resize', () => changeSlidesPerView())
+  window.addEventListener('resize', () => {
+    const windowWidth = window.innerWidth
+    changeSlidesPerView(windowWidth)
+  })
 })
 </script>
