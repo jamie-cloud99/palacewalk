@@ -3,7 +3,7 @@
 
   <div class="container overflow-hidden">
     <div class="mb-6 lg:mb-10 relative px-6 lg:px-10">
-      <CollectionImageSlides :item="collection" />
+      <CollectionImageSlides />
     </div>
     <article class="px-2 md:w-4/5 2xl:w-3/5 mx-auto mb-3 lg:mb-4">
       <h2 class="text-2xl lg:text-3xl font-bold mb-1 md:mb-0">{{ collection.title }}</h2>
@@ -52,9 +52,7 @@
       <div class="px-2 md:w-4/5 2xl:w-3/5 mx-auto">
         <ul class="grid grid-cols-12">
           <li v-for="item in collectionDetail" :key="item.title" class="col-span-12 md:col-span-6">
-            <div
-              class="flex gap-y-2 pt-6 pb-3 border-b border-dark-800 border-dashed h-full"
-            >
+            <div class="flex gap-y-2 pt-6 pb-3 border-b border-dark-800 border-dashed h-full">
               <h4 class="w-20 font-semibold shrink-0">{{ item.title }}</h4>
               <p class="px-2">{{ item.content }}</p>
             </div>
@@ -91,9 +89,11 @@
 </template>
 
 <script setup>
+import { watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRouterStore } from '../stores/routerStore'
 import { useCollectionStore } from '../stores/collectionStore'
+import { useSlideStore } from '../stores/slideStore'
 import CollectionBanner from '../components/collection/CollectionBanner.vue'
 import CollectionMasterSlides from '../components/collection/CollectionMasterSlides.vue'
 import BackgroundComponent from '../components/background/BackgroundComponent.vue'
@@ -107,7 +107,25 @@ const routerStore = useRouterStore()
 const { goPreviousPage } = routerStore
 const { collectionId } = storeToRefs(routerStore)
 
-fetchCollection(collectionId.value)
+const slideStore = useSlideStore()
+const { getSlide } = slideStore
+const { slides } = storeToRefs(slideStore)
+
+watch(
+  () => collectionId,
+  () => {
+    slides.value.curSlide = 1
+  },
+  { immediate: true }
+)
+
+;(async () => {
+  await fetchCollection(collectionId.value)
+  getSlide(collection.value.images.list.length + 1, {
+    default: 1,
+    md: 2
+  })
+})()
 </script>
 
 <style scoped>

@@ -1,4 +1,4 @@
-import { defineStore, storeToRefs } from 'pinia'
+import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import axios from 'axios'
 import { useRoute, useRouter } from 'vue-router'
@@ -8,7 +8,6 @@ const { VITE_JSON_SERVER } = import.meta.env
 
 export const useCollectionStore = defineStore('collection', () => {
   const pageStore = usePageStore()
-  const { pages } = storeToRefs(pageStore)
   const { turnPage } = pageStore
 
   const route = useRoute()
@@ -161,10 +160,10 @@ export const useCollectionStore = defineStore('collection', () => {
     curCategory.value = category
     router.push({ path: `${route.path}`, query: { category: category.title } })
     fetchPageCollections(category.id)
+    turnPage(1)
   }
 
   return {
-    pages,
     collectionsAll,
     collectionList,
     collection,
@@ -173,7 +172,6 @@ export const useCollectionStore = defineStore('collection', () => {
     route,
     collectionDetail,
     masterPeiceList,
-    turnPage,
     fetchCollectionsAll,
     fetchPageCollections,
     fetchCategoryList,

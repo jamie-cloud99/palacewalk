@@ -172,7 +172,7 @@
 </template>
 <script setup>
 import { ref, reactive, computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 import { usePeriod } from '../composables/format'
 import ExhibitionBanner from '../components/exhibition/ExhibitionBanner.vue'
 import SideMenu from '../components/layout/SideMenu.vue'
@@ -182,9 +182,13 @@ import BackgroundComponent from '../components/background/BackgroundComponent.vu
 import { storeToRefs } from 'pinia'
 import { useExhibitionStore } from '../stores/exhibitsStore'
 import { useRouterStore } from '../stores/routerStore'
+import { useSlideStore } from '../stores/slideStore'
 
 const routerStore = useRouterStore()
 const { exhibitionId } = storeToRefs(routerStore)
+
+const slideStore = useSlideStore()
+const { getSlide } = slideStore
 
 const router = useRouter()
 
@@ -227,9 +231,8 @@ const curBannerContent = computed(() => {
   return { title: `展覽空間 — ${breadList[breadList.length - 1].title}`, breadList }
 })
 
-
 const exhibitionStore = useExhibitionStore()
-const { exhibition } = storeToRefs(exhibitionStore)
+const { exhibition, exhibitionCollections } = storeToRefs(exhibitionStore)
 const { fetchExhibition } = exhibitionStore
 
 const isOpen = ref(1)
@@ -238,7 +241,14 @@ const toggleReply = (id) => {
   isOpen.value = isOpen.value === id ? '' : id
 }
 
-fetchExhibition(exhibitionId.value)
+;(async () => {
+  await fetchExhibition(exhibitionId.value)
+  getSlide(exhibitionCollections.value.length, {
+    default: 1,
+    md: 2,
+    lg: 3
+  })
+})()
 </script>
 
 <style>
