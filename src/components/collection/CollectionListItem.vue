@@ -20,7 +20,7 @@
     <!-- * saveFavorites 第一個參數之後打 api 應該會改成傳 id，暫時先傳整個物件 -->
     <button
       v-if="showFavIcon"
-      @click="saveFavorites(collectionItem, 'collection')"
+      @click="saveFavorites(collectionItem.id, 'collections')"
       type="button"
       class="absolute top-2 right-2 text-xl z-[1] hover:text-primary"
     >

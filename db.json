@@ -111,7 +111,9 @@
       },
       "images": {
         "main": "/images/collection/collection-P015.jpg",
-        "list": ["/images/collection/collection-P015.jpg"]
+        "list": [
+          "/images/collection/collection-P015.jpg"
+        ]
       }
     },
     {
@@ -403,7 +405,9 @@
       },
       "images": {
         "main": "/images/collection/collection-K005.jpg",
-        "list": ["/images/collection/collection-K005.jpg"]
+        "list": [
+          "/images/collection/collection-K005.jpg"
+        ]
       }
     },
     {
@@ -532,7 +536,9 @@
       },
       "images": {
         "main": "/images/collection/collection-P026.jpg",
-        "list": ["/images/collection/collection-P026.jpg"]
+        "list": [
+          "/images/collection/collection-P026.jpg"
+        ]
       }
     },
     {
@@ -745,7 +751,9 @@
       },
       "images": {
         "main": "/images/collection/collection-U015.jpg",
-        "list": ["/images/collection/collection-U015.jpg"]
+        "list": [
+          "/images/collection/collection-U015.jpg"
+        ]
       }
     },
     {
@@ -870,7 +878,12 @@
   "exhibitionCollections": [
     {
       "exhibitionId": 1,
-      "collectionId": [3, 5, 11, 12]
+      "collectionId": [
+        3,
+        5,
+        11,
+        12
+      ]
     }
   ],
   "users": [
@@ -890,5 +903,67 @@
     }
   ],
   "comments": [],
-  "replys": []
+  "replys": [],
+  "favorites": [
+    {
+      "userId": 2,
+      "savedAt": 1696338840,
+      "exhibitionId": "1",
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696343108,
+      "exhibitionId": "2",
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696343113,
+      "exhibitionId": "3",
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696345278,
+      "collectionId": "2",
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696345282,
+      "collectionId": "8",
+      "id": 5
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696345285,
+      "collectionId": "10",
+      "id": 6
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696345800,
+      "collectionId": "7",
+      "id": 7
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696346983,
+      "exhibitionId": "5",
+      "id": 8
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696346999,
+      "collectionId": "25",
+      "id": 9
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696381577,
+      "collectionId": "17",
+      "id": 10
+    }
+  ]
 }

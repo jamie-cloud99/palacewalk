@@ -6,6 +6,7 @@
 </template>
 
 <script setup>
+import { storeToRefs } from 'pinia'
 import { RouterView, useRoute } from 'vue-router'
 import HeaderComponent from './components/layout/HeaderComponent.vue'
 import FooterComponent from './components/layout/FooterComponent.vue'
@@ -14,7 +15,11 @@ import { useMemberStore } from './stores/memberStore'
 
 const route = useRoute()
 const memberStore = useMemberStore()
-const { checkLogin } = memberStore
+const { checkLogin, fetchFavorites } = memberStore
+const { isLoggedIn } = storeToRefs(memberStore)
 
-checkLogin()
+;(async () => {
+  await checkLogin()
+  if (isLoggedIn.value) fetchFavorites()
+})()
 </script>

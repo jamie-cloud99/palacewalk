@@ -3,7 +3,7 @@
     <button
       type="button"
       class="absolute top-0 right-0 p-2 text-xl z-[1] hover:text-primary"
-      @click="saveFavorites(exhibitionItem, 'exhibition')"
+      @click="saveFavorites(exhibitionItem.id, 'exhibitions')"
     >
       <i class="fa-regular fa-heart" :class="{ 'fa-solid': showFavorite }"> </i>
     </button>
