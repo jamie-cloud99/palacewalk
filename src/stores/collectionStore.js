@@ -1,14 +1,15 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import axios from 'axios'
 import { useRoute, useRouter } from 'vue-router'
 import { usePageStore } from './pageStore'
+import { COLLECTION_CATEGORIES } from '../utils/constant/collection/collection'
 
 const { VITE_JSON_SERVER } = import.meta.env
 
 export const useCollectionStore = defineStore('collection', () => {
   const pageStore = usePageStore()
-  const { turnPage } = pageStore
+  const { turnPage, paginate } = pageStore
 
   const route = useRoute()
   const router = useRouter()
@@ -25,6 +26,7 @@ export const useCollectionStore = defineStore('collection', () => {
   const collectionList = ref([]) // 當前頁面渲染清單(page limit)
   const collection = ref({})
   const curCategory = ref(categoryList.value[0])
+  const categoryAllId = ref(COLLECTION_CATEGORIES.category.all)
 
   const masterPeiceList = ref([
     {
@@ -81,11 +83,16 @@ export const useCollectionStore = defineStore('collection', () => {
 
   const collectionDetail = ref([])
 
+  const totalCollections = computed(() => {
+    return collectionsAll.value.length
+  })
+
   const fetchCategoryList = async () => {
     const apiUrl = `${VITE_JSON_SERVER}collectionCategories`
     try {
       const res = await axios.get(apiUrl)
       if (categoryList.value.length === 1) categoryList.value = [...categoryList.value, ...res.data]
+      await updateCategoryNum()
     } catch (error) {
       console.log(error)
     }
@@ -101,14 +108,24 @@ export const useCollectionStore = defineStore('collection', () => {
     }
   }
 
-  const fetchPageCollections = async (categoryId = 100, curPage = 1, limit = 12) => {
-    const apiUrl =
-      categoryId === 100
-        ? `${VITE_JSON_SERVER}collections?_page=${curPage}&_limit=${limit}`
-        : `${VITE_JSON_SERVER}collections?collectionCategoryId=${categoryId}&?_page=${curPage}&_limit=${limit}`
+  const fetchPageCollections = async (
+    categoryId = categoryAllId.value,
+    curPage = 1,
+    limit = 12
+  ) => {
+    const isCategoryAll = categoryId === categoryAllId.value
+    const apiUrl = isCategoryAll
+      ? `${VITE_JSON_SERVER}collections?_page=${curPage}&_limit=${limit}`
+      : `${VITE_JSON_SERVER}collections?collectionCategoryId=${categoryId}`
     try {
       const res = await axios.get(apiUrl)
-      collectionList.value = res.data
+      if (isCategoryAll) {
+        collectionList.value = res.data
+        if (collectionsAll.value.length === 0) await fetchCollectionsAll()
+        paginate(collectionsAll.value, curPage)
+      } else {
+        collectionList.value = paginate(res.data, curPage)
+      }
     } catch (error) {
       console.log(error)
     }
@@ -154,6 +171,17 @@ export const useCollectionStore = defineStore('collection', () => {
     } catch (error) {
       console.log(error)
     }
+  }
+
+  const updateCategoryNum = async () => {
+    if (totalCollections.value === 0) await fetchCollectionsAll()
+    categoryList.value[0].num = totalCollections.value
+    collectionsAll.value.forEach((element) => {
+      const index = categoryList.value.findIndex(
+        (category) => category.id === element.collectionCategoryId
+      )
+      categoryList.value[index].num = (categoryList.value[index].num || 0) + 1
+    })
   }
 
   const selectCategory = (category) => {
