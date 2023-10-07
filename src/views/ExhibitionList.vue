@@ -107,6 +107,7 @@ watch(
   () => {
     if (route.value?.query?.period) {
       curMenuItem.value = menuContent.value.find((item) => item.title === route.value.query.period)
+      breadList[breadList.length - 1].title = curMenuItem.value.title
     }
     updateExhibitionPeriod(curMenuItem.value)
   },
