@@ -1,7 +1,12 @@
 import { ref } from 'vue'
-import { defineStore } from 'pinia'
+import { defineStore, storeToRefs } from 'pinia'
+import { useCollectionStore } from './collectionStore'
 
 export const useHomeStore = defineStore('home', () => {
+  const collectionStore = useCollectionStore()
+  const { fetchCollectionsAll } = collectionStore
+  const { collectionsAll } = storeToRefs(collectionStore)
+
   const newsList = ref([
     {
       category: '活動公告',
@@ -63,121 +68,134 @@ export const useHomeStore = defineStore('home', () => {
     }
   ])
 
-  const featuredCollectionList = ref([
-    {
-      id: '13',
-      collectionId: 'P013',
-      title: '方壺圖 軸',
-      author: '文伯仁',
-      time: '明'
-    },
-    {
-      id: '14',
-      collectionId: 'P014',
-      title: '畫春花三種 軸',
-      author: '錢維城',
-      time: '清'
-    },
-    {
-      id: '1',
-      collectionId: 'U001',
-      title: '翠玉白菜',
-      author: '不詳',
-      time: '明末清初'
-    },
-    {
-      id: '15',
-      collectionId: 'P015',
-      title: '奔馬行空　單片',
-      author: '徐悲鴻',
-      time: '民國'
-    },
-    {
-      id: '16',
-      collectionId: 'P016',
-      title: '翠巘高秋圖　軸',
-      author: '愛新覺羅弘旿',
-      time: '清'
-    },
-    {
-      id: '201',
-      collectionId: 'A005',
-      title: '琺瑯彩柳燕碗',
-      author: '不詳',
-      time: '清'
-    },
-    {
-      id: '17',
-      collectionId: 'P017',
-      title: '宋徽宗真蹟耄耋圖 卷',
-      author: '趙佶',
-      time: '宋'
-    },
-    {
-      id: '18',
-      collectionId: 'P018',
-      title: '畫山水 軸',
-      author: '趙孟頫',
-      time: '元'
-    },
-    {
-      id: '401',
-      collectionId: 'K004',
-      title: '緙繡九羊啟泰 軸',
-      author: '不詳',
-      time: '清'
-    },
-    {
-      id: '19',
-      collectionId: 'P019',
-      title: '漢宮春曉 卷',
-      author: '仇英',
-      time: '明'
-    },
-    {
-      id: '20',
-      collectionId: 'P020',
-      title: '具區林屋 軸',
-      author: '王蒙',
-      time: '元'
-    },
-    {
-      id: '204',
-      collectionId: 'A004',
-      title: '白套紅玻璃包袱紋鼻煙壺',
-      author: '不詳',
-      time: '清'
-    },
-    {
-      id: '21',
-      collectionId: 'P021',
-      title: '八駿圖　軸',
-      author: '郎世寧',
-      time: '清'
-    },
+  // const featuredCollectionList = ref([
+  //   {
+  //     id: '13',
+  //     collectionId: 'P013',
+  //     title: '方壺圖 軸',
+  //     author: '文伯仁',
+  //     time: '明'
+  //   },
+  //   {
+  //     id: '14',
+  //     collectionId: 'P014',
+  //     title: '畫春花三種 軸',
+  //     author: '錢維城',
+  //     time: '清'
+  //   },
+  //   {
+  //     id: '1',
+  //     collectionId: 'U001',
+  //     title: '翠玉白菜',
+  //     author: '不詳',
+  //     time: '明末清初'
+  //   },
+  //   {
+  //     id: '15',
+  //     collectionId: 'P015',
+  //     title: '奔馬行空　單片',
+  //     author: '徐悲鴻',
+  //     time: '民國'
+  //   },
+  //   {
+  //     id: '16',
+  //     collectionId: 'P016',
+  //     title: '翠巘高秋圖　軸',
+  //     author: '愛新覺羅弘旿',
+  //     time: '清'
+  //   },
+  //   {
+  //     id: '201',
+  //     collectionId: 'A005',
+  //     title: '琺瑯彩柳燕碗',
+  //     author: '不詳',
+  //     time: '清'
+  //   },
+  //   {
+  //     id: '17',
+  //     collectionId: 'P017',
+  //     title: '宋徽宗真蹟耄耋圖 卷',
+  //     author: '趙佶',
+  //     time: '宋'
+  //   },
+  //   {
+  //     id: '18',
+  //     collectionId: 'P018',
+  //     title: '畫山水 軸',
+  //     author: '趙孟頫',
+  //     time: '元'
+  //   },
+  //   {
+  //     id: '401',
+  //     collectionId: 'K004',
+  //     title: '緙繡九羊啟泰 軸',
+  //     author: '不詳',
+  //     time: '清'
+  //   },
+  //   {
+  //     id: '19',
+  //     collectionId: 'P019',
+  //     title: '漢宮春曉 卷',
+  //     author: '仇英',
+  //     time: '明'
+  //   },
+  //   {
+  //     id: '20',
+  //     collectionId: 'P020',
+  //     title: '具區林屋 軸',
+  //     author: '王蒙',
+  //     time: '元'
+  //   },
+  //   {
+  //     id: '204',
+  //     collectionId: 'A004',
+  //     title: '白套紅玻璃包袱紋鼻煙壺',
+  //     author: '不詳',
+  //     time: '清'
+  //   },
+  //   {
+  //     id: '21',
+  //     collectionId: 'P021',
+  //     title: '八駿圖　軸',
+  //     author: '郎世寧',
+  //     time: '清'
+  //   },
 
-    {
-      id: '22',
-      collectionId: 'P022',
-      title: '摹顧愷之洛神圖 卷',
-      author: '丁觀鵬',
-      time: '清'
-    },
-    {
-      id: '206',
-      collectionId: 'A006',
-      title: '金胎內填兼畫琺瑯西方仕女圖執壺',
-      author: '不詳',
-      time: '清'
-    },
-    {
-      id: '23',
-      collectionId: 'P023',
-      title: '紅牡丹　單片',
-      author: '鄭曼青',
-      time: '民國'
-    }
+  //   {
+  //     id: '22',
+  //     collectionId: 'P022',
+  //     title: '摹顧愷之洛神圖 卷',
+  //     author: '丁觀鵬',
+  //     time: '清'
+  //   },
+  //   {
+  //     id: '206',
+  //     collectionId: 'A006',
+  //     title: '金胎內填兼畫琺瑯西方仕女圖執壺',
+  //     author: '不詳',
+  //     time: '清'
+  //   },
+  //   {
+  //     id: '23',
+  //     collectionId: 'P023',
+  //     title: '紅牡丹　單片',
+  //     author: '鄭曼青',
+  //     time: '民國'
+  //   }
+  // ])
+
+  const featuredCollectionList = ref([])
+
+  const featuredCollectionIds = ref([
+    2,4,10,11,15,16,17,18,20,22,24,28,29,31,35,43,45,48,44
   ])
 
-  return { newsList, recentExhibitionList, featuredCollectionList }
+  const fetchFeaturedCollections = async () => {
+    if(collectionsAll.value.length === 0) await fetchCollectionsAll()
+    featuredCollectionList.value = collectionsAll.value.filter(collection => featuredCollectionIds.value.some(id => id === collection.id)).sort(() => Math.random() - 0.5)
+  }
+
+
+
+  return { newsList, recentExhibitionList, featuredCollectionList, fetchFeaturedCollections }
 })
