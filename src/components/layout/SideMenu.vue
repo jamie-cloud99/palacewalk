@@ -4,12 +4,12 @@
       <li v-for="item in menu" :key="item.code">
         <button
           type="button"
-          class="btn block text-center transition-all duration-300 w-full border-b border-x border-dark-400 px-2 py-3 lg:text-left lg:border-x-0"
-          :class="{ 'text-white bg-primary': selectedOption.code === item.code }"
+          class="btn block text-center transition-all duration-300 w-full border-b border-x border-dark-400 px-2 py-3 lg:text-left lg:border-x-0 "
+          :class="{ 'text-white bg-primary': selectedOption.code === item.code, 'hover:bg-dark-200': selectedOption.code!==item.code }"
           @click="emit('selectItem', item)"
         >
           {{ item.title }}
-          <!-- todo 各分類數量 (可以加上 props 決定是否要顯示) -->
+          <span v-if="showNum">（{{ item.num }}）</span>
         </button>
       </li>
     </ul>
@@ -21,9 +21,13 @@ import { toRefs } from 'vue'
 
 const props = defineProps({
   menu: Array,
-  selectedOption: Object
+  selectedOption: Object,
+  showNum: {
+    type: Boolean,
+    default: false
+  }
 })
 const emit = defineEmits(['selectItem'])
 
-const { menu, selectedOption } = toRefs(props)
+const { menu, selectedOption, showNum } = toRefs(props)
 </script>

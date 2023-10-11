@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useSlideStore = defineStore('slide', () => {
@@ -16,13 +16,19 @@ export const useSlideStore = defineStore('slide', () => {
     }
   })
 
+  const curSlidePage = computed(() => {
+    return curSlideShowed.value === 1
+      ? slides.value.curSlide
+      : Math.floor(slides.value.curSlide / curSlideShowed.value) + 1
+  })
+
   const goNext = () => {
     swiperEl.value.swiper.slideNext()
-    slides.value.curSlide++
+    slides.value.curSlide += curSlideShowed.value
   }
   const goPrev = () => {
     swiperEl.value.swiper.slidePrev()
-    slides.value.curSlide--
+    slides.value.curSlide -= curSlideShowed.value
   }
 
   const getSlide = (total, showed) => {
@@ -36,5 +42,5 @@ export const useSlideStore = defineStore('slide', () => {
       slides.value.curSlide < slides.value.totalSlides - (curSlideShowed.value - 1)
   }
 
-  return { swiperEl, slides, curSlideShowed, goNext, goPrev, getSlide, turnSlide }
+  return { swiperEl, slides, curSlideShowed, curSlidePage, goNext, goPrev, getSlide, turnSlide }
 })

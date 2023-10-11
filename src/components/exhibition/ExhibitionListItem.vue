@@ -3,13 +3,13 @@
     <button
       type="button"
       class="absolute top-0 right-0 p-2 text-xl z-[1] hover:text-primary"
-      @click="saveFavorites(exhibitionItem, 'exhibition')"
+      @click="saveFavorites(exhibitionItem.id, 'exhibitions')"
     >
       <i class="fa-regular fa-heart" :class="{ 'fa-solid': showFavorite }"> </i>
     </button>
     <img
-      :src="`/images/exhibitions/exhibition-${exhibitionItem.exhibitionId}.jpg`"
-      class="w-full h-[250px] xl:h-[320px] object-cover transition-all ease-in-out duration-300 group-hover:scale-110"
+      :src="exhibitionItem.images.sm"
+      class="w-full aspect-[4/3] object-cover transition-all ease-in-out duration-300 group-hover:scale-110"
     />
     <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
       <h3 class="font-semibold text-xl line-clamp-1 mb-1">{{ exhibitionItem.title }}</h3>

@@ -13,7 +13,8 @@
           <div class="mb-6 lg:mb-20">
             <SideMenu
               :menu="categoryList"
-              :selectedOption="curCategory"
+              :selected-option="curCategory"
+              :show-num="true"
               @select-item="selectCategory"
             />
           </div>
@@ -77,7 +78,7 @@ const updateCurCategory = () => {
 watch(
   () => route.value?.query,
   async () => {
-    await fetchCategoryList()
+    if(categoryList.value.length <= 1) await fetchCategoryList()
     await updateCurCategory()
     const queryPage = route.value?.query.page
     if (queryPage) {

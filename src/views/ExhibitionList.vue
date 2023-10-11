@@ -13,7 +13,7 @@
         <div class="mb-6 lg:mb-20">
           <SideMenu
             :menu="menuContent"
-            :selectedOption="curMenuItem"
+            :selected-option="curMenuItem"
             @select-item="changeMenuItem"
           />
         </div>
@@ -59,21 +59,23 @@
   <BackgroundComponent />
 </template>
 <script setup>
-import { computed, reactive, ref } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { computed, reactive, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import ExhibitionBanner from '../components/exhibition/ExhibitionBanner.vue'
 import SideMenu from '../components/layout/SideMenu.vue'
 import ExhibitionListItem from '../components/exhibition/ExhibitionListItem.vue'
 import BackgroundComponent from '../components/background/BackgroundComponent.vue'
-
+import { useRouterStore } from '../stores/routerStore'
 import { useExhibitionStore } from '../stores/exhibitsStore'
 import { storeToRefs } from 'pinia'
 
-const route = useRoute()
+const routerStore = useRouterStore()
+const { route } = storeToRefs(routerStore)
+
 const router = useRouter()
 const exhibitionStore = useExhibitionStore()
-const { exhibitionList } = storeToRefs(exhibitionStore)
-const { fetchExhibitionsAll } = exhibitionStore
+const { exhibitionList, menuContent, curMenuItem } = storeToRefs(exhibitionStore)
+const { updateExhibitionPeriod } = exhibitionStore
 
 const breadList = reactive([
   {
@@ -89,28 +91,28 @@ const breadList = reactive([
     path: '/exhibitions'
   }
 ])
-const menuContent = reactive([
-  {
-    code: 'recent',
-    title: '當期展覽'
-  },
-  {
-    code: 'coming',
-    title: '近期展覽'
-  }
-])
-const curMenuItem = ref(menuContent[0])
+
 const curBannerContent = computed(() => {
   return { title: `展覽空間 — ${curMenuItem.value.title}`, breadList }
 })
 
 const changeMenuItem = (item) => {
-  curMenuItem.value = item
+  updateExhibitionPeriod(item)
   breadList[breadList.length - 1].title = item.title
-  router.push({ path: `${route.path}`, query: { period: item.title } })
+  router.push({ path: `/exhibitions`, query: { period: item.title } })
 }
 
-fetchExhibitionsAll()
+watch(
+  () => route.value?.query?.period,
+  () => {
+    if (route.value?.query?.period) {
+      curMenuItem.value = menuContent.value.find((item) => item.title === route.value.query.period)
+      breadList[breadList.length - 1].title = curMenuItem.value.title
+    }
+    updateExhibitionPeriod(curMenuItem.value)
+  },
+  { immediate: true }
+)
 </script>
 
 <style>
