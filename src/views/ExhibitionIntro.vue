@@ -45,8 +45,8 @@
       </div>
       <div v-if="exhibition.id" class="col-span-9 font-semibold">
         <img
-          class="w-full h-[340px] object-cover object-center mb-2 lg:mb-4"
-          :src="`/images/exhibitions/exhibition-${exhibition.exhibitionId}.jpg`"
+          class="w-full aspect-[2/1] object-cover object-center mb-2 lg:mb-4"
+          :src="exhibition.images.lg"
         />
         <div class="flex flex-col justify-between mb-8 lg:flex-row">
           <div class="mb-4 lg:mb-0">

@@ -126,6 +126,7 @@ import ExhibitionSlides from '../components/home/ExhibitionSlides.vue'
 
 const router = useRouter()
 const homeStore = useHomeStore()
+const { fetchFeaturedCollections} = homeStore
 const { newsList, recentExhibitionList, featuredCollectionList } = storeToRefs(homeStore)
 
 const section = ref([
@@ -142,6 +143,8 @@ const section = ref([
     engTitle: 'Comment'
   }
 ])
+
+fetchFeaturedCollections()
 
 onMounted(() => {
   AOS.init({

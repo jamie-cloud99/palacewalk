@@ -5,9 +5,9 @@
     :space-between="16"
     :slides-per-view="1"
     :breakpoints="{
-      576: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 },
-      1280: { slidesPerView: 4 }
+      576: { slidesPerView: 2, slidesPerGroup: 2 },
+      1024: { slidesPerView: 3, slidesPerGroup: 3 },
+      1280: { slidesPerView: 4, slidesPerGroup: 4 }
     }"
   >
     <swiper-slide v-for="item in masterPeiceList" :key="item.collectionId">
@@ -19,10 +19,10 @@
     <div class="flex justify-between items-center">
       <ul class="flex gap-x-2">
         <li
-          v-for="item in slides.totalSlides - curSlideShowed + 1"
+          v-for="item in Math.ceil(slides.totalSlides / curSlideShowed)"
           :key="'slide' + item"
-          class="bg-dark-400 w-6 h-1"
-          :class="{ '!bg-primary': item === slides.curSlide }"
+          class="bg-dark-400 w-3 md:w-6 h-1"
+          :class="{ '!bg-primary': item === curSlidePage }"
         ></li>
       </ul>
       <div class="flex gap-x-2">
@@ -50,7 +50,7 @@
 </template>
 
 <script setup>
-import { watch, onMounted, ref } from 'vue'
+import { watch, onMounted, ref, computed } from 'vue'
 import { useCollectionStore } from '../../stores/collectionStore'
 import CollectionListItem from './CollectionListItem.vue'
 
@@ -79,13 +79,19 @@ const breakpoints = ref({
   lg: 1280
 })
 
+const curSlidePage = computed(() => {
+  return curSlideShowed.value === 1
+    ? slides.value.curSlide
+    : Math.floor(slides.value.curSlide / curSlideShowed.value) + 1
+})
+
 const goNext = () => {
   swiper2.value.swiper.slideNext()
-  slides.value.curSlide++
+  slides.value.curSlide += curSlideShowed.value
 }
 const goPrev = () => {
   swiper2.value.swiper.slidePrev()
-  slides.value.curSlide--
+  slides.value.curSlide -= curSlideShowed.value
 }
 
 const getSlide = (total, showed) => {
@@ -112,7 +118,7 @@ watch(
   { deep: true, immediate: true }
 )
 
-watch(() => slides.value.curSlide, turnSlide)
+watch(() => slides, turnSlide, { deep: true })
 
 const changeSlidesPerView = (windowWidth) => {
   if (windowWidth < breakpoints.value?.sm) {
@@ -125,6 +131,8 @@ const changeSlidesPerView = (windowWidth) => {
     curSlideShowed.value = slides.value.slideShowed.xl
   }
 }
+
+changeSlidesPerView(window.innerWidth)
 
 onMounted(() => {
   window.addEventListener('resize', () => {

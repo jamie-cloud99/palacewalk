@@ -1,40 +1,71 @@
 import { ref } from 'vue'
 import { defineStore, storeToRefs } from 'pinia'
 import axios from 'axios'
+// import { usePageStore } from './pageStore'
 import { useCollectionStore } from './collectionStore'
 
 const { VITE_JSON_SERVER } = import.meta.env
 
 export const useExhibitionStore = defineStore('exhibition', () => {
-  const exhibitionList = ref([])
-  const exhibition = ref({})
+  // const pageStore = usePageStore()
+  // const { turnPage, paginate } = pageStore
+
   const collectionStore = useCollectionStore()
   const { fetchCollectionsAll } = collectionStore
   const { collectionsAll } = storeToRefs(collectionStore)
+
+  const exhibitionsAll = ref([])
+  const exhibitionList = ref([])
+  const exhibition = ref({})
+
   const exhibitionCollections = ref([])
 
-  const pages = ref({
-    totalPages: 3,
-    curPage: 1,
-    havePre: false,
-    haveNext: true
-  })
-
-  const turnPage = (page) => {
-    pages.value.curPage = page
-    pages.value.havePre = page > 1
-    pages.value.haveNext = page < pages.value.totalPages
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+  const menuContent = ref([
+    {
+      code: 'recent',
+      title: '當期展覽'
+    },
+    {
+      code: 'coming',
+      title: '近期展覽'
+    }
+  ])
+  const curMenuItem = ref(menuContent.value[0])
 
   const fetchExhibitionsAll = async () => {
     const apiUrl = `${VITE_JSON_SERVER}exhibitions`
     try {
       const res = await axios.get(apiUrl)
-      console.log(res.data)
+      exhibitionsAll.value = res.data
       exhibitionList.value = res.data
     } catch (error) {
       console.log(error)
+    }
+  }
+
+  const updateExhibitionPeriod = (item) => {
+    curMenuItem.value = item
+    updateExhibitionList()
+  }
+
+  const updateExhibitionList = async () => {
+    if (exhibitionsAll.value.length === 0) await fetchExhibitionsAll()
+    const today = new Date()
+    const todayTimestamp = Math.floor(today.getTime() / 1000)
+    const threeMonthsLater = new Date(today)
+    threeMonthsLater.setMonth(today.getMonth() + 3)
+    const threeMonthsTimestamp = Math.floor(threeMonthsLater.getTime() / 1000)
+
+    if (curMenuItem.value.code === 'recent') {
+      exhibitionList.value = exhibitionsAll.value.filter(
+        (exhibition) =>
+          exhibition.startDate <= todayTimestamp && exhibition.endDate >= todayTimestamp
+      )
+    } else {
+      exhibitionList.value = exhibitionsAll.value.filter(
+        (exhibition) =>
+          exhibition.startDate >= todayTimestamp && exhibition.startDate <= threeMonthsTimestamp
+      )
     }
   }
 
@@ -43,26 +74,44 @@ export const useExhibitionStore = defineStore('exhibition', () => {
     try {
       const res = await axios.get(exhibtionApiUrl)
       exhibition.value = res.data
-      fetchExhibitionCollections(res.data.id)
+      await fetchExhibitionCollections(res.data.id)
     } catch (error) {
       console.log(error)
     }
   }
 
-  const fetchExhibitionCollections = async(id) => {
-    if(collectionsAll.value.length === 0) await fetchCollectionsAll()
+  const fetchExhibitionCollections = async (id) => {
+    if (collectionsAll.value.length === 0) await fetchCollectionsAll()
     const exhibitCollectionsApi = `${VITE_JSON_SERVER}exhibitionCollections?exhibitionId=${id}`
-  try {
-     const res = await axios.get(exhibitCollectionsApi)
-     console.log(res)
-    const collectionIdList = res.data[0].collectionId
-    exhibitionCollections.value = collectionsAll.value.filter(collection => collectionIdList.some(id => id === collection.id))
-    console.log(exhibitionCollections.value)
-  } catch (error) {
-    console.log(error)
-  }
-   
+    try {
+      const res = await axios.get(exhibitCollectionsApi)
+      const collectionIdList = res.data[0].collectionId
+
+      // Sort the filtered array to match collectionIdList order.
+      const idToIndexMap = {}
+      collectionIdList.forEach((id, index) => {
+        idToIndexMap[id] = index
+      })
+
+      exhibitionCollections.value = collectionsAll.value
+      .filter((collection) => collection.id in idToIndexMap)
+      .sort((a, b) => idToIndexMap[a.id] - idToIndexMap[b.id]);
+
+    } catch (error) {
+      console.log(error)
+    }
   }
 
-  return { pages, exhibitionList, exhibition,exhibitionCollections, turnPage, fetchExhibitionsAll, fetchExhibition, fetchExhibitionCollections }
+  return {
+    exhibitionsAll,
+    exhibitionList,
+    exhibition,
+    exhibitionCollections,
+    menuContent,
+    curMenuItem,
+    updateExhibitionPeriod,
+    fetchExhibitionsAll,
+    fetchExhibition,
+    fetchExhibitionCollections
+  }
 })

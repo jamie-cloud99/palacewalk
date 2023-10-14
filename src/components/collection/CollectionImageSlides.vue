@@ -3,7 +3,7 @@
     class="overflow-hidden"
     :space-between="16"
     :slides-per-view="1"
-    :breakpoints="{ 768: { slidesPerView: 2 } }"
+    :breakpoints="{ 768: { slidesPerView: 2, slidesPerGroup: 2 } }"
     ref="swiperEl"
   >
     <swiper-slide v-for="image in collection.images?.list" :key="image">
@@ -62,7 +62,7 @@ const breakpoints = ref({
   md: 768
 })
 
-watch(() => slides.value.curSlide, turnSlide, { immediate: true })
+watch(() => slides, turnSlide, { deep:true })
 
 const changeSlidesPerView = (windowWidth) => {
   if (windowWidth < breakpoints.value?.md) {
@@ -79,6 +79,8 @@ watch(
     swiperEl.value.swiper.update()
   }
 )
+
+changeSlidesPerView(window.innerWidth)
 
 onMounted(() => {
   window.addEventListener('resize', () => {

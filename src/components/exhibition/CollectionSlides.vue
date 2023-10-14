@@ -3,7 +3,10 @@
     class="mb-10 pb-5"
     :space-between="24"
     :slides-per-view="1"
-    :breakpoints="{ 768: { slidesPerView: 2 }, 1280: { slidesPerView: 3 } }"
+    :breakpoints="{
+      768: { slidesPerView: 2, slidesPerGroup: 2 },
+      1280: { slidesPerView: 3, slidesPerGroup: 3 }
+    }"
     ref="swiperEl"
   >
     <swiper-slide v-for="item in exhibitionCollections" :key="item.id">
@@ -18,61 +21,15 @@
         </figcaption>
       </figure>
     </swiper-slide>
-    <swiper-slide>
-      <figure class="exhibit-item">
-        <img
-          class="w-full h-full object-cover object-centers"
-          :src="`/images/exhibitions/exhibition-U009.jpg`"
-          alt="U009"
-        />
-        <figcaption class="exhibit-item-title">
-          清 雍正 銅胎畫琺瑯黑地五彩流雲玉兔秋香鼻煙壺
-        </figcaption>
-      </figure>
-    </swiper-slide>
-    <swiper-slide>
-      <figure class="exhibit-item">
-        <img
-          class="w-full h-full object-cover object-center"
-          :src="`/images/exhibitions/exhibition-U010.jpg`"
-          alt="U010"
-        />
-        <figcaption class="exhibit-item-title">
-          清 雍正 白色料鼻煙壺 帶銅胎畫琺瑯黑地夔龍紋套匣
-        </figcaption>
-      </figure>
-    </swiper-slide>
-    <swiper-slide>
-      <figure class="exhibit-item">
-        <img
-          class="w-full h-full object-cover object-center"
-          :src="`/images/exhibitions/exhibition-U011.jpg`"
-          alt="U011"
-        />
-        <figcaption class="exhibit-item-title">
-          清 乾隆 金屬胎掐絲琺瑯與畫琺瑯西洋人物雙耳鼻煙壺
-        </figcaption>
-      </figure>
-    </swiper-slide>
-    <swiper-slide>
-      <figure class="exhibit-item">
-        <img
-          class="w-full h-full object-cover object-center"
-          :src="`/images/exhibitions/exhibition-U003.jpg`"
-          alt="U004"
-        />
-        <figcaption class="exhibit-item-title">明 唐寅採蓮圖</figcaption>
-      </figure>
-    </swiper-slide>
   </swiper-container>
   <div class="absolute bottom-0 z-10 right-0 w-full h-15 text-dark">
     <div class="flex justify-between items-center">
       <ul class="flex gap-x-2">
         <li
-          v-for="item in slides.totalSlides - curSlideShowed + 1"
+          v-for="item in Math.ceil(slides.totalSlides / curSlideShowed)"
           :key="'slide' + item"
           class="bg-dark-400 w-6 h-1"
-          :class="{ '!bg-primary': item === slides.curSlide }"
+          :class="{ '!bg-primary': item === curSlidePage }"
         ></li>
       </ul>
       <div class="flex gap-x-2">
@@ -109,7 +66,7 @@ const exhbitionStore = useExhibitionStore()
 const { exhibitionCollections } = storeToRefs(exhbitionStore)
 
 const slideStore = useSlideStore()
-const { swiperEl, slides, curSlideShowed } = storeToRefs(slideStore)
+const { swiperEl, slides, curSlideShowed, curSlidePage } = storeToRefs(slideStore)
 const { goPrev, goNext, turnSlide } = slideStore
 
 const breakpoints = ref({
@@ -126,7 +83,7 @@ watch(
   { deep: true }
 )
 
-watch(() => slides.value.curSlide, turnSlide)
+watch(() => slides, turnSlide, {deep: true})
 
 const changeSlidesPerView = (windowWidth) => {
   if (windowWidth < breakpoints.value?.md) {
@@ -137,6 +94,8 @@ const changeSlidesPerView = (windowWidth) => {
     curSlideShowed.value = slides.value.slideShowed.lg
   }
 }
+
+changeSlidesPerView(window.innerWidth)
 
 onMounted(() => {
   window.addEventListener('resize', () => {
