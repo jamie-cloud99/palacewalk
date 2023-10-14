@@ -1,49 +1,8 @@
 <template>
-  <div class="mb-6 lg:mb-[68px]">
-    <ExhibitionBanner :banner-content="curBannerContent" />
-  </div>
   <div class="container mb-[60px]">
     <div class="lg:grid grid-cols-12 gap-x-12">
-      <div class="col-span-3">
-        <h3 class="hidden lg:flex flex-col text-lg font-semibold">
-          展覽
-          <span class="font-cormo text-2xl">EXHIBITS</span>
-        </h3>
-        <hr class="border-b border-dark-400 lg:border-dark" />
-        <div class="mb-6 lg:mb-20">
-          <SideMenu
-            :menu="menuContent"
-            :selectedOption="curMenuItem"
-            @select-item="changeMenuItem"
-          />
-        </div>
-        <div class="hidden lg:block">
-          <h3 class="flex flex-col text-lg">
-            檢索
-            <span class="font-cormo text-2xl">SEARCH</span>
-          </h3>
-          <ul class="mb-4">
-            <li class="mb-3 relative">
-              <input type="text" id="search" class="form-input search" placeholder="展覽檢索" />
-              <button
-                type="button"
-                class="btn absolute top-1/2 right-0 -translate-y-1/2 hover:text-primary"
-              >
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </li>
-            <li class="relative">
-              <select name="" id="search" class="form-select search">
-                <option class="text-dark-600" value="" disabled selected>請選擇類別</option>
-                <option class="text-dark" value="">藝術</option>
-                <option class="text-dark" value="">文物</option>
-                <option class="text-dark" value="">綜合</option>
-              </select>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div v-if="exhibition.id" class="col-span-9 font-semibold">
+      <div v-if="exhibition.id" class="col-start-2 col-span-10 font-semibold">
+        <BreadcrumbsComponent class="my-5 justify-end" :nav-list="breadList" /> 
         <img
           class="w-full aspect-[2/1] object-cover object-center mb-2 lg:mb-4"
           :src="exhibition.images.lg"
@@ -171,11 +130,10 @@
   <BackgroundComponent />
 </template>
 <script setup>
-import { ref, reactive, computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, reactive } from 'vue'
+// import { useRouter } from 'vue-router'
 import { usePeriod } from '../composables/format'
-import ExhibitionBanner from '../components/exhibition/ExhibitionBanner.vue'
-import SideMenu from '../components/layout/SideMenu.vue'
+import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 import CollectionSlides from '../components/exhibition/CollectionSlides.vue'
 import BackgroundComponent from '../components/background/BackgroundComponent.vue'
 
@@ -190,7 +148,7 @@ const { exhibitionId } = storeToRefs(routerStore)
 const slideStore = useSlideStore()
 const { getSlide } = slideStore
 
-const router = useRouter()
+// const router = useRouter()
 
 const breadList = reactive([
   {
@@ -210,26 +168,22 @@ const breadList = reactive([
     path: '/exhibitionIntro'
   }
 ])
-const menuContent = reactive([
-  {
-    code: 'recent',
-    title: '當期展覽'
-  },
-  {
-    code: 'coming',
-    title: '近期展覽'
-  }
-])
-const curMenuItem = ref(menuContent[0])
-const changeMenuItem = (item) => {
-  curMenuItem.value = item
-  breadList[breadList.length - 1].title = item.title
-  router.push({ path: `/exhibitions`, query: { period: item.title } })
-}
-
-const curBannerContent = computed(() => {
-  return { title: `展覽空間 — ${breadList[breadList.length - 1].title}`, breadList }
-})
+// const menuContent = reactive([
+//   {
+//     code: 'recent',
+//     title: '當期展覽'
+//   },
+//   {
+//     code: 'coming',
+//     title: '近期展覽'
+//   }
+// ])
+// const curMenuItem = ref(menuContent[0])
+// const path = (item) => {
+//   curMenuItem.value = item
+//   breadList[breadList.length - 1].title = item.title
+//   router.push({ path: `/exhibitions`, query: { period: item.title } })
+// }
 
 const exhibitionStore = useExhibitionStore()
 const { exhibition, exhibitionCollections } = storeToRefs(exhibitionStore)

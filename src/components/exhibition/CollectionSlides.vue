@@ -10,7 +10,7 @@
     ref="swiperEl"
   >
     <swiper-slide v-for="item in exhibitionCollections" :key="item.id">
-      <figure class="exhibit-item">
+      <figure class="exhibit-item group ">
         <img
           class="w-full h-full object-cover object-centers"
           :src="item.images.main"
@@ -62,8 +62,8 @@ import { onMounted, watch, nextTick, ref } from 'vue'
 import { useSlideStore } from '@/stores/slideStore'
 import { useExhibitionStore } from '@/stores/exhibitsStore'
 
-const exhbitionStore = useExhibitionStore()
-const { exhibitionCollections } = storeToRefs(exhbitionStore)
+const exhibitionStore = useExhibitionStore()
+const { exhibitionCollections } = storeToRefs(exhibitionStore)
 
 const slideStore = useSlideStore()
 const { swiperEl, slides, curSlideShowed, curSlidePage } = storeToRefs(slideStore)
@@ -111,6 +111,6 @@ onMounted(() => {
 }
 
 .exhibit-item-title {
-  @apply font-bold bg-amber-400 px-2 inline-block absolute left-0 bottom-2;
+  @apply font-bold px-2 inline-block absolute left-0 bottom-2 opacity-0  group-hover:opacity-100 group-hover:transition-all group-hover:duration-300 group-hover:ease-in-out;
 }
 </style>
