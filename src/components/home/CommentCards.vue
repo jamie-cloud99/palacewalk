@@ -1,17 +1,31 @@
 <template>
   <swiper-container
+    :effect="'coverflow'"
+    :grabCursor="true"
+    :centeredSlides="true"
+    :slidesPerView="'auto'"
+    :coverflowEffect="{
+      rotate: 30,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: false,
+    }"
     :slides-per-view="1"
-    :space-between="24"
-    :breakpoints="{ 768: { slidesPerView: 2 }, 1024: { slidesPerView: 4 } }"
+    :space-between="100"
+    :breakpoints="{ 
+      768: { slidesPerView: 2, spaceBetween: 40 }, 
+      1280: { slidesPerView: 4, spaceBetween: 80 } 
+    }"
     ref="swiperEl"
     class="mb-20 lg:mb-24"
   >
     <swiper-slide
-      class="flex-shrink-0 sm:max-w-[300px]"
+      class="flex-shrink-0 sm:max-w-4/5"
       v-for="(item, i) in comments"
       :key="item.content"
     >
-      <div class="p-6 bg-dark-200">
+      <div class="p-6 bg-dark-200 rounded-xl mx-auto">
         <div class="mb-4 flex gap-2 items-center">
           <img
             :src="`/images/user-${i + 1}.webp`"

@@ -61,16 +61,15 @@
   </div>
 
   <div class="overflow-hidden">
+    <SectionTitle
+      data-aos-anchor-placement="center-bottom"
+      data-aos="zoom-in"
+      :text="section[2]"
+    />
+    <div class="mx-3 md:mx-0">
+      <CommentCards data-aos="fade-up" data-aos-anchor-placement="center-bottom" />
+    </div>
     <div class="container">
-      <SectionTitle
-        data-aos-anchor-placement="center-bottom"
-        data-aos="zoom-in"
-        :text="section[2]"
-      />
-      <div class="overflow-hidden">
-        <CommentCards data-aos="fade-up" data-aos-anchor-placement="center-bottom" />
-      </div>
-
       <h2 data-aos="zoom-in" class="text-8 font-bold text-center mb-6 lg:text-4xl lg:text-left">
         公告訊息
       </h2>
