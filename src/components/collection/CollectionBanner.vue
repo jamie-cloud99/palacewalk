@@ -8,8 +8,8 @@
     </div>
   </div>
 </template>
+
 <script setup>
-import { reactive } from 'vue'
 import { toRefs } from 'vue'
 import BreadcrumbsComponent from '../layout/BreadcrumbsComponent.vue'
 
@@ -17,19 +17,4 @@ const props = defineProps({
   title: String,
 })
 const { title } = toRefs(props)
-
-const breadList = reactive([
-  {
-    title: '首頁',
-    path: '/'
-  },
-  {
-    title: '藝術展品',
-    path: '/collections'
-  },
-  {
-    title,
-    path: '/collections/masterpieces'
-  }
-])
 </script>
