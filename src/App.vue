@@ -1,12 +1,5 @@
 <template>
   <HeaderComponent v-if="!route.meta.isFullPage" />
-  <div>
-    <loading-component
-    :active="isLoading"
-    z-index="2000"
-    :color="'#97C897'"
-    />
-  </div>
   <RouterView />
   <GoToTop />
   <FooterComponent v-if="!route.meta.isFullPage" />
@@ -30,9 +23,4 @@ const { isLoggedIn } = storeToRefs(memberStore)
   await checkLogin()
   if (isLoggedIn.value) fetchFavorites()
 })()
-
-const isLoading = ref(false)
-onMounted(() => {
-  isLoading.value = true
-})
 </script>

@@ -10,7 +10,7 @@
                 <h3 class="text-2xl font-semibold">{{ category.title }}</h3>
               </div>
               <ul>
-                <li v-for="item in category.items" :key="item.title" @click="emit('toggle')">
+                <li v-for="item in category.items" :key="item.title" @click="handleClick">
                   <router-link
                     :to="item.path"
                     class="block px-6 py-4 text-dark-800 text-lg hover:text-dark"
@@ -45,10 +45,23 @@
       </div>
     </div>
   </div>
+  <div>
+    <loading-component
+    :active="loading"
+    z-index="2000"
+    :color="'#97C897'"
+    />
+  </div>
 </template>
 
 <script setup>
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, ref } from 'vue'
+// import { storeToRefs } from 'pinia'
+// import { useStatusStore } from '../../stores/statusStore'
+
+// const statusStore = useStatusStore()
+// const { isOpen } = storeToRefs(statusStore)
+
 const emit = defineEmits(['toggle'])
 
 const props = defineProps({
@@ -85,4 +98,19 @@ const menuContent = reactive([
     ]
   }
 ])
+
+const loading = ref(false)
+
+const handleClick = () => {
+  loading.value = true
+  console.log('loading 點擊前', loading.value)
+
+  emit('toggle')
+
+  setTimeout(() => {
+    loading.value = false
+    console.log('loading 點擊後', loading.value)
+  }, 400)
+
+};
 </script>
