@@ -1,7 +1,7 @@
 <template>
   <CollectionBanner :title="'展品目錄'" />
   <!-- TODO: router-view, other category(except painting) layout -->
-  <div class="container">
+  <div class="container min-h-[800px]">
     <div class="lg:grid grid-cols-12 gap-6">
       <!-- Left Side -->
       <div class="col-span-3">
