@@ -16,6 +16,16 @@
   .btn {
     @apply block px-3 py-2 text-center font-semibold transition-all duration-500;
   }
+
+  .form-input {
+    @apply focus:border-primary focus:ring-primary read-only:focus:border-dark-600 read-only:focus:ring-0;
+  }
+
+  .form-select {
+    @apply py-3 w-full border-dark-800 bg-white placeholder:text-dark-600 focus:border-primary focus:ring-primary;
+  }
+
+ 
 }
 
 @layer utilities {

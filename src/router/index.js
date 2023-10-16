@@ -10,6 +10,10 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/search',
+      component: () => import('@/views/SearchView.vue')
+    },
+    {
       path: '/collections',
       component: () => import('@/views/CollectionList.vue')
     },
@@ -93,13 +97,13 @@ const router = createRouter({
       component: () => import('@/views/ErrorView.vue')
     }
   ],
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
     } else {
-      return { 
-        top: 0, 
-        behavior: 'smooth',
+      return {
+        top: 0,
+        behavior: 'smooth'
       }
     }
   }
