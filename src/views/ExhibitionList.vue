@@ -11,11 +11,11 @@
         </h3>
         <hr class="border-b border-dark-400 lg:border-dark" />
         <div class="mb-6 lg:mb-20">
-          <SortList
+          <SideMenu
             :menu="menuContent"
-            :selectedOption="curMenuItem"
+            :selected-option="curMenuItem"
             @select-item="changeMenuItem"
-          ></SortList>
+          />
         </div>
         <div class="hidden lg:block">
           <h3 class="flex flex-col text-lg">
@@ -45,26 +45,37 @@
       </div>
       <div class="col-span-9">
         <ul class="grid grid-cols-12 gap-4">
-          <li v-for="item in exhibitList" :key="item.id" class="col-span-12 md:col-span-6">
+          <li
+            v-for="item in exhibitionList"
+            :key="item.exhibitionId"
+            class="col-span-12 md:col-span-6"
+          >
             <ExhibitionListItem :exhibition-item="item" />
           </li>
         </ul>
-        <!-- <PageComponent :pages="pages" @change="turnPage" /> -->
       </div>
     </div>
   </div>
   <BackgroundComponent />
 </template>
 <script setup>
-import { computed, reactive, ref } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { computed, reactive, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import ExhibitionBanner from '../components/exhibition/ExhibitionBanner.vue'
-import SortList from '../components/layout/SortList.vue'
+import SideMenu from '../components/layout/SideMenu.vue'
 import ExhibitionListItem from '../components/exhibition/ExhibitionListItem.vue'
 import BackgroundComponent from '../components/background/BackgroundComponent.vue'
+import { useRouterStore } from '../stores/routerStore'
+import { useExhibitionStore } from '../stores/exhibitsStore'
+import { storeToRefs } from 'pinia'
 
-const route = useRoute()
+const routerStore = useRouterStore()
+const { route } = storeToRefs(routerStore)
+
 const router = useRouter()
+const exhibitionStore = useExhibitionStore()
+const { exhibitionList, menuContent, curMenuItem } = storeToRefs(exhibitionStore)
+const { updateExhibitionPeriod } = exhibitionStore
 
 const breadList = reactive([
   {
@@ -80,63 +91,28 @@ const breadList = reactive([
     path: '/exhibitions'
   }
 ])
-const menuContent = reactive([
-  {
-    code: 'recent',
-    title: '當期展覽'
-  },
-  {
-    code: 'coming',
-    title: '近期展覽'
-  }
-])
-const curMenuItem = ref(menuContent[0])
+
 const curBannerContent = computed(() => {
   return { title: `展覽空間 — ${curMenuItem.value.title}`, breadList }
 })
 
 const changeMenuItem = (item) => {
-  curMenuItem.value = item
+  updateExhibitionPeriod(item)
   breadList[breadList.length - 1].title = item.title
-  router.push({ path: `${route.path}`, query: { period: item.title } })
+  router.push({ path: `/exhibitions`, query: { period: item.title } })
 }
-const exhibitList = ref([
-  {
-    id: '1',
-    exhibitionId: 'U001',
-    title: '士拿乎—清宮鼻煙壺的時尚風潮',
-    startDate: '2023.6.20',
-    endDate: '2024.3.28'
+
+watch(
+  () => route.value?.query?.period,
+  () => {
+    if (route.value?.query?.period) {
+      curMenuItem.value = menuContent.value.find((item) => item.title === route.value.query.period)
+      breadList[breadList.length - 1].title = curMenuItem.value.title
+    }
+    updateExhibitionPeriod(curMenuItem.value)
   },
-  {
-    id: '2',
-    exhibitionId: 'U002',
-    title: '風格故事—琺瑯彩瓷特展 ',
-    startDate: '2023.7.7',
-    endDate: '2024.7.16'
-  },
-  {
-    id: '3',
-    exhibitionId: 'U003',
-    title: '故宮經典-藝術與文化策展',
-    startDate: '2023.6.20',
-    endDate: '2024.3.28'
-  },
-  {
-    id: '4',
-    exhibitionId: 'U004',
-    title: '繽彩燒窯—開光雙連瓶藝術展',
-    startDate: '2023.6.24',
-    endDate: '2024.5.28'
-  },
-  {
-    id: '5',
-    exhibitionId: 'U005',
-    title: '釉瓷之美：太平有象瓷尊特展',
-    startDate: '2023.5.20',
-    endDate: '2024.8.19'
-  }
-])
+  { immediate: true }
+)
 </script>
 
 <style>

@@ -11,9 +11,11 @@
               </div>
               <ul>
                 <li v-for="item in category.items" :key="item.title" @click="emit('toggle')">
-                  <router-link :to="item.path" class="block px-6 py-4 text-dark-800 text-lg hover:text-dark">{{
-                    item.title
-                  }}</router-link>
+                  <router-link
+                    :to="item.path"
+                    class="block px-6 py-4 text-dark-800 text-lg hover:text-dark"
+                    >{{ item.title }}</router-link
+                  >
                 </li>
               </ul>
             </li>
@@ -23,7 +25,9 @@
           <div class="md:mt-4 flex-grow">
             <div class="pt-8 pb-8 pl-6 border-t border-dark-600 md:border-0 md:pt-0">
               <p class="text-lg font-semibold mb-1">專人接洽</p>
-              <p class="text-dark-800 text-8 mb-4"><a href="tel:+886-2-28812021">02-2881-2021</a></p>
+              <p class="text-dark-800 text-8 mb-4">
+                <a href="tel:+886-2-28812021">02-2881-2021</a>
+              </p>
               <ul class="text-dark-800 space-y-1">
                 <li>平日 12:00-19:00</li>
                 <li>週末 09:00-19:00</li>
@@ -59,11 +63,11 @@ const menuContent = reactive([
     items: [
       {
         title: '當期展覽',
-        path: '/exhibitions/?="當期展覽"'
+        path: '/exhibitions?period=當期展覽'
       },
       {
         title: '近期展覽',
-        path: '/exhibitions/?="近期展覽"'
+        path: '/exhibitions?period=近期展覽'
       }
     ]
   },

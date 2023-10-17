@@ -19,12 +19,24 @@ export const useStatusStore = defineStore('status', () => {
     collectionText: 'max-w-0'
   })
   const exhibitionMenuCount = ref(0)
-  const searchType = ref('展覽')
+  const searchTypeList = ref([
+    {
+      id: 1,
+      code: 'exhibitions',
+      title: '展覽'
+    },
+    {
+      id: 2,
+      code: 'collections',
+      title: '展品'
+    }
+  ])
+  const searchType = ref(searchTypeList.value[0])
 
   const toggleMenu = (item) => {
     isOpen.value[item] = !isOpen.value[item]
     // if(item === 'menu') preventBodyScroll()
-    
+
     for (const key in isOpen.value) {
       if (key !== item) isOpen.value[key] = false
       menuClass.value[key] = isOpen.value[key] ? 'max-h' : 'max-0'
@@ -58,8 +70,8 @@ export const useStatusStore = defineStore('status', () => {
   //   }
   // }
 
-  const changeSearchType = (type) => {
-    searchType.value = type
+  const changeSearchType = (typeCode) => {
+    searchType.value = searchTypeList.value.find((type) => (type.code === typeCode))
   }
 
   return {
@@ -67,6 +79,7 @@ export const useStatusStore = defineStore('status', () => {
     menuClass,
     searchType,
     exhibitionMenuCount,
+    searchTypeList,
     toggleMenu,
     toggleSideMenu,
     changeSearchType

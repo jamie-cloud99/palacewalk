@@ -1,0 +1,1847 @@
+{
+  "exhibitions": [
+    {
+      "id": 1,
+      "category": {
+        "code": "mix",
+        "title": "綜合"
+      },
+      "exhibitionId": "U001",
+      "title": "士拿乎—清宮鼻煙壺的時尚風潮",
+      "startDate": 1687190400,
+      "endDate": 1711555200,
+      "description": "「士拿乎—清宮鼻煙壺的時尚風潮」專注呈現清宮鼻煙壺的匠心之作。這些壺充分展現了清代時尚文化的風采，是中國宮廷藝術的絕佳代表。透過展品，探索清代鼻煙壺的藝術之美，品味宮廷的瑰寶，沉浸在煙雲飄逸的時光中。",
+      "content": "<ol><li>鼻煙壺的多樣性：展覽將展示清宮鼻煙壺的多種風格和設計，包括不同的形狀、紋樣、以及裝飾，讓觀眾深入了解這些精緻藝術品的多樣性。</li><li>清代時尚風潮：展覽將探討清代時尚文化，特別是鼻煙壺在宮廷和社會中的角色。透過展品，觀眾可以窺探當時的時尚趨勢和宮廷生活。</li><li>藝術工藝：展覽將著重介紹製作鼻煙壺的藝術工藝，包括瓷器的製作過程、彩繪技巧等，使觀眾更深入了解這些精湛的手工藝術。</li><li>文化遺產的保存：展覽強調清宮鼻煙壺作為中國文化遺產的價值，探討它們在文化保存和傳承方面的作用，以及對當代藝術和設計的影響。</li></ol>",
+      "images": {
+        "sm": "/images/exhibitions/exhibition-U001.jpg",
+        "lg": "/images/exhibitions/exhibition-U001.jpg"
+      }
+    },
+    {
+      "id": 2,
+      "category": {
+        "code": "mix",
+        "title": "綜合"
+      },
+      "exhibitionId": "U002",
+      "title": "風格故事—琺瑯彩瓷特展 ",
+      "startDate": 1688659200,
+      "endDate": 1721059200,
+      "description": "《風格故事—琺瑯彩瓷特展》誠摯邀請您蒞臨，探索中國古老而獨特的琺瑯彩瓷藝術。這次特展將帶您穿越時空，深入琺瑯彩瓷的璀璨世界，展示其精湛的工藝和千年來的藝術演變。透過這些精心挑選的珍貴展品，我們將向您展示琺瑯彩瓷的輝煌之旅，並探索其對中國文化和藝術的深遠影響。",
+      "content": "<ol><li>深入解讀琺瑯彩瓷：我們將以詳盡而生動的方式，解釋琺瑯彩瓷的歷史背景、製作過程和獨特之處。您將了解到琺瑯彩瓷的源起和它在中國陶瓷藝術中的重要地位。</li><li>精選珍品展示：特展中將展出一系列匠心獨具的琺瑯彩瓷珍品，包括來自不同朝代的精美瓷器。這些作品不僅展示了技藝高超的製作工藝，更融合了各時期的藝術風格和主題，展現出琺瑯彩瓷的多樣性和豐富性。</li><li>互動體驗與工作坊：我們提供一系列互動體驗和工作坊，讓您親身體驗琺瑯彩瓷的魅力。您可以親自參與製作過程，與藝術家互動，感受琺瑯彩瓷的獨特之處，並帶回一份屬於您自己的創作。</li><li>導覽和講座：我們將提供導覽服務和專題講座，由專業的策展人和藝術專家帶領您深入了解琺瑯彩瓷的文化背景、藝術價值和技術特點。您將有機會與他們進行互動</li></ol>",
+      "images": {
+        "sm": "/images/exhibitions/exhibition-U002.jpg",
+        "lg": "/images/exhibitions/exhibition-U002.jpg"
+      }
+    },
+    {
+      "id": 3,
+      "category": {
+        "code": "art",
+        "title": "藝術"
+      },
+      "exhibitionId": "U003",
+      "title": "故宮經典-藝術與文化策展",
+      "startDate": 1696003200,
+      "endDate": 1722614400,
+      "description": "「故宮經典—藝術與文化策展」呈現經典藝術品與文化的交匯。通過珍貴展品，深入探討中國的藝術、歷史和文化傳承。",
+      "content": "<ol><li>經典藝術珍品：展覽匯集了故宮的經典藝術珍品，包括古代繪畫、玉器、瓷器、書法等，向觀眾展現中國千年藝術的精髓。</li><li>文化策展視角：展覽通過策展視角，呈現這些藝術品背後的文化意義和歷史背景，幫助觀眾更深刻地理解中國文化的複雜性和豐富性。</li><li>互動體驗：除了欣賞展品，觀眾還可以參與各種互動活動，體驗中國藝術的獨特之處，加深對中國文化的體驗和理解</li></ol>",
+      "images": {
+        "sm": "/images/exhibitions/exhibition-U003.jpg",
+        "lg": "/images/exhibitions/exhibition-U003.jpg"
+      }
+    },
+    {
+      "id": 4,
+      "category": {
+        "code": "mix",
+        "title": "綜合"
+      },
+      "exhibitionId": "U004",
+      "title": "繽彩燒窯—開光雙連瓶藝術展",
+      "startDate": 1699940800,
+      "endDate": 1732204800,
+      "description": "「繽彩燒窯—開光雙連瓶藝術展」展示乾隆官窯的藝術造詣，特選粉彩開光雙連瓶，凸顯其高超工藝。這些精緻作品彰顯官窯瓷器的非凡之美，同時反映了官窯在瓷器藝術保護與傳承上的卓越貢獻",
+      "content": "<ol><li>乾隆官窯珍品：展覽集中呈現了乾隆官窯的經典之作，其中粉彩開光雙連瓶尤為矚目。這些珍品不僅工藝精湛，還獨具藝術價值，是中國瓷器藝術的典範。</li><li>卓越的工藝：觀眾將有機會近距離欣賞到官窯工匠的匠心經營。展覽突顯乾隆時期官窯的工藝技術，特別是色彩和紋樣的精湛運用。</li><li>文化的傳承：展覽強調官窯對中國瓷器藝術傳統的承襲和發展，突出了官窯在保存和弘揚瓷器文化方面的貢獻。展品不僅是藝術品，還是歷史和文化的見證。</li></ol>",
+      "images": {
+        "sm": "/images/exhibitions/exhibition-U004.jpg",
+        "lg": "/images/exhibitions/exhibition-U004.jpg"
+      }
+    },
+    {
+      "id": 5,
+      "category": {
+        "code": "mix",
+        "title": "綜合"
+      },
+      "exhibitionId": "U005",
+      "title": "釉瓷之美：太平有象瓷尊特展",
+      "startDate": 1701940800,
+      "endDate": 1735204800,
+      "description": "「釉瓷之美：太平有象瓷尊特展」探索這一中國釉瓷藝術的高峰之作，太平有象瓷尊。展覽呈現其獨特釉彩、工藝，以及文化價值，讓觀眾深刻體驗釉瓷之美。",
+      "content": "<ol><li>獨特釉瓷技巧：展覽突顯太平有象瓷尊的特殊之處，包括其精湛的釉彩技巧，觀眾將近距離欣賞到這種釉瓷的華美和獨特之處。</li><li>文化背景解析：透過展覽，觀眾將深入瞭解太平有象瓷尊在中國文化和歷史中的地位，以及它背後的故事和象徵。</li><li>現代釉瓷藝術的啟發：展覽鼓勵觀眾思考太平有象瓷尊對當代釉瓷藝術的影響，以及如何將傳統工藝帶入現代藝術和設計中。</li></ol>",
+      "images": {
+        "sm": "/images/exhibitions/exhibition-U005.jpg",
+        "lg": "/images/exhibitions/exhibition-U005.jpg"
+      }
+    },
+    {
+      "id": 6,
+      "category": {
+        "code": "mix",
+        "title": "綜合"
+      },
+      "exhibitionId": "U006",
+      "title": "宮廷珍奇賞玩特展",
+      "startDate": 1697126400,
+      "endDate": 1720195200,
+      "description": "歡迎來到「宮廷珍奇賞玩特展」！這個展覽將帶您穿越時光，深入古代中國皇宮的神秘世界，探索一系列獨一無二、精美絕倫的宮廷賞玩，它們曾經是帝王和貴族們的寶藏，如今將在此展現給您欣賞。",
+      "content": "<ol><li>珍稀珍寶精選：我們精心挑選了一系列宮廷賞玩，包括翠玉白菜、玉鴨、多寶格等，展示它們的獨特之處。</li><li>文化背後故事：透過深入的介紹，我們將揭示每個展品的文化意義，讓您更了解它們的背後故事和象徵。</li><li>工匠之精髓：可以看見工匠依據材質特性，結合各種雕刻技藝的匠心巧思，展現「致廣大而盡精微」的神乎其技</li></ol>",
+      "images": {
+        "sm": "/images/exhibitions/exhibition-U006.jpg",
+        "lg": "/images/exhibitions/exhibition-U006.jpg"
+      }
+    }
+  ],
+  "collections": [
+    {
+      "id": 1,
+      "collectionCategoryId": 1,
+      "collectionId": "P024",
+      "title": "秋山疊翠 軸",
+      "author": "朱叔重",
+      "time": "元順帝至正二十五年（1365）",
+      "dynasty": "元",
+      "description": "<p>朱叔重（約西元十四世紀）也有人寫作叔仲，江蘇吳縣人。他雖然是個讀書人，但在繪畫上也有卓越的成就，可惜遺留下來的作品很少。 小橋對岸，有林木蕭疏，村屋四五家隱約可見。山嶺連綿蜿蜒而上，白雲深鎖於山際。雲山蒼潤，水墨淋漓。山作直皴，樹用橫筆米點，畫法似出自米芾、高克恭。</p><p>Chu Shu-ch'ung, a native of Kiang-su, was a Confucian scholar, who excelled in painting. Whenever he wrote a particularly successful poem, he would paint a picture capturing the poetic concept. This painting was completed in 1365. As an official Chu Shu-ch'ung had little time to paint, thus few of his paintings are still extant. In this scroll, the trees are painted with horizontal dabs of ink, recalling the style of Mi Fu and Mi Yu-Jen. The mountains are constructed with vertical brushstrokes and heavy ink, resembling the work of Wu Chen.</p>",
+      "appreciation": "<p>《元朱叔重秋山疊翠》以其獨特的墨色表現手法吸引人們。畫中山川起伏，勾勒煙雲繚繞的秋景，墨色處處流轉，疊翠叠翠，賦予作品生命力與變化。輕重運用墨，勾勒山勢、岩石、樹木，細緻入微，使山水層次分明，景深立體。簡潔的筆法，透過墨色的變化，描繪出自然景物的氣勢和情感。</p><p>作品中的山水與情感相互交融，令人感受到作者對大自然的敬仰與感嘆之情。整幅畫營造出一種寧靜與宏偉並存的意境，讓觀者彷彿置身於其中，感受自然的美妙與壯麗。這幅作品展現了朱叔重對山水畫的深刻理解和造詣，成為中國山水畫的經典之作。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "紙",
+        "theme": "山水",
+        "dimensions": "69.5x26.4（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P024.jpg",
+        "list": [
+          "/images/collection/collection-P024.jpg",
+          "/images/collection/collection-P024-1.jpg",
+          "/images/collection/collection-P024-2.jpg",
+          "/images/collection/collection-P024-3.jpg"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "collectionCategoryId": 1,
+      "collectionId": "P015",
+      "title": "奔馬行空　單片",
+      "author": "徐悲鴻",
+      "time": "民國",
+      "dynasty": "民國",
+      "description": "<p>馬，是徐悲鴻先生一生中最愛描繪的題材。他畫的奔馬，筆墨淋漓瀟灑，帶著時代的風雷馳騁在畫壇上，給當時的中國畫壇帶來了清新、有力、剛勁的氣息。</p>",
+      "appreciation": "<p>徐悲鴻筆下的馬線條變化多樣，用雄渾粗壯者表現馬的整體輪廓；用飛揚者表現馬鬃馬尾；用精準鉤勒者表現嘴鼻、馬膝等關鍵部位。全畫少用渴筆，大筆蘸滿水分潑寫，酣暢淋漓。背景多空無，或疏疏寥寥交代，令作畫之精力、觀畫之精神，全集中於畫中的馬上。真如杜甫詩中所云：「斯須九重真龍出，一洗萬古凡馬空。」</p><p>似乎是個體的擬人，承載更豐富的涵義與情感：激昂驍勇的、緊張急迫的、沉著堅韌的、迷茫憂憤的，不一而足。</p>",
+      "authorIntro": "<p>徐悲鴻（1895一1953）是第一任中央美術學院院長、中華全國美術家協會主席。在繪畫創作上，提倡“盡精微，致廣大”；他對中國畫，主張“古法之佳者守之，垂絕者繼之，不佳者改之，未足者增之，西方繪畫之可采者融之”。他的畫能融古今中外技法于一爐而又有其獨特風格。他不但擅長中國畫，素描、油畫都有很高的造詣和成就。人物注重寫實，傳達精神；所畫花鳥、山水、走獸，簡練明快，富有生氣，尤以畫馬馳名中外。</p>",
+      "detail": {
+        "material": "紙",
+        "theme": "動物、馬",
+        "dimensions": "109.8x105（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P015.jpg",
+        "list": ["/images/collection/collection-P015.jpg"]
+      }
+    },
+    {
+      "id": 3,
+      "collectionCategoryId": 2,
+      "collectionId": "U007",
+      "title": "銅胎畫琺瑯黑地五彩流雲玉兔秋香鼻煙壺",
+      "author": "不詳",
+      "time": "清 雍正 西元1723-1735年",
+      "dynasty": "清",
+      "description": "<p>扁圓形壺身，裝飾黑地五彩流雲，似乎象徵仙境，兩面開光內各裝飾有小景畫，一面是雙兔與靈芝，一面是溪岸雙兔。帶畫琺瑯蓋，搭配象牙匙，蓋面飾正面朵花及卷草紋。</p>",
+      "appreciation": "<p>在有限的空間中所製作的小景畫，畫面之描繪極為細緻，兔的毛髮、岩石的肌理、成片的花草背景，都一絲不苟地呈現。底有白地藍方框紅書「雍正年製」宋體字款。</p><p>《活計檔》雍正八年（1730）琺瑯作紀錄提到，雍正九年（1731）曾燒成「黑地琺瑯五彩流雲畫玉兔秋香鼻煙壺」，即可能就是這件鼻煙壺。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "琺瑯器",
+        "theme": "動物",
+        "dimensions": "長4.5公分 寬2.3公分 高5.9公分 口徑0.7-1.2公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-U007-1.jpg",
+        "list": [
+          "/images/collection/collection-U007-1.jpg",
+          "/images/collection/collection-U007-2.jpg",
+          "/images/collection/collection-U007-3.jpg",
+          "/images/collection/collection-U007-4.jpg"
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "collectionCategoryId": 3,
+      "collectionId": "CA001",
+      "title": "翠玉白菜",
+      "author": "不詳",
+      "time": "清 西元1644-1911年",
+      "dynasty": "清",
+      "description": "<p>翠玉白菜是國立故宮博物院最受喜愛的藏品之一。工匠順應翠玉天然的色澤，以濃重的深綠色表現層層包覆的菜葉；白色部分雖有裂痕及雜質，但在巧妙的安排下，轉化為新鮮、飽含水分的白菜莖部。菜葉頂端的蟈蟈和蝗蟲，瞬間帶進了鮮活的田園氣息。翠玉白菜最初是一件華麗的宮殿陳設盆景，以栽種的形式立在琺瑯盆景上。</p>",
+      "appreciation": "<p>翠玉這個材質與白菜造型始風行於清中晚期，白菜與草蟲的題材在元到明初的職業草蟲畫中，屢見不鮮，一直是受民間歡迎的吉祥題材。</p><p>「翠玉白菜」原是塊半白半綠的翠玉，若琢成一般瓶罐鐲珮，則將會因為其裂璺、斑塊，而被視為多瑕的劣材。但玉工想到白菜的造型－綠成菜葉；白是菜梗，裂璺藏在葉脈中，斑塊則為經霜痕，眾人眼中的缺陷，透過創作者的用心與創意，遂轉化為真實與美好。</p><p>此件作品原陳設於永和宮中，因此有一推測，此白菜係屬住在永和宮內光緒帝的瑾妃所有，進而衍生出白菜寓意清白，象徵新嫁娘的純潔；葉尖螽斯與蝗蟲寓意多產，祈願皇室子孫綿延的意念，讓作品的內涵更趨圓滿。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "玉器",
+        "theme": "田園",
+        "dimensions": "長4.5公分 寬2.3公分 高5.9公分 口徑0.7-1.2公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-CA001.jpg",
+        "list": [
+          "/images/collection/collection-CA001.jpg",
+          "/images/collection/collection-CA001-1.jpg",
+          "/images/collection/collection-CA001-2.jpg",
+          "/images/collection/collection-CA001-3.jpg",
+          "/images/collection/collection-CA001-4.jpg",
+          "/images/collection/collection-CA001-5.jpg",
+          "/images/collection/collection-CA001-6.jpg",
+          "/images/collection/collection-CA001-7.jpg",
+          "/images/collection/collection-CA001-8.jpg"
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "collectionCategoryId": 2,
+      "collectionId": "U008",
+      "title": "帶銅胎畫琺瑯黑地夔龍紋套匣",
+      "author": "不詳",
+      "time": "清 雍正 西元1723-1735年",
+      "dynasty": "清",
+      "description": "<p>扁長形不透明白玻璃鼻煙壺，小口、斜肩、直壁，弧形底。器身隱現橫向稜紋，形制特殊。配有繪製精美，具雍正時期風格的銅胎黑地畫琺瑯夔龍回紋蓋匣。</p><p>玻璃表面勻整光滑，純白色澤近似硨磲。清雍正時期內務府造辦處《各作成做活計清檔》（簡稱《活計檔》）中可見各類呆白、涅白玻璃製器之記錄。</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "琺瑯器",
+        "theme": "圖騰",
+        "dimensions": "琺瑯盒長5.2公分 寬3.4公分；煙壺長4.5公分 寬2.5公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-U008.jpg",
+        "list": [
+          "/images/collection/collection-U008.jpg",
+          "/images/collection/collection-U008-1.jpg",
+          "/images/collection/collection-U008-2.jpg",
+          "/images/collection/collection-U008-3.jpg",
+          "/images/collection/collection-U008-4.jpg",
+          "/images/collection/collection-U008-5.jpg"
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "collectionCategoryId": 2,
+      "collectionId": "U005",
+      "title": "琺瑯彩柳燕碗",
+      "author": "不詳",
+      "time": "清 雍正 西元1723-1735年",
+      "dynasty": "清",
+      "description": "<p>這件碗侈口微撇，深弧壁，平底，淺圈足。碗外壁一面彩繪杏花柳樹，枝林掩映間有雙燕佇停棲息，粉嫩花蕊和鮮綠垂柳的搭配傳達出春天的氣息。筆致柔美，色彩鮮豔；另一面則以墨書題寫明朝狀元申時行的詩作「玉剪穿花過，霓裳帶月歸」兩句。</p><p>詩末以紅料描繪出「佳麗」、「四時」、「長春」三枚印文，藉由「佳麗四時長春」的吉語，來呼應畫中所營造的意境。碗內壁素面無紋，外底心書有「雍正年製」藍料宋體款識。</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "陶瓷器",
+        "theme": "花鳥",
+        "dimensions": "高7.7公分 口徑15.8公分 底徑6.5公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-U005.jpg",
+        "list": [
+          "/images/collection/collection-U005.jpg",
+          "/images/collection/collection-U005-1.jpg",
+          "/images/collection/collection-U005-2.jpg",
+          "/images/collection/collection-U005-3.jpg",
+          "/images/collection/collection-U005-4.jpg"
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "collectionCategoryId": 6,
+      "collectionId": "C001",
+      "title": "五銖錢",
+      "author": "不詳",
+      "time": "南朝梁 西元502-557年",
+      "dynasty": "魏晉南北朝",
+      "description": "<p>方孔圓錢，正面有篆書：「五銖」二字，背面無文。</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "銅器、金屬器",
+        "theme": "錢幣",
+        "dimensions": "待測量"
+      },
+      "images": {
+        "main": "/images/collection/collection-C001-1.jpg",
+        "list": [
+          "/images/collection/collection-C001-1.jpg",
+          "/images/collection/collection-C001-2.jpg"
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "collectionCategoryId": 6,
+      "collectionId": "C002",
+      "title": "開元通寶",
+      "author": "不詳",
+      "time": "唐高祖武德四年後 西元621年後",
+      "dynasty": "唐",
+      "description": "<p>方孔圓錢，正面有楷書：「開元通寶」四字，或以為「開通元寶」四字，背面無文。</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "銅器、金屬器",
+        "theme": "錢幣",
+        "dimensions": "待測量"
+      },
+      "images": {
+        "main": "/images/collection/collection-C002.jpg",
+        "list": [
+          "/images/collection/collection-C002.jpg",
+          "/images/collection/collection-C002-1.jpg"
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "collectionCategoryId": 6,
+      "collectionId": "C003",
+      "title": "乾隆通寶",
+      "author": "不詳",
+      "time": "清乾隆",
+      "dynasty": "清",
+      "description": "",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "銅器、金屬器",
+        "theme": "錢幣",
+        "dimensions": "待測量"
+      },
+      "images": {
+        "main": "/images/collection/collection-C003-1.jpg",
+        "list": [
+          "/images/collection/collection-C003-1.jpg",
+          "/images/collection/collection-C003-2.jpg"
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "collectionCategoryId": 5,
+      "collectionId": "K004",
+      "title": "緙繡九羊啟泰　軸",
+      "author": "不詳",
+      "time": "清乾隆",
+      "dynasty": "清",
+      "description": "<p>春，是一年的開始。花樹，總是率先向我們傳遞春天將臨的消息。有「歲寒三友」之稱的松、竹、梅，搭上新春之際綻放的山茶，皆為吉祥的迎春植物代表。此軸是清代宮廷依歲時而懸掛的作品，以緙絲為底，配合各式刺繡、描繪擦染，繽紛絢麗。</p><p>三位身著華服的太子，以及姿態各異的九隻山羊，於河岸上嬉遊，四周環繞祥雲、巨松、老梅、山茶、以及岩間的竹欉。太子們手持梅枝，上頭懸有籠中喜鵲，諧音「喜上眉梢」。而太子、九羊，同樣諧音借義─「泰」及「陽」，象徵代表正月的泰卦，陰漸消，陽漸長，傳達「三陽開泰」萬象更新之意，也隱含「九九消寒」春回大地的祈願。</p>",
+      "appreciation": "<p>此軸以三太子（三泰）、九羊（九陽）與松、梅、竹（三友）為主題，強調「九九消寒、春回啟泰」，象徵陰去陽來，吉運之兆。屬於清宮每逢新年懸掛的裝飾圖畫。</p><p>清代緙絲織工細巧，織製技法多變化。此軸藍地底色和補景（五彩祥雲、路石水面）採緙絲法，人物、動植物是緙絲加多種刺繡法，而梅花、松針、樹幹等局部，則是在緙絲和刺繡地子花紋上方，再用畫筆敷染，反映出乾隆時期追求繁複與完美的裝飾風格。整幅作品構圖飽滿繁富，配色精緻華麗，洋溢著喜慶祥瑞，是融合緙絲、刺繡、繪畫藝術的經典之作。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "絹",
+        "theme": "絲繡、走獸、樹木",
+        "dimensions": "218x111.7（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-K004.jpg",
+        "list": [
+          "/images/collection/collection-K004-1.jpg",
+          "/images/collection/collection-K004-2.jpg",
+          "/images/collection/collection-K004-3.jpg",
+          "/images/collection/collection-K004-4.jpg",
+          "/images/collection/collection-K004-5.jpg",
+          "/images/collection/collection-K004-6.jpg",
+          "/images/collection/collection-K004-7.jpg",
+          "/images/collection/collection-K004-8.jpg",
+          "/images/collection/collection-K004-9.jpg",
+          "/images/collection/collection-K004-10.jpg",
+          "/images/collection/collection-K004-11.jpg"
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "collectionCategoryId": 2,
+      "collectionId": "U009",
+      "title": "掐絲琺瑯兼畫琺瑯西洋人物圖雙耳鼻煙壺",
+      "author": "不詳",
+      "time": "清乾隆 西元1736-1795年",
+      "dynasty": "清",
+      "description": "<p>銅胎鋪首雙耳圓瓶，瓶頸肩為掐絲琺瑯，上有如意紋及纏枝番蓮紋，瓶身畫琺瑯，雙面以西洋卷草開光，內彩繪西洋母子圖，餘以各類花卉為飾。底有宋體字「乾隆年製」藍款，帶雕花鍍金銅蓋與牙匙。</p>",
+      "appreciation": "<p>融合掐絲琺瑯與畫琺瑯於一器，瓶身裝飾西洋人物圖像，瓶肩鋪中國傳統獸首銜環雙耳，精緻小巧、美麗非常</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "琺瑯器",
+        "theme": "人物、花草",
+        "dimensions": "寬3.3公分 高4.5公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-U009-B.jpg",
+        "list": [
+          "/images/collection/collection-U009-C.jpg",
+          "/images/collection/collection-U009-D.jpg",
+          "/images/collection/collection-U009-E.jpg",
+          "/images/collection/collection-U009-F.jpg",
+          "/images/collection/collection-U009-G.jpg"
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "collectionCategoryId": 2,
+      "collectionId": "U010",
+      "title": "玻璃胎畫琺瑯山水人物鼻煙壺",
+      "author": "不詳",
+      "time": "清乾隆 西元1736-1795年",
+      "dynasty": "清",
+      "description": "<p>乳白玻璃胎，直口，短頸，扁平圓腹，圈足。以畫琺瑯為飾，壺腹兩面有金色莨苕葉邊飾開光，內繪山水人物，開光隙地飾不規則圖案。口緣及圈足塗金彩，圈足內白地藍書「乾隆年製」四字二行楷款，附龍紋銅蓋及牙匙。</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "琺瑯器、玻璃器",
+        "theme": "山水、人物",
+        "dimensions": "寬4.5公分 通高5.9公分 厚2.9公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-U010-B.jpg",
+        "list": [
+          "/images/collection/collection-U010-C.jpg",
+          "/images/collection/collection-U010-D.jpg",
+          "/images/collection/collection-U010-E.jpg",
+          "/images/collection/collection-U010-F.jpg",
+          "/images/collection/collection-U010-G.jpg"
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "collectionCategoryId": 5,
+      "collectionId": "K005",
+      "title": "印度 繪染棉布掛飾或地墊",
+      "author": "不詳",
+      "time": "西元19世紀上半",
+      "dynasty": "清",
+      "description": "<p>伊朗的繪染棉布泰半從印度進口，伊斯法罕雖也生產相類製品，但不如印度棉布物美價廉。這件繪染布掛飾，是印度專為波斯市場所製作的產品，生產地集中於印度東南沿海的默蘇利珀德姆。</p>",
+      "appreciation": "<p>紋飾以紅藍為主色調，像是拱形的壁龕或拱門建物，彷彿要通往皇宮或清真寺。門楣開光內有阿拉伯文祈禱語「讚美至高無上的真主，讚頌歸於他」，讓我們知道它的使用者是穆斯林。門內採用經典的對波紋作為裝飾，而建築體的空隙處，無不填滿細密的多色花卉及佩斯利紋。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "棉布",
+        "theme": "織品、建築",
+        "dimensions": "縱114.2公分 寬90.4公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-K005.jpg",
+        "list": ["/images/collection/collection-K005.jpg"]
+      }
+    },
+    {
+      "id": 14,
+      "collectionCategoryId": 5,
+      "collectionId": "K006",
+      "title": "日本 黑地蝴蝶紋友禪染和服",
+      "author": "不詳",
+      "time": "西元20世紀",
+      "dynasty": "民國",
+      "description": "<p>日本和服是造型單純的平面剪裁，因此染織技法及紋樣設計一直是和服鑑賞的焦點。黑地和服以日本傳統的友禪染技法表現出線條細膩、色彩豐富蝴蝶紋滿佈全衣身，以刺繡呈現蝴蝶觸角，添加設計的層次，現代感十足。</p>",
+      "appreciation": "<p>蝴蝶在日本文化代表蛻變與美麗，在黑暗中飛舞的蝴蝶被認為可以趨吉避凶。從毛毛蟲蛻變成蝴蝶的過程常被用來讚美女性蛻變後的美麗姿態，象徵著愛情、喜悅、韌性、希望和自由。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "棉布",
+        "theme": "蝴蝶、服飾",
+        "dimensions": "縱156公分 橫119公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-K006-B.jpg",
+        "list": [
+          "/images/collection/collection-K006-A.jpg",
+          "/images/collection/collection-K006-B.jpg"
+        ]
+      }
+    },
+    {
+      "id": 15,
+      "collectionCategoryId": 1,
+      "collectionId": "P014",
+      "title": "畫春花三種　軸",
+      "author": "錢維城",
+      "time": "清",
+      "dynasty": "清",
+      "description": "<p>錢維城繪春天盛開花卉，玉蘭、牡丹、海棠，用筆工細，著色穠艷。畫風受鄒一桂（1686－1772）影響，屬於宮廷應制畫。</p>",
+      "appreciation": "",
+      "authorIntro": "<p>錢維城（約1720－1772）江蘇武進人。字宗盤，號茶山，晚號稼軒。乾隆十年（1745）狀元，入值南書房，官至工部侍郎。初從陳書（1660－1736）學花卉，後改習山水。</p>",
+      "detail": {
+        "material": "紙",
+        "theme": "花草",
+        "dimensions": "113x80.1（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P014-A.jpg",
+        "list": [
+          "/images/collection/collection-P014-A.jpg",
+          "/images/collection/collection-P014-C.jpg",
+          "/images/collection/collection-P014-D.jpg",
+          "/images/collection/collection-P014-E.jpg",
+          "/images/collection/collection-P014-F.jpg",
+          "/images/collection/collection-P014-G.jpg"
+        ]
+      }
+    },
+    {
+      "id": 16,
+      "collectionCategoryId": 1,
+      "collectionId": "P016",
+      "title": "翠巘高秋圖　軸",
+      "author": "愛新覺羅弘旿",
+      "time": "清",
+      "dynasty": "清",
+      "description": "<p> 層巒疊翠，秋葉點綴其間，色彩繽紛絢麗，一派秋高氣爽景致。山石不用線皴，直接以筆橫臥點苔，遠山淡墨一抹，是為沒骨畫法。自題恭仿楊昇筆意，按楊昇為唐朝人，擅長沒骨山水畫。然本幅畫風與明末流行的沒骨山水畫較為近似，因此乾隆題詩則云：真蹟楊昇曾未見，精神真欲逼思翁（董其昌）。</p><p>Layers of green peaks are dotted with autumn leaves. The color is abundantly applied, bright and brilliant. The mountains and rocks are painted in the boneless manner, that is, without contour or texture strokes. In his own inscription, Hung states that he was here following Yang Sheng’s brushwork (Yang was a T’ang artist who initiated the use of the boneless method). In reality, however, the style of this painting compares favorably with that of the late Ming artist Tung Ch’i-ch’ang.</p>",
+      "appreciation": "",
+      "authorIntro": "<p>弘旿，字恕齋，又字醉迂，號一如居士、瑤華道人。滿清宗室，是清朝康熙帝二十四子允祕的次子，畫家。官封固山貝子。其現存作品件款多在乾隆十六年（1751）至五十七年（1791）間。</p><p>《石渠寶笈》著錄弘旿畫計有三十多件，內府收藏的估計還有不少。可見弘旿作畫之勤，亦可見乾隆帝對他筆墨的讚許。其《自題山水畫冊》詩，有疏朗、清越之韻律。工於書畫，書兼四體，其山水畫作得董邦達之妙諦，花木具有古樸陳香；治石印有元、明篆刻的風格。有《聽泉圖》、《板橋僧舍圖》、《江山拱翠圖》、《仿唐寅山水圖》、《素瀨松吟》等。</p>",
+      "detail": {
+        "material": "紙",
+        "theme": "山水、秋景、樹木",
+        "dimensions": "122x56.6（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P016.jpg",
+        "list": [
+          "/images/collection/collection-P016.jpg",
+          "/images/collection/collection-P016-C.jpg",
+          "/images/collection/collection-P016-D.jpg",
+          "/images/collection/collection-P016-E.jpg",
+          "/images/collection/collection-P016-F.jpg"
+        ]
+      }
+    },
+    {
+      "id": 17,
+      "collectionCategoryId": 1,
+      "collectionId": "P013",
+      "title": "方壺圖　軸",
+      "author": "文伯仁",
+      "time": "明世宗嘉靖四十二年（1563）",
+      "dynasty": "明",
+      "description": "<p> 本幅波濤萬頃間，有仙山浮起，白雲繚繞其上，中藏道觀數起，自成桃源。全幅用筆繁細，敷色雅澹。「方壼」，為古代傳說中的仙山「方丈山」，〔列子湯問〕：「渤海之東，不知幾億萬里，有大壑焉：其中有五山焉：一曰岱輿，二曰員蟜，三曰方壺，四曰瀛洲，五曰蓬萊。」此畫取道教題材，故上下款也仿照早期釋道畫加框榜題的習慣。</p><p>From the vast sea of roaring waves, peaks of the immortals tower up and touch the clouds. Taoist temples are nestled in the mountains. The world within makes for a paradise. The work is executed with complex, fine brushstrokes and elegant, light colors. Fang-hu is one of the 5 legendary mountains of the immortals in the Po Sea. Since this work adopts a Taoist subject, the inscriptions are written with rectangular frames in the convention of early Taoist and Buddhist paintings.</p>",
+      "appreciation": "<p>本幅以俯視的角度呈現桃源仙境，畫中仙山如大海中的小島，波濤萬頃間，白雲繚繞其間，中藏道觀數起，似漂浮於太虛之境。全幅用筆繁細，波浪雲海或山峰茂葉，用筆嚴謹，墨筆皴線上薄施青綠，別具清雅氣息。</p>",
+      "authorIntro": "<p>文伯仁（一五○二－一五七五），徵明從子，字德承，號五峰，又號葆生、攝山老農。長洲（江蘇蘇州）人。善山水、人物，巖巒鬱茂，學王蒙而不失家法。</p><p>文伯仁筆力清勁，巖巒鬱茂，佈景奇兀，時以巧思發之，名在文徵明之下。橫披大幅頗負出藍之譽，唯構圖時有塞實之感。善畫人物，亦能詩。其山水畫有簡、繁兩種面貌。簡者效文徵明細筆山水，景色疏朗，筆墨細秀，多抒情意趣；繁者出自王蒙，山林層疊，構圖飽滿，皴點繁密，境界鬱茂。著有《五峰集》</p>",
+      "detail": {
+        "material": "紙",
+        "theme": "山水、日景、建築",
+        "dimensions": "120.6x31.8（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P013.jpg",
+        "list": [
+          "/images/collection/collection-P013-A.jpg",
+          "/images/collection/collection-P013-C.jpg",
+          "/images/collection/collection-P013-D.jpg",
+          "/images/collection/collection-P013.jpg",
+          "/images/collection/collection-P013-G.jpg",
+          "/images/collection/collection-P013-H.jpg",
+          "/images/collection/collection-P013-J.jpg"
+        ]
+      }
+    },
+    {
+      "id": 18,
+      "collectionCategoryId": 1,
+      "collectionId": "P026",
+      "title": "桃花漁艇",
+      "author": "王翬",
+      "time": "清 西元1644-1911",
+      "dynasty": "清",
+      "description": "<p> 此幅畫溪岸夾桃，落英繽紛，一漁舟沿溪行來，山巒層疊，綠樹蒼翠，白雲湧起，水際空靈。作者自題臨元代趙孟頫＜桃花漁艇圖＞，全圖以青綠設色，佈墨施綠，古雅妍麗。</p>",
+      "appreciation": "<p>用筆精工，構景得疏密動靜之妙，畫面明淨雅逸，如繪陶潛《桃花源記》中「緣溪行，忘路之遠近，忽逢桃花林，夾岸數百步……」之景。自然界色彩之妙，全出於筆下。</p>",
+      "authorIntro": "<p>王翬（1632－1717），江蘇常熟人。字石谷，號耕煙散人、耕煙外史、烏目山中人、劍門樵客。 少即善畫，繼得王鑑（1598－1677）、王時敏（1592－1680）指授，並隨之閱覽各地珍藏，藉機臨摹名蹟，因能筆參古今，貌含南北。畫技之精熟為清代第一。</p><p>他的弟子眾多，形成了“虞山派”，影響後世頗深。他與王時敏、王鑑、王原祁、吳歷、惲壽平合稱為“清初六家”。</p>",
+      "detail": {
+        "material": "紙",
+        "theme": "溪澗、花木",
+        "dimensions": "縱：28.5公分　橫：43公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-P026.jpg",
+        "list": ["/images/collection/collection-P026.jpg"]
+      }
+    },
+    {
+      "id": 19,
+      "collectionCategoryId": 1,
+      "collectionId": "P025",
+      "title": "鵲華秋色　卷",
+      "author": "趙孟頫",
+      "time": "元成宗元貞元年（1295）",
+      "dynasty": "元",
+      "description": "<p> 此畫是元貞元年（1295）他自濟南路職位南返後，為友人周密（1232-1298）描繪其祖籍地貌景色之作。畫卷構圖簡潔，在一廣闊水澤坡岸間，右為尖聳的華不注山，左側是渾圓鵲山。畫中坡岸林木，與董源山水母題十分接近，然經趙孟頫的筆墨與設色後更具生趣，成一秀麗可人的自然佳景。黃公望從趙孟頫此類復古創新手法，得以掌握筆墨新活力。</p>",
+      "appreciation": "<p>本幅是1295年為周密（1232-1298）描繪山東歷城地區的風光，撫慰周氏對故鄉的想像。畫分三段，首段華不注山，末段鵲山，兩山都在後方，中段大片水澤在前，三段相連成一片開闊平遠的視野。其間點綴茅舍、漁人，營造出恬淡平靜的氣氛。通卷以單純、內斂的中鋒筆法，畫出造形簡樸的林木、坡岸、山石、人物，體現趙氏學習董源（約10世紀）風格，去巧媚而歸古拙，借古開今的藝術思想。</p>",
+      "authorIntro": "<p>趙孟頫（1254—1322），字子昂，號松雪，松雪道人，又號水精宮道人、鷗波，中年曾作孟俯，漢族，吳興（今浙江湖州）人。元代著名畫家，楷書四大家（歐陽詢、顏真卿、柳公權、趙孟頫）之一。趙孟頫博學多才，能詩善文，懂經濟，工書法，精繪藝，擅金石，通律呂，解鑑賞。特別是書法和繪畫成就最高，開創元代新畫風，被稱為「元人冠冕」。他也善篆、隸、真、行、草書，尤以楷、行書著稱於世。</p>",
+      "detail": {
+        "material": "紙",
+        "theme": "山水、秋景、建築",
+        "dimensions": "120.6x31.8（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P025.jpg",
+        "list": [
+          "/images/collection/collection-P025.jpg",
+          "/images/collection/collection-P025-9.jpg",
+          "/images/collection/collection-P025-8.jpg",
+          "/images/collection/collection-P025-7.jpg",
+          "/images/collection/collection-P025-1.jpg",
+          "/images/collection/collection-P025-2.jpg",
+          "/images/collection/collection-P025-6.jpg"
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "collectionCategoryId": 1,
+      "collectionId": "P020",
+      "title": "具區林屋　軸",
+      "author": "王蒙",
+      "time": "元",
+      "dynasty": "元",
+      "description": "<p> 本幅描繪太湖林屋洞之景色，洞壑玲瓏，溪畔村舍水榭錯落。山石以乾筆牛毛皴皴擦，用筆熟練多變。樹葉以赭石、藤黃、朱砂等點染，遂使秋意滿幅。全作用筆用色，俱至神妙。山石樹木層疊充塞，構圖幾乎密不透風，但無迫塞之感。</p><p>This painting represents the scenery around the Forest Chamber Grotto at Lake T'ai. This fascinating grotto is filled with twisting rock forms as a stream, buildings, and figures are scattered throughout. The landscape was rendered in dry \"ox-tail\" texture strokes, revealing the maturity and variety of Wang's brushwork. The leaves were washed with ochre and red for a sense of autumn. The use of brush and color add spirit to the work. Layers of hills and trees fill the composition almost completely, yet it still retains a buoyant atmosphere.</p>",
+      "appreciation": "<p>這件畫作描寫江蘇太湖林屋洞之景色。玲瓏的洞壑、層疊的山石、繁密的樹林、錯落的村舍和粼粼水波填滿了整幅畫面，大膽地擺脫了自然景象的拘囿。全作的構圖幾乎密不透風，但因畫家有虛實相濟的觀念，故在畫幅的左上角營造出「透」的部分，使得全作毫無迫塞的感覺。王蒙用牛毛皴皴擦山石，長披麻皴畫樹幹，又雜以繁密的苔點，筆法變化多端，細膩豐富。墨色層層點染，濃淡分明，同時又用了赭石、藤黃、朱砂和朱標點染，使得全作秋意滿幅。（李玉珉）</p>",
+      "authorIntro": "<p>王蒙，吳興（浙江湖州）人。字叔明，號黃鶴山樵、香光居士，是趙孟頫（1254－1322）的外孫。明初因胡惟庸案受到牽連，死於獄中。畫風以王維（701－761）、董源（活動於十世紀上半葉）、巨然（十世紀）為宗，但能自立面目，與黃公望（1269－1354）、吳鎮（1280－1354）和倪瓚（1301－1374）齊名，合稱為「元四大家」。</p>",
+      "detail": {
+        "material": "紙",
+        "theme": "山水、秋景、人物",
+        "dimensions": "68.7x42.5（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P020-F.jpg",
+        "list": [
+          "/images/collection/collection-P020-A.jpg",
+          "/images/collection/collection-P020-D.jpg",
+          "/images/collection/collection-P020-E.jpg",
+          "/images/collection/collection-P020-F.jpg",
+          "/images/collection/collection-P020-G.jpg",
+          "/images/collection/collection-P020-I.jpg"
+        ]
+      }
+    },
+    {
+      "id": 21,
+      "collectionCategoryId": 2,
+      "collectionId": "U011",
+      "title": "洋彩開光花鳥紋雙連瓶",
+      "author": "不詳",
+      "time": "清 乾隆六年 西元1741年",
+      "dynasty": "清",
+      "description": "<p>瓶作扁圓形，為凸顯別出新裁的造型，兩隻扁圓瓶以前後錯開但腹部相連的形制出現。口作唇邊向內斂收，短頸、長方形矮足，胎骨厚重，瓶面滿飾藍、紫錦地圖案，錦地之上再彩畫各式纏枝花卉。</p>",
+      "appreciation": "<p>雙連瓶腹部中心兩面開光，分畫梅花、喜鵲及水仙、鵪鶉，由於兩器相連，故前後兩面的開光，皆因交錯之故而各出現圓形與半圓形的作法，此變化亦與藍、紫兩色釉彩的交叉出現共同形成有趣的對應與變化。器內及底皆施湖綠色釉，底以青花書「大清乾隆年製」六字篆款。</p><p>雙連瓶的形制，已見於乾隆之前的官窯和民窯。乾隆官窯為表現其卓越的承造能力，故於前人的基礎上無不儘力燒造「雙管瓶」、「三級瓶」、「四喜瓶」、「五岳瓶」、「六孔瓶」和「七孔花插」等，同時足以展現技術與想像的瓶式。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "陶瓷器",
+        "theme": "花鳥",
+        "dimensions": "高20.0公分 口徑4.2公分 底徑5.9×2.8公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-U011-B.jpg",
+        "list": [
+          "/images/collection/collection-U011-B.jpg",
+          "/images/collection/collection-U011-C.jpg",
+          "/images/collection/collection-U011-D.jpg",
+          "/images/collection/collection-U011-E.jpg",
+          "/images/collection/collection-U011-F.jpg",
+          "/images/collection/collection-U011-G.jpg",
+          "/images/collection/collection-U011-H.jpg"
+        ]
+      }
+    },
+    {
+      "id": 22,
+      "collectionCategoryId": 2,
+      "collectionId": "U012",
+      "title": "琺瑯彩瓷青山水碗",
+      "author": "不詳",
+      "time": "清 雍正 西元1723-1735年",
+      "dynasty": "清",
+      "description": "<p>相較於康熙時期的琺瑯彩瓷，雍正官窯的作品，逐漸往視器面如同畫面的方向發展，此時彩色底釉漸為白釉所取代，畫琺瑯人彷彿在素白的紙或絹上作畫，無論是由宮廷畫家親自執筆畫圖，或者只是提供畫稿讓畫匠來依稿繪製，在追模文人書畫雅趣的訴求下，琺瑯彩瓷的圖繪愈發精緻細膩，完全以比照院畫水平為能事。</p>",
+      "appreciation": "<p>此品侈口窄唇，弧形深壁，矮圈足。薄胎白釉，弧形碗壁一面彩畫藍料山水，畫中山崖石壁上由細筆描繪出來的線條，為表現陰陽向背所暈染出來濃淡色澤，與凝聚於山頭的苔點，以及溪旁的林樹、舟渚、茅屋等無不精細入微，大有提供觀賞遊覽之功能。另一面以墨書題寫：「一江綠水浮嵐影，兩岸青山夾翠濤」，題句前後並以紅料描畫「壽如」、「山高」、「水長」三印。底素白，中心以藍料書「雍正年製」，四字宋體款。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "陶瓷器",
+        "theme": "山水",
+        "dimensions": "高 6.9公分，口徑 14.9公分，足徑14.6公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-U012-B.jpg",
+        "list": [
+          "/images/collection/collection-U012-B.jpg",
+          "/images/collection/collection-U012-C.jpg",
+          "/images/collection/collection-U012-D.jpg",
+          "/images/collection/collection-U012-H.jpg",
+          "/images/collection/collection-U012-I.jpg"
+        ]
+      }
+    },
+    {
+      "id": 23,
+      "collectionCategoryId": 2,
+      "collectionId": "U013",
+      "title": "琺瑯彩錦堂富貴圖橄欖瓶",
+      "author": "不詳",
+      "time": "清 乾隆 西元1736-1795年",
+      "dynasty": "清",
+      "description": "<p>口微侈，頸寬長，中腹略突，平底，凹足，形似橄欖，故名。器面彩繪園中花卉，湖石芍藥數株，一旁野菊叢生，頸肩空處墨書題句：「青扶承露蕊，紅妥出闌枝。」詩上下硃紅描繪「佳麗」、「四時」、「長春」三印。胎薄透光，光潤瑩潔，器底藍料書「乾隆年製」四字二行楷款，外加雙方框。</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "陶瓷器",
+        "theme": "花草",
+        "dimensions": "高17.6公分 口徑4.0公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-U013-B.jpg",
+        "list": [
+          "/images/collection/collection-U013-B.jpg",
+          "/images/collection/collection-U013-C.jpg",
+          "/images/collection/collection-U013-D.jpg",
+          "/images/collection/collection-U013-E.jpg"
+        ]
+      }
+    },
+    {
+      "id": 24,
+      "collectionCategoryId": 2,
+      "collectionId": "U014",
+      "title": "汝窯 青瓷無紋水仙盆",
+      "author": "不詳",
+      "time": "北宋 西元11世紀晚期-12世紀初",
+      "dynasty": "宋",
+      "description": "<p>橢圓形盆，侈口、深壁，平底凸出窄邊稜，四雲頭形足；周壁胎薄，底足略厚。通體滿佈天青釉，極勻潤；底邊釉積處略含淡碧色；口緣與稜角釉薄處呈淺粉色。裹足支燒，底部有六個細支釘痕，略見米黃胎色。全器釉面純潔無紋片，此種傳世稀少，溫潤素雅的色澤，正是宋人所欲追求如雨過天青的寧靜開朗的美感。</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "陶瓷器",
+        "theme": "青瓷",
+        "dimensions": "高6.9公分 口徑23.0 X 16.4公分 足徑19.3 X 12.9公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-U014-2.jpg",
+        "list": [
+          "/images/collection/collection-U014-2.jpg",
+          "/images/collection/collection-U014-1.jpg",
+          "/images/collection/collection-U014-3.jpg"
+        ]
+      }
+    },
+    {
+      "id": 25,
+      "collectionCategoryId": 3,
+      "collectionId": "CA007",
+      "title": "玉鴨",
+      "author": "不詳",
+      "time": "宋至元 西元960-1368年",
+      "dynasty": "宋",
+      "description": "<p>這隻翹尾豐臀的可愛小鴨，正歪著腦袋觀察著周遭。以局部帶褐色的黃玉雕琢而成，仔細檢視，確知牠的頭部與鴨蹼上，既有原來的褐色，又再加以人工染色。琢碾的手法極為簡單，但因為掌握了鴨子翹尾豐臀的體態特徵，以致作品既可愛又生動活潑，令人享受到大自然輕鬆閒適的趣味。</p>",
+      "appreciation": "<p>從北宋開始，玉器以雁鴨為造型、紋飾之主題情形漸增，這一點和繪畫的發展一致。宋畫重寫生，「生」的意義即在於觀察研究對象後，畫家與對象間相融為一，遂於畫面中自然流露出生命與天機，而非狀物逼肖的寫實。</p><p>一件玉器上常有不同的顏色變化，如果這個顏色的分布非常巧妙，足以增添作品的生動性，則玉色究竟是天然或人為，就成了多數人好奇的焦點。觀察本件玉鴨上褐色的部分，其表面出現些許凹凸，顯得較為粗糙，凹處的光澤枯澀，凸處則十分油亮。而其色彩的濃度是由嘴、足的尖端向後逐漸變淡。腦後方有小塊色彩脫落的情況。因此推論，玉鴨顏色的變化應該是經過了人為的染色。</p><p>蘇東坡(1037-1101)曾描寫早春美景：「竹外桃花三兩枝，春江水暖鴨先知，蔞蒿滿地蘆芽短，正是河豚欲上時。」本件黃玉鴨歪首環視、身軀圓潤、豐臀微翹，小小的雙蹼似乎難以撐起全身的重量，此種憨態可掬的身形，以及純真好奇的表情，令人感到大地春回、生機初萌的喜悅。小鴨的頭部局部和雙蹼皆略為染色，整體更添童趣和美感，也貼近文人所推崇的赤子之心。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "玉器",
+        "theme": "鳥獸、鴨",
+        "dimensions": "長8.5公分，寬2.8公分，高4.5公分 "
+      },
+      "images": {
+        "main": "/images/collection/collection-CA007-B.jpg",
+        "list": [
+          "/images/collection/collection-CA007-B.jpg",
+          "/images/collection/collection-CA007-C.jpg",
+          "/images/collection/collection-CA007-D.jpg",
+          "/images/collection/collection-CA007-E.jpg",
+          "/images/collection/collection-CA007-F.jpg",
+          "/images/collection/collection-CA007-G.jpg"
+        ]
+      }
+    },
+    {
+      "id": 26,
+      "collectionCategoryId": 2,
+      "collectionId": "U015",
+      "title": "朝鮮半島 青瓷象嵌菊花紋水注",
+      "author": "不詳",
+      "time": "13世紀",
+      "dynasty": "元",
+      "description": "<p>高麗王朝於高麗毅宗二十四年（1170）歷經武臣奪權後，進入武人掌政時代。有別於12世紀的高麗青瓷以文人貴族品味為主導，在雅緻風尚下追求釉色表現與精巧造形，13世紀的高麗青瓷對於裝飾技法的創新與重視，顯示出新興貴族階層對於華麗視覺感受的喜愛，其中最具代表性者即為象嵌青瓷。</p><p>以鑲嵌技術裝飾的高麗青瓷稱「象嵌青瓷」，「象嵌（상감）」韓文的漢字亦有稱「相嵌」者，其他也有「象眼（상안）」、「填嵌（전감）」的稱呼。鑲嵌技術在工藝上的應用，於金屬器有金銀錯，於漆器有螺鈿，於瓷器上的使用則可見於高麗青瓷。</p><p>鑲嵌為高麗青瓷的獨特工藝技術，即在瓷胎上刻出紋樣輪廓，再根據圖案需要填入白、赭兩色瓷土，修整表面後先低溫素燒成形，後施青釉高溫燒製而成。赭土於高溫環境中發色為黑色，在青瓷釉色的襯托下，黑白瓷土的對比變化與線條流利的刻工相得益彰，極具裝飾性效果，亦能描繪出富含層次的自然景象。</p>",
+      "appreciation": "<p>此件水注造型為撇口，玉壺春式瓶身，平底，矮圈足。寬板把手屈起，高度略低於口沿，柄前端與器頸相連並帶一繫。腹一側出曲流與把手相對，略低於把手前端，與頸部上緣等高。</p><p>器身裝飾以白色象嵌為主，綴以部分黑色象嵌，流身則有簡單劃花。口沿至頸為雷紋與卷草紋，以弦紋區隔；肩部為雙重蓮瓣紋，以弦紋與如意頭紋區隔，瓣內飾以連珠紋；腹部為兩面圓形開光，並於周圍緣飾連珠紋，開光內嵌折枝菊花，葉採側面、俯瞰二種視角描繪，黑白相間，開光兩側另各有上下相對之折枝菊花；下腹鑲嵌雙重蓮瓣紋，有連珠紋飾於瓣內，並以弦紋與腹部區隔。釉色灰青，足端、底部均無釉。器身紋飾種類多樣，滿佈全身，華麗繁複。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "陶瓷器",
+        "theme": "象嵌青瓷",
+        "dimensions": "高23.7公分、徑14.7公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-U015.jpg",
+        "list": ["/images/collection/collection-U015.jpg"]
+      }
+    },
+    {
+      "id": 27,
+      "collectionCategoryId": 3,
+      "collectionId": "CA003",
+      "title": "銅熊尊",
+      "author": "不詳",
+      "time": "漢 西元前206-西元220年",
+      "dynasty": "漢",
+      "description": "<p>此件銅熊在乾隆時期被品斷為唐朝「表木」的底座，其實它應該是件漢代器物殘存的足部，頸背上的銅管則為後加。銅熊的毛髮嵌有金、銀絲，而額頭、雙眼、乳突、肚臍、四肢近關節處均鑲寶石，極為精緻華麗。</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "銅器",
+        "theme": "走獸、熊",
+        "dimensions": "高9.3公分 長6.2公分 寬9.8公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-CA003.jpg",
+        "list": [
+          "/images/collection/collection-CA003.jpg",
+          "/images/collection/collection-CA003-B.jpg",
+          "/images/collection/collection-CA003-A.jpg",
+          "/images/collection/collection-CA003-C.jpg",
+          "/images/collection/collection-CA003-D.jpg",
+          "/images/collection/collection-CA003-E.jpg",
+          "/images/collection/collection-CA003-F.jpg",
+          "/images/collection/collection-CA003-G.jpg"
+        ]
+      }
+    },
+    {
+      "id": 28,
+      "collectionCategoryId": 1,
+      "collectionId": "P027",
+      "title": "仙姬文會圖　卷",
+      "author": "周文矩",
+      "time": "宋英宗治平三年（1066）",
+      "dynasty": "五代",
+      "description": "<p> 本幅以青綠山水描繪宮苑內眾女仙群集文會。風格上與五代南唐畫家周文矩的關係薄弱。在結構上，先繪宮苑外，春柳臨池，鴛鴦戲波，然後才進入女仙世界的描寫，此種特意區別內外世界，並在構圖上安排一富有詩意的過渡之作法，令人想起明仇英〈漢宮春曉〉。</p>",
+      "appreciation": "<p>通幅皆重彩設色，妍麗無倫。的確畫中庭園、樹木等之描繪處處可見吳派遺緒，應為明代晚期蘇州作坊的擬古作品。款繫治平三年，按南唐無此年號，當係後人偽署。(20100710)</p>",
+      "authorIntro": "<p>周文矩（西元十世紀），建康句容（今南京）人。仕後主李煜為翰林待詔，善繪冕服車器，尤工人物仕女。所作人物，線條率皆細勁曲折，圓潤流暢，間作顫動之勢，飄逸自若，能自成一家面目。至若綺羅仕女，雖近承唐代周昉，惟其纖細秀麗，益有過之。</p>",
+      "detail": {
+        "material": "絹",
+        "theme": "人物、仕女、山水",
+        "dimensions": "41.5x361.7（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P027-G.jpg",
+        "list": [
+          "/images/collection/collection-P027-J.jpg",
+          "/images/collection/collection-P027-I.jpg",
+          "/images/collection/collection-P027-H.jpg",
+          "/images/collection/collection-P027-G.jpg",
+          "/images/collection/collection-P027-F.jpg",
+          "/images/collection/collection-P027-E.jpg",
+          "/images/collection/collection-P027-D.jpg",
+          "/images/collection/collection-P027-C.jpg"
+        ]
+      }
+    },
+    {
+      "id": 29,
+      "collectionCategoryId": 1,
+      "collectionId": "P023",
+      "title": "紅牡丹　單片",
+      "author": "鄭曼青",
+      "time": "中華民國五十九年（1970）",
+      "dynasty": "民國",
+      "description": "<p>鄭曼青畫乃追法陳淳、徐渭、八大山人，尤能得八大之神隨。畫由工筆花鳥入手，其後攻山水，力求寫意，簡、拙是特色，雅逸與醇厚是內涵。以書法之功力，作為繪畫基石，從畫意中見書趣，畫中有詩，詩書畫為一體。</p>",
+      "appreciation": "<p>曼青先生畫則山水花卉無不工，總以渾厚為宗。山水喜梅花道人之厚潤，而參以八大之簡約。花卉其初有意於青藤與白陽，多勁捷之筆，後頗避之。朋友間有力追勁捷者，婉勸之云：｀吾早年亦嘗沉潛於此，孜孜數十年，乃覺勁捷之力易盡，乃復歸於緩約渾凝。＇故晚年花卉取徑八大而多蒼潤，用筆則愈趨愈簡，愈簡愈工，生平作畫，必鍛煉深思而後出，未嘗輕易為之，故世人獲之者如得吉光片羽，珍襲寶愛。</p>",
+      "authorIntro": "<p>鄭曼青（1902年7月29日—1975年3月14日），浙江永嘉人，現代中醫師、畫家、武術家，楊澄甫弟子，精於太極拳，為鄭子太極拳的創始人。有「五絕老人」的稱譽，五絕所指的是詩、書、畫、中醫和太極拳等5種絕藝。曾出版英文太極拳著作，而他以哲學、科學、醫學的角度來闡釋太極拳，開風氣之先，令人耳目一新。</p>",
+      "detail": {
+        "material": "紙",
+        "theme": "花草、牡丹、山水",
+        "dimensions": "135.5x69.3（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P023.jpg",
+        "list": [
+          "/images/collection/collection-P023-C.jpg",
+          "/images/collection/collection-P023-D.jpg",
+          "/images/collection/collection-P023-E.jpg",
+          "/images/collection/collection-P023-F.jpg"
+        ]
+      }
+    },
+    {
+      "id": 30,
+      "collectionCategoryId": 3,
+      "collectionId": "CA005",
+      "title": "玉辟邪",
+      "author": "不詳",
+      "time": "西漢晚期至東漢 西元前73-西元220年",
+      "dynasty": "漢",
+      "description": "<p>本件玉辟邪昂首挺立、氣宇非凡，是漢代帶翼神獸的代表作。四足猛獸同時還長有翅膀的形象，最初可能來自於西亞地區，「如虎添翼」代表了不可限量的神性與能力，漢代繼承此傳統，選擇帶翼瑞獸作為其時天上仙界的象徵之一。</p>",
+      "appreciation": "<p>漢代藝術目標是表現動感與張力，此件辟邪雖呈靜止站立狀態，卻也充滿作勢前躍的動態感。四肢佔比較大，利用圓弧凸面表現腿部肌肉，而整體微直角三角形的構圖，配合身軀強而有利的曲線與弧面，由威猛的口鼻咆哮而出，營造出辟邪睥睨群雄的威勢。</p><p> 本件玉辟邪流傳至清代時，乾隆皇帝相當喜愛，特地為其製作底座，上層刻有「乾隆御玩」，並賦詩篆刻在胸口和座底之下，刻字的部分還嵌有銀絲。玉質本為青白色，在好古的風氣下，前人將頭、頸、胸等處染色成褐紅色，更顯得古意盎然。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "玉器",
+        "theme": "神獸",
+        "dimensions": "長13.6公分 通高9.3公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-CA005.jpg",
+        "list": [
+          "/images/collection/collection-CA005.jpg",
+          "/images/collection/collection-CA005-C.jpg",
+          "/images/collection/collection-CA005-G.jpg",
+          "/images/collection/collection-CA005-H.jpg",
+          "/images/collection/collection-CA005-I.jpg",
+          "/images/collection/collection-CA005-K.jpg"
+        ]
+      }
+    },
+    {
+      "id": 31,
+      "collectionCategoryId": 3,
+      "collectionId": "CA008",
+      "title": "玉錦荔枝",
+      "author": "不詳",
+      "time": "清中期 西元1736-1820年",
+      "dynasty": "清",
+      "description": "<p>玉質白淨，色澤溫潤。雕連蒂苦瓜三顆，瓜皮凹凸不平，栩栩如生。此器在清宮的名稱為「白玉錦荔枝」，「錦荔枝」即苦瓜。原被收於紫禁城乾清宮內。此器配有一木座，為陳設，供人賞玩。</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "玉器",
+        "theme": "果蔬",
+        "dimensions": "最長13.5公分 通高5.0公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-CA008-B.jpg",
+        "list": [
+          "/images/collection/collection-CA008-B.jpg",
+          "/images/collection/collection-CA008-F.jpg",
+          "/images/collection/collection-CA008-H.jpg",
+          "/images/collection/collection-CA008-I.jpg",
+          "/images/collection/collection-CA008-J.jpg",
+          "/images/collection/collection-CA008-K.jpg"
+        ]
+      }
+    },
+    {
+      "id": 32,
+      "collectionCategoryId": 6,
+      "collectionId": "OT004",
+      "title": "頌壺",
+      "author": "不詳",
+      "time": "西周晚期 西元前9-8世紀",
+      "dynasty": "西周",
+      "description": "<p>此器為重要場合使用的酒壺。頸飾環帶紋，腹部飾交龍紋，圈足與蓋鈕飾並列式垂鱗紋，蓋沿飾獸目交連紋。雙耳獸首，以二次鑄造法嵌套一圓環。全器體量巨大，紋飾層層分布，華麗又富動感。壺蓋及器身內有相同的一百五十二字銘文，記載周王冊封頌的儀式，文風典雅，文字秀麗。</p>",
+      "appreciation": "<p>銘文內容完整記錄冊命儀式的進行細節，先敘明儀式時間、地點及官員引導的步驟，再記述周王對頌的工作任命及車服賞賜，可印證並增補西周晚期史實。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "銅器",
+        "theme": "圖騰、銘文",
+        "dimensions": "通高63.0公分 腹深44.4公分 口徑長21.2公分 寬16.9公分 底徑長31.7公分 寬24.3公分 腹圍107.0公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-OT004-B.jpg",
+        "list": [
+          "/images/collection/collection-OT004-B.jpg",
+          "/images/collection/collection-OT004-C.jpg",
+          "/images/collection/collection-OT004-F.jpg",
+          "/images/collection/collection-OT004-G.jpg",
+          "/images/collection/collection-OT004-H.jpg",
+          "/images/collection/collection-OT004-J.jpg",
+          "/images/collection/collection-OT004-K.jpg",
+          "/images/collection/collection-OT004-R.jpg"
+        ]
+      }
+    },
+    {
+      "id": 33,
+      "collectionCategoryId": 6,
+      "collectionId": "OT005",
+      "title": "毛公鼎",
+      "author": "不詳",
+      "time": "西周晚期 西元前827-782年",
+      "dynasty": "西周",
+      "description": "<p>本器器形簡樸，端正厚實。半球形的器身立於三蹄足之上，口沿上有兩個寬厚的立耳。全器器身光素，僅於口沿下方飾以一周精簡的重環紋及一道凸弦紋。器內有銘文五百字，為迄今所知最長的青銅器銘文。</p>",
+      "appreciation": "<p>銘文內容以古雅精奧的文風表達了宣王對毛公的殷切期待，體例與《尚書‧文侯之命》相似，除印證西周時期的行政及典章制度，也為西周「宣王中興」及不見於文獻記載的毛公，提供了詳實的史料。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "銅器",
+        "theme": "銘文",
+        "dimensions": "通高53.8公分 腹深27.2公分 口徑47.0公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-OT005-B.jpg",
+        "list": [
+          "/images/collection/collection-OT005-B.jpg",
+          "/images/collection/collection-OT005-D.jpg",
+          "/images/collection/collection-OT005-E.jpg",
+          "/images/collection/collection-OT005-G.jpg",
+          "/images/collection/collection-OT005-M.jpg",
+          "/images/collection/collection-OT005-P.jpg"
+        ]
+      }
+    },
+    {
+      "id": 34,
+      "collectionCategoryId": 1,
+      "collectionId": "P028",
+      "title": "早春圖　軸",
+      "author": "郭熙",
+      "time": "宋神宗熙寧五年（1072）",
+      "dynasty": "宋",
+      "description": "<p>作於一○七二年的〈早春圖〉，不僅是郭熙傳世的代表作，也是山水畫史中最重要的里程碑。郭熙在宋神宗時進入宮廷服務，正當王安石變法之際，官府殿閣的新建布置中，都使用了郭熙的山水。此作可能原來也是其中之一。</p><p> 畫中構圖有著對稱性的安排，但在秩序感中又充滿著韻律的變化。而藉著墨色深淺所營造出來的光影效果，更為此山水增添了空間的奇幻。舟樵行旅等活動的加入，也進一步將此意境轉化成一個生機處處，可遊可居的神奇所在。這些表現都可以從他的《林泉高致》書中，得到理論上的印證。(20061206)</p><p>Done in 1072, this is not only the finest representative work of the master Kuo Hsi, it is also one of the most important surviving milestones in the history of Chinese landscape painting. Under Emperor Shen-tsung, Kuo Hsi entered service at court, and during the government reforms of Grand Councilor Wang An-shih, his landscapes were used to furnish new government offices and halls. This painting may very well have been one of these works.</p><p> The composition here is arranged in a symmetrical manner, but the sense of order still reveals variations full of rhythm and movement. In addition, the effect of light and dark achieved through the use of graded washes of ink also add considerably to the illusory effect of space in this landscape. The inclusion of such activities as boating, gathering firewood, and traveling takes the painting further in transforming this artistic vision into one full of life, a mystical realm where the viewer can travel and live. These forms of expression can also be found in Kuo Hsi’s notes on painting recorded in Lofty Ambitions Among Forests and Streams, making this work evidence of his theories.(20061206)</p>",
+      "appreciation": "<p>這幅畫的主要景物集中在中軸線上，近景有大石和巨松，背後銜接中景扭動的山石，隔著雲霧，兩座山峰在遠景突起，居中矗立，下臨深淵，深山中有宏偉的殿堂樓閣。左側平坡委迤，令人覺得既深且遠。作者以粗闊扭曲的線條，描繪山石輪廓，再用乾溼濃淡不同的墨色，層層皴擦出岩石表面的紋理，因為形狀像捲曲的雲塊，所以稱為「捲雲皴」。樹木枝幹虯曲，枝椏像伸指布掌的樣子，稱為「蟹爪枝」，是承襲自宋初李成一系的特色。</p><p>畫幅右側畫家自題：「早春。壬子（1072）年郭熙畫。」顧名思義，這幅畫作是在描寫瑞雪消融，雲煙變幻，大地復甦，草木發枝，一片欣欣向榮的早春景象。筆墨清潤，構圖綜合高遠、深遠、平遠法，呈現了可行，可望，可居，可游的理想山水。</p>",
+      "authorIntro": "<p>郭熙（活動於十一世紀），河南溫縣人。神宗熙寧年間（1068-1077），為翰林圖畫院藝學，善畫山水。著有《林泉高致》一書，是我國畫史上討論山水畫的一部重要論著。 郭熙山水畫不僅繼承、發揚了北方流派的李成畫法，還「兼收並覽」，揉合南方畫派及各家之長，深入大自然「飽游飫看，歷歷羅列於胸中」，故能「佈置愈造妙處，然後多所自得」而備成一家。</p><p>郭熙早期畫風嚴謹精巧，晚年落筆雄壯。擅長用「高遠」、「深遠」和「平遠」三遠構圖巧妙布局，「上留天」，「下留地」，「大松大石必畫於大岸大波之上」，雲頭皴畫山石和蟹爪畫樹枝等技法，「毫鋒穎脫，墨法精微」的筆墨，繪出磅礴大景山水的「遠近淺深，四時朝暮，風雨明晦之不同」特徵，也體現寒林平野「枝茂悽然生陰」的孤寂蕭疏意境，讓觀畫者達到「不下堂筵，坐窮泉壑」，可行、可望、可游、可居之目的。</p><p>後世將郭熙與李成並稱「李郭」，謂之「李郭畫派」，又將李成、范寬、米芾與之同列「北宋四大家」，世稱「李、郭、范、米」。</p>",
+      "detail": {
+        "material": "絹",
+        "theme": "山水、春景、樹木",
+        "dimensions": "158.3x108.1（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P028.jpg",
+        "list": [
+          "/images/collection/collection-P028.jpg",
+          "/images/collection/collection-P028-C.jpg",
+          "/images/collection/collection-P028-D.jpg",
+          "/images/collection/collection-P028-E.jpg",
+          "/images/collection/collection-P028-F.jpg",
+          "/images/collection/collection-P028-G.jpg",
+          "/images/collection/collection-P028-I.jpg",
+          "/images/collection/collection-P028-J.jpg",
+          "/images/collection/collection-P028-K.jpg",
+          "/images/collection/collection-P028-P.jpg",
+          "/images/collection/collection-P028-R.jpg",
+          "/images/collection/collection-P028-U.jpg",
+          "/images/collection/collection-P028-X.jpg"
+        ]
+      }
+    },
+    {
+      "id": 35,
+      "collectionCategoryId": 1,
+      "collectionId": "P021",
+      "title": "八駿圖　軸",
+      "author": "郎世寧",
+      "time": "清",
+      "dynasty": "清",
+      "description": "<p>根據研究歸納，郎世寧作品在雍正年間多以仿宋體題款。此作雖無紀年，但從左下角名款書風看，應該也是早期作品。本幅雖用中國傳統顏料作畫，但在馬匹、人物和柳樹的表現上，卻融入西洋畫所注重的光影表現，很能顯示立體感。</p>",
+      "appreciation": "<p>樹下牧馬題材早為中國畫家所熟悉，但是郎世寧在構圖的處理上更加強調物象所在的空間感，也為此種畫題增添許多新的西洋元素。</p>",
+      "authorIntro": "<p>郎世寧(Giuseppe Castiglione， 1688-1766)義大利米蘭人， 十九歲時加入天主教耶穌會， 後被派至熱諾亞(Genoa)會院， 曾為教堂繪製宗教畫。 康熙五十四年(1715)郎氏二十七歲， 由葡萄牙傳道部派抵澳門， 轉赴廣州北上京師， 並由馬國賢(Mattheaus de Baroni Ripa， 1682-1745)引見入宮。<p></p> 郎氏深得清初三代皇帝喜愛擅長人物肖像、花鳥走獸， 注重物象解剖結構、光影效果及立體感， 曾教導宮廷畫家西方油畫和透視法， 多次奉命為皇帝繪製各種御容紀實畫； 而其更大挑戰乃是主持長春園諧奇趣、西洋樓花園區的設計及室內裝飾工程， 參與「平定回疆圖」(又名得勝圖)銅版畫監製。 乾隆三十一年(1766)七十八歲高齡的郎氏病逝北京， 皇帝賜他侍郎銜，葬於北京阜城門外傳教士公墓。</p>",
+      "detail": {
+        "material": "絹",
+        "theme": "走獸、馬、樹木",
+        "dimensions": "139.3x80.2（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P021-E.jpg",
+        "list": [
+          "/images/collection/collection-P021-A.jpg",
+          "/images/collection/collection-P021-C.jpg",
+          "/images/collection/collection-P021-D.jpg",
+          "/images/collection/collection-P021-E.jpg",
+          "/images/collection/collection-P021-F.jpg",
+          "/images/collection/collection-P021-G.jpg",
+          "/images/collection/collection-P021-H.jpg",
+          "/images/collection/collection-P021-I.jpg",
+          "/images/collection/collection-P021-J.jpg"
+        ]
+      }
+    },
+    {
+      "id": 36,
+      "collectionCategoryId": 2,
+      "collectionId": "U016",
+      "title": "玉填金花卉鼻煙壺",
+      "author": "不詳",
+      "time": "清 西元18世紀",
+      "dynasty": "清",
+      "description": "<p>扁瓶形，兩面皆淺刻折枝石竹，並填金為飾。帶銅嵌珊瑚蓋與牙匙。</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "玉器",
+        "theme": "花草",
+        "dimensions": "寬5.1公分 通高8.3公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-U016-B.jpg",
+        "list": [
+          "/images/collection/collection-U016-B.jpg",
+          "/images/collection/collection-U016-C.jpg",
+          "/images/collection/collection-U016-D.jpg"
+        ]
+      }
+    },
+    {
+      "id": 37,
+      "collectionCategoryId": 2,
+      "collectionId": "U017",
+      "title": "粉彩芍藥詩畫鼻煙壺",
+      "author": "不詳",
+      "time": "清 乾隆 西元1736-1795年",
+      "dynasty": "清",
+      "description": "<p鼻煙壺，口外撇，短頸，扁長腹，前後微鼓，橢圓形圈足，附紅色圓頂蓋，下接木塞、牙匙，用來舀壺裡的鼻煙，或盛在小碟上，或直接放在拇指背上，入鼻嗅用。腹一面開光白地彩繪芍藥、蜂，另面題乾隆御製詩一首；兩側為粉紅地彩繪卷枝花紋。底外有一行四字篆款「乾隆年製」。</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "陶瓷器",
+        "theme": "花草",
+        "dimensions": "寬3.4公分 通高7.0公分 厚2.0公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-U017-B.jpg",
+        "list": [
+          "/images/collection/collection-U017-B.jpg",
+          "/images/collection/collection-U017-C.jpg",
+          "/images/collection/collection-U017-D.jpg",
+          "/images/collection/collection-U017-E.jpg",
+          "/images/collection/collection-U017-F.jpg"
+        ]
+      }
+    },
+    {
+      "id": 38,
+      "collectionCategoryId": 3,
+      "collectionId": "CA009",
+      "title": "玉瓜式瓶",
+      "author": "不詳",
+      "time": "清 西元1644-1911年",
+      "dynasty": "西周",
+      "description": "<p>玉質，小局部淺棕色沁。琢作橢長之絲瓜形，周身帶稜，中空，近瓜莖處剖切分為器身與器蓋。蓋頂有瓜蒂與藤作成之把手，並與器身巧妙連結，衍生出柔軟捲曲之藤蔓與卷鬚，藤蔓與葉片攀爬繞附於器表，間有花朵與數顆小型瓜果懸垂於葉間。</p>",
+      "appreciation": "<p>瓜身外壁另有淺浮雕蝴蝶，呈現展翼與飛翔等各種姿態。瓜身一側帶有較粗之鏤雕藤蔓，似可作為把手，整器構思佈局相當巧妙。因「蝶」音同「瓞」，故此器有「瓜瓞綿綿」之吉祥意涵。此瓶另附一深棕色木座，座身由鏤雕瓜果與藤蔓、葉片組成。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "玉器",
+        "theme": "果蔬",
+        "dimensions": "通高18.5公分 口徑5.4公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-CA009-B.jpg",
+        "list": [
+          "/images/collection/collection-CA009-B.jpg",
+          "/images/collection/collection-CA009-C.jpg",
+          "/images/collection/collection-CA009-D.jpg",
+          "/images/collection/collection-CA009-E.jpg"
+        ]
+      }
+    },
+    {
+      "id": 39,
+      "collectionCategoryId": 6,
+      "collectionId": "OT006",
+      "title": "花卉蒔繪漆箱",
+      "author": "不詳",
+      "time": "西元18世紀",
+      "dynasty": "清",
+      "description": "<p>日本蒔繪漆盒之輕薄且作工精細的特性，自晚明以來就深受藏家所愛。此件十八世紀蒔繪漆盒亦是清宮舊藏，被清宮改裝收藏各種玉器，內有漆盤外，還有兩件小盒，或許原本也屬於外出用的文具箱。全件為梨地，薄肉高蒔繪畫各種花卉植物，四面圖案連續，盒蓋畫水邊一景，有松樹、芙蓉等。盒內其他漆器則為菊枝紋為飾。</p>",
+      "appreciation": "<p>蒔繪（日語：蒔絵），是在漆器上以金、銀、色粉等材料所繪製而成的紋樣裝飾，為日本的傳統工藝技術。利用漆的黏性，將銀粉或金粉依照想要的圖樣，固定於漆器上的技法稱作蒔繪。「漆」指的是漆樹的汁液，塗抹於器具上，除了可以固定銀粉、金粉，也可以使器具更有光澤。</p><p>鎌倉時代出現「高蒔繪」技法。高蒔繪為在紋樣部分塗抹較厚的漆，使之凸起,有立體感。相較於其他蒔繪技法，高蒔繪的橫切面比較「高」。</p><p>室町時代將「研出蒔繪」與「高蒔繪」融合，發展出「肉合蒔繪」。除了塗抹較厚的漆外，也使用木炭研磨。然而與研出蒔繪不同的是，肉合蒔繪保留部分漆層，讓表面看起來較為光滑。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "木竹漆器",
+        "theme": "花草、樹木",
+        "dimensions": "長17.7公分 寬10.2公分 高9.5公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-OT006-G.jpg",
+        "list": [
+          "/images/collection/collection-OT006-B.jpg",
+          "/images/collection/collection-OT006-C.jpg",
+          "/images/collection/collection-OT006-D.jpg",
+          "/images/collection/collection-OT006-E.jpg",
+          "/images/collection/collection-OT006-F.jpg",
+          "/images/collection/collection-OT006-G.jpg",
+          "/images/collection/collection-OT006-H.jpg",
+          "/images/collection/collection-OT006-I.jpg"
+        ]
+      }
+    },
+    {
+      "id": 40,
+      "collectionCategoryId": 2,
+      "collectionId": "U018",
+      "title": "日本 有田窯 青花五彩描金團花紋碗",
+      "author": "不詳",
+      "time": "江戶時代 西元1690-1710年",
+      "dynasty": "明",
+      "description": "<p>碗，侈口出唇，弧壁，矮圈足。口沿唇邊畫描金彩線紋一周，器內壁近口沿處畫青花卷草斜線紋一道，內底以青花書「永樂年製」行楷款，外繞一周青花卷草斜線紋。器外壁以藍釉為地，利用留白的白色線邊劃分八等分格，中有一圈白邊的開光圖案分別繪飾變形的西洋紋飾及線方格紋，圓形開光圖案外分別以金彩、紅彩裝飾花草及方線格紋；外壁近圈足處，以青花畫簡化而變形的靈芝紋，輔以紅彩線點飾，圈足外牆分別以青花、紅彩畫飾卷雲紋，外底心畫兩圈青花線紋。青花鮮麗多暈散，留白的白釉地微泛青色，胎骨勻輕，圈足露胎處，質堅細膩。本器應為明代晚期書寫永樂年款的日本伊萬里風格製品。</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "陶瓷器",
+        "theme": "花草",
+        "dimensions": "高6.8公分 口徑16.9公分 底徑8.6公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-U018-B.jpg",
+        "list": [
+          "/images/collection/collection-U018-B.jpg",
+          "/images/collection/collection-U018-D.jpg",
+          "/images/collection/collection-U018-C.jpg",
+          "/images/collection/collection-U018-E.jpg"
+        ]
+      }
+    },
+    {
+      "id": 41,
+      "collectionCategoryId": 3,
+      "collectionId": "CA010",
+      "title": "銅鎏金 善妙神天女立像",
+      "author": "不詳",
+      "time": "日本 室町時代 西元1392-1573年或以後",
+      "dynasty": "明",
+      "description": "<p>銅鎏金造像，像作一站立女子，高髻著冠，臉部豐滿，髮長及肩，雙手曲舉於胸前，似作捧物之狀。這一座造像被定名為妙善天女，即傳說中因喜愛義湘和尚，而捧箱追至海岸相送的神祇，後成為守護神。故其雙手虛捧的，可能就是要送給義湘和尚的法寶。而造像直挺略寬的身軀，以及對稱簡單而有重量感的衣袖，也造成一種可以讓人依靠的穩定感。</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "銅器",
+        "theme": "神祇",
+        "dimensions": "通高32.2公分(含座) 像高30.6公分 全重2407.5公克(含盤形座) 座重361.3公克"
+      },
+      "images": {
+        "main": "/images/collection/collection-CA010-A.jpg",
+        "list": [
+          "/images/collection/collection-CA010-A.jpg",
+          "/images/collection/collection-CA010-B.jpg",
+          "/images/collection/collection-CA010-C.jpg"
+        ]
+      }
+    },
+    {
+      "id": 42,
+      "collectionCategoryId": 3,
+      "collectionId": "CA011",
+      "title": "銅鎏金人物跪坐像",
+      "author": "不詳",
+      "time": "朝鮮時代 西元十四－十九世紀",
+      "dynasty": "明",
+      "description": "<p>圓雕人物像，頭梳高髻，似戴冠，採高跪姿態，抬頭仰望，雙手上舉，一上一下，猶如仰首飲酒，惜手指已缺，圖像內容不詳。雕像一足高跪一足跪坐，身軀向前再側身，轉折的姿態流暢自然，臉形及五官均秀氣，兩袖的衣褶作圓弧形，整齊圓順，做工規整，造像圓厚。雕像重量十足，表面鎏金及鏽層均極鬆而脫落。</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "銅器",
+        "theme": "神祇",
+        "dimensions": "高9.5公分 長7.1公分 寬4.5公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-CA011-B.jpg",
+        "list": [
+          "/images/collection/collection-CA011-B.jpg",
+          "/images/collection/collection-CA011-C.jpg",
+          "/images/collection/collection-CA011-D.jpg",
+          "/images/collection/collection-CA011-E.jpg",
+          "/images/collection/collection-CA011-F.jpg"
+        ]
+      }
+    },
+    {
+      "id": 43,
+      "collectionCategoryId": 3,
+      "collectionId": "CA012",
+      "title": "押金片釋迦佛立像",
+      "author": "不詳",
+      "time": "泰國 墮羅鉢底 西元8世紀",
+      "dynasty": "唐",
+      "description": "<p>立佛，具有墮羅鉢底時期（六－十一世紀）造像特徵。方額寬臉，長眼塌鼻，嘴大唇厚，有白毫。身材精瘦，雙肩胸肌豐厚，雙腿直立，姿勢生硬。著通肩袈裟，薄衣貼體，無刻劃衣褶，為笈多鹿野苑風格特質，只有在衣裙前緣作U形。雙手皆作安慰印，不見於印度，為東南亞特有，掌中有法輪瑞像。</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "銅器",
+        "theme": "神祇",
+        "dimensions": "高13公分 像高10.7公分 最寬3.4公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-CA012-B.jpg",
+        "list": [
+          "/images/collection/collection-CA012-B.jpg",
+          "/images/collection/collection-CA012-C.jpg",
+          "/images/collection/collection-CA012-D.jpg",
+          "/images/collection/collection-CA012-E.jpg",
+          "/images/collection/collection-CA012-F.jpg",
+          "/images/collection/collection-CA012-G.jpg",
+          "/images/collection/collection-CA012-H.jpg"
+        ]
+      }
+    },
+    {
+      "id": 44,
+      "collectionCategoryId": 5,
+      "collectionId": "K007",
+      "title": "繡御製樂壽堂詩意圖　軸",
+      "author": "孔憲培之妻于氏",
+      "time": "清",
+      "dynasty": "清",
+      "description": "<p>本幅繡山腳下廊閣庭院景，依照幅上線繡的乾隆詩意佈局。樂壽堂是高宗為慶祝母親六十生日所建。繡品色澤清麗，運用粗鬆線，作等長距平針繡，樹幹則是繡後再添繪色彩，形成幹老鬱蔥之狀。</p>",
+      "appreciation": "",
+      "authorIntro": "<p>于氏（18世紀），江蘇人，父親是文華殿大學士于敏中（1714-1779），嫁衍聖公孔憲培（山東曲阜人，孔子七十二代孫）為妻，著有《就蘭閣遺稿》。</p>",
+      "detail": {
+        "material": "綾",
+        "theme": "蝴蝶、服飾",
+        "dimensions": "127.6x61.5（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-K007-A.jpg",
+        "list": [
+          "/images/collection/collection-K007-A.jpg",
+          "/images/collection/collection-K007-C.jpg",
+          "/images/collection/collection-K007-D.jpg",
+          "/images/collection/collection-K007-E.jpg",
+          "/images/collection/collection-K007-F.jpg",
+          "/images/collection/collection-K007-I.jpg",
+          "/images/collection/collection-K007-J.jpg",
+          "/images/collection/collection-K007-K.jpg",
+          "/images/collection/collection-K007-L.jpg",
+          "/images/collection/collection-K007-M.jpg",
+          "/images/collection/collection-K007-N.jpg"
+        ]
+      }
+    },
+    {
+      "id": 45,
+      "collectionCategoryId": 1,
+      "collectionId": "P019",
+      "title": "漢宮春曉　卷",
+      "author": "仇英",
+      "time": "明",
+      "dynasty": "明",
+      "description": "<p>本幅以春日晨曦中的漢代皇家庭園殿宇為背景，描繪後宮嬪妃百態；其中，並包含畫師毛延壽為王昭君寫像的著名故實。全卷構景繁複，用筆清勁而賦色妍雅。除美女群像外，也融入了琴棋書畫、鑑古、蒔花等文人休閒活動，是仇英晚期歷史故事畫的精絕之作。</p><p>This work represents various activities in a Han dynasty (206 BC-AD 220) palace on a spring morning. Among them is the famous story of Mao Yen-shou painting the portrait of Wang Chao-chun. The intricate composition is rendered with crisp and strong brushwork and beautiful colors. The lavish palace scenes are punctuated by trees and decorative rocks, creating marvelous scenery similar to that of the immortals. In addition to the groups of beauties, leisure activities of the literati, such as the zither, chess, calligraphy, and painting as well as appreciating antiquities and planting folwers are shown.</p>",
+      "appreciation": "<p>此卷蓋描繪宮中嬪妃生活。畫中園庭殿宇極其繁盛，臺閣、欄杆、門牆皆用界筆畫成，精細入神。而人物勾勒筆法秀勁，設色青綠重彩，穠麗典雅，其畫雖仿宋人，然有超越之處。</p><p>漢劉歆撰《西京雜記》載，西漢元帝後宮佳麗甚多，不得常見，遂遣畫工毛延壽圖形，再按圖召幸。諸宮人皆賄畫工，獨王嬙（昭君）不肯，遂不得見。幅中有畫工為嬪妃寫照者或即毛延壽其人情事。</p>",
+      "authorIntro": "<p>仇英（約西元一四九四至一五五二年），江蘇太倉人。字實父，號十洲。初執事丹青（一說作漆工），周臣異而教之，後遂成名。所作有畫院之精能而饒士氣，為明四大家之一。</p>",
+      "detail": {
+        "material": "絹",
+        "theme": "山水、春景、人物",
+        "dimensions": "30.6x574.1（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P019-E.jpg",
+        "list": [
+          "/images/collection/collection-P019-A.jpg",
+          "/images/collection/collection-P019-B.jpg",
+          "/images/collection/collection-P019-C.jpg",
+          "/images/collection/collection-P019-D.jpg",
+          "/images/collection/collection-P019-E.jpg",
+          "/images/collection/collection-P019-F.jpg",
+          "/images/collection/collection-P019-G.jpg",
+          "/images/collection/collection-P019-H.jpg",
+          "/images/collection/collection-P019-I.jpg",
+          "/images/collection/collection-P019-J.jpg",
+          "/images/collection/collection-P019-K.jpg",
+          "/images/collection/collection-P019-L.jpg",
+          "/images/collection/collection-P019-M.jpg",
+          "/images/collection/collection-P019-N.jpg",
+          "/images/collection/collection-P019-O.jpg",
+          "/images/collection/collection-P019-P.jpg"
+        ]
+      }
+    },
+    {
+      "id": 46,
+      "collectionCategoryId": 5,
+      "collectionId": "K008",
+      "title": "繡線佛像（一）明王　軸",
+      "author": "不詳",
+      "time": "清",
+      "dynasty": "清",
+      "description": "<p>白色素地綾五彩繡。烏蒭沙摩明王像。無款印。密教信仰中，佛為了宣揚真言妙法，降服諸惡魔障，以忿怒形相現身，在東密稱之為明王，藏密稱之為金剛。本尊三面八臂俱足，豎髮及背光如烈焰，以蛇為纓絡武立之姿，踏蓮座上手中分持慧劍，金剛杵，觸顱杖，火焰輪，金剛鈴，羂索，並結印。以其圖像觀之，殆為驅除污穢極惡業的烏蒭沙摩明王（穢積金剛），而其頂上化佛，應為不空成就佛，兩者有傳承關係。</p>",
+      "appreciation": "<p>是幅繡工極細密，配色鮮明光亮，使用同色深淺繡線，渲染陰陽濃淡，暈色如畫。而繡線的光澤配合光線的明亮，產生的視覺效果，比畫更佳。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "綾",
+        "theme": "佛道人物",
+        "dimensions": "128.7x59.8（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-K008-A.jpg",
+        "list": [
+          "/images/collection/collection-K008-A.jpg",
+          "/images/collection/collection-K008-C.jpg",
+          "/images/collection/collection-K008-D.jpg",
+          "/images/collection/collection-K008-E.jpg",
+          "/images/collection/collection-K008-F.jpg",
+          "/images/collection/collection-K008-G.jpg",
+          "/images/collection/collection-K008-H.jpg",
+          "/images/collection/collection-K008-I.jpg",
+          "/images/collection/collection-K008-J.jpg",
+          "/images/collection/collection-K008-K.jpg"
+        ]
+      }
+    },
+    {
+      "id": 47,
+      "collectionCategoryId": 5,
+      "collectionId": "K009",
+      "title": "繡線佛像（五）文殊菩薩　軸",
+      "author": "不詳",
+      "time": "清",
+      "dynasty": "清",
+      "description": "<p>用不同顏色之五彩繡線，以滿繡填地之技法，繡文殊菩薩駕獅圖。文殊菩薩化身為羅漢形相，慈眉祥目，神態閒適，交腳倚坐在錦榻上。兩位僕役在榻階前，準備好獅子座騎。</p><p>文殊、普賢二位菩薩，並為釋迦牟尼佛的兩大協侍，普賢乘白象隨侍侍尊右側，文殊則駕獅子隨侍在左。</p><p>In this embroidery, Mañjusri (the Bodhisattva of Wisdom) appears manifested as an arhat (lohan, or sentient figure) with a very gentle appearance. He relaxes and sits at ease on a brocaded daybed with his feet crossed. In front, two attendants have brought a blue lion, his mount. Mañjusri is paired with Samantabhadra as the left- and right -hand assistant bodhisattvas of Shâkyamuni Buddha. Samantabhadra’s mount is a white elephant.</p>",
+      "appreciation": "<p>通幅以劈絲極細或粗鬆繡線，用短針等距或長針交錯平針之法繡之，中間再以金線或色線鉤勒盤花。繡工精細，其細微處亦不用筆墨描繪。因繡線富有光澤，故所繡圖案之運針配色，更勝於原畫稿之運筆設色。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "絹",
+        "theme": "佛道人物",
+        "dimensions": "130.4x59.8（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-K009-A.jpg",
+        "list": [
+          "/images/collection/collection-K009-A.jpg",
+          "/images/collection/collection-K009-C.jpg",
+          "/images/collection/collection-K009-D.jpg",
+          "/images/collection/collection-K009-E.jpg",
+          "/images/collection/collection-K009-F.jpg",
+          "/images/collection/collection-K009-G.jpg",
+          "/images/collection/collection-K009-H.jpg",
+          "/images/collection/collection-K009-I.jpg",
+          "/images/collection/collection-K009-J.jpg",
+          "/images/collection/collection-K009-K.jpg",
+          "/images/collection/collection-K009-L.jpg"
+        ]
+      }
+    },
+    {
+      "id": 48,
+      "collectionCategoryId": 5,
+      "collectionId": "K010",
+      "title": "繡線佛像（七）釋迦牟尼佛　軸",
+      "author": "不詳",
+      "time": "清",
+      "dynasty": "清",
+      "description": "<p>佛教始祖釋迦牟尼佛，雙目微闔，手結說法印記，神態和煦，端坐於蓮花高臺之上，五彩祥雲四周繚繞，頂上華蓋纓絡莊嚴。壇前釋尊的兩大弟子肅立兩側，年齡稍長，以頭陀（苦行）聞名的是摩訶迦葉。年輕品貌出眾且多聞利智的是阿難。</p><p>Shâkyamuni, the founder of Buddhism, is shown here with semi-closed eyes as if in a serene state of bliss. He holds his right hand in the symbol of preaching and sits on a high lotus pedestal encircled by auspicious clouds tinged with various colors. Above is a canopy of jewels below a cloud. The two great disciples of Shâkyamuni appear in front. The older figure on the right is Mahâkâśyapa, while the other is Ānanda. They appear in reverence before the viewer. The composition here almost fills the entire scroll. </p>",
+      "appreciation": "<p>是幅刺繡，以五彩繡線，通幅滿繡填地，不見空白留底，是其最大特色。運用各種不同色線，按圖運針，視圖案所需，繡線有劈線極細的，亦有粗鬆的。再以長短針法，橫直等距針法，或參差交替針法，或平繡或盤繡，逐步完成全部圖樣。全幅色彩明亮艷麗，但艷而不俗，技法精工，是清繡中之佳作。是軸原品名為本院所藏清繡佛像十三軸之一。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "絹",
+        "theme": "佛道人物",
+        "dimensions": "130.9x59.8（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-K010-A.jpg",
+        "list": [
+          "/images/collection/collection-K010-A.jpg",
+          "/images/collection/collection-K010-C.jpg",
+          "/images/collection/collection-K010-D.jpg",
+          "/images/collection/collection-K010-E.jpg",
+          "/images/collection/collection-K010-F.jpg",
+          "/images/collection/collection-K010-G.jpg",
+          "/images/collection/collection-K010-H.jpg",
+          "/images/collection/collection-K010-I.jpg",
+          "/images/collection/collection-K010-J.jpg"
+        ]
+      }
+    },
+    {
+      "id": 49,
+      "collectionCategoryId": 2,
+      "collectionId": "U019",
+      "title": "銅胎畫琺瑯西洋母子圖圓盒",
+      "author": "不詳",
+      "time": "清 乾隆 西元1736-1795年",
+      "dynasty": "清",
+      "description": "<p>扁圓套盒，蓋面畫著一幅農村景象：農村土丘間矗立著平房，一對西洋母子於樹下席地而坐。母親手持一滿裝花卉的藤藍，孩子則親暱的依偎著母親。盒壁畫有彩色卷葉紋一周。外底心陰刻「乾隆年製」雙行雙方框仿宋體款。</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "琺瑯器",
+        "theme": "人物、花草",
+        "dimensions": "高1.75公分 口徑6.2公分 底徑6.1公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-U019-C.jpg",
+        "list": [
+          "/images/collection/collection-U019-B.jpg",
+          "/images/collection/collection-U019-C.jpg",
+          "/images/collection/collection-U019-D.jpg",
+          "/images/collection/collection-U019-E.jpg"
+        ]
+      }
+    },
+    {
+      "id": 50,
+      "collectionCategoryId": 2,
+      "collectionId": "U020",
+      "title": "掐絲琺瑯雙龍盤",
+      "author": "不詳",
+      "time": "明 萬曆 西元1573-1620年",
+      "dynasty": "清",
+      "description": "<p>菊瓣折沿平底圈足盤，銅胎鎏金，紋飾掐絲。淺綠色盤心滿飾五色祥雲，中央有紅、黃雙龍拱衛團壽字。斜壁與盤底以淺藍色掐絲雲紋為地，前者更飾八雜寶與八吉祥，底心則有綠地填紅「大明萬曆年造」（1573-1620）雙行楷書款。琺瑯釉層薄，色彩繽紛，是晚明掐絲琺瑯之重要標準器。</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "琺瑯器",
+        "theme": "神獸",
+        "dimensions": "高6.9 公分 徑48.3公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-U020-D.jpg",
+        "list": [
+          "/images/collection/collection-U020-B.jpg",
+          "/images/collection/collection-U020-C.jpg",
+          "/images/collection/collection-U020-D.jpg",
+          "/images/collection/collection-U020-E.jpg",
+          "/images/collection/collection-U020-F.jpg",
+          "/images/collection/collection-U020-G.jpg",
+          "/images/collection/collection-U020-I.jpg",
+          "/images/collection/collection-U020-L.jpg"
+        ]
+      }
+    },
+    {
+      "id": 51,
+      "collectionCategoryId": 6,
+      "collectionId": "OT007",
+      "title": "玻璃胎畫琺瑯鼻煙壺四十三件貯於蒔繪漆盒",
+      "author": "不詳",
+      "time": "清 乾隆",
+      "dynasty": "清",
+      "description": "<p>據《故宮物品點查報告》，齋宮有所謂「乾隆古月軒各色料煙壺帶刻款」四十三件，千字文編號為「成-85-14」，帶漆匣一，內有三屜。報告中的漆匣即此雙層蒔繪漆盒，內有嵌銅把與玉飾片之合牌糊錦三屜，四十三件乾隆玻璃胎畫琺瑯鼻煙壺就存放在此漆盒中。多寶格常有以蒔繪漆盒為其外盒，內加屜、匣或隔板，讓空間極具變化，以存放各類奇珍，此漆盒內做三層合牌裱錦匣，隔出屜、提盒等各種空間，是存放鼻煙壺之多寶格。</p>",
+      "appreciation": "<p>據《活計檔．琺瑯作》記載，乾隆四年（1739）二月初一日「太監毛團交洋漆箱一件內盛，第一屜法瑯鼻煙壺十一件，內有一空匣；第二屜法瑯鼻煙壺十四件；第三屜法瑯鼻煙壺十四件，傳旨第一屜匣內有一空匣，著配法瑯鼻煙壺四件，將第三屜內鼻煙壺有不穩之處墊平安穩，俱刻款欽此。」同年二月乾隆下旨將兩件難以刻款鼻煙壺換掉，另配兩件，同年十月此洋漆箱配得第一屜十五件，第二屜十四件，第三屜十四件，共四十三件。由上述記載可推知，院藏原千字文編號「成-85-14」儲於漆盒中的四十三件玻璃胎畫琺瑯鼻煙壺，應是上引《活計檔》乾隆四年所作。這四十三件鼻煙壺均為扁圓壺，尺寸略有差異，高度約在4.4至5.4 公分間，從題材、配色到裝飾紋樣無一相同，皆極盡巧思，件件都是乾隆時期玻璃胎畫琺瑯鼻煙壺精品，極為難得。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "木竹漆器",
+        "theme": "圖騰",
+        "dimensions": "長26.9公分、寬21.2公分、高22公分"
+      },
+      "images": {
+        "main": "/images/collection/collection-OT007-1.jpg",
+        "list": [
+          "/images/collection/collection-OT007-1.jpg",
+          "/images/collection/collection-OT007-2.jpg"
+        ]
+      }
+    },
+    {
+      "id": 52,
+      "collectionCategoryId": 1,
+      "collectionId": "P029",
+      "title": "元世祖出獵圖　軸",
+      "author": "劉貫道",
+      "time": "元世祖至正十七年（1280）",
+      "dynasty": "元",
+      "description": "<p>本幅畫元世祖忽必烈偕同皇后察必與隨從一行，在遼闊的大漠中馳騁打獵。畫中元世祖身穿紅色龍紋衣袍，外加黑色滾邊裝飾的白色毛皮衣袍。皇后的白色衣袍上有華麗金色紋飾，是蒙元貴族所喜愛的織金錦。隨從人物姿態各異，有張弓射物、手架獵鷹，或以繩攜獵豹，五官容貌也顯出不同族屬身分。此一狩獵場面，更有揭示多元文化融和之意。</p>",
+      "appreciation": "<p>此畫作於西元一二八０年，屬於大幅作品，畫北方沙漠地帶，一片黃沙坡地，景色單調。在沙丘無垠的遠方，正有一列駱駝馱隊橫越。近處人騎數眾，或張弓射雁；或手架獵鷹；或繩攜獵豹，皆為馬上行獵之狀。其中騎著黑馬、身穿白裘的，應為元世祖，與世祖並駕的婦女，似為帝后，其餘八人，應是侍從，其中尚有黑奴二名。圖中人物、馬騎無論衣著、裝備皆刻畫精細，表情神態自然生動，而世祖的面容，更與本院所藏<元歷代帝后像>冊中的元世祖半身像相似，足證兩圖的寫實。劉氏傳世作品鮮少，此作署有明確紀年及名款，是元代宮廷鞍馬人物畫中的難得精品。 (20110913)</p>",
+      "authorIntro": "<p>劉貫道(約活動於十三世紀後半期)，生卒年不詳，大概在元世祖至元年間(一二六四-一二九四)在世。河北人，字仲賢，善畫。至元十六年稱旨，補御衣局使。所畫道釋、人物，全宗法晉、唐。畫山水宗李成、郭熙，佳處逼真。花竹鳥獸，亦能集合諸家之長，成為當時畫壇的高手。</p>",
+      "detail": {
+        "material": "絹",
+        "theme": "人物、走獸、經史故事",
+        "dimensions": "182.9x104.1（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P029-A.jpg",
+        "list": [
+          "/images/collection/collection-P029-A.jpg",
+          "/images/collection/collection-P029-B.jpg",
+          "/images/collection/collection-P029-C.jpg",
+          "/images/collection/collection-P029-D.jpg",
+          "/images/collection/collection-P029-E.jpg"
+        ]
+      }
+    },
+    {
+      "id": 53,
+      "collectionCategoryId": 1,
+      "collectionId": "P030",
+      "title": "宋人枇杷猿戲圖　軸",
+      "author": "不詳",
+      "time": "宋",
+      "dynasty": "宋",
+      "description": "<p>老樹擎空，突出畫幅，其枝垂掛，復返畫中。畫幅中的枝幹，筆不連而意連，足見畫家佈局之匠心。一猿攀枝搖盪，如戲鞦韆。一猿則踞幹悠閒旁觀，真能得猿猴動息之情。畫技精湛，特善用墨，曲盡黑猿毛色之狀，樹石描繪精采、用色雅正，尤有過人處，是宋無款作品中之巨幅精品。易元吉的猴貓圖突顯毫芒畢現的用筆功夫，本畫則用墨功夫一流。</p><p>An old loquat tree rises from the bottom of the painting, its branches projecting outward at the right and left, then re-entering at the top of the composition. The brushwork for the tree, though interrupted, amply conveys the form, thus showing the artist's skill at composition design. Two gibbons—one sitting quietly on the twisting trunk, the other suspended from a slender branch—appear in the open space at the center of the composition. The slender branch, pulled downward by the gibbon, seems to possess a recoil force, the kind a swing possesses when swung back and forth by children. </p>",
+      "appreciation": "<p>從畫面上來看，枇杷樹的枝幹上下各一段，並未相接，觀賞時卻有著相連的感覺，這種畫外之意，正是作者別出心裁的安排。而其沈著的用色、勁健的用筆則將樹幹的扭曲斑剝、樹葉的轉折、石頭的堅硬和猿身黝黑的絨毛表現得栩栩如生，像可以觸摸一般。然只生動地畫出物象的形貌仍不夠，必須掌握其情態，方算傳神，因此畫中黑猿，掛在枝幹上的一隻，手尾緊握，好似在盪鞦韆一般，另一隻則悠閒地坐在樹幹上，和牠相互凝望，情意相繫。</p>",
+      "authorIntro": "<p>畫者特善用墨，曲盡黑猿絨毛之狀，深達寫物之理趣，堪為宋代大幅猿畫之精品。學界據此推論，是軸出自易元吉﹙約活動於11世紀後半﹚之手。易元吉，湖南長沙人，為北宋畫猿聖手，米芾讚其「徐熙後一人而已」。</p>",
+      "detail": {
+        "material": "絹",
+        "theme": "走獸、樹木",
+        "dimensions": "165x107.9（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P030-C.jpg",
+        "list": [
+          "/images/collection/collection-P030-C.jpg",
+          "/images/collection/collection-P030-E.jpg",
+          "/images/collection/collection-P030-F.jpg",
+          "/images/collection/collection-P030-G.jpg",
+          "/images/collection/collection-P030-H.jpg",
+          "/images/collection/collection-P030-I.jpg",
+          "/images/collection/collection-P030-J.jpg",
+          "/images/collection/collection-P030-K.jpg",
+          "/images/collection/collection-P030-N.jpg"
+        ]
+      }
+    },
+    {
+      "id": 54,
+      "collectionCategoryId": 1,
+      "collectionId": "P031",
+      "title": "畫院畫十二月月令圖一月　軸",
+      "author": "不詳",
+      "time": "清",
+      "dynasty": "清",
+      "description": "<p>清朝的院本十二月令圖，畫上並未簽署作者的姓名，但從筆墨的習慣來判斷，可能還是唐岱丁觀鵬那幾位畫家合作的。畫的主題，在描繪一年十二個月中，民間生活情形。可能是按各地鄉風，融會入畫，所以也有許多不容易找出原來的故事。 這一幅畫的是農曆正月。正月十五的元宵夜景，屋中盛張燈彩，室外放著煙火。有的人卻在賞月飲酒，後園裡結架懸掛著彩燈，許多小孩們在燈架下遊戲。上半幅山野之間點綴著提燈的遠景。</p><p>Occupations of the Twelve Months Painters of the Ch’ing Court The “Occupations or the Twelve Months”, although not signed, can be attributed on the basis of the brush-work to T’ang Tai,Ting Kuan-p’ang, and other painters of the Ch’ien-lung court(1736-1796). The set of paintings depicts the activities peculiar to each month; they follow no fixed program. The 1st Month The Yuan-hsiao festival falls on the 15th of the month. Here we see the interior of a house aglow with lights. Outside people stroll about, light lanterns, enjoy the reflected image of the moon, drink, or take in the sights of the city. One large exotic lantern is suspended from tall scaffolding in the rear courtyard; crowds of children play beneath it beating drums and performing mock theatricals. Beyond, more lanterns recede into the distance.</p>",
+      "appreciation": "<p>月令圖是傳統風俗畫的一種，畫家採單點透視法，描繪各月中貴族的日常活動。正月以卷棚頂遊廊貫穿全局，圍牆院落沿此主脈佈置，端點為眺望用的樓閣。清代皇家建築屋頂單調厚重，表現皇家的氣派與體制，木構造意味低，磚瓦味升高。牆面取代搏風版，表現柔順圓形曲線。木裝修欄杆有套方式、尺欄式，窗有布布錦式，點綴畫面份外華麗。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "絹",
+        "theme": "山水、人物、建築、節令與二十四節氣",
+        "dimensions": "175x97（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P031-A.jpg",
+        "list": [
+          "/images/collection/collection-P031-A.jpg",
+          "/images/collection/collection-P031-C.jpg",
+          "/images/collection/collection-P031-D.jpg",
+          "/images/collection/collection-P031-E.jpg",
+          "/images/collection/collection-P031-F.jpg",
+          "/images/collection/collection-P031-H.jpg",
+          "/images/collection/collection-P031-I.jpg",
+          "/images/collection/collection-P031-J.jpg",
+          "/images/collection/collection-P031-K.jpg",
+          "/images/collection/collection-P031-L.jpg",
+          "/images/collection/collection-P031-M.jpg",
+          "/images/collection/collection-P031-P.jpg",
+          "/images/collection/collection-P031-T.jpg",
+          "/images/collection/collection-P031-V.jpg"
+        ]
+      }
+    },
+    {
+      "id": 55,
+      "collectionCategoryId": 1,
+      "collectionId": "P032",
+      "title": "畫院畫十二月月令圖六月　軸",
+      "author": "不詳",
+      "time": "清",
+      "dynasty": "清",
+      "description": "<p>農曆六月，逼人的夏天暑氣，消耗著人們的體力，因此，沒有十分要緊的急務，眾人都在避暑。畫中一片荷塘，垂柳濃蔭，畫家用青藍的調子層層疊疊的塗染，襯出萬頃清涼。仕女們有的在高樓消暑；有的在池塘採連；有的憑欄垂釣；有的放艇清遊，使人感覺進入水上風來，暗香浮動的優雅生活。畫無署款，不知出自何人，從畫風看來，應該是雍正、乾隆之間宮廷畫家所作。</p><p>Activities of the Months: The Sixth Month Anonymous Ch’ing Dynasty(1644-1911) The sixth month of the lunar calendar is in the height of summer. Since the heat can sap one’s energy, it is customary to rest if there is nothing urgent to do. Depicted here is a lotus pond with shady willow trees. The delicate shades of blue-green create layers of colors that suggest coolness. Elegant ladies on the second floor of a tall pavilion take respite from the summer heat. Others pick lotuses in boats along the shore, lean along railings, or leisurely boat in a canopied skiff. The viewer can almost feel the light breeze blowing over the water and smell the fragrance of the blossoms emanating from this work, which appears to have been done by court artist(s) during the Yung-cheng(1723-1735) or Ch’ien-lung(1736-1795) reign.</p>",
+      "appreciation": "",
+      "authorIntro": "",
+      "detail": {
+        "material": "絹",
+        "theme": "山水、人物、建築、節令與二十四節氣",
+        "dimensions": "175x97（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P032-A.jpg",
+        "list": [
+          "/images/collection/collection-P032-A.jpg",
+          "/images/collection/collection-P032-C.jpg",
+          "/images/collection/collection-P032-D.jpg",
+          "/images/collection/collection-P032-E.jpg",
+          "/images/collection/collection-P032-G.jpg",
+          "/images/collection/collection-P032-I.jpg",
+          "/images/collection/collection-P032-L.jpg",
+          "/images/collection/collection-P032-N.jpg",
+          "/images/collection/collection-P032-P.jpg",
+          "/images/collection/collection-P032-Q.jpg"
+        ]
+      }
+    },
+    {
+      "id": 56,
+      "collectionCategoryId": 1,
+      "collectionId": "P033",
+      "title": "畫院畫十二月月令圖九月　軸",
+      "author": "不詳",
+      "time": "清",
+      "dynasty": "清",
+      "description": "<p>重陽節是農曆的九月九日，《易經》將九定為陽數，日月逢九，兩陽相重，故名「重陽」。重陽的各種習俗如登高、佩茱萸、賞菊飲酒始於漢代，原先是避禍禳災的迷信成分，隨著歲月的流逝，迷信觀念漸淡，到唐宋已成文人雅士飲酒、賞菊、登高、賦詩的節日。圖中所描繪的正是菊花會的情景，船，運送著盆栽，人，從容地賞玩。野外則遊人提著酒食，登高抒懷，極目遠眺，各種綺麗風光盡收眼底。</p><p>Activities of the 12 Months: The 9th Month Anonymous Court Painters Ch’ing Dynasty (1644-1911) Double Ninth Day refers to the 9th day of the 9th lunar month. The number 9 is particularly “yang” (as in yin-yang); the “yang” 3 is multiplied 3 times (3x3, hence the name Double Yang Day). One of the events associated with this day is ascending the heights, wearing dogwood, appreciating chrysanthemums, and drinking wine, which began in the Han dynasty (206 BC-AD 220) as a superstition to avoid bad luck. The superstition faded and by the T’ang and Sung it became a time for scholars to gather, drink, view chrysanthemums, ascend heights, and compose poetry. The foreground here is filled with chrysanthemums as scholars gather and bring them for viewing. Up in the hills, scholars meet with wine and food to view the scenery.</p>",
+      "appreciation": "<p>由於陶淵明的愛菊，菊花便成了士人們特殊的愛賞物。九月，正是菊花盛開的時候，而種菊也各有特殊的技巧。因此各人把自己的菊花，湊集在一處，來觀摩讚賞，形成菊花會。本幅無名款，出自清代乾隆時期宮廷畫家集體創作。所畫出於清高宗（圓明園四十景詩）中之「彙芳書院」，詩句前說明：「可攀捫而上問津石室」。石室可見於畫中上方。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "絹",
+        "theme": "山水、人物、建築、節令與二十四節氣",
+        "dimensions": "175x97（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P033-A.jpg",
+        "list": [
+          "/images/collection/collection-P033-A.jpg",
+          "/images/collection/collection-P033-C.jpg",
+          "/images/collection/collection-P033-D.jpg",
+          "/images/collection/collection-P033-E.jpg",
+          "/images/collection/collection-P033-F.jpg",
+          "/images/collection/collection-P033-G.jpg",
+          "/images/collection/collection-P033-H.jpg",
+          "/images/collection/collection-P033-I.jpg",
+          "/images/collection/collection-P033-J.jpg",
+          "/images/collection/collection-P033-L.jpg",
+          "/images/collection/collection-P033-M.jpg",
+          "/images/collection/collection-P033-N.jpg",
+          "/images/collection/collection-P033-O.jpg",
+          "/images/collection/collection-P033-P.jpg",
+          "/images/collection/collection-P033-Q.jpg",
+          "/images/collection/collection-P033-T.jpg"
+        ]
+      }
+    },
+     {
+      "id": 57,
+      "collectionCategoryId": 1,
+      "collectionId": "P034",
+      "title": "畫院畫十二月月令圖十二月　軸",
+      "author": "不詳",
+      "time": "清",
+      "dynasty": "清",
+      "description": "<p>農曆十二月，大雪封山，冰河結凍，人們有的閒立，有的向火，有的滑冰。小孩們玩得更為興高彩烈，蹴菊，踢毽，堆雪獅。這時是一年辛勞的結束，所以都各樂所樂，顯得無比的閒暇。</p><p>Occupations of the Twelve Months (The Twelfth Month) Painters of the Ch’ing Court Ch’ing Dynasty (1644-1911) A thick blanket of snow covers the mountains and ice chokes the rivers. People stand idly, gather around a stove, watch the crowds of deer, or go sledding on the ice. Children play football and shuttlecock and build snow lions. This scene completes the pageant of the seasons.</p>",
+      "appreciation": "<p>十二月令圖組的十二月一軸，描寫冬季雪景。建築物由近景向遠景推移安排，有西洋透視法則的使用跡象。各個不同建築物所區隔出的活動空間內，也都有符合當月節令的多樣活動細節安排，在在顯出月令圖組內對於一個月份景致的掌握。此組畫作的畫風精緻、設色講究，可謂清畫院風格的突出代表作品之一。</p><p>月令圖大部分建築僅繪局部，不是完整的單體建築。此圖以前庭大院為中心，描寫開敞的室內活動，菱形、貝葉式的牆上開洞可提供各獨立空間的聯繫，事實上並不符合實際的結構。另有一些券頂門洞、陽台設計可能受到西式建築的影響，反映出當時皇家園苑的創新趣味。畫上未署名，但從色彩筆墨來判斷，可能是出自於雍正、乾隆朝宮廷畫家合作的。</p>",
+      "authorIntro": "",
+      "detail": {
+        "material": "絹",
+        "theme": "山水、人物、建築、節令與二十四節氣",
+        "dimensions": "175x97（公分）"
+      },
+      "images": {
+        "main": "/images/collection/collection-P034-A.jpg",
+        "list": [
+          "/images/collection/collection-P034-A.jpg",
+          "/images/collection/collection-P034-C.jpg",
+          "/images/collection/collection-P034-D.jpg",
+          "/images/collection/collection-P034-E.jpg",
+          "/images/collection/collection-P034-F.jpg",
+          "/images/collection/collection-P034-G.jpg",
+          "/images/collection/collection-P034-H.jpg",
+          "/images/collection/collection-P034-I.jpg",
+          "/images/collection/collection-P034-J.jpg",
+          "/images/collection/collection-P034-K.jpg",
+          "/images/collection/collection-P034-L.jpg",
+          "/images/collection/collection-P034-N.jpg",
+          "/images/collection/collection-P034-O.jpg",
+          "/images/collection/collection-P034-P.jpg",
+          "/images/collection/collection-P034-R.jpg"
+        ]
+      }
+    }
+  ],
+  "collectionCategories": [
+    {
+      "id": 1,
+      "code": "painting",
+      "title": "繪畫"
+    },
+    {
+      "id": 2,
+      "code": "utensil",
+      "title": "器物"
+    },
+    {
+      "id": 3,
+      "code": "carving",
+      "title": "雕刻"
+    },
+    {
+      "id": 5,
+      "code": "knit",
+      "title": "絲繡織品"
+    },
+    {
+      "id": 6,
+      "code": "other",
+      "title": "其他文物"
+    }
+  ],
+  "exhibitionCollections": [
+    {
+      "id": 1,
+      "exhibitionId": 1,
+      "collectionId": [3, 5, 11, 12, 36, 37, 51]
+    },
+    {
+      "id": 2,
+      "exhibitionId": 3,
+      "collectionId": [34, 25, 27, 30, 32, 4, 19, 35, 45, 20, 22, 33, 45, 48]
+    },
+    {
+      "id": 3,
+      "exhibitionId": 6,
+      "collectionId": [4, 10, 11, 25, 27, 30, 31, 38, 39, 46]
+    },
+    {
+      "id": 4,
+      "exhibitionId": 2,
+      "collectionId": [3, 5, 11, 12, 49, 50, 51]
+    }
+  ],
+  "users": [
+    {
+      "email": "olivia@gmail.com",
+      "password": "$2a$10$qTqnFhDcwzv2zfLDBXwcUOFv31wIWgWHTDnO0nmr7N2I4WIdGRwOm",
+      "name": "Olivia T",
+      "imageUrl": "https://i.imgur.com/yo1yD1x.jpg",
+      "id": 1
+    },
+    {
+      "email": "lora@gmail.com",
+      "password": "$2a$10$m.QEdwN.nDBywvXAqVkp5.SIVO28S7g8Ujd1mn5hQ1pM3kskM2B6W",
+      "name": "Laurent",
+      "imageUrl": "https://images.unsplash.com/photo-1638803040283-7a5ffd48dad5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+      "id": 2
+    }
+  ],
+  "comments": [],
+  "replys": [],
+  "favorites": [
+    {
+      "userId": 2,
+      "savedAt": 1696338840,
+      "exhibitionId": "1",
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696343108,
+      "exhibitionId": "2",
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696343113,
+      "exhibitionId": "3",
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696345278,
+      "collectionId": "2",
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696345282,
+      "collectionId": "8",
+      "id": 5
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696345285,
+      "collectionId": "10",
+      "id": 6
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696345800,
+      "collectionId": "7",
+      "id": 7
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696346983,
+      "exhibitionId": "5",
+      "id": 8
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696346999,
+      "collectionId": "25",
+      "id": 9
+    },
+    {
+      "userId": 2,
+      "savedAt": 1696381577,
+      "collectionId": "17",
+      "id": 10
+    }
+  ]
+}

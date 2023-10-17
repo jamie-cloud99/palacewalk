@@ -22,3 +22,25 @@ export const recoverDate = (formatDate) => {
 export const getZeroBaseOrder = (num) => {
   return num < 10 ? `0${num}` : `${num}`
 }
+
+
+const options = {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit"
+}
+
+export const useDateFromUnix = (timestamp) => {
+  const date = new Date(timestamp * 1000).toLocaleDateString("en-US" ,options)  
+  return {
+    fullDate: `${date.slice(-4)}/${ date.slice(0, 2)}/${date.slice(3, 5)}`, 
+    year: date.slice(-4),
+    month: date.slice(0, 2),
+    day: date.slice(3, 5),
+    localDate: date // 06/20/2023
+  };
+}
+
+export const usePeriod = (startTime, endTime) => {
+  return `${useDateFromUnix(startTime).fullDate} - ${useDateFromUnix(endTime).fullDate}`
+}

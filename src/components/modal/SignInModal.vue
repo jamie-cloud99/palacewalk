@@ -43,13 +43,15 @@
           <h5 class="mb-4 text-center text-xl font-semibold">會員登入，入宮暢行最自在</h5>
           <div class="mb-4">
             <label for="account" class="block mb-2">帳號</label>
-            <input id="account" type="email" placeholder="請輸入信箱" class="form-input w-full" />
+            <input id="account" type="email"
+            v-model="tempMember.email" placeholder="請輸入信箱" class="form-input w-full" />
           </div>
           <div class="mb-4">
             <label for="password" class="block mb-2">密碼</label>
             <input
               id="password"
               type="password"
+              v-model="tempMember.password"
               placeholder="請輸入密碼"
               class="form-input w-full"
             />
@@ -64,17 +66,30 @@
           <h5 class="mb-4 text-center text-xl font-semibold">加入會員，坐擁宮中頂級美學</h5>
           <div class="mb-4">
             <label for="name" class="block mb-2">顯示暱稱</label>
-            <input type="text" id="name" class="form-input w-full" placeholder="請輸入暱稱" />
+            <input
+              type="text"
+              id="name"
+              v-model="tempMember.name"
+              class="form-input w-full"
+              placeholder="請輸入暱稱"
+            />
           </div>
           <div class="mb-4">
             <label for="account" class="block mb-2">帳號</label>
-            <input id="account" type="email" placeholder="請輸入信箱" class="form-input w-full" />
+            <input
+              id="account"
+              type="email"
+              v-model="tempMember.email"
+              placeholder="請輸入信箱"
+              class="form-input w-full"
+            />
           </div>
           <div class="mb-4">
             <label for="password" class="block mb-2">密碼</label>
             <input
               id="password"
               type="password"
+              v-model="tempMember.password"
               placeholder="請輸入密碼"
               class="form-input w-full"
             />
@@ -84,6 +99,7 @@
             <input
               id="password-check"
               type="password"
+              v-model="checkedPassword"
               placeholder="請再次輸入密碼"
               class="form-input w-full"
             />
@@ -104,11 +120,12 @@
             v-if="hasAccount"
             type="button"
             class="btn w-24 bg-primary text-white hover:bg-dark"
-            @click="logIn"
+            @click="logInMember(tempMember)"
           >
             登入
           </button>
-          <button v-else type="button" class="btn w-24 bg-primary text-white hover:bg-dark">
+          <button v-else type="button" class="btn w-24 bg-primary text-white hover:bg-dark"
+          @click="registerMember(tempMember)">
             註冊
           </button>
         </div>
@@ -127,7 +144,10 @@ const modal = ref(null)
 const curModal = ref(null)
 const hasAccount = ref(true)
 const memberStore = useMemberStore()
-const { isLoggedIn } = storeToRefs(memberStore)
+const { tempMember } = storeToRefs(memberStore)
+const { signUp, logIn } = memberStore
+
+const checkedPassword = ref({})
 
 defineExpose({
   curModal
@@ -139,10 +159,18 @@ const closeModal = () => {
 
 const changeForm = (status) => {
   hasAccount.value = status
+  tempMember.value = {}
 }
 
-const logIn = () => {
-  isLoggedIn.value = true
+const logInMember = (member) => {
+  const account = { email: member.email, password: member.password }
+  logIn(account)
+  curModal.value.hide()
+}
+
+const registerMember = (member) => {
+  const data = { ...member, imageUrl: 'https://images.unsplash.com/photo-1638803040283-7a5ffd48dad5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80' }
+  signUp(data)
   curModal.value.hide()
 }
 

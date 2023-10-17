@@ -25,7 +25,7 @@
             {{ item.title }}
           </h3>
           <p class="text-dark-600">
-            <time>{{ item.startDate }}</time> - <time>{{ item.endDate }}</time>
+            {{ usePeriod(item.startDate, item.endDate) }}
           </p>
         </div>
       </div>
@@ -53,6 +53,7 @@
 
 <script setup>
 import { toRefs, ref, watch } from 'vue'
+import { usePeriod } from '../../composables/format'
 
 const props = defineProps({
   exhibitionList: Array

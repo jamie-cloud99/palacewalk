@@ -2,7 +2,7 @@
   <div class="group relative h-[300px] lg:h-[250px] text-white">
     <img
       class="object-cover object-center h-full w-full"
-      :src="`/images/collection/collection-${collectionItem.collectionId}.jpg`"
+      :src="collectionItem.images.main"
       :alt="collectionItem.title"
     />
     <div class="absolute inset-0 bg-dark/50 hover-style">
@@ -11,16 +11,16 @@
           <h4 class="font-bold text-lg">{{ collectionItem.title }}</h4>
           <div class="w-22 h-px bg-white"></div>
         </div>
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between flex-wrap">
           <h5 class="font-medium">{{ collectionItem.author }}</h5>
-          <p class="self-end">{{ collectionItem.time }}</p>
+          <p>{{ collectionItem.time }}</p>
         </div>
       </div>
     </div>
     <!-- * saveFavorites 第一個參數之後打 api 應該會改成傳 id，暫時先傳整個物件 -->
     <button
       v-if="showFavIcon"
-      @click="saveFavorites(collectionItem, 'collection')"
+      @click="saveFavorites(collectionItem.id, 'collections')"
       type="button"
       class="absolute top-2 right-2 text-xl z-[1] hover:text-primary"
     >
@@ -33,7 +33,7 @@
     </button>
     <RouterLink
       class="stretched-link"
-      :to="{ name: 'collectionInfo', params: { collectionId: collectionItem.collectionId } }"
+      :to="{ name: 'collectionInfo', params: { collectionId: collectionItem.id } }"
     />
   </div>
 </template>

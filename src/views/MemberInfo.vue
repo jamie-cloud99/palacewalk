@@ -3,7 +3,12 @@
     <div class="col-span-4" :class="{ 'order-2': isEdit }">
       <div class="flex flex-col items-center bg-dark-200 pt-10 lg:pt-14 pb-10 font-semibold">
         <p v-if="isEdit" class="text-center mb-4">更換大頭貼</p>
-        <img src="/images/user-1.webp" alt="" class="block mb-4 w-32 h-32" />
+        <img
+          :src="member.imageUrl"
+          alt=""
+          class="block mb-4 w-32 h-32 rounded-full object-cover"
+          referrerpolicy="no-referrer"
+        />
         <p class="mb-6 text-xl" :class="{ '!mb-16': !isEdit }">{{ member.name }}</p>
         <p v-if="isEdit" class="text-dark-600 mb-10 px-2 lg:px-6 lg:mb-16">
           圖片尺寸限制為 1024px * 1024px 以下
@@ -97,7 +102,12 @@
     >
       取消
     </button>
-    <button type="button" class="btn w-32 bg-primary text-white hover:bg-dark" @click="submitForm">
+    <button
+      type="button"
+      class="btn w-32 bg-primary text-white hover:bg-dark disabled:bg-dark-400"
+      :disabled="!enableSubmit"
+      @click="submitForm(tempMember)"
+    >
       確認修改
     </button>
   </div>
@@ -109,10 +119,10 @@ import { storeToRefs } from 'pinia'
 import { useMemberStore } from '../stores/memberStore'
 
 const memberStore = useMemberStore()
-const tempMember = ref({})
 const oldPassword = ref('')
 const passwordCheck = ref('')
-const { member } = storeToRefs(memberStore)
+const { member, tempMember } = storeToRefs(memberStore)
+const { UpdateMember } = memberStore
 
 const isEdit = ref(false)
 
@@ -134,6 +144,15 @@ const memberEmail = computed({
   }
 })
 
+const enableSubmit = computed(() => {
+  // 使用 json server auth 模擬，無法先確認原始密碼再允許修改
+  const condition =
+    tempMember.value.newPassword === '' ||
+    (passwordCheck.value === tempMember.value.newPassword &&
+      oldPassword.value !== tempMember.value.newPassword)
+  return condition ? true : false
+})
+
 watch(
   member,
   () => {
@@ -145,16 +164,22 @@ watch(
 
 const toggleEdit = (status) => {
   isEdit.value = status
+  oldPassword.value = ''
+  tempMember.value.newPassword = ''
+  passwordCheck.value = ''
 }
 
-const submitForm = ( ) => {
+const submitForm = async (member) => {
+  let { name, email, newPassword: password, imageUrl } = member
+
+  if (member.newPassword === '') {
+    password = member.password
+  }
+
+  const user = { name, email, password, imageUrl }
+  await UpdateMember(user)
   toggleEdit(false)
 }
-
 </script>
 
-<style>
-.form-input {
-  @apply focus:border-primary focus:ring-primary read-only:focus:border-dark-600 read-only:focus:ring-0;
-}
-</style>
+

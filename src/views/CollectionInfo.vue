@@ -1,185 +1,136 @@
 <template>
-  <!-- TODO: recommend swiper-->
   <CollectionBanner :title="'展品介紹'" />
-  <div class="container">
-    <div class="mb-6 lg:mb-10 overflow-hidden">
-      <swiper-container
-        class="px-0 lg:px-[15px] overflow-visible lg:overflow-hidden"
-        :space-between="16"
-        :slides-per-view="1"
-        :breakpoints="{ 768: { slidesPerView: 2 } }"
-        navigation="true"
+
+  <div class="container overflow-hidden">
+    <div class="mb-6 lg:mb-10 relative px-6 lg:px-10">
+      <CollectionImageSlides />
+    </div>
+    <article class="px-2 md:w-4/5 2xl:w-3/5 mx-auto mb-3 lg:mb-4">
+      <h2 class="text-2xl lg:text-3xl font-bold mb-1 md:mb-0">{{ collection.title }}</h2>
+      <div
+        class="md:flex justify-between items-center border-black border-solid border-0 border-b mb-2"
       >
-        <swiper-slide class="w-[300px]">
-          <figure class="w-full h-[210px] lg:h-[360px] bg-gradient-to-b from-dark/80 to-dark/90">
-            <img
-              class="w-full h-full object-contain object-center"
-              :src="`/images/collection/collection-P024.jpg`"
-              alt="元朱叔重秋山疊翠 軸"
-            />
-          </figure>
-        </swiper-slide>
-        <swiper-slide v-for="i in 3" :key="i + 'i'" class="w-[300px]">
-          <figure class="w-full h-[210px] lg:h-[360px]">
-            <img
-              class="w-full h-full object-cover object-center"
-              :src="`/images/collection/collection-P024-${i}.jpg`"
-              alt="元朱叔重秋山疊翠 軸"
-            />
-          </figure>
-        </swiper-slide>
-      </swiper-container>
-    </div>
-    <h2 class="text-2xl lg:text-3xl font-bold mb-1 md:mb-0">秋山疊翠 軸</h2>
-    <div
-      class="md:flex justify-between items-center border-black border-solid border-0 border-b mb-2"
-    >
-      <div class="text-dark-600 font-semibold">
-        <span class="mr-4">朱叔重</span>
-        <span class="text-sm">元順帝至正二十五年(1365)</span>
+        <div class="text-dark-600 font-semibold">
+          <span class="mr-4">{{ collection.author }}</span>
+          <span class="text-sm">{{ collection.time }}</span>
+        </div>
+        <ul class="flex justify-end md:gap-x-1 md:text-xl lg: text-2xl">
+          <li>
+            <button type="button" class="btn hover:text-primary">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="btn hover:text-primary">
+              <i class="fa-solid fa-link"></i>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="btn hover:text-primary">
+              <i class="fa-solid fa-share-nodes"></i>
+            </button>
+          </li>
+        </ul>
       </div>
-      <ul class="flex justify-end md:gap-x-1 md:text-xl lg: text-2xl">
-        <li>
-          <button type="button" class="btn hover:text-primary">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="btn hover:text-primary">
-            <i class="fa-solid fa-link"></i>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="btn hover:text-primary">
-            <i class="fa-solid fa-share-nodes"></i>
-          </button>
-        </li>
-      </ul>
-    </div>
-    <div class="font-semibold mb-11">
-      <p class="font-bold mb-2">
-        朱叔重（約西元十四世紀）也有人寫作叔仲，江蘇吳縣人。他雖然是個讀書人，但在繪畫上也有卓越的成就，可惜遺留下來的作品很少。
-        小橋對岸，有林木蕭疏，村屋四五家隱約可見。山嶺連綿蜿蜒而上，白雲深鎖於山際。雲山蒼潤，水墨淋漓。山作直皴，樹用橫筆米點，畫法似出自米芾、高克恭。
-      </p>
-      <p class="mb-[42px]">
-        Chu Shu-ch'ung, a native of Kiang-su, was a Confucian scholar, who excelled in painting.
-        Whenever he wrote a particularly successful poem, he would paint a picture capturing the
-        poetic concept. This painting was completed in1365. As an official Chu Shu-ch'ung had little
-        time to paint, thus few of his paintings are still extant. In this scroll, the trees are
-        painted with horizontal dabs of ink, recalling the style of Mi Fu and Mi Yu-Jen. The
-        mountains are constructed with vertical brushstrokes and heavy ink, resembling the work of
-        Wu Chen.
-      </p>
-      <h3 class="text-2xl font-bold mb-4">藝品賞析</h3>
-      <p class="mb-[42px]">
-        《元朱叔重秋山疊翠》是元代著名畫家朱叔重的傑作之一，以其獨特的墨色表現手法吸引人們。畫中山川起伏，勾勒煙雲繚繞的秋景，墨色處處流轉，疊翠叠翠，賦予作品生命力與變化。輕重運用墨，勾勒山勢、岩石、樹木，細緻入微，使山水層次分明，景深立體。簡潔的筆法，透過墨色的變化，描繪出自然景物的氣勢和情感。作品中的山水與情感相互交融，令人感受到作者對大自然的敬仰與感嘆之情。整幅畫營造出一種寧靜與宏偉並存的意境，讓觀者彷彿置身於其中，感受自然的美妙與壯麗。這幅作品展現了朱叔重對山水畫的深刻理解和造詣，成為中國山水畫的經典之作。
-      </p>
-      <h3 class="text-2xl font-bold mb-4">作者簡介</h3>
-      <p class="mb-[42px]">
-        朱叔重（1271年-1336年），元代著名畫家，字道襄，號澄園，生於浙江寧波。他是元代南宗畫派的代表人物之一，以山水畫見長，並且在畫風上有獨特的貢獻。朱叔重崇尚宋代文人畫風，注重表達內心情感，追求淡雅、虛實結合的境界。<br />
-        他的畫作融合了北宋文人畫的文雅與南宋宗派畫的技巧，精於運用淡墨疏密，以抒發情感，將山水融入人情，將心境融入山水。他的作品《秋山疊翠》、《洪都圖》等，都以其獨特的筆法和情感表達成為後世傳世之寶。<br />
-        朱叔重對後世影響深遠，不僅在藝術上對山水畫風有重要影響，更在文化思想上提倡以內心修養為主的藝術創作理念。他的藝術作品充滿詩情畫意，為中國山水畫的發展做出了卓越的貢獻。
-      </p>
-      <h3 class="text-2xl font-bold mb-4">詳細資訊</h3>
-      <div class="mb-[42px] inline-grid grid-rows-2 lg:grid-rows-4 lg:grid-cols-4 w-full text-dark-800">
-        <div class="border-5 border-black border-b border-dashed py-[26px] col-span-1">
-          <span class="mr-6">中文名</span>
-          <span>秋山疊翠</span>
+      <div v-if="collection.description" class="font-semibold space-y-10">
+        <div v-html="collection.description" class="space-y-2"></div>
+        <div v-if="collection.appreciation">
+          <h3 class="text-lg lg:text-2xl font-bold mb-3 lg:mb-4">藝品賞析</h3>
+          <div v-html="collection.appreciation" class="space-y-2"></div>
         </div>
-        <div class="border-5 border-black border-b border-dashed py-[26px]">
-          <span class="mr-6">作者</span>
-          <span>朱叔重</span>
+        <div v-if="collection.authorIntro">
+          <h3 class="text-lg lg:text-2xl font-bold mb-3 lg:mb-4">作者簡介</h3>
+          <div v-html="collection.authorIntro" class="space-y-2"></div>
         </div>
-        <div class="border-5 border-black border-b border-dashed py-[26px] col-span-2 whitespace-nowrap">
-          <span class="mr-6">創作年代</span>
-          <span class="mr-[90px]">元順帝至正二十五年(1365)</span>
-        </div>
-        <div class="border-5 border-black border-b border-dashed py-[26px]">
-          <span class="mr-6">材質</span>
-          <span>紙</span>
-        </div>
-        <div class="border-5 border-black border-b border-dashed py-[26px]">
-          <span class="mr-6">主題類型</span>
-          <span>山水</span>
-        </div>
-        <div class="border-5 border-black border-b border-dashed py-[26px] col-span-2">
-          <span class="mr-6">規格</span>
-          <span>69.5x26.4 (公分)</span>
-        </div>
-        <!-- <div class="border-5 border-black border-b border-dashed py-[26px] text-center"> -->
-        <!-- <span class="mr-6">現收藏地</span>
-          <span>故宮博物院</span> -->
-        <!-- </div> -->
+        <h3 class="text-lg lg:text-2xl font-bold">詳細資訊</h3>
       </div>
-      <h3 class="text-2xl font-bold mb-4">精選推薦</h3>
-      <div class="mb-10 overflow-hidden">
+    </article>
+  </div>
+
+  <div class="bg-dark-200 text-dark-800 pb-6 mb-10 lg:mb-20">
+    <div class="container">
+      <div class="px-2 md:w-4/5 2xl:w-3/5 mx-auto">
+        <ul class="grid grid-cols-12">
+          <li v-for="item in collectionDetail" :key="item.title" class="col-span-12 md:col-span-6">
+            <div class="flex gap-y-2 pt-6 pb-3 border-b border-dark-800 border-dashed h-full">
+              <h4 class="w-20 font-semibold shrink-0">{{ item.title }}</h4>
+              <p class="px-2">{{ item.content }}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="flex justify-center mb-6 lg:mb-8">
+      <div class="relative">
+        <h3 class="text-2xl lg:text-3xl font-bold square after:-right-6 before:-left-6">
+          精選推薦
+        </h3>
+      </div>
+    </div>
+    <div class="mb-10 overflow-hidden">
+      <div class="relative">
         <CollectionMasterSlides />
       </div>
     </div>
-    <router-link :to="previousPage">
-      <button
-        @click="previousPage"
-        class="btn hover:bg-primary hover:text-white font-semibold border border-black mx-auto hover:border-primary"
-      >
-        回前一頁
-      </button>
-    </router-link>
-    <div class="flex py-10 lg:py-15 border-1">
-      <PageComponent :pages="pages" @change="turnPage" />
-    </div>
+  </div>
+  <div class="mb-10 lg:mb-15">
+    <button
+      @click="goPreviousPage"
+      class="btn font-semibold border border-black mx-auto hover:bg-primary hover:text-white hover:border-primary"
+    >
+      回前一頁
+    </button>
   </div>
 
   <BackgroundComponent />
 </template>
 
 <script setup>
-import { reactive } from 'vue'
-import { useRouter } from 'vue-router'
+import { watch } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useRouterStore } from '../stores/routerStore'
+import { useCollectionStore } from '../stores/collectionStore'
+import { useSlideStore } from '../stores/slideStore'
 import CollectionBanner from '../components/collection/CollectionBanner.vue'
-import PageComponent from '../components/layout/PageComponent.vue'
 import CollectionMasterSlides from '../components/collection/CollectionMasterSlides.vue'
 import BackgroundComponent from '../components/background/BackgroundComponent.vue'
+import CollectionImageSlides from '../components/collection/CollectionImageSlides.vue'
 
-const router = useRouter()
+const collectionStore = useCollectionStore()
+const { collection, collectionDetail } = storeToRefs(collectionStore)
+const { fetchCollection } = collectionStore
 
-const detail = reactive([
-    {
-      data: [
-        {
-          id: '1',
-          collectionId: 'P001',
-          title: '秋山疊翠',
-          author: '朱叔重',
-          time: '元順帝至正二十五年(1365)',
-          ingredient: '紙',
-          type: '山水',
-          size: '69.5x26.4 (公分)'
-        }
-      ]
-    }
-])
+const routerStore = useRouterStore()
+const { goPreviousPage } = routerStore
+const { collectionId } = storeToRefs(routerStore)
 
-const previousPage = () => {
-  router.back()
-}
+const slideStore = useSlideStore()
+const { getSlide } = slideStore
+const { slides } = storeToRefs(slideStore)
+
+watch(
+  () => collectionId,
+  () => {
+    slides.value.curSlide = 1
+  },
+  { immediate: true }
+)
+
+;(async () => {
+  await fetchCollection(collectionId.value)
+  getSlide(collection.value.images.list.length + 1, {
+    default: 1,
+    md: 2
+  })
+})()
 </script>
 
 <style scoped>
-swiper-container::part(button-next),
-swiper-container::part(button-prev) {
-  position: absolute;
-  color: black;
-  width: 20px;
-  height: 20px;
-  stroke-width: 20px;
-  @apply hidden lg:block p-0;
-}
-
-swiper-container::part(button-next) {
-  right: -20px;
-}
-
-swiper-container::part(button-prev) {
-  left: -20px;
+.square::after,
+.square::before {
+  @apply absolute content-[''] w-3 h-3 top-1/2 -translate-y-1/2 bg-primary;
 }
 </style>

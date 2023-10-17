@@ -11,11 +11,11 @@
         </h3>
         <hr class="border-b border-dark-400 lg:border-dark" />
         <div class="mb-6 lg:mb-20">
-          <SortList
+          <SideMenu
             :menu="menuContent"
             :selectedOption="curMenuItem"
             @select-item="changeMenuItem"
-          ></SortList>
+          />
         </div>
         <div class="hidden lg:block">
           <h3 class="flex flex-col text-lg">
@@ -43,15 +43,17 @@
           </ul>
         </div>
       </div>
-      <div class="col-span-9 font-semibold">
+      <div v-if="exhibition.id" class="col-span-9 font-semibold">
         <img
-          class="w-full h-[340px] object-cover object-center mb-2 lg:mb-4"
-          src="/images/exhibitions/exhibition-U001.jpg"
+          class="w-full aspect-[2/1] object-cover object-center mb-2 lg:mb-4"
+          :src="exhibition.images.lg"
         />
         <div class="flex flex-col justify-between mb-8 lg:flex-row">
           <div class="mb-4 lg:mb-0">
-            <h2 class="text-2xl font-bold mb-4">{{ exhibitionTitle }}</h2>
-            <time datetime="" class="font-bold">{{ startDate }} - {{ endDate }}</time>
+            <h2 class="text-2xl font-bold mb-4">{{ exhibition.title }}</h2>
+            <time datetime="" class="font-bold">{{
+              usePeriod(exhibition.startDate, exhibition.endDate)
+            }}</time>
           </div>
           <div class="flex flex-row-reverse justify-between lg:flex-col lg:justify-start">
             <div class="flex mb-2">
@@ -83,9 +85,9 @@
         </div>
         <div>
           <h3 class="font-bold mb-2">展覽概述：</h3>
-          <p class="mb-8">{{ description }}</p>
+          <p class="mb-8">{{ exhibition.description }}</p>
           <h3 class="font-bold mb-2">展覽亮點：</h3>
-          <div v-html="content" class="content mb-8"></div>
+          <div v-html="exhibition.content" class="content mb-8"></div>
           <h3 class="font-bold mb-2">展品資訊：</h3>
           <div class="relative overflow-hidden mb-8">
             <CollectionSlides />
@@ -99,7 +101,7 @@
               placeholder="新增留言"
             />
             <button type="button" class="absolute right-4 top-2 hover:text-primary">
-              <i class="fa-solid fa-paper-plane "></i>
+              <i class="fa-solid fa-paper-plane"></i>
             </button>
           </div>
           <ul class="space-y-5">
@@ -171,13 +173,22 @@
 <script setup>
 import { ref, reactive, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { usePeriod } from '../composables/format'
 import ExhibitionBanner from '../components/exhibition/ExhibitionBanner.vue'
-import SortList from '../components/layout/SortList.vue'
+import SideMenu from '../components/layout/SideMenu.vue'
 import CollectionSlides from '../components/exhibition/CollectionSlides.vue'
 import BackgroundComponent from '../components/background/BackgroundComponent.vue'
 
 import { storeToRefs } from 'pinia'
-import { exhibitionStore } from '../stores/exhibitsStore'
+import { useExhibitionStore } from '../stores/exhibitsStore'
+import { useRouterStore } from '../stores/routerStore'
+import { useSlideStore } from '../stores/slideStore'
+
+const routerStore = useRouterStore()
+const { exhibitionId } = storeToRefs(routerStore)
+
+const slideStore = useSlideStore()
+const { getSlide } = slideStore
 
 const router = useRouter()
 
@@ -210,18 +221,19 @@ const menuContent = reactive([
   }
 ])
 const curMenuItem = ref(menuContent[0])
-const curBannerContent = computed(() => {
-  return { title: `展覽空間 — ${breadList[breadList.length - 1].title}`, breadList }
-})
-
 const changeMenuItem = (item) => {
   curMenuItem.value = item
   breadList[breadList.length - 1].title = item.title
   router.push({ path: `/exhibitions`, query: { period: item.title } })
 }
 
-const exhibitsStore = exhibitionStore()
-const { exhibition } = storeToRefs(exhibitsStore)
+const curBannerContent = computed(() => {
+  return { title: `展覽空間 — ${breadList[breadList.length - 1].title}`, breadList }
+})
+
+const exhibitionStore = useExhibitionStore()
+const { exhibition, exhibitionCollections } = storeToRefs(exhibitionStore)
+const { fetchExhibition } = exhibitionStore
 
 const isOpen = ref(1)
 
@@ -229,32 +241,16 @@ const toggleReply = (id) => {
   isOpen.value = isOpen.value === id ? '' : id
 }
 
-const exhibitionTitle = computed({
-  get: () => {
-    return exhibition.value[0].data[0].title
-  }
-})
-const startDate = computed({
-  get: () => {
-    return exhibition.value[0].data[0].startDate
-  }
-})
-const endDate = computed({
-  get: () => {
-    return exhibition.value[0].data[0].endDate
-  }
-})
-const description = computed({
-  get: () => {
-    return exhibition.value[0].data[0].description
-  }
-})
-const content = computed({
-  get: () => {
-    return exhibition.value[0].data[0].content
-  }
-})
+;(async () => {
+  await fetchExhibition(exhibitionId.value)
+  getSlide(exhibitionCollections.value.length, {
+    default: 1,
+    md: 2,
+    lg: 3
+  })
+})()
 </script>
+
 <style>
 .content ol {
   list-style-type: decimal;
@@ -263,5 +259,9 @@ const content = computed({
 }
 .content li {
   margin-bottom: 8px;
+}
+
+.search {
+  @apply py-3 w-full border-dark-800 bg-white text-dark-600 placeholder:text-dark-600 focus:border-primary focus:ring-primary;
 }
 </style>
