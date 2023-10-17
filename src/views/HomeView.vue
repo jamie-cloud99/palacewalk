@@ -39,7 +39,7 @@
       <SectionTitle data-aos="zoom-in" :text="section[0]" />
     </div>
     <div class="container relative mb-20">
-      <ExhibitionSlides data-aos="fade-up" :exhibition-list="recentExhibitionList" />
+      <ExhibitionSlides data-aos="fade-up" :exhibition-list="exhibitionList" />
     </div>
     <div class="container">
       <SectionTitle data-aos="zoom-in" :text="section[1]" />
@@ -118,6 +118,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useHomeStore } from '../stores/homeStore'
+import { useExhibitionStore } from '../stores/exhibitsStore'
 import CalendarComponent from '../components/home/CalendarComponent.vue'
 import SectionTitle from '../components/home/SectionTitle.vue'
 import ImageMarquee from '../components/home/ImageMarquee.vue'
@@ -127,7 +128,12 @@ import ExhibitionSlides from '../components/home/ExhibitionSlides.vue'
 const router = useRouter()
 const homeStore = useHomeStore()
 const { fetchFeaturedCollections} = homeStore
-const { newsList, recentExhibitionList, featuredCollectionList } = storeToRefs(homeStore)
+const { newsList, exhibitionPeriod, featuredCollectionList } = storeToRefs(homeStore)
+
+
+const exhibitionStore = useExhibitionStore()
+const { exhibitionList } = storeToRefs(exhibitionStore)
+const { updateExhibitionPeriod } = exhibitionStore
 
 const section = ref([
   {
@@ -143,6 +149,8 @@ const section = ref([
     engTitle: 'Comment'
   }
 ])
+
+updateExhibitionPeriod(exhibitionPeriod.value)
 
 fetchFeaturedCollections()
 

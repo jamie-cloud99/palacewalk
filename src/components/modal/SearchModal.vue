@@ -27,24 +27,19 @@
           </button>
         </div>
 
-        <div class="flex items-start gap-x-6 px-10 text-2xl font-bold mb-8 lg:px-20 lg:mb-10">
-          <button
-            type="button"
-            class="btn pb-1 border-primary hover:border-b-4"
-            :class="{ 'border-b-4': searchType === '展覽' }"
-            @click="changeSearchType('展覽')"
-          >
-            展覽
-          </button>
-          <button
-            type="button"
-            class="btn pb-1 border-primary hover:border-b-4"
-            @click="changeSearchType('展品')"
-            :class="{ 'border-b-4': searchType === '展品' }"
-          >
-            展品
-          </button>
-        </div>
+        <ul class="flex items-start gap-x-6 px-10 text-2xl font-bold mb-8 lg:px-20 lg:mb-10">
+          <li v-for="item in searchTypeList" :key="item.id">
+            <button
+              type="button"
+              class="btn pb-1 border-transparent border-b-4 hover:border-dark-400"
+              :class="{ ' !border-primary ': searchType.code === item.code }"
+              @click="changeSearchType(item.code)"
+            >
+              {{ item.title }}
+            </button>
+          </li>
+        
+        </ul>
 
         <div
           class="relative py-10 px-10 lg:px-20 bg-[url('../images/collection/banner-bg.jpg')] bg-right bg-cover"
@@ -52,42 +47,68 @@
           <div class="absolute inset-0 bg-dark-200 opacity-50"></div>
           <div class="container relative z-10">
             <!-- 展品 -->
-            <div v-if="searchType === '展品'" class="flex flex-wrap -mx-3">
+            <div v-if="searchType.code === 'collections'" class="flex flex-wrap -mx-3">
               <div class="w-full lg:w-1/2 px-3 mb-4 lg:mb-6">
                 <label class="form-label" for="name">品名</label>
-                <input class="bg-dark-200 w-full" type="text" id="name" name="name" placeholder="請輸入品名">
+                <input
+                  v-model="filterFields.collections.title"
+                  class="bg-dark-200 w-full form-input"
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="請輸入品名"
+                />
               </div>
               <div class="w-full lg:w-1/2 px-3 mb-4 lg:mb-6">
                 <label class="form-label" for="author">作者</label>
-                <input class="bg-dark-200 w-full" type="text" id="author" name="author" placeholder="請輸入作者">
+                <input
+                  v-model="filterFields.collections.author"
+                  class="bg-dark-200 w-full form-input"
+                  type="text"
+                  id="author"
+                  name="author"
+                  placeholder="請輸入作者"
+                />
               </div>
               <div class="w-full lg:w-1/2 px-3 mb-4 lg:mb-6">
                 <label class="form-label" for="category">分類</label>
-                <select class="bg-dark-200 block w-full" data-te-select-init>
-                  <option :value="null">請選擇</option>
-                  <option value="1">精選展品</option>
-                  <option value="2">繪畫</option>
-                  <option value="3">器物</option>
-                  <option value="4">硬幣古錢</option>
-                  <option value="5">織品絲繡</option>
-                  <option value="6">其他文物</option>
+                <select
+                  v-model="filterFields.collections.categoryId"
+                  class="bg-dark-200 form-select py-2"
+                >
+                  <option value="null" disabled selected class="text-dark-600 aria-selected:text-dark-600">請選擇分類</option>
+                  <option v-for="item in categoryList" :key="item.id" :value="item.id" class="">
+                    {{ item.title }}
+                  </option>
                 </select>
               </div>
               <div class="w-full lg:w-1/2 px-3 mb-4 lg:mb-6">
                 <label class="form-label" for="order">排序</label>
-                <select class="block bg-dark-200 w-full" data-te-select-init>
-                  <option :value="null">請選擇</option>
-                  <option value="2">依照日期(由新到舊)</option>
-                  <option value="3">依照日期（由舊到新）</option>
+                <select
+                  v-model="filterFields.collections.sort"
+                  class="bg-dark-200 form-select py-2"
+                >
+                  <option value="" disabled selected class="text-dark-600">請選擇排序</option>
+                  <option value="1">依照朝代(由新到舊)</option>
+                  <option value="2">依照朝代（由舊到新）</option>
                 </select>
               </div>
               <div class="w-3/4 px-3">
                 <h3 class="form-label">朝代</h3>
               </div>
               <div class="w-full px-3">
-                <input @change="handleChange" class="w-full cursor-pointer accent-warning" list="tickmarks" value="50" type="range" min="0" max="100" step="5"/>
+                <input
+                  @change="handleChange"
+                  class="w-full cursor-pointer accent-warning"
+                  list="tickmarks"
+                  value="50"
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="5"
+                />
                 <span class="inline-block p-1 bg-[#D9D9D9]" v-text="yearly"></span>
-                <datalist id="tickmarks" >
+                <datalist id="tickmarks">
                   <option value="0"></option>
                   <option value="5"></option>
                   <option value="10"></option>
@@ -111,20 +132,30 @@
                   <option value="100"></option>
                 </datalist>
               </div>
-
             </div>
             <!-- 展覽 -->
             <div v-else class="flex flex-wrap -mx-3">
               <div class="w-full lg:w-1/2 px-3 mb-4 lg:mb-6">
                 <label class="form-label" for="name">展名</label>
-                <input class="bg-dark-200 w-full" type="text" id="name" name="name" placeholder="請輸入展名">
+                <input
+                  v-model="filterFields.exhibitions.title"
+                  class="bg-dark-200 w-full"
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="請輸入展名"
+                />
               </div>
               <div class="w-full lg:w-1/2 px-3 mb-4 lg:mb-6">
                 <label class="form-label" for="order">排序</label>
-                <select class="block bg-dark-200 w-full" data-te-select-init>
+                <select
+                  v-model="filterFields.exhibitions.sort"
+                  class="block bg-dark-200 w-full"
+                  data-te-select-init
+                >
                   <option :value="null">請選擇</option>
-                  <option value="2">依照朝代(由新到舊)</option>
-                  <option value="3">依照朝代（由舊到新）</option>
+                  <option :value="SORT_ORDER.fromNewest">依照日期(由新到舊)</option>
+                  <option :value="SORT_ORDER.fromOldest">依照日期（由舊到新）</option>
                 </select>
               </div>
             </div>
@@ -140,7 +171,11 @@
             取消
           </button>
 
-          <button type="button" class="btn w-24 bg-primary text-white hover:bg-dark">
+          <button
+            @click="goSearch(filterFields)"
+            type="button"
+            class="btn w-24 bg-primary text-white hover:bg-dark"
+          >
             <span>搜尋</span>
           </button>
         </div>
@@ -150,15 +185,35 @@
 </template>
 
 <script setup>
-import { Modal, Select, initTE } from 'tw-elements'
+import { Modal, initTE } from 'tw-elements'
 import { reactive, ref, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
 import { useStatusStore } from '../../stores/statusStore'
+import { useExhibitionStore } from '../../stores/exhibitsStore'
+import { useCollectionStore } from '../../stores/collectionStore'
+import { SORT_ORDER } from '@/utils/constant/sort'
 const modal = ref(null)
 const curModal = ref(null)
 const statusStore = useStatusStore()
-const { searchType } = storeToRefs(statusStore)
+const { searchType, searchTypeList } = storeToRefs(statusStore)
 const { changeSearchType } = statusStore
+
+const exhibitionStore = useExhibitionStore()
+const { filterExhibitions } = exhibitionStore
+
+const collectionStore = useCollectionStore()
+const { categoryList } = storeToRefs(collectionStore)
+const { filterCollections, fetchCategoryList } = collectionStore
+
+const filterFields = ref({
+  exhibitions: {},
+  collections: {
+    categoryId: null
+  }
+})
+
+const router = useRouter()
 
 defineExpose({
   curModal
@@ -168,15 +223,48 @@ const closeModal = () => {
   curModal.value.hide()
 }
 
-initTE({ Modal, Select }) // Select 無效
+initTE({ Modal })
+
+const goSearch = async (fields) => {
+  if (searchType.value.code === 'collections') {
+    await filterCollections(fields.collections)
+  } else {
+    await filterExhibitions(fields.exhibitions)
+  }
+
+  closeModal()
+  router.push({ path: '/search' })
+}
+
+fetchCategoryList()
 
 onMounted(() => {
   curModal.value = new Modal(modal.value)
 })
 
-
-let dynastyList = reactive(['新石器時代', '新石器時代晚期', '商', '西周', '春秋', '戰國', '秦', '西漢', '新莽',
-'東漢', '魏晉南北朝', '隋', '唐', '五代', '宋', '遼', '金', '元', '明', '清', '民國'])
+let dynastyList = reactive([
+  '新石器時代',
+  '新石器時代晚期',
+  '商',
+  '西周',
+  '春秋',
+  '戰國',
+  '秦',
+  '西漢',
+  '新莽',
+  '東漢',
+  '魏晉南北朝',
+  '隋',
+  '唐',
+  '五代',
+  '宋',
+  '遼',
+  '金',
+  '元',
+  '明',
+  '清',
+  '民國'
+])
 
 const generateDynastyMap = (list) => {
   const dynastyMap = {}
@@ -184,7 +272,7 @@ const generateDynastyMap = (list) => {
     dynastyMap[i * 5] = dynasty
   })
   return dynastyMap
-};
+}
 
 const dynastyMap = generateDynastyMap(dynastyList)
 const yearly = ref('魏晉南北朝')
@@ -194,7 +282,7 @@ const handleChange = (val) => {
   if (selectedYear !== undefined) {
     yearly.value = selectedYear
   }
-};
+}
 </script>
 
 <style scoped>
