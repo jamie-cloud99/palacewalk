@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container min-h-[800px]">
     <BreadcrumbsComponent class="my-5 justify-end" :nav-list="breadList"/>
     <div class="lg:grid grid-cols-12 gap-6">
       <!-- Left Side -->

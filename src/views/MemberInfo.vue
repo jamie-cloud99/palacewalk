@@ -182,8 +182,4 @@ const submitForm = async (member) => {
 }
 </script>
 
-<style>
-.form-input {
-  @apply focus:border-primary focus:ring-primary read-only:focus:border-dark-600 read-only:focus:ring-0;
-}
-</style>
+

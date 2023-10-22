@@ -27,6 +27,7 @@ export const useCollectionStore = defineStore('collection', () => {
   const collection = ref({})
   const curCategory = ref(categoryList.value[0])
   const categoryAllId = ref(COLLECTION_CATEGORIES.category.all)
+  const collectionsFiltered = ref([])
 
   const masterPeiceList = ref([
     {
@@ -191,6 +192,27 @@ export const useCollectionStore = defineStore('collection', () => {
     turnPage(1)
   }
 
+  const filterCollections = async (conditions) => {
+    if (!collectionsAll.value.length) await fetchCollectionsAll()
+
+    const filteredCollections = collectionsAll.value.filter(
+      (collection) =>
+        (!conditions.title || collection.title.includes(conditions.title)) &&
+        (!conditions.author || collection.author.includes(conditions.author)) &&
+        (!conditions.categoryId ||
+          conditions.categoryId === categoryAllId.value ||
+          collection.collectionCategoryId === conditions.categoryId)
+    )
+
+    collectionsFiltered.value = filteredCollections
+
+    // if(conditions.sort) {
+    //   if(conditions.sort === "1") {
+    //     collectionsFiltered.value.sort((a, b) => a-b)
+    //   }
+    // }
+  }
+
   return {
     collectionsAll,
     collectionList,
@@ -200,10 +222,12 @@ export const useCollectionStore = defineStore('collection', () => {
     route,
     collectionDetail,
     masterPeiceList,
+    collectionsFiltered,
     fetchCollectionsAll,
     fetchPageCollections,
     fetchCategoryList,
     selectCategory,
-    fetchCollection
+    fetchCollection,
+    filterCollections
   }
 })
