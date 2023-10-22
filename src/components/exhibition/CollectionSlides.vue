@@ -10,6 +10,7 @@
     ref="swiperEl"
   >
     <swiper-slide v-for="item in exhibitionCollections" :key="item.id">
+<<<<<<< HEAD
       <figure class="exhibit-item group ">
         <img
           class="w-full h-full object-cover object-centers"
@@ -20,6 +21,9 @@
           {{ item.title }}
         </figcaption>
       </figure>
+=======
+      <CollectionListItem :collection-item="item" />
+>>>>>>> origin/dev
     </swiper-slide>
   </swiper-container>
   <div class="absolute bottom-0 z-10 right-0 w-full h-15 text-dark">
@@ -61,6 +65,7 @@ import { storeToRefs } from 'pinia'
 import { onMounted, watch, nextTick, ref } from 'vue'
 import { useSlideStore } from '@/stores/slideStore'
 import { useExhibitionStore } from '@/stores/exhibitsStore'
+import CollectionListItem from '@/components/collection/CollectionListItem.vue'
 
 const exhibitionStore = useExhibitionStore()
 const { exhibitionCollections } = storeToRefs(exhibitionStore)
@@ -83,7 +88,7 @@ watch(
   { deep: true }
 )
 
-watch(() => slides, turnSlide, {deep: true})
+watch(() => slides, turnSlide, { deep: true })
 
 const changeSlidesPerView = (windowWidth) => {
   if (windowWidth < breakpoints.value?.md) {

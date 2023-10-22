@@ -3,6 +3,7 @@ import { defineStore, storeToRefs } from 'pinia'
 import axios from 'axios'
 // import { usePageStore } from './pageStore'
 import { useCollectionStore } from './collectionStore'
+import { SORT_ORDER } from '../utils/constant/sort'
 
 const { VITE_JSON_SERVER } = import.meta.env
 
@@ -17,6 +18,7 @@ export const useExhibitionStore = defineStore('exhibition', () => {
   const exhibitionsAll = ref([])
   const exhibitionList = ref([])
   const exhibition = ref({})
+  const exhibitionsFiltered = ref([])
 
   const exhibitionCollections = ref([])
 
@@ -94,11 +96,23 @@ export const useExhibitionStore = defineStore('exhibition', () => {
       })
 
       exhibitionCollections.value = collectionsAll.value
-      .filter((collection) => collection.id in idToIndexMap)
-      .sort((a, b) => idToIndexMap[a.id] - idToIndexMap[b.id]);
-
+        .filter((collection) => collection.id in idToIndexMap)
+        .sort((a, b) => idToIndexMap[a.id] - idToIndexMap[b.id])
     } catch (error) {
       console.log(error)
+    }
+  }
+
+  const filterExhibitions = async (conditions) => {
+    if (!exhibitionsAll.value.length) await fetchExhibitionsAll()
+    exhibitionsFiltered.value = exhibitionsAll.value.filter(
+      (exhibition) => !conditions.title || exhibition.title.includes(conditions.title)
+    )
+
+    if (conditions.sort) {
+      conditions.sort === SORT_ORDER.fromNewest
+        ? exhibitionsFiltered.value.sort((a, b) => b - a)
+        : exhibitionsFiltered.value.sort((a, b) => a - b)
     }
   }
 
@@ -109,9 +123,11 @@ export const useExhibitionStore = defineStore('exhibition', () => {
     exhibitionCollections,
     menuContent,
     curMenuItem,
+    exhibitionsFiltered,
     updateExhibitionPeriod,
     fetchExhibitionsAll,
     fetchExhibition,
-    fetchExhibitionCollections
+    fetchExhibitionCollections,
+    filterExhibitions
   }
 })
