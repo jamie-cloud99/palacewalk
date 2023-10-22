@@ -10,7 +10,6 @@
     ref="swiperEl"
   >
     <swiper-slide v-for="item in exhibitionCollections" :key="item.id">
-<<<<<<< HEAD
       <figure class="exhibit-item group ">
         <img
           class="w-full h-full object-cover object-centers"
@@ -21,9 +20,6 @@
           {{ item.title }}
         </figcaption>
       </figure>
-=======
-      <CollectionListItem :collection-item="item" />
->>>>>>> origin/dev
     </swiper-slide>
   </swiper-container>
   <div class="absolute bottom-0 z-10 right-0 w-full h-15 text-dark">
