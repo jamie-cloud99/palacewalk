@@ -23,7 +23,6 @@
       </figure>
     </swiper-slide>
   </swiper-container>
-  <!-- CHECK: 箭頭跑版記得修 -->
   <!-- 左箭頭 -->
   <button
     v-if="slides.havePrev"

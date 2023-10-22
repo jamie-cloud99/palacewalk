@@ -1,5 +1,4 @@
 <template>
-  <!-- <CollectionBanner :title="'精選展品'" /> -->
   <div class="container">
     <BreadcrumbsComponent class="my-5 justify-end" :nav-list="breadList"/>
     <div class="counter flex lg:flex-row flex-col flex-wrap -mx-3 items-start">

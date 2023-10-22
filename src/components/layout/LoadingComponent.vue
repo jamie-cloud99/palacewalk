@@ -1,8 +1,8 @@
 <template>
   <loading-component
-  :active="isLoading"
-  :color="'#000'"
-  :z-index=100
+    :active="isLoading"
+    :color="'#000'"
+    :z-index=100
   />
 </template>
 
