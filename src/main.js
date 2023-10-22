@@ -3,6 +3,7 @@ import './assets/style.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { setupCalendar } from 'v-calendar'
+import { useStatusStore } from './stores/statusStore'
 
 import App from './App.vue'
 import router from './router'
@@ -21,9 +22,9 @@ app.use(router)
 app.use(setupCalendar, {})
 app.use(VueAxios, axios)
 app.provide('axios', app.config.globalProperties.axios)
-app.use(Loading.Plugin);
+app.use(Loading.Plugin)
 
 // Global Component
 app.component('loading-component', Loading)
-console.log('Loading',Loading)
+
 app.mount('#app')

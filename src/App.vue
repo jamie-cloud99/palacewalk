@@ -1,5 +1,6 @@
 <template>
   <HeaderComponent v-if="!route.meta.isFullPage" />
+  <LoadingComponent v-if="isFullPage"/>
   <RouterView />
   <GoToTop />
   <FooterComponent v-if="!route.meta.isFullPage" />
@@ -7,12 +8,16 @@
 
 <script setup>
 import { storeToRefs } from 'pinia'
-import { ref, onMounted } from 'vue'
 import { RouterView, useRoute } from 'vue-router'
+import { useMemberStore } from './stores/memberStore'
+import { useStatusStore } from './stores/statusStore'
 import HeaderComponent from './components/layout/HeaderComponent.vue'
 import FooterComponent from './components/layout/FooterComponent.vue'
 import GoToTop from './components/button/GoToTop.vue'
-import { useMemberStore } from './stores/memberStore'
+import LoadingComponent from './components/layout/LoadingComponent.vue'
+
+const statusStore = useStatusStore()
+const { isFullPage } = storeToRefs(statusStore)
 
 const route = useRoute()
 const memberStore = useMemberStore()
