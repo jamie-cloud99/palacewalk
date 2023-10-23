@@ -16,7 +16,7 @@ export const useMemberStore = defineStore('member', () => {
   const { fetchCollectionsAll } = collectionStore
   const { collectionsAll } = storeToRefs(collectionStore)
 
-  const memberList = ref([{}])
+  const memberList = ref([])
   const isLoggedIn = ref(false)
   const tempMember = ref({})
   const member = ref({
@@ -134,6 +134,16 @@ export const useMemberStore = defineStore('member', () => {
     filterFavorites(id, type)
   }
 
+  const fetchMembersAll = async () => {
+    const apiUrl = `${VITE_JSON_SERVER}users`
+    try {
+      const res = await axios.get(apiUrl)
+      memberList.value = res.data
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   // todo upload photo
   const uploadImage = (imgFile) => {
     const api = `${VITE_API}api/${VITE_PATH}/admin/upload`
@@ -168,6 +178,7 @@ export const useMemberStore = defineStore('member', () => {
       const token = res.data.accessToken
       //set cookie expireation to 1 hour
       document.cookie = `palaceToken=${token};max-age=3600;`
+      fetchFavorites()
     } catch (error) {
       console.log(error)
     }
@@ -236,6 +247,7 @@ export const useMemberStore = defineStore('member', () => {
     checkLogin,
     logOut,
     UpdateMember,
-    fetchFavorites
+    fetchFavorites,
+    fetchMembersAll
   }
 })

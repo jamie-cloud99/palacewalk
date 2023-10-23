@@ -2,8 +2,10 @@ import { ref } from 'vue'
 import { defineStore, storeToRefs } from 'pinia'
 import axios from 'axios'
 // import { usePageStore } from './pageStore'
+
 import { useCollectionStore } from './collectionStore'
 import { SORT_ORDER } from '../utils/constant/sort'
+import { useCommentStore } from './commentStore'
 
 const { VITE_JSON_SERVER } = import.meta.env
 
@@ -14,6 +16,9 @@ export const useExhibitionStore = defineStore('exhibition', () => {
   const collectionStore = useCollectionStore()
   const { fetchCollectionsAll } = collectionStore
   const { collectionsAll } = storeToRefs(collectionStore)
+
+  const commentStore = useCommentStore()
+  const { fetchComments } = commentStore
 
   const exhibitionsAll = ref([])
   const exhibitionList = ref([])
@@ -76,6 +81,7 @@ export const useExhibitionStore = defineStore('exhibition', () => {
     try {
       const res = await axios.get(exhibtionApiUrl)
       exhibition.value = res.data
+      await fetchComments(id)
       await fetchExhibitionCollections(res.data.id)
     } catch (error) {
       console.log(error)

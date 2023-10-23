@@ -15,7 +15,8 @@
       "images": {
         "sm": "/images/exhibitions/exhibition-U001.jpg",
         "lg": "/images/exhibitions/exhibition-U001.jpg"
-      }
+      },
+      "userId": 1
     },
     {
       "id": 2,
@@ -32,7 +33,8 @@
       "images": {
         "sm": "/images/exhibitions/exhibition-U002.jpg",
         "lg": "/images/exhibitions/exhibition-U002.jpg"
-      }
+      },
+      "userId": 1
     },
     {
       "id": 3,
@@ -49,7 +51,8 @@
       "images": {
         "sm": "/images/exhibitions/exhibition-U003.jpg",
         "lg": "/images/exhibitions/exhibition-U003.jpg"
-      }
+      },
+      "userId": 2
     },
     {
       "id": 4,
@@ -66,7 +69,8 @@
       "images": {
         "sm": "/images/exhibitions/exhibition-U004.jpg",
         "lg": "/images/exhibitions/exhibition-U004.jpg"
-      }
+      },
+      "userId": 1
     },
     {
       "id": 5,
@@ -83,7 +87,8 @@
       "images": {
         "sm": "/images/exhibitions/exhibition-U005.jpg",
         "lg": "/images/exhibitions/exhibition-U005.jpg"
-      }
+      },
+      "userId": 1
     },
     {
       "id": 6,
@@ -100,7 +105,8 @@
       "images": {
         "sm": "/images/exhibitions/exhibition-U006.jpg",
         "lg": "/images/exhibitions/exhibition-U006.jpg"
-      }
+      },
+      "userId": 2
     }
   ],
   "collections": [
@@ -1780,8 +1786,24 @@
       "id": 2
     }
   ],
-  "comments": [],
-  "replys": [],
+  "comments": [
+    {
+      "id": 1,
+      "content": "之前去故宮看過一次這檔展覽，沒想到還有線上展可以重溫，琺瑯彩瓷的美歷經百年也不會褪色！",
+      "createdAt": 1687590400,
+      "exhibitionId": 1,
+      "userId": 2
+    }
+  ],
+  "replies": [
+    {
+      "id": 1,
+      "createdAt": 1687603400,
+      "content": "銅胎畫琺瑯方盤是康熙御製的傑作，看來你跟皇帝有同樣獨到的眼光呢！",
+      "commentId": 1,
+      "userId": 1
+    }
+  ],
   "favorites": [
     {
       "userId": 2,
