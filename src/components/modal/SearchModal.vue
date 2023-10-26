@@ -38,13 +38,16 @@
               {{ item.title }}
             </button>
           </li>
-        
+
         </ul>
 
         <div
           class="relative py-10 px-10 lg:px-20 bg-[url('../images/collection/banner-bg.jpg')] bg-right bg-cover"
         >
-          <div class="absolute inset-0 bg-dark-200 opacity-50"></div>
+          <!-- CHECK: 待修 -->
+          <LoadingComponent/>
+          <div class="absolute inset-0 bg-dark-200 opacity-50">
+          </div>
           <div class="container relative z-10">
             <!-- 展品 -->
             <div v-if="searchType.code === 'collections'" class="flex flex-wrap -mx-3">
@@ -193,6 +196,8 @@ import { useStatusStore } from '../../stores/statusStore'
 import { useExhibitionStore } from '../../stores/exhibitsStore'
 import { useCollectionStore } from '../../stores/collectionStore'
 import { SORT_ORDER } from '@/utils/constant/sort'
+import LoadingComponent from '@/components/layout/LoadingComponent.vue'
+
 const modal = ref(null)
 const curModal = ref(null)
 const statusStore = useStatusStore()
