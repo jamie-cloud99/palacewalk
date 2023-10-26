@@ -63,7 +63,7 @@
                 >回列表</RouterLink
               >
               <RouterLink
-                to="/exhibitions/1/content"
+                :to="`/exhibitions/${exhibition.id}/content`"
                 target="_blank"
                 class="btn bg-primary text-white hover:bg-dark"
               >

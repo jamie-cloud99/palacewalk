@@ -43,6 +43,10 @@ export const useCollectionStore = defineStore('collection', () => {
     '民國'
   ])
 
+   const masterpieceIds = ref([
+    2, 4, 10, 11, 15, 16, 17, 18, 20, 22, 24, 28, 29, 31, 35, 43, 45, 48, 44, 50, 54, 56
+  ])
+
   const collectionsAll = ref([])
   const collectionList = ref([]) // 當前頁面渲染清單(page limit)
   const collection = ref({})
@@ -260,7 +264,10 @@ export const useCollectionStore = defineStore('collection', () => {
     const searchedCollectionIds = localStorage.getItem('searchedCollectionIds')
     hasSearchRecord.value.collections = Boolean(searchedCollectionIds)
     const collectionIds = searchedCollectionIds ? [...JSON.parse(searchedCollectionIds)] : []
+    filterCollectionsByIds(collectionIds)
+  }
 
+  const filterCollectionsByIds = async (collectionIds) => {
     if (collectionIds.length) {
       if (!collectionsAll.value.length) await fetchCollectionsAll()
       collectionsFiltered.value = collectionsAll.value.filter((collection) =>
@@ -280,6 +287,7 @@ export const useCollectionStore = defineStore('collection', () => {
     masterPeiceList,
     collectionsFiltered,
     dynastyList,
+    masterpieceIds,
     fetchCollectionsAll,
     fetchPageCollections,
     fetchCategoryList,
@@ -287,6 +295,7 @@ export const useCollectionStore = defineStore('collection', () => {
     fetchCollection,
     filterCollections,
     searchCollections,
-    fetchCollectionsRecord
+    fetchCollectionsRecord,
+    filterCollectionsByIds
   }
 })

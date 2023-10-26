@@ -1,18 +1,21 @@
 <template>
+  <div class="relative z-[2000]">
+    <img class="w-full" :src="exhibition?.images?.lg" :alt="exhibition.title" />
+  </div>
   <div class="bg-light/50 overflow-hidden">
     <swiper-container
       ref="swiperEl"
       init="false"
       :slides-per-view="1"
-      :draggable="true"
-      :mousewheel="true"
+      :draggable="false"
+      :mousewheel="false"
       :keyboard="true"
     >
       <swiper-slide
-        v-for="(item, index) in collectionList"
+        v-for="(item, index) in exhibitionCollections"
         :key="item.id"
         class="slide bg-[url('../images/home-bg-2.webp')] bg-light bg-cover relative"
-        :data-src="`/images/collection/collection-${item.imgId}.jpg`"
+        :data-src="item.images?.main"
       >
         <div class="pt-12 pb-6 px-3 md:px-10 lg:absolute top-0 left-16 text-dark">
           <p class="text-2xl lg:text-4xl font-bold mb-1 lg:text-right lg:mb-4 drop-shadow">
@@ -28,7 +31,7 @@
           <img
             ref="slideImage"
             class="w-auto h-3/5 md:h-4/5 lg:h-[90%] object-cover object-center shadow-lg"
-            :src="`/images/collection/collection-${item.imgId}.jpg`"
+            :src="item.images?.main"
             :alt="item.title"
           />
         </div>
@@ -60,7 +63,7 @@
     :class="menuClass.exhibitionMenu"
     class="fixed top-0 right-0 h-screen z-[500] transition-all duration-500 overflow-hidden"
   >
-    <ExhibitionMenu :collection-list="collectionList" />
+    <ExhibitionMenu :collection-list="exhibitionCollections" @change-item="goIndexItem" />
   </div>
 
   <div
@@ -111,7 +114,7 @@
     :class="menuClass.collectionText"
     class="fixed overflow-hidden top-0 left-0 h-screen z-[300] transition-all duration-500"
   >
-    <CollectionText />
+    <CollectionText :collection="curCollection" />
   </div>
 
   <div
@@ -122,9 +125,12 @@
 
 <script setup>
 import { ref, onMounted, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
+import { useSlideStore } from '../stores/slideStore'
 import { useStatusStore } from '../stores/statusStore.js'
 import { getZeroBaseOrder } from '../composables/format'
+import { useExhibitionStore } from '../stores/exhibitsStore'
 import ExhibitionMenu from '../components/exhibition/ExhibitionMenu.vue'
 import CollectionText from '../components/exhibition/CollectionText.vue'
 
@@ -132,35 +138,15 @@ const statusStore = useStatusStore()
 const { isOpen, menuClass, exhibitionMenuCount } = storeToRefs(statusStore)
 const { toggleSideMenu } = statusStore
 
-const swiperEl = ref(null)
+const exhibitsStore = useExhibitionStore()
+const { exhibitionCollections, exhibition } = storeToRefs(exhibitsStore)
+const { fetchExhibition } = exhibitsStore
+
+const slideStore = useSlideStore()
+const { swiperEl, slides } = storeToRefs(slideStore)
+const { goSlideNum } = slideStore
+
 const slideImage = ref(null)
-const collectionList = ref([
-  {
-    id: '1',
-    title: '清 翠玉白菜',
-    imgId: 'U001'
-  },
-  {
-    id: '2',
-    title: '清 肉形石',
-    imgId: 'U002'
-  },
-  {
-    id: '3',
-    title: '漢 銅熊尊',
-    imgId: 'U003'
-  },
-  {
-    id: '4',
-    title: '清 乾隆 玉熊尊',
-    imgId: 'U004'
-  },
-  {
-    id: '5',
-    title: '東漢 玉辟邪',
-    imgId: 'U005'
-  }
-])
 
 const params = {
   effect: 'creative',
@@ -175,19 +161,22 @@ const params = {
   }
 }
 
-const slides = ref({
-  totalSlides: collectionList.value.length,
-  curSlide: 1,
-  haveNext: true,
-  havePrev: false
-})
+const curCollection = ref({})
 
 watch(
   () => slides.value.curSlide,
   () => {
-    slides.value.havePrev = slides.value.curSlide <= 1 ? false : true
-    slides.value.haveNext = slides.value.curSlide >= slides.value.totalSlides ? false : true
-  }
+    console.log(slides.value)
+    const { curSlide, totalSlides } = slides.value
+    console.log(curSlide)
+    slides.value.havePrev = curSlide <= 1 ? false : true
+    slides.value.haveNext = curSlide >= totalSlides ? false : true
+    curCollection.value.index = curSlide - 1
+    curCollection.value = exhibitionCollections.value?.length
+      ? { ...exhibitionCollections.value[curSlide - 1], index: curCollection.value.index }
+      : { index: 0 }
+  },
+  { immediate: true }
 )
 
 const goNext = () => {
@@ -199,6 +188,29 @@ const goPrev = () => {
   swiperEl.value.swiper.slidePrev()
   slides.value.curSlide--
 }
+
+const goIndexItem = (num) => {
+  toggleSideMenu('exhibitionMenu')
+  goSlideNum(num)
+}
+
+const route = useRoute()
+
+watch(
+  () => route.params.exhibitionId,
+  async () => {
+    const id = route.params.exhibitionId
+
+    await fetchExhibition(id)
+    slides.value.totalSlides = exhibitionCollections.value.length
+
+    const { curSlide } = slides.value
+    curCollection.value = exhibitionCollections.value?.length
+      ? { ...exhibitionCollections.value[curSlide - 1], index: curCollection.value.index }
+      : { index: 0 }
+  },
+  { immediate: true }
+)
 
 onMounted(() => {
   Object.assign(swiperEl.value, params)

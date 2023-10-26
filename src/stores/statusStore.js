@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useStatusStore = defineStore('status', () => {
@@ -70,6 +70,7 @@ export const useStatusStore = defineStore('status', () => {
     }
   }
 
+  // todo: Modal 展開時避免背景滾動
   // const preventBodyScroll = () => {
   //   let allowScroll = true
   //   for (const key in isOpen.value) {
