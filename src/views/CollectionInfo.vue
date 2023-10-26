@@ -113,19 +113,16 @@ const { slides } = storeToRefs(slideStore)
 
 watch(
   () => collectionId,
-  () => {
+  async () => {
     slides.value.curSlide = 1
+    await fetchCollection(collectionId.value)
+    getSlide(collection.value.images.list.length + 1, {
+      default: 1,
+      md: 2
+    })
   },
-  { immediate: true }
+  { immediate: true, deep: true }
 )
-
-;(async () => {
-  await fetchCollection(collectionId.value)
-  getSlide(collection.value.images.list.length + 1, {
-    default: 1,
-    md: 2
-  })
-})()
 </script>
 
 <style scoped>

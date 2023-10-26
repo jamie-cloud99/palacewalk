@@ -43,7 +43,7 @@ export const useCollectionStore = defineStore('collection', () => {
     '民國'
   ])
 
-   const masterpieceIds = ref([
+  const masterpieceIds = ref([
     2, 4, 10, 11, 15, 16, 17, 18, 20, 22, 24, 28, 29, 31, 35, 43, 45, 48, 44, 50, 54, 56
   ])
 
@@ -56,7 +56,7 @@ export const useCollectionStore = defineStore('collection', () => {
 
   const masterPeiceList = ref([
     {
-      id: '401',
+      id: '10',
       collectionId: 'K004',
       title: '緙繡九羊啟泰 軸',
       author: '不詳',
@@ -66,7 +66,7 @@ export const useCollectionStore = defineStore('collection', () => {
       }
     },
     {
-      id: '14',
+      id: '15',
       collectionId: 'P014',
       title: '畫春花三種 軸',
       author: '錢維城',
@@ -76,7 +76,7 @@ export const useCollectionStore = defineStore('collection', () => {
       }
     },
     {
-      id: '15',
+      id: '2',
       collectionId: 'P015',
       title: '奔馬行空　單片',
       author: '徐悲鴻',
