@@ -9,8 +9,8 @@
           </div>
           <ul class="grid grid-cols-2 lg:block mb-4 lg:mb-20">
             <li class="col-span-1" v-for="item in menuList" :key="item.title">
-              <RouterLink
-                to="#"
+              <button
+                type="button"
                 class="block text-center transition-all duration-300 w-full border-b border-x border-dark-400 px-2 py-3 lg:text-left lg:border-x-0"
                 :class="{
                   'hover:bg-dark/10': curPage.title !== item.title,
@@ -19,7 +19,7 @@
                 @click="changeMenuItem(item)"
               >
                 {{ item.title }}
-              </RouterLink>
+              </button>
             </li>
           </ul>
           <RouterLink
@@ -48,13 +48,13 @@
 <script setup>
 import { reactive, computed, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useMemberStore } from '../stores/memberStore';
+import { useMemberStore } from '../stores/memberStore'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
-import { storeToRefs } from 'pinia';
+import { storeToRefs } from 'pinia'
 
 const memberStore = useMemberStore()
 const { isLoggedIn } = storeToRefs(memberStore)
-const { checkLogin } = memberStore
+const { checkLogin, logOut } = memberStore
 
 const menuList = reactive([
   {
@@ -73,7 +73,8 @@ const menuList = reactive([
     name: 'memberMessages'
   },
   {
-    title: '登出'
+    title: '登出',
+    name: 'logOut'
   }
 ])
 const route = useRoute()
@@ -94,6 +95,7 @@ const breadList = reactive([
   }
 ])
 
+// 要改成 get set 或共用 side menu
 const curPage = computed(() => {
   return menuList.find((item) => item.name === route.name)
 })
@@ -107,23 +109,22 @@ watch(
 )
 
 const changeMenuItem = (page) => {
-  if (page.title !== '登出') {
+  if (page.name !== 'logOut') {
     router.push(page.path)
-    curPage.value = page
+  } else {
+    logOut()
   }
 }
 
 checkLogin()
 
-watch (
+watch(
   () => isLoggedIn,
   () => {
-    if(!isLoggedIn.value) {
+    if (!isLoggedIn.value) {
       router.push('/')
     }
   },
-  {immediate: true }
+  { immediate: true, deep: true }
 )
-
-
 </script>
