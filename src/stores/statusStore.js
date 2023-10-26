@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useStatusStore = defineStore('status', () => {
@@ -8,7 +8,8 @@ export const useStatusStore = defineStore('status', () => {
     member: false,
     search: false,
     exhibitionMenu: false,
-    collectionText: false
+    collectionText: false,
+    advancedSearch: false
   })
 
   const menuClass = ref({
@@ -16,7 +17,8 @@ export const useStatusStore = defineStore('status', () => {
     notice: 'max-0',
     member: 'max-0',
     exhibitionMenu: 'max-w-0',
-    collectionText: 'max-w-0'
+    collectionText: 'max-w-0',
+    advancedSearch: 'max-0'
   })
   const exhibitionMenuCount = ref(0)
   const searchTypeList = ref([
@@ -29,9 +31,25 @@ export const useStatusStore = defineStore('status', () => {
       id: 2,
       code: 'collections',
       title: '展品'
+    },
+    {
+      id: 3,
+      code: 'all',
+      title: '全部'
     }
   ])
   const searchType = ref(searchTypeList.value[0])
+  const searchNum = ref(0)
+
+  const searchedCollectionIds = ref(localStorage.getItem('searchedCollectionIds'))
+  const searchedExhibitionIds = ref(localStorage.getItem('searchedExhibitionIds'))
+
+  const hasSearchRecord = ref({
+    collections: Boolean(searchedCollectionIds),
+    exhibitions: Boolean(searchedExhibitionIds)
+  })
+
+  const addSearchNum = () => searchNum.value++
 
   const toggleMenu = (item) => {
     isOpen.value[item] = !isOpen.value[item]
@@ -71,7 +89,7 @@ export const useStatusStore = defineStore('status', () => {
   // }
 
   const changeSearchType = (typeCode) => {
-    searchType.value = searchTypeList.value.find((type) => (type.code === typeCode))
+    searchType.value = searchTypeList.value.find((type) => type.code === typeCode)
   }
 
   return {
@@ -80,8 +98,11 @@ export const useStatusStore = defineStore('status', () => {
     searchType,
     exhibitionMenuCount,
     searchTypeList,
+    hasSearchRecord,
+    searchNum,
     toggleMenu,
     toggleSideMenu,
-    changeSearchType
+    changeSearchType,
+    addSearchNum
   }
 })

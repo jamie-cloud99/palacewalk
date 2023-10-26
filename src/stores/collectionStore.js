@@ -1,8 +1,9 @@
-import { defineStore } from 'pinia'
+import { defineStore, storeToRefs } from 'pinia'
 import { ref, computed } from 'vue'
 import axios from 'axios'
 import { useRoute, useRouter } from 'vue-router'
 import { usePageStore } from './pageStore'
+import { useStatusStore } from './statusStore'
 import { COLLECTION_CATEGORIES } from '../utils/constant/collection/collection'
 
 const { VITE_JSON_SERVER } = import.meta.env
@@ -10,6 +11,9 @@ const { VITE_JSON_SERVER } = import.meta.env
 export const useCollectionStore = defineStore('collection', () => {
   const pageStore = usePageStore()
   const { turnPage, paginate } = pageStore
+
+  const statusStore = useStatusStore()
+  const { hasSearchRecord } = storeToRefs(statusStore)
 
   const route = useRoute()
   const router = useRouter()
@@ -20,6 +24,23 @@ export const useCollectionStore = defineStore('collection', () => {
       code: 'all',
       title: '全部'
     }
+  ])
+
+  const dynastyList = ref([
+    '夏',
+    '商',
+    '周',
+    '秦',
+    '漢',
+    '魏晉南北朝',
+    '隋',
+    '唐',
+    '五代',
+    '宋',
+    '元',
+    '明',
+    '清',
+    '民國'
   ])
 
   const collectionsAll = ref([])
@@ -194,23 +215,58 @@ export const useCollectionStore = defineStore('collection', () => {
 
   const filterCollections = async (conditions) => {
     if (!collectionsAll.value.length) await fetchCollectionsAll()
+    const { dynasties, title, author, categoryId } = conditions
+    const dynastySelected = Object.keys(dynasties).filter((item) => dynasties[item])
 
-    const filteredCollections = collectionsAll.value.filter(
-      (collection) =>
-        (!conditions.title || collection.title.includes(conditions.title)) &&
-        (!conditions.author || collection.author.includes(conditions.author)) &&
-        (!conditions.categoryId ||
-          conditions.categoryId === categoryAllId.value ||
-          collection.collectionCategoryId === conditions.categoryId)
-    )
+    const filteredCollections = collectionsAll.value.filter((collection) => {
+      const {
+        title: collectionTitle,
+        author: collectionAuthor,
+        collectionCategoryId,
+        dynasty: collectionDynasty
+      } = collection
+      return (
+        (!title || collectionTitle.includes(title)) &&
+        (!author || collectionAuthor.includes(author)) &&
+        (!categoryId ||
+          categoryId === categoryAllId.value ||
+          collectionCategoryId === categoryId) &&
+        (!dynastySelected.length || dynastySelected.includes(collectionDynasty))
+      )
+    })
 
+    storeFilteredCollections(filteredCollections)
+  }
+
+  const storeFilteredCollections = (filteredCollections) => {
     collectionsFiltered.value = filteredCollections
+    if (filterCollections.length) {
+      const collectionStore = JSON.stringify(filteredCollections.map((collection) => collection.id))
+      localStorage.setItem('searchedCollectionIds', collectionStore)
+    }
+  }
 
-    // if(conditions.sort) {
-    //   if(conditions.sort === "1") {
-    //     collectionsFiltered.value.sort((a, b) => a-b)
-    //   }
-    // }
+  const searchCollections = async (keyword) => {
+    const apiUrl = `${VITE_JSON_SERVER}collections?q=${keyword}`
+    try {
+      const res = await axios.get(apiUrl)
+      storeFilteredCollections(res.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const fetchCollectionsRecord = async () => {
+    const searchedCollectionIds = localStorage.getItem('searchedCollectionIds')
+    hasSearchRecord.value.collections = Boolean(searchedCollectionIds)
+    const collectionIds = searchedCollectionIds ? [...JSON.parse(searchedCollectionIds)] : []
+
+    if (collectionIds.length) {
+      if (!collectionsAll.value.length) await fetchCollectionsAll()
+      collectionsFiltered.value = collectionsAll.value.filter((collection) =>
+        collectionIds.some((id) => id === collection.id)
+      )
+    }
   }
 
   return {
@@ -223,11 +279,14 @@ export const useCollectionStore = defineStore('collection', () => {
     collectionDetail,
     masterPeiceList,
     collectionsFiltered,
+    dynastyList,
     fetchCollectionsAll,
     fetchPageCollections,
     fetchCategoryList,
     selectCategory,
     fetchCollection,
-    filterCollections
+    filterCollections,
+    searchCollections,
+    fetchCollectionsRecord
   }
 })

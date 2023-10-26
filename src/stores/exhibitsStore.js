@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useCollectionStore } from './collectionStore'
 import { SORT_ORDER } from '../utils/constant/sort'
 import { useCommentStore } from './commentStore'
+import { useStatusStore } from './statusStore'
 
 const { VITE_JSON_SERVER } = import.meta.env
 
@@ -20,12 +21,30 @@ export const useExhibitionStore = defineStore('exhibition', () => {
   const commentStore = useCommentStore()
   const { fetchComments } = commentStore
 
+  const statusStore = useStatusStore()
+  const { hasSearchRecord } = storeToRefs(statusStore)
+
   const exhibitionsAll = ref([])
   const exhibitionList = ref([])
   const exhibition = ref({})
   const exhibitionsFiltered = ref([])
 
   const exhibitionCollections = ref([])
+
+  const exhibitionCategories = ref([
+    {
+      code: 'mix',
+      title: '綜合'
+    },
+    {
+      code: 'artifact',
+      title: '文物'
+    },
+    {
+      code: 'art',
+      title: '藝術'
+    }
+  ])
 
   const menuContent = ref([
     {
@@ -111,14 +130,50 @@ export const useExhibitionStore = defineStore('exhibition', () => {
 
   const filterExhibitions = async (conditions) => {
     if (!exhibitionsAll.value.length) await fetchExhibitionsAll()
-    exhibitionsFiltered.value = exhibitionsAll.value.filter(
-      (exhibition) => !conditions.title || exhibition.title.includes(conditions.title)
-    )
 
+    const filteredExhibtions = exhibitionsAll.value.filter(
+      (exhibition) =>
+        (!conditions.title || exhibition.title.includes(conditions.title)) &&
+        exhibition.category.code === conditions.categoryId
+    )
     if (conditions.sort) {
       conditions.sort === SORT_ORDER.fromNewest
-        ? exhibitionsFiltered.value.sort((a, b) => b - a)
-        : exhibitionsFiltered.value.sort((a, b) => a - b)
+        ? filteredExhibtions.sort((a, b) => b - a)
+        : filteredExhibtions.sort((a, b) => a - b)
+    }
+
+    storeFilteredExhibitions(filteredExhibtions)
+  }
+
+  const storeFilteredExhibitions = (filteredExhibitions) => {
+    exhibitionsFiltered.value = filteredExhibitions
+
+    if (filteredExhibitions.length) {
+      const exhibitionStore = JSON.stringify(filteredExhibitions.map((exhibition) => exhibition.id))
+      localStorage.setItem('searchedExhibitionIds', exhibitionStore)
+    }
+  }
+
+  const searchExhibitions = async (keyword) => {
+    const apiUrl = `${VITE_JSON_SERVER}exhibitions?q=${keyword}`
+    try {
+      const res = await axios.get(apiUrl)
+      storeFilteredExhibitions(res.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const fetchExhibitionsRecord = async () => {
+    const searchedExhibitionIds = localStorage.getItem('searchedExhibitionIds')
+    hasSearchRecord.value.exhibitions = Boolean(searchedExhibitionIds)
+    const exhibitionIds = searchedExhibitionIds ? [...JSON.parse(searchedExhibitionIds)] : []
+
+    if (exhibitionIds.length) {
+      if (!exhibitionsAll.value.length) await fetchExhibitionsAll()
+      exhibitionsFiltered.value = exhibitionsAll.value.filter((exhibition) =>
+        exhibitionIds.some((id) => id === exhibition.id)
+      )
     }
   }
 
@@ -130,10 +185,13 @@ export const useExhibitionStore = defineStore('exhibition', () => {
     menuContent,
     curMenuItem,
     exhibitionsFiltered,
+    exhibitionCategories,
     updateExhibitionPeriod,
     fetchExhibitionsAll,
     fetchExhibition,
     fetchExhibitionCollections,
-    filterExhibitions
+    filterExhibitions,
+    searchExhibitions,
+    fetchExhibitionsRecord
   }
 })
