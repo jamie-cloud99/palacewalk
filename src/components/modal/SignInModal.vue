@@ -43,8 +43,13 @@
           <h5 class="mb-4 text-center text-xl font-semibold">會員登入，入宮暢行最自在</h5>
           <div class="mb-4">
             <label for="account" class="block mb-2">帳號</label>
-            <input id="account" type="email"
-            v-model="tempMember.email" placeholder="請輸入信箱" class="form-input w-full" />
+            <input
+              id="account"
+              type="email"
+              v-model="tempMember.email"
+              placeholder="請輸入信箱"
+              class="form-input w-full"
+            />
           </div>
           <div class="mb-4">
             <label for="password" class="block mb-2">密碼</label>
@@ -124,8 +129,12 @@
           >
             登入
           </button>
-          <button v-else type="button" class="btn w-24 bg-primary text-white hover:bg-dark"
-          @click="registerMember(tempMember)">
+          <button
+            v-else
+            type="button"
+            class="btn w-24 bg-primary text-white hover:bg-dark"
+            @click="registerMember(tempMember)"
+          >
             註冊
           </button>
         </div>
@@ -137,6 +146,7 @@
 <script setup>
 import { Modal, initTE } from 'tw-elements'
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { useMemberStore } from '../../stores/memberStore'
 import { storeToRefs } from 'pinia'
 
@@ -148,6 +158,8 @@ const { tempMember } = storeToRefs(memberStore)
 const { signUp, logIn } = memberStore
 
 const checkedPassword = ref({})
+
+const router = useRouter()
 
 defineExpose({
   curModal
@@ -162,16 +174,23 @@ const changeForm = (status) => {
   tempMember.value = {}
 }
 
-const logInMember = (member) => {
+const logInMember = async (member) => {
   const account = { email: member.email, password: member.password }
-  logIn(account)
   curModal.value.hide()
+  await logIn(account)
+  router.go(0)
 }
 
-const registerMember = (member) => {
-  const data = { ...member, imageUrl: 'https://images.unsplash.com/photo-1638803040283-7a5ffd48dad5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80' }
-  signUp(data)
+const registerMember = async (member) => {
+  const data = {
+    ...member,
+    imageUrl:
+      'https://images.unsplash.com/photo-1638803040283-7a5ffd48dad5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80'
+  }
+
   curModal.value.hide()
+  await signUp(data)
+  router.go(0)
 }
 
 initTE({ Modal })

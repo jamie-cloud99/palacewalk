@@ -25,6 +25,9 @@
     @apply py-3 w-full border-dark-800 bg-white placeholder:text-dark-600 focus:border-primary focus:ring-primary;
   }
 
+  .form-checkbox {
+    @apply text-primary focus:ring-primary
+  }
  
 }
 
