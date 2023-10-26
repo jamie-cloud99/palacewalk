@@ -178,6 +178,7 @@ export const useMemberStore = defineStore('member', () => {
       const token = res.data.accessToken
       //set cookie expireation to 1 hour
       document.cookie = `palaceToken=${token};max-age=3600;`
+      getToken()
       fetchFavorites()
     } catch (error) {
       console.log(error)

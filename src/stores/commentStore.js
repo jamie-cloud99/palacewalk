@@ -10,6 +10,8 @@ export const useCommentStore = defineStore('comment', () => {
   const memberStore = useMemberStore()
   const commentList = ref([])
   const reply = ref({})
+  const curExhibitionId = ref(null)
+  const memberCommentList = ref([])
 
   const fetchComments = async (exhibitionId) => {
     const apiUrl = `${VITE_JSON_SERVER}exhibitions/${exhibitionId}?_embed=comments`
@@ -21,9 +23,12 @@ export const useCommentStore = defineStore('comment', () => {
       if (!memberList.value.length) await fetchMembersAll()
 
       commentList.value.forEach(async (comment) => {
+        reply.value = {}
         await fetchReplies(comment.id)
-        comment.reply = reply.value
-        comment.reply.user = memberList.value.find((member) => member.id === comment.reply.userId)
+        if (reply?.value?.length) {
+          comment.reply = reply.value
+          comment.reply.user = memberList.value.find((member) => member.id === comment.reply.userId)
+        }
         comment.user = memberList.value.find((member) => member.id === comment.userId)
       })
     } catch (error) {
@@ -32,22 +37,23 @@ export const useCommentStore = defineStore('comment', () => {
   }
 
   const fetchReplies = async (commentId) => {
-    const apiUrl = `${VITE_JSON_SERVER}replies/${commentId}`
+    const apiUrl = `${VITE_JSON_SERVER}replies/?commentId=${commentId}`
     try {
       const res = await axios.get(apiUrl)
-      reply.value = res.data
+      reply.value = res.data[0]
     } catch (error) {
-      console.log(error)
+      console.log(error.response)
     }
   }
 
-  const updateComments = async (comment, id = null) => {
+  const updateComment = async (comment, id = null) => {
     let apiUrl = `${VITE_JSON_SERVER}600/comments`
     let method = 'post'
     let data = {}
-    if (id) {
+    curExhibitionId.value = comment.exhibitionId
+    if (!id) {
       const { member } = storeToRefs(memberStore)
-      const createdAt = new Date().getTime()
+      const createdAt = Math.floor(new Date().getTime() / 1000)
       const userId = member.value.id
       data = { ...comment, createdAt, userId }
     } else {
@@ -57,7 +63,31 @@ export const useCommentStore = defineStore('comment', () => {
     }
     try {
       const res = await axios[method](apiUrl, data)
-      console.log(res.data)
+      if (res.data) {
+        fetchMemberComments()
+      } else {
+        console.log(res)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const fetchMemberComments = async () => {
+    const { member, memberList } = storeToRefs(memberStore)
+    const apiUrl = `${VITE_JSON_SERVER}600/comments/?userId=${member.value.id}`
+    try {
+      const res = await axios.get(apiUrl)
+      memberCommentList.value = res.data
+
+      memberCommentList.value.forEach(async (comment) => {
+        reply.value = {}
+        await fetchReplies(comment.id)
+        if (reply?.value?.length) {
+          comment.reply = reply.value
+          comment.reply.user = memberList.value.find((member) => member.id === comment.reply.userId)
+        }
+      })
     } catch (error) {
       console.log(error)
     }
@@ -65,8 +95,10 @@ export const useCommentStore = defineStore('comment', () => {
 
   return {
     commentList,
-    updateComments,
+    memberCommentList,
+    updateComment,
     fetchComments,
-    fetchReplies
+    fetchReplies,
+    fetchMemberComments
   }
 })
