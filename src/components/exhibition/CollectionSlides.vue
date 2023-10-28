@@ -15,7 +15,7 @@
   </swiper-container>
   <div class="absolute bottom-0 z-10 right-0 w-full h-15 text-dark">
     <div class="flex justify-between items-center">
-      <ul class="flex gap-x-2">
+      <ul v-if="slides.totalSlides / curSlideShowed" class="flex gap-x-2">
         <li
           v-for="item in Math.ceil(slides.totalSlides / curSlideShowed)"
           :key="'slide' + item"

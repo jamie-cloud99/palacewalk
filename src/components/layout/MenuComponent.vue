@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-white h-screen md:flex justify-center overflow-y-auto">
-    <div class="container px-5 md:w-3/4 xl:w-1/2">
+  <div class="bg-white h-[calc(100vh-97px)] md:flex justify-center items-center overflow-y-auto">
+    <div class="container px-5 md:w-3/4 xl:w-1/2 flex ">
       <div class="md:grid grid-cols-2 justify-center items-start gap-x-20 pt-4 pb-40 md:pb-8">
         <div class="col-span-1">
           <ul class="space-y-8 flex-grow mb-4">

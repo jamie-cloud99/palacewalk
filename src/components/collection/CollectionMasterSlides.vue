@@ -10,14 +10,14 @@
       1280: { slidesPerView: 4, slidesPerGroup: 4 }
     }"
   >
-    <swiper-slide v-for="item in masterPeiceList" :key="item.collectionId">
+    <swiper-slide v-for="item in masterPeiceList" :key="item.id">
       <CollectionListItem :collection-item="item" />
     </swiper-slide>
   </swiper-container>
 
   <div class="absolute bottom-0 z-10 right-0 w-full h-9 text-dark">
     <div class="flex justify-between items-center">
-      <ul class="flex gap-x-2">
+      <ul v-if="slides.totalSlides / curSlideShowed" class="flex gap-x-2">
         <li
           v-for="item in Math.ceil(slides.totalSlides / curSlideShowed)"
           :key="'slide' + item"
@@ -50,11 +50,10 @@
 </template>
 
 <script setup>
-import { watch, onMounted, ref, computed } from 'vue'
-import { useCollectionStore } from '../../stores/collectionStore'
-import CollectionListItem from './CollectionListItem.vue'
-
 import { storeToRefs } from 'pinia'
+import { watch, onMounted, ref, computed } from 'vue'
+import { useCollectionStore } from '@/stores/collectionStore'
+import CollectionListItem from './CollectionListItem.vue'
 
 const collectionStore = useCollectionStore()
 const { masterPeiceList } = storeToRefs(collectionStore)

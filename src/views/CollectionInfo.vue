@@ -3,9 +3,7 @@
     <BreadcrumbsComponent class="my-5 justify-end" :nav-list="breadList"/>
   </div>
   <div class="container relative lg:flex gap-6">
-    <!-- <div class="mb-6 lg:mb-10 relative px-6 lg:px-10"> -->
-      <CollectionImageSlides />
-    <!-- </div> -->
+    <CollectionImageSlides />
     <!-- 詳細資訊  -->
     <div v-show="windowInnerWidth > breakPoint" class="bg-dark-200 text-dark-800 pb-6 my-10 lg:mb-20 ">
       <div class="container">
@@ -157,27 +155,25 @@ const breadList = reactive([
 const breakPoint = ref(768)
 const windowInnerWidth = ref(window.innerWidth)
 const updateWidth = () => {
-  windowInnerWidth.value = window.innerWidth;
-};
+  windowInnerWidth.value = window.innerWidth
+}
+
 onMounted(() => {
-  window.addEventListener('resize', updateWidth);
-});
+  window.addEventListener('resize', updateWidth)
+})
 
 watch(
   () => collectionId,
-  () => {
+  async () => {
     slides.value.curSlide = 1
+    await fetchCollection(collectionId.value)
+    getSlide(collection.value.images.list.length + 1, {
+      default: 1,
+      md: 2
+    })
   },
-  { immediate: true }
-);
-
-(async () => {
-  await fetchCollection(collectionId.value)
-  getSlide(collection.value.images.list.length + 1, {
-    default: 1,
-    md: 2
-  })
-})()
+  { immediate: true, deep: true }
+)
 </script>
 
 <style scoped>

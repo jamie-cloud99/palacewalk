@@ -9,6 +9,7 @@ export const useStatusStore = defineStore('status', () => {
     search: false,
     exhibitionMenu: false,
     collectionText: false,
+    advancedSearch: false
   })
 
   const menuClass = ref({
@@ -16,7 +17,8 @@ export const useStatusStore = defineStore('status', () => {
     notice: 'max-0',
     member: 'max-0',
     exhibitionMenu: 'max-w-0',
-    collectionText: 'max-w-0'
+    collectionText: 'max-w-0',
+    advancedSearch: 'max-0'
   })
 
   const exhibitionMenuCount = ref(0)
@@ -30,9 +32,25 @@ export const useStatusStore = defineStore('status', () => {
       id: 2,
       code: 'collections',
       title: '展品'
+    },
+    {
+      id: 3,
+      code: 'all',
+      title: '全部'
     }
   ])
   const searchType = ref(searchTypeList.value[0])
+  const searchNum = ref(0)
+
+  const searchedCollectionIds = ref(localStorage.getItem('searchedCollectionIds'))
+  const searchedExhibitionIds = ref(localStorage.getItem('searchedExhibitionIds'))
+
+  const hasSearchRecord = ref({
+    collections: Boolean(searchedCollectionIds),
+    exhibitions: Boolean(searchedExhibitionIds)
+  })
+
+  const addSearchNum = () => searchNum.value++
 
   // Loading 使用
   const isLoading = ref(false)
@@ -63,6 +81,7 @@ export const useStatusStore = defineStore('status', () => {
     }
   }
 
+  // todo: Modal 展開時避免背景滾動
   // const preventBodyScroll = () => {
   //   let allowScroll = true
   //   for (const key in isOpen.value) {
@@ -98,8 +117,11 @@ export const useStatusStore = defineStore('status', () => {
     searchType,
     exhibitionMenuCount,
     searchTypeList,
+    hasSearchRecord,
+    searchNum,
     toggleMenu,
     toggleSideMenu,
-    changeSearchType
+    changeSearchType,
+    addSearchNum
   }
 })
