@@ -1,6 +1,5 @@
 <template>
   <CollectionBanner :title="'展品介紹'" />
-
   <div class="container overflow-hidden">
     <div class="mb-6 lg:mb-10 relative px-6 lg:px-10">
       <CollectionImageSlides />

@@ -166,9 +166,7 @@ const curCollection = ref({})
 watch(
   () => slides.value.curSlide,
   () => {
-    console.log(slides.value)
     const { curSlide, totalSlides } = slides.value
-    console.log(curSlide)
     slides.value.havePrev = curSlide <= 1 ? false : true
     slides.value.haveNext = curSlide >= totalSlides ? false : true
     curCollection.value.index = curSlide - 1
