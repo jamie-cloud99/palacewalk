@@ -29,6 +29,8 @@
           </div>
         </div>
         <div class="pt-14 lg:pt-20"></div>
+        <!-- CHECK: 待修 -->
+        <LoadingComponent/>
         <div
           v-if="!isOpen.advancedSearch"
           class="flex flex-wrap items-center gap-x-4 px-4 py-3 lg:px-10 lg:pt-5"
@@ -231,6 +233,8 @@ import { useStatusStore } from '@/stores/statusStore'
 import { useExhibitionStore } from '@/stores/exhibitsStore'
 import { useCollectionStore } from '@/stores/collectionStore'
 import { SORT_ORDER } from '@/utils/constant/sort'
+import LoadingComponent from '@/components/layout/LoadingComponent.vue'
+
 const modal = ref(null)
 const curModal = ref(null)
 const statusStore = useStatusStore()
