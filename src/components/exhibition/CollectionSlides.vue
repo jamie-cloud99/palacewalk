@@ -15,7 +15,7 @@
   </swiper-container>
   <div class="absolute bottom-0 z-10 right-0 w-full h-15 text-dark">
     <div class="flex justify-between items-center">
-      <ul v-if="slides.totalSlides / curSlideShowed" class="flex gap-x-2">
+      <ul v-if="curSlideShowed" class="flex gap-x-2">
         <li
           v-for="item in Math.ceil(slides.totalSlides / curSlideShowed)"
           :key="'slide' + item"
@@ -49,7 +49,7 @@
 
 <script setup>
 import { storeToRefs } from 'pinia'
-import { onMounted, watch, nextTick, ref } from 'vue'
+import { onMounted, watch, nextTick, ref, watchEffect } from 'vue'
 import { useSlideStore } from '@/stores/slideStore'
 import { useExhibitionStore } from '@/stores/exhibitsStore'
 import CollectionListItem from '@/components/collection/CollectionListItem.vue'
@@ -75,7 +75,17 @@ watch(
   { deep: true }
 )
 
-watch(() => slides, turnSlide, { deep: true })
+watch(
+  () => slides,
+  () => turnSlide,
+  { deep: true, immediate: true }
+)
+
+watchEffect(() => {
+  if (window.innerWidth && swiperEl.value) {
+    changeSlidesPerView(window.innerWidth)
+  }
+})
 
 const changeSlidesPerView = (windowWidth) => {
   if (windowWidth < breakpoints.value?.md) {
@@ -87,9 +97,8 @@ const changeSlidesPerView = (windowWidth) => {
   }
 }
 
-changeSlidesPerView(window.innerWidth)
-
 onMounted(() => {
+  changeSlidesPerView(window.innerWidth)
   window.addEventListener('resize', () => {
     const windowWidth = window.innerWidth
     changeSlidesPerView(windowWidth)

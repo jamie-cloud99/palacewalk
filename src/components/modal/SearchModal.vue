@@ -126,17 +126,6 @@
                     </option>
                   </select>
                 </div>
-                <!-- <div class="w-full lg:w-1/2 px-3 mb-4 lg:mb-6">
-                  <label class="form-label" for="order">排序</label>
-                  <select
-                    v-model="filterFields.collections.sort"
-                    class="bg-dark-200 form-select py-2"
-                  >
-                    <option value="null" disabled selected class="text-dark-600">請選擇排序</option>
-                    <option :value="SORT_ORDER.fromNewest">依照朝代(由新到舊)</option>
-                    <option :value="SORT_ORDER.fromOldest">依照朝代（由舊到新）</option>
-                  </select>
-                </div> -->
                 <div class="px-3">
                   <h3 class="form-label">朝代</h3>
                   <ul class="flex flex-wrap">
@@ -159,7 +148,7 @@
                   <label class="form-label" for="name">展名</label>
                   <input
                     v-model="filterFields.exhibitions.title"
-                    class="bg-dark-200 form-select py-2"
+                    class="bg-dark-200 form-input py-2 max-w-full"
                     type="text"
                     id="name"
                     name="name"
