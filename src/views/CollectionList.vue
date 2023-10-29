@@ -1,7 +1,6 @@
 <template>
-  <CollectionBanner :title="'展品目錄'" />
-  <!-- TODO: router-view, other category(except painting) layout -->
   <div class="container min-h-[800px]">
+    <BreadcrumbsComponent class="my-5 justify-end" :nav-list="breadList"/>
     <div class="lg:grid grid-cols-12 gap-6">
       <!-- Left Side -->
       <div class="col-span-3">
@@ -41,16 +40,16 @@
 </template>
 
 <script setup>
+import { watch, reactive } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
 import { useCollectionStore } from '../stores/collectionStore'
 import { usePageStore } from '../stores/pageStore'
 import SideMenu from '../components/layout/SideMenu.vue'
-import CollectionBanner from '../components/collection/CollectionBanner.vue'
 import PageComponent from '../components/layout/PageComponent.vue'
 import CollectionListItem from '../components/collection/CollectionListItem.vue'
 import BackgroundComponent from '../components/background/BackgroundComponent.vue'
-import { watch } from 'vue'
+import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 
 const collectionStore = useCollectionStore()
 const pageStore = usePageStore()
@@ -61,6 +60,20 @@ const { turnPage } = pageStore
 
 const router = useRouter()
 
+const breadList = reactive([
+  {
+    title: '首頁',
+    path: '/'
+  },
+  {
+    title: '藝術展品',
+    path: '/collections'
+  },
+  {
+    title: '展品目錄',
+    path: '/collections/masterpieces'
+  }
+])
 const selectPage = (page) => {
   turnPage(page)
   fetchPageCollections(curCategory.value, page)

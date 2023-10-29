@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { useStatusStore } from '../stores/statusStore'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
@@ -112,5 +113,16 @@ const router = createRouter({
     }
   }
 })
+
+router.beforeEach((to, from, next) => {
+  const statusStore = useStatusStore()
+  statusStore.setLoading();
+  next();
+});
+
+router.afterEach(() => {
+  const statusStore = useStatusStore()
+  statusStore.clearLoading();
+});
 
 export default router

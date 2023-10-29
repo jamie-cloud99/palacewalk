@@ -20,6 +20,7 @@ export const useStatusStore = defineStore('status', () => {
     collectionText: 'max-w-0',
     advancedSearch: 'max-0'
   })
+
   const exhibitionMenuCount = ref(0)
   const searchTypeList = ref([
     {
@@ -51,10 +52,21 @@ export const useStatusStore = defineStore('status', () => {
 
   const addSearchNum = () => searchNum.value++
 
+  // Loading 使用
+  const isLoading = ref(false)
+  const isFullPage = ref(true)
+  const setLoading = () => {
+    return isLoading.value = true
+  }
+  const clearLoading = () => {
+    setTimeout(() => {
+      isLoading.value = false
+    }, 300)
+  }
+
   const toggleMenu = (item) => {
     isOpen.value[item] = !isOpen.value[item]
     // if(item === 'menu') preventBodyScroll()
-
     for (const key in isOpen.value) {
       if (key !== item) isOpen.value[key] = false
       menuClass.value[key] = isOpen.value[key] ? 'max-h' : 'max-0'
@@ -63,7 +75,6 @@ export const useStatusStore = defineStore('status', () => {
 
   const toggleSideMenu = (item) => {
     isOpen.value[item] = !isOpen.value[item]
-
     for (const key in isOpen.value) {
       if (key !== item) isOpen.value[key] = false
       menuClass.value[key] = isOpen.value[key] ? 'max-w' : 'max-w-0 overflow-hidden'
@@ -90,11 +101,18 @@ export const useStatusStore = defineStore('status', () => {
   // }
 
   const changeSearchType = (typeCode) => {
-    searchType.value = searchTypeList.value.find((type) => type.code === typeCode)
+    searchType.value = searchTypeList.value.find((type) => (type.code === typeCode))
+    isFullPage.value = false
+    isLoading.value = true
+    clearLoading()
   }
 
   return {
     isOpen,
+    isLoading,
+    isFullPage,
+    setLoading,
+    clearLoading,
     menuClass,
     searchType,
     exhibitionMenuCount,
