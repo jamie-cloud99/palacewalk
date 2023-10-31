@@ -2,7 +2,7 @@
   <div class="group relative h-[300px] lg:h-[250px] text-white">
     <img
       class="object-cover object-center h-full w-full"
-      :src="collectionItem.images.main"
+      :src="collectionItem.images?.main"
       :alt="collectionItem.title"
     />
     <div class="absolute inset-0 bg-dark/50 hover-style">

@@ -1,6 +1,6 @@
 <template>
-  <div class="container min-h-[800px]">
-    <BreadcrumbsComponent class="my-5 justify-end" :nav-list="breadList"/>
+  <div class="container min-h-[1000px] 2xl:min-h-[1200px]">
+    <BreadcrumbsComponent class="my-5 justify-end" :nav-list="breadList" />
     <div class="lg:grid grid-cols-12 gap-6">
       <!-- Left Side -->
       <div class="col-span-3">
@@ -76,7 +76,7 @@ const breadList = reactive([
 ])
 const selectPage = (page) => {
   turnPage(page)
-  fetchPageCollections(curCategory.value, page)
+  fetchPageCollections(curCategory.value.id, page)
   router.push({ path: '/collections', query: { category: curCategory.value.title, page } })
 }
 
@@ -91,7 +91,7 @@ const updateCurCategory = () => {
 watch(
   () => route.value?.query,
   async () => {
-    if(categoryList.value.length <= 1) await fetchCategoryList()
+    if (categoryList.value.length <= 1) await fetchCategoryList()
     await updateCurCategory()
     const queryPage = route.value?.query.page
     if (queryPage) {
