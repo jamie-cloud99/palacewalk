@@ -212,6 +212,7 @@ export const useCollectionStore = defineStore('collection', () => {
       const collectionStore = JSON.stringify(filteredCollections.map((collection) => collection.id))
       localStorage.setItem('searchedCollectionIds', collectionStore)
     }
+    fetchCollectionsRecord()
   }
 
   const searchCollections = async (keyword) => {

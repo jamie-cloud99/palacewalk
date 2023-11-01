@@ -129,29 +129,30 @@ export const useExhibitionStore = defineStore('exhibition', () => {
   }
 
   const filterExhibitions = async (conditions) => {
-    if (!exhibitionsAll.value.length) await fetchExhibitionsAll()
-
+    if (!exhibitionsAll.value?.length) await fetchExhibitionsAll()
     const filteredExhibtions = exhibitionsAll.value.filter(
       (exhibition) =>
         (!conditions.title || exhibition.title.includes(conditions.title)) &&
-        exhibition.category.code === conditions.categoryId
+        (!conditions.categoryId || exhibition.category.code === conditions.categoryId)
     )
+
     if (conditions.sort) {
       conditions.sort === SORT_ORDER.fromNewest
-        ? filteredExhibtions.sort((a, b) => b - a)
-        : filteredExhibtions.sort((a, b) => a - b)
+        ? filteredExhibtions.sort((a, b) => b.startDate - a.startDate)
+        : filteredExhibtions.sort((a, b) => a.startDate - b.startDate)
     }
 
     storeFilteredExhibitions(filteredExhibtions)
   }
 
   const storeFilteredExhibitions = (filteredExhibitions) => {
-    exhibitionsFiltered.value = filteredExhibitions
+    exhibitionsFiltered.value = [...filteredExhibitions]
 
     if (filteredExhibitions.length) {
       const exhibitionStore = JSON.stringify(filteredExhibitions.map((exhibition) => exhibition.id))
       localStorage.setItem('searchedExhibitionIds', exhibitionStore)
     }
+    fetchExhibitionsRecord()
   }
 
   const searchExhibitions = async (keyword) => {
@@ -166,14 +167,20 @@ export const useExhibitionStore = defineStore('exhibition', () => {
 
   const fetchExhibitionsRecord = async () => {
     const searchedExhibitionIds = localStorage.getItem('searchedExhibitionIds')
-    hasSearchRecord.value.exhibitions = Boolean(searchedExhibitionIds)
+    hasSearchRecord.value.exhibitions = !!searchedExhibitionIds
     const exhibitionIds = searchedExhibitionIds ? [...JSON.parse(searchedExhibitionIds)] : []
-
     if (exhibitionIds.length) {
+      const idToIndexMap = {}
+      exhibitionIds.forEach((id, index) => {
+        idToIndexMap[id] = index
+      })
+
       if (!exhibitionsAll.value.length) await fetchExhibitionsAll()
-      exhibitionsFiltered.value = exhibitionsAll.value.filter((exhibition) =>
-        exhibitionIds.some((id) => id === exhibition.id)
-      )
+      exhibitionsFiltered.value = exhibitionsAll.value
+        .filter((exhibition) => exhibition.id in idToIndexMap)
+        .sort((a, b) => idToIndexMap[a.id] - idToIndexMap[b.id])
+    } else {
+      exhibitionsFiltered.value = []
     }
   }
 
