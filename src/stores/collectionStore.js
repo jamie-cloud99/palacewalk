@@ -53,60 +53,7 @@ export const useCollectionStore = defineStore('collection', () => {
   const curCategory = ref(categoryList.value[0])
   const categoryAllId = ref(COLLECTION_CATEGORIES.category.all)
   const collectionsFiltered = ref([])
-
-  const masterPeiceList = ref([
-    {
-      id: '10',
-      collectionId: 'K004',
-      title: '緙繡九羊啟泰 軸',
-      author: '不詳',
-      time: '清',
-      images: {
-        main: '/images/collection/collection-K004.jpg'
-      }
-    },
-    {
-      id: '15',
-      collectionId: 'P014',
-      title: '畫春花三種 軸',
-      author: '錢維城',
-      time: '清',
-      images: {
-        main: '/images/collection/collection-P014.jpg'
-      }
-    },
-    {
-      id: '2',
-      collectionId: 'P015',
-      title: '奔馬行空　單片',
-      author: '徐悲鴻',
-      time: '民國',
-      images: {
-        main: '/images/collection/collection-P015.jpg'
-      }
-    },
-    {
-      id: '16',
-      collectionId: 'P016',
-      title: '翠巘高秋圖　軸',
-      author: '愛新覺羅弘旿',
-      time: '清',
-      images: {
-        main: '/images/collection/collection-P016.jpg'
-      }
-    },
-    {
-      id: '18',
-      collectionId: 'P018',
-      title: '畫山水 軸',
-      author: '趙孟頫',
-      time: '元',
-      images: {
-        main: '/images/collection/collection-P018.jpg'
-      }
-    }
-  ])
-
+  const relatedCollectionList = ref()
   const collectionDetail = ref([])
 
   const totalCollections = computed(() => {
@@ -199,6 +146,23 @@ export const useCollectionStore = defineStore('collection', () => {
     }
   }
 
+  const fetchRelatedCollections = async () => {
+    const {
+      value: { id: collectionId, collectionCategoryId: categoryId }
+    } = collection
+
+    const apiUrl = `${VITE_JSON_SERVER}collections?collectionCategoryId=${categoryId}`
+    try {
+      const res = await axios.get(apiUrl)
+      relatedCollectionList.value = res.data
+        .filter((collection) => collection.id !== collectionId)
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 6)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const updateCategoryNum = async () => {
     if (totalCollections.value === 0) await fetchCollectionsAll()
     categoryList.value[0].num = totalCollections.value
@@ -221,7 +185,6 @@ export const useCollectionStore = defineStore('collection', () => {
     if (!collectionsAll.value.length) await fetchCollectionsAll()
     const { dynasties, title, author, categoryId } = conditions
     const dynastySelected = Object.keys(dynasties).filter((item) => dynasties[item])
-
     const filteredCollections = collectionsAll.value.filter((collection) => {
       const {
         title: collectionTitle,
@@ -229,6 +192,7 @@ export const useCollectionStore = defineStore('collection', () => {
         collectionCategoryId,
         dynasty: collectionDynasty
       } = collection
+
       return (
         (!title || collectionTitle.includes(title)) &&
         (!author || collectionAuthor.includes(author)) &&
@@ -284,10 +248,10 @@ export const useCollectionStore = defineStore('collection', () => {
     curCategory,
     route,
     collectionDetail,
-    masterPeiceList,
     collectionsFiltered,
     dynastyList,
     masterpieceIds,
+    relatedCollectionList,
     fetchCollectionsAll,
     fetchPageCollections,
     fetchCategoryList,
@@ -296,6 +260,7 @@ export const useCollectionStore = defineStore('collection', () => {
     filterCollections,
     searchCollections,
     fetchCollectionsRecord,
-    filterCollectionsByIds
+    filterCollectionsByIds,
+    fetchRelatedCollections
   }
 })

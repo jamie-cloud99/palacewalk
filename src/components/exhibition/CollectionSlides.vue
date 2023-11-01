@@ -57,17 +57,24 @@ import CollectionListItem from '@/components/collection/CollectionListItem.vue'
 
 const exhbitionStore = useExhibitionStore()
 const { exhibitionCollections } = storeToRefs(exhbitionStore)
-
 const route = useRoute()
-
 const slideStore = useSlideStore()
 const { swiperEl, slides, curSlideShowed, curSlidePage } = storeToRefs(slideStore)
 const { goPrev, goNext, turnSlide } = slideStore
-
 const breakpoints = ref({
   md: 768,
   lg: 1280
 })
+
+const changeSlidesPerView = (windowWidth) => {
+  if (windowWidth < breakpoints.value?.md) {
+    curSlideShowed.value = slides.value.slideShowed.default
+  } else if (windowWidth < breakpoints.value?.lg) {
+    curSlideShowed.value = slides.value.slideShowed.md
+  } else {
+    curSlideShowed.value = slides.value.slideShowed.lg
+  }
+}
 
 watch(
   () => exhibitionCollections,
@@ -89,16 +96,6 @@ watchEffect(() => {
     changeSlidesPerView(window.innerWidth)
   }
 })
-
-const changeSlidesPerView = (windowWidth) => {
-  if (windowWidth < breakpoints.value?.md) {
-    curSlideShowed.value = slides.value.slideShowed.default
-  } else if (windowWidth < breakpoints.value?.lg) {
-    curSlideShowed.value = slides.value.slideShowed.md
-  } else {
-    curSlideShowed.value = slides.value.slideShowed.lg
-  }
-}
 
 onMounted(() => {
   changeSlidesPerView(window.innerWidth)

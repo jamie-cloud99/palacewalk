@@ -10,14 +10,14 @@
       1280: { slidesPerView: 4, slidesPerGroup: 4 }
     }"
   >
-    <swiper-slide v-for="item in masterPeiceList" :key="item.id">
+    <swiper-slide v-for="item in relatedCollectionList" :key="item.id">
       <CollectionListItem :collection-item="item" />
     </swiper-slide>
   </swiper-container>
 
   <div class="absolute bottom-0 z-10 right-0 w-full h-9 text-dark">
     <div class="flex justify-between items-center">
-      <ul v-if="slides.totalSlides / curSlideShowed" class="flex gap-x-2">
+      <ul v-if="curSlideShowed" class="flex gap-x-2">
         <li
           v-for="item in Math.ceil(slides.totalSlides / curSlideShowed)"
           :key="'slide' + item"
@@ -51,17 +51,18 @@
 
 <script setup>
 import { storeToRefs } from 'pinia'
-import { watch, onMounted, ref, computed } from 'vue'
+import { watch, onMounted, ref, computed, nextTick, watchEffect } from 'vue'
+import { useRoute } from 'vue-router'
 import { useCollectionStore } from '@/stores/collectionStore'
 import CollectionListItem from './CollectionListItem.vue'
 
 const collectionStore = useCollectionStore()
-const { masterPeiceList } = storeToRefs(collectionStore)
+const { relatedCollectionList } = storeToRefs(collectionStore)
+const route = useRoute()
 const swiper2 = ref(null)
-
 const curSlideShowed = ref(1)
 const slides = ref({
-  totalSlides: 4,
+  totalSlides: 0,
   curSlide: 1,
   haveNext: true,
   havePrev: false,
@@ -93,6 +94,11 @@ const goPrev = () => {
   slides.value.curSlide -= curSlideShowed.value
 }
 
+const resetSlides = (total, showed) => {
+  slides.value.curSlide = 1
+  getSlide(total, showed)
+}
+
 const getSlide = (total, showed) => {
   slides.value.totalSlides = total
   slides.value.slideShowed = showed
@@ -103,21 +109,6 @@ const turnSlide = () => {
   slides.value.haveNext =
     slides.value.curSlide >= slides.value.totalSlides - (curSlideShowed.value - 1) ? false : true
 }
-
-watch(
-  () => masterPeiceList,
-  () => {
-    getSlide(masterPeiceList.value.length, {
-      default: 1,
-      md: 2,
-      lg: 3,
-      xl: 4
-    })
-  },
-  { deep: true, immediate: true }
-)
-
-watch(() => slides, turnSlide, { deep: true })
 
 const changeSlidesPerView = (windowWidth) => {
   if (windowWidth < breakpoints.value?.sm) {
@@ -131,9 +122,37 @@ const changeSlidesPerView = (windowWidth) => {
   }
 }
 
-changeSlidesPerView(window.innerWidth)
+watch(
+  () => relatedCollectionList,
+  async () => {
+    if (relatedCollectionList.value?.length) {
+      resetSlides(relatedCollectionList.value?.length, {
+        default: 1,
+        md: 2,
+        lg: 3,
+        xl: 4
+      })
+    }
+    await nextTick()
+    swiper2.value.swiper.update()
+  },
+  { immediate: true, deep: true }
+)
+
+watchEffect(() => {
+  if (slides.value && route.path) {
+    turnSlide()
+  }
+})
+
+watchEffect(() => {
+  if (window.innerWidth && swiper2.value) {
+    changeSlidesPerView(window.innerWidth)
+  }
+})
 
 onMounted(() => {
+  changeSlidesPerView(window.innerWidth)
   window.addEventListener('resize', () => {
     const windowWidth = window.innerWidth
     changeSlidesPerView(windowWidth)

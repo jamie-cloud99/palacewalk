@@ -28,7 +28,7 @@
     </div>
   </div>
   <!-- 簡介 -->
-  <article class="px-2 md:w-4/5 2xl:w-3/5 mx-auto mb-8">
+  <article class="px-2 md:w-4/5 2xl:w-3/5 mx-auto mb-8 lg:mb-20">
     <h2 class="text-2xl lg:text-3xl font-bold mb-1 md:mb-0">{{ collection.title }}</h2>
     <div
       class="md:flex justify-between items-center border-black border-solid border-0 border-b mb-2"
@@ -126,7 +126,7 @@ const route = useRoute()
 
 const collectionStore = useCollectionStore()
 const { collection, collectionDetail } = storeToRefs(collectionStore)
-const { fetchCollection } = collectionStore
+const { fetchCollection, fetchRelatedCollections } = collectionStore
 
 const routerStore = useRouterStore()
 const { goPreviousPage } = routerStore
@@ -134,7 +134,6 @@ const { collectionId } = storeToRefs(routerStore)
 
 const slideStore = useSlideStore()
 const { resetSlides } = slideStore
-
 
 // CHECK: 確認是否要麵包屑
 const breadList = reactive([
@@ -157,13 +156,6 @@ const breadList = reactive([
   }
 ])
 
-// 螢幕寬度計算
-const breakPoint = ref(768)
-const windowInnerWidth = ref(window.innerWidth)
-const updateWidth = () => {
-  windowInnerWidth.value = window.innerWidth
-}
-
 const curRoute = computed(() => ({
   title: collection.value.title,
   path: route.path
@@ -173,6 +165,18 @@ const updateBreadList = (breadItem) => {
   breadList[breadList.length - 1] = breadItem
 }
 
+const renderCollection = async (id) => {
+  await fetchCollection(id)
+  fetchRelatedCollections()
+}
+
+// 螢幕寬度計算
+const breakPoint = ref(768)
+const windowInnerWidth = ref(window.innerWidth)
+const updateWidth = () => {
+  windowInnerWidth.value = window.innerWidth
+}
+
 onMounted(() => {
   window.addEventListener('resize', updateWidth)
 })
@@ -180,7 +184,7 @@ onMounted(() => {
 watch(
   () => collectionId,
   async () => {
-    await fetchCollection(collectionId.value)
+    await renderCollection(collectionId.value)
     updateBreadList(curRoute.value)
     resetSlides(collection.value.images.list.length + 1, {
       default: 1,
