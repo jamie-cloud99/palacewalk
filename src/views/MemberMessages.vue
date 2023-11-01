@@ -38,6 +38,7 @@
               v-if="!isEdit"
               type="button"
               class="btn border border-dark px-4 font-semibold hover:border-primary hover:text-primary"
+              @click="deleteComment(comment.id)"
             >
               刪除
             </button>
@@ -77,6 +78,7 @@
               v-if="!isEdit"
               type="button"
               class="btn border border-dark px-4 font-semibold hover:border-primary hover:text-primary"
+              @click="deleteComment(comment.id)"
             >
               刪除
             </button>
@@ -92,7 +94,7 @@
                 <span v-if="isOpen !== comment.id">顯示</span><span v-else>隱藏</span>回覆
               </button>
               <RouterLink
-                :to="{path: `/exhibitions/${comment.exhibition?.id}`, hash: '#comments'}"
+                :to="{ path: `/exhibitions/${comment.exhibition?.id}`, hash: '#comments' }"
                 class="btn pl-0 text-dark-600 hover:text-dark"
                 >查看原始留言</RouterLink
               >
@@ -136,20 +138,11 @@ import { ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useDateFromUnix } from '@/composables/format'
 import { useCommentStore } from '../stores/commentStore'
-import { useExhibitionStore } from '../stores/exhibitsStore'
-// import { useMemberStore } from '../stores/memberStore'
-// import PageComponent from '../components/layout/PageComponent.vue'
 
 const commentStore = useCommentStore()
 const { memberCommentList } = storeToRefs(commentStore)
-const { fetchMemberComments, updateComment } = commentStore
+const { fetchMemberComments, updateComment, deleteComment } = commentStore
 
-const exhibitionStore = useExhibitionStore()
-const { exhibitionsAll } = storeToRefs(exhibitionStore)
-const { fetchExhibitionsAll } = exhibitionStore
-
-// const memberStore = useMemberStore()
-// const { pages, turnPage } = memberStore
 
 const isOpen = ref(null)
 const tempContent = ref('')
@@ -162,16 +155,6 @@ const isEdit = ref(null)
 
 const toggleEdit = (id) => {
   isEdit.value = isEdit.value === id ? null : id
-}
-
-const renderComments = async () => {
-  await fetchMemberComments()
-  if (!exhibitionsAll.value.length) await fetchExhibitionsAll()
-  memberCommentList.value.forEach((comment) => {
-    comment.exhibition = exhibitionsAll.value.find(
-      (exhibition) => exhibition.id === comment.exhibitionId
-    )
-  })
 }
 
 const confirmEdit = async (tempComment) => {
@@ -195,5 +178,5 @@ watch(
   { deep: true }
 )
 
-renderComments()
+fetchMemberComments()
 </script>
