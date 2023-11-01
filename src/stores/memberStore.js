@@ -63,13 +63,12 @@ export const useMemberStore = defineStore('member', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const filterFavorites = async (itemId, type) => {
+  const updateFavorites = async (itemId, type) => {
     const idField = type.slice(0, -1)
     const favList = favoriteList.value[type]
     const isFavorite = (id) => favList.some((item) => item?.[idField]?.id === id)
 
     if (isFavorite(itemId)) {
-      // !fix  api - delete (刪除一筆會把全部資料都刪掉)
       let favId
       if (type === 'exhibitions') {
         favId = favExhibitions.value.find((el) => el.id === itemId)?.favId
@@ -78,12 +77,7 @@ export const useMemberStore = defineStore('member', () => {
       }
 
       const apiUrl = `${VITE_JSON_SERVER}600/favorites/${favId}`
-      console.log(apiUrl)
-      // const res = await axios.delete(apiUrl)
-      const res = await axios.delete(apiUrl, (req) => {
-        req.options._noRemoveDependents = true
-      })
-      console.log(res)
+      await axios.delete(apiUrl)
       fetchFavorites()
     } else {
       const nowTimeStamp = Math.floor(new Date().getTime() / 1000)
@@ -130,9 +124,7 @@ export const useMemberStore = defineStore('member', () => {
     }
   }
 
-  const saveFavorites = async (id, type) => {
-    filterFavorites(id, type)
-  }
+
 
   const fetchMembersAll = async () => {
     const apiUrl = `${VITE_JSON_SERVER}users`
@@ -240,7 +232,7 @@ export const useMemberStore = defineStore('member', () => {
     favExhibitions,
     favCollections,
     turnPage,
-    saveFavorites,
+    updateFavorites,
     uploadImage,
     signUp,
     logIn,

@@ -3,7 +3,7 @@
     <button
       type="button"
       class="absolute top-0 right-0 p-2 text-xl z-[1] hover:text-primary"
-      @click="saveFavorites(exhibitionItem.id, 'exhibitions')"
+      @click="updateFavorites(exhibitionItem.id, 'exhibitions')"
     >
       <i class="fa-regular fa-heart" :class="{ 'fa-solid': showFavorite }"> </i>
     </button>
@@ -35,7 +35,7 @@ const props = defineProps({
 const { exhibitionItem } = toRefs(props)
 
 const memberStore = useMemberStore()
-const { saveFavorites } = memberStore
+const { updateFavorites } = memberStore
 const { favExhibitions } = storeToRefs(memberStore)
 
 const showFavorite = computed(() => {

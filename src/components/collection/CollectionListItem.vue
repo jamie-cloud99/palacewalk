@@ -17,10 +17,9 @@
         </div>
       </div>
     </div>
-    <!-- * saveFavorites 第一個參數之後打 api 應該會改成傳 id，暫時先傳整個物件 -->
     <button
       v-if="showFavIcon"
-      @click="saveFavorites(collectionItem.id, 'collections')"
+      @click="updateFavorites(collectionItem.id, 'collections')"
       type="button"
       class="absolute top-2 right-2 text-xl z-[1] hover:text-primary"
     >
@@ -44,7 +43,7 @@ import { storeToRefs } from 'pinia'
 import { useMemberStore } from '../../stores/memberStore'
 
 const memberStore = useMemberStore()
-const { saveFavorites } = memberStore
+const { updateFavorites } = memberStore
 const { favCollections } = storeToRefs(memberStore)
 
 const props = defineProps({
