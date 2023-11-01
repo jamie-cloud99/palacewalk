@@ -1,15 +1,22 @@
 <template>
   <div class="container">
-    <BreadcrumbsComponent class="my-5 justify-end" :nav-list="breadList"/>
+    <BreadcrumbsComponent class="my-5 justify-end" :nav-list="breadList" />
   </div>
   <div class="container relative lg:flex gap-6">
     <CollectionImageSlides />
     <!-- 詳細資訊  -->
-    <div v-show="windowInnerWidth > breakPoint" class="bg-dark-200 text-dark-800 pb-6 my-10 lg:mb-20 ">
+    <div
+      v-show="windowInnerWidth > breakPoint"
+      class="bg-dark-200 text-dark-800 pb-6 my-10 lg:mb-20"
+    >
       <div class="container">
         <div class="px-2 md:w-4/5 2xl:w-3/5 mx-auto">
           <ul class="">
-            <li v-for="item in collectionDetail" :key="item.title" class="col-span-12 md:col-span-6">
+            <li
+              v-for="item in collectionDetail"
+              :key="item.title"
+              class="col-span-12 md:col-span-6"
+            >
               <div class="flex gap-y-2 pt-6 pb-3 border-b border-dark-800 border-dashed h-full">
                 <h4 class="w-20 font-semibold shrink-0">{{ item.title }}</h4>
                 <p class="px-2">{{ item.content }}</p>
@@ -87,7 +94,7 @@
     </div>
     <div class="mb-10 overflow-hidden">
       <div class="relative">
-        <CollectionMasterSlides />
+        <CollectionRelatedSlides />
       </div>
     </div>
   </div>
@@ -104,17 +111,16 @@
 </template>
 
 <script setup>
-import { watch, reactive, ref, onMounted } from 'vue'
+import { watch, reactive, ref, onMounted, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
 import { useRouterStore } from '../stores/routerStore'
 import { useCollectionStore } from '../stores/collectionStore'
 import { useSlideStore } from '../stores/slideStore'
-import CollectionMasterSlides from '../components/collection/CollectionMasterSlides.vue'
+import CollectionRelatedSlides from '../components/collection/CollectionRelatedSlides.vue'
 import BackgroundComponent from '../components/background/BackgroundComponent.vue'
 import CollectionImageSlides from '../components/collection/CollectionImageSlides.vue'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
-
 
 const route = useRoute()
 
@@ -127,8 +133,8 @@ const { goPreviousPage } = routerStore
 const { collectionId } = storeToRefs(routerStore)
 
 const slideStore = useSlideStore()
-const { getSlide } = slideStore
-const { slides } = storeToRefs(slideStore)
+const { resetSlides } = slideStore
+
 
 // CHECK: 確認是否要麵包屑
 const breadList = reactive([
@@ -158,6 +164,15 @@ const updateWidth = () => {
   windowInnerWidth.value = window.innerWidth
 }
 
+const curRoute = computed(() => ({
+  title: collection.value.title,
+  path: route.path
+}))
+
+const updateBreadList = (breadItem) => {
+  breadList[breadList.length - 1] = breadItem
+}
+
 onMounted(() => {
   window.addEventListener('resize', updateWidth)
 })
@@ -165,9 +180,9 @@ onMounted(() => {
 watch(
   () => collectionId,
   async () => {
-    slides.value.curSlide = 1
     await fetchCollection(collectionId.value)
-    getSlide(collection.value.images.list.length + 1, {
+    updateBreadList(curRoute.value)
+    resetSlides(collection.value.images.list.length + 1, {
       default: 1,
       md: 2
     })
@@ -177,7 +192,8 @@ watch(
 </script>
 
 <style scoped>
-.square::after, .square::before {
+.square::after,
+.square::before {
   @apply absolute content-[''] w-3 h-3 top-1/2 -translate-y-1/2 bg-primary;
 }
 </style>

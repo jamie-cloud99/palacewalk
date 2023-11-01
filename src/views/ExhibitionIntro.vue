@@ -118,7 +118,7 @@ const routerStore = useRouterStore()
 const { exhibitionId } = storeToRefs(routerStore)
 
 const slideStore = useSlideStore()
-const { getSlide } = slideStore
+const { resetSlides } = slideStore
 
 const router = useRouter()
 
@@ -167,7 +167,7 @@ const { fetchExhibition } = exhibitionStore
 
 ;(async () => {
   await fetchExhibition(exhibitionId.value)
-  getSlide(exhibitionCollections.value.length, {
+  resetSlides(exhibitionCollections.value.length, {
     default: 1,
     md: 2,
     lg: 3

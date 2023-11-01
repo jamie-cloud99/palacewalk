@@ -3,7 +3,6 @@ import './assets/style.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { setupCalendar } from 'v-calendar'
-import { useStatusStore } from './stores/statusStore'
 
 import App from './App.vue'
 import router from './router'

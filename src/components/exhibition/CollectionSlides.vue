@@ -49,6 +49,7 @@
 
 <script setup>
 import { storeToRefs } from 'pinia'
+import { useRoute } from 'vue-router'
 import { onMounted, watch, nextTick, ref, watchEffect } from 'vue'
 import { useSlideStore } from '@/stores/slideStore'
 import { useExhibitionStore } from '@/stores/exhibitsStore'
@@ -56,6 +57,8 @@ import CollectionListItem from '@/components/collection/CollectionListItem.vue'
 
 const exhbitionStore = useExhibitionStore()
 const { exhibitionCollections } = storeToRefs(exhbitionStore)
+
+const route = useRoute()
 
 const slideStore = useSlideStore()
 const { swiperEl, slides, curSlideShowed, curSlidePage } = storeToRefs(slideStore)
@@ -75,11 +78,11 @@ watch(
   { deep: true }
 )
 
-watch(
-  () => slides,
-  () => turnSlide,
-  { deep: true, immediate: true }
-)
+watchEffect(() => {
+  if (slides.value && route.path) {
+    turnSlide()
+  }
+})
 
 watchEffect(() => {
   if (window.innerWidth && swiperEl.value) {
