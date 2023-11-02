@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { defineStore, storeToRefs } from 'pinia'
 import axios from 'axios'
 // import { usePageStore } from './pageStore'
@@ -28,9 +28,7 @@ export const useExhibitionStore = defineStore('exhibition', () => {
   const exhibitionList = ref([])
   const exhibition = ref({})
   const exhibitionsFiltered = ref([])
-
   const exhibitionCollections = ref([])
-
   const exhibitionCategories = ref([
     {
       code: 'mix',
@@ -57,6 +55,7 @@ export const useExhibitionStore = defineStore('exhibition', () => {
     }
   ])
   const curMenuItem = ref(menuContent.value[0])
+  const hasStarted = computed(() => exhibition.value.startDate <= new Date().getTime() / 1000)
 
   const fetchExhibitionsAll = async () => {
     const apiUrl = `${VITE_JSON_SERVER}exhibitions`
@@ -101,7 +100,7 @@ export const useExhibitionStore = defineStore('exhibition', () => {
       const res = await axios.get(exhibtionApiUrl)
       exhibition.value = res.data
       await fetchComments(id)
-      await fetchExhibitionCollections(res.data.id)
+      if (hasStarted.value) await fetchExhibitionCollections(id)
     } catch (error) {
       console.log(error)
     }
@@ -193,6 +192,7 @@ export const useExhibitionStore = defineStore('exhibition', () => {
     curMenuItem,
     exhibitionsFiltered,
     exhibitionCategories,
+    hasStarted,
     updateExhibitionPeriod,
     fetchExhibitionsAll,
     fetchExhibition,

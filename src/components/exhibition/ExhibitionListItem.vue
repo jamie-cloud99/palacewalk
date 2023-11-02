@@ -26,8 +26,8 @@
 <script setup>
 import { toRefs, computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useMemberStore } from '../../stores/memberStore'
-import { usePeriod } from '../../composables/format';
+import { useMemberStore } from '@/stores/memberStore'
+import { usePeriod } from '@/composables/format';
 
 const props = defineProps({
   exhibitionItem: Object
@@ -40,7 +40,7 @@ const { favExhibitions } = storeToRefs(memberStore)
 
 const showFavorite = computed(() => {
   return favExhibitions.value.some(
-    (item) => item.exhibitionId === exhibitionItem.value.exhibitionId
+    (item) => item.id === exhibitionItem.value.id
   )
 })
 </script>

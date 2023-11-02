@@ -124,8 +124,6 @@ export const useMemberStore = defineStore('member', () => {
     }
   }
 
-
-
   const fetchMembersAll = async () => {
     const apiUrl = `${VITE_JSON_SERVER}users`
     try {
