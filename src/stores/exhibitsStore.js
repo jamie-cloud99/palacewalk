@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore, storeToRefs } from 'pinia'
+import { sortByIndexList } from '@/utils/useSort'
 import axios from 'axios'
 // import { usePageStore } from './pageStore'
 
@@ -114,14 +115,7 @@ export const useExhibitionStore = defineStore('exhibition', () => {
       const collectionIdList = res.data[0].collectionId
 
       // Sort the filtered array to match collectionIdList order.
-      const idToIndexMap = {}
-      collectionIdList.forEach((id, index) => {
-        idToIndexMap[id] = index
-      })
-
-      exhibitionCollections.value = collectionsAll.value
-        .filter((collection) => collection.id in idToIndexMap)
-        .sort((a, b) => idToIndexMap[a.id] - idToIndexMap[b.id])
+      exhibitionCollections.value = sortByIndexList(collectionsAll.value, collectionIdList)
     } catch (error) {
       console.log(error)
     }
@@ -169,15 +163,12 @@ export const useExhibitionStore = defineStore('exhibition', () => {
     hasSearchRecord.value.exhibitions = !!searchedExhibitionIds
     const exhibitionIds = searchedExhibitionIds ? [...JSON.parse(searchedExhibitionIds)] : []
     if (exhibitionIds.length) {
+      if (!exhibitionsAll.value?.length) await fetchExhibitionsAll()
       const idToIndexMap = {}
       exhibitionIds.forEach((id, index) => {
         idToIndexMap[id] = index
       })
-
-      if (!exhibitionsAll.value.length) await fetchExhibitionsAll()
-      exhibitionsFiltered.value = exhibitionsAll.value
-        .filter((exhibition) => exhibition.id in idToIndexMap)
-        .sort((a, b) => idToIndexMap[a.id] - idToIndexMap[b.id])
+      exhibitionsFiltered.value = sortByIndexList(exhibitionsAll.value, exhibitionIds)
     } else {
       exhibitionsFiltered.value = []
     }
