@@ -2,10 +2,12 @@
   <div class="container">
     <BreadcrumbsComponent class="my-5 justify-end" :nav-list="breadList"/>
   </div>
-  <div class="container relative lg:flex gap-6">
-    <CollectionImageSlides />
+  <div class="container relative overflow-hidden lg:flex lg:flex-row lg:gap-6">
+    <div class="w-full lg:w-1/2">
+      <CollectionImageSlides />
+    </div>
     <!-- 詳細資訊  -->
-    <div v-show="windowInnerWidth > breakPoint" class="bg-dark-200 text-dark-800 pb-6 my-10 lg:mb-20 ">
+    <div v-show="windowInnerWidth > breakPoint" class="w-full lg:w-1/2 lg:h-[415px] bg-dark-200 text-dark-800">
       <div class="container">
         <div class="px-2 md:w-4/5 2xl:w-3/5 mx-auto">
           <ul class="">
@@ -21,7 +23,7 @@
     </div>
   </div>
   <!-- 簡介 -->
-  <article class="px-2 md:w-4/5 2xl:w-3/5 mx-auto mb-8">
+  <article class="px-2 lg:pr-72 md:w-4/5 2xl:w-3/5 mx-auto mb-8">
     <h2 class="text-2xl lg:text-3xl font-bold mb-1 md:mb-0">{{ collection.title }}</h2>
     <div
       class="md:flex justify-between items-center border-black border-solid border-0 border-b mb-2"
@@ -62,7 +64,7 @@
     </div>
   </article>
   <!-- 詳細資訊 -->
-  <!-- <div class="bg-dark-200 text-dark-800 pb-6 mb-10 lg:mb-20">
+  <div v-show="windowInnerWidth < breakPoint" class="bg-dark-200 text-dark-800 pb-6 mb-10 lg:mb-20">
     <div class="container">
       <div class="px-2 md:w-4/5 2xl:w-3/5 mx-auto">
         <ul class="grid grid-cols-12">
@@ -75,7 +77,7 @@
         </ul>
       </div>
     </div>
-  </div> -->
+  </div>
   <!-- 精選推薦 -->
   <div class="container">
     <div class="flex justify-center mb-6 lg:mb-8">
@@ -110,11 +112,10 @@ import { useRoute } from 'vue-router'
 import { useRouterStore } from '../stores/routerStore'
 import { useCollectionStore } from '../stores/collectionStore'
 import { useSlideStore } from '../stores/slideStore'
+import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 import CollectionMasterSlides from '../components/collection/CollectionMasterSlides.vue'
 import BackgroundComponent from '../components/background/BackgroundComponent.vue'
 import CollectionImageSlides from '../components/collection/CollectionImageSlides.vue'
-import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
-
 
 const route = useRoute()
 
@@ -130,12 +131,11 @@ const slideStore = useSlideStore()
 const { getSlide } = slideStore
 const { slides } = storeToRefs(slideStore)
 
-// CHECK: 確認是否要麵包屑
 const breadList = reactive([
-  // {
-  //   title: '首頁',
-  //   path: '/'
-  // },
+  {
+    title: '首頁',
+    path: '/'
+  },
   {
     title: '藝術展品',
     path: '/collections'
@@ -144,7 +144,6 @@ const breadList = reactive([
     title: '展品目錄',
     path: '/collections/masterpieces'
   },
-  // CHECK: 重整會出現 undefined
   {
     title: `${collection.value.title}`,
     path: `${route.path}`
@@ -174,10 +173,18 @@ watch(
   },
   { immediate: true, deep: true }
 )
+;(async () => {
+  await fetchCollection(collectionId.value)
+  getSlide(collection.value.images.list.length + 1, {
+    default: 1,
+    md: 2
+  })
+})()
 </script>
 
 <style scoped>
-.square::after, .square::before {
+.square::after,
+.square::before {
   @apply absolute content-[''] w-3 h-3 top-1/2 -translate-y-1/2 bg-primary;
 }
 </style>
