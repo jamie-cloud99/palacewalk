@@ -1,6 +1,6 @@
 <template>
+  <CollectionBanner :title="'展品目錄'" :bread-list="breadList" />
   <div class="container min-h-[800px]">
-    <BreadcrumbsComponent class="my-5 justify-end" :nav-list="breadList"/>
     <div class="lg:grid grid-cols-12 gap-6">
       <!-- Left Side -->
       <div class="col-span-3">
@@ -47,9 +47,9 @@ import { useCollectionStore } from '../stores/collectionStore'
 import { usePageStore } from '../stores/pageStore'
 import SideMenu from '../components/layout/SideMenu.vue'
 import PageComponent from '../components/layout/PageComponent.vue'
+import CollectionBanner from '../components/collection/CollectionBanner.vue'
 import CollectionListItem from '../components/collection/CollectionListItem.vue'
 import BackgroundComponent from '../components/background/BackgroundComponent.vue'
-import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 
 const collectionStore = useCollectionStore()
 const pageStore = usePageStore()
@@ -71,9 +71,10 @@ const breadList = reactive([
   },
   {
     title: '展品目錄',
-    path: '/collections/masterpieces'
+    path: '/collections'
   }
 ])
+
 const selectPage = (page) => {
   turnPage(page)
   fetchPageCollections(curCategory.value, page)
