@@ -20,14 +20,14 @@
               class="btn bg-dark text-white px-4 font-semibold hover:bg-primary"
               :class="{
                 '!bg-transparent !text-dark !border !border-dark hover:!text-primary hover:!border-primary':
-                  isEdit
+                  isEdit === comment.id
               }"
               @click="toggleEdit(comment.id)"
             >
-              <span v-if="isEdit">取消</span><span v-else>編輯</span>
+              <span v-if="isEdit === comment.id">取消</span><span v-else>編輯</span>
             </button>
             <button
-              v-if="isEdit"
+              v-if="isEdit === comment.id"
               type="button"
               class="btn bg-dark text-white px-4 font-semibold hover:bg-primary"
               @click="confirmEdit(comment)"
@@ -35,7 +35,7 @@
               確認
             </button>
             <button
-              v-if="!isEdit"
+              v-if="!(isEdit === comment.id)"
               type="button"
               class="btn border border-dark px-4 font-semibold hover:border-primary hover:text-primary"
               @click="deleteComment(comment.id)"
@@ -46,10 +46,10 @@
         </div>
         <div class="pt-4 pb-2">
           <input
-            v-if="isEdit"
+            v-if="isEdit === comment.id"
             v-model="tempContent"
             type="text"
-            class="form-input w-full max-w-[800px] border-dark-400"
+            class="form-input w-full max-w-[800px] border-dark-400 mb-3"
           />
           <p v-else class="pb-2 lg:pb-4 min-h-[50px] font-medium">
             {{ comment.content }}
@@ -60,14 +60,14 @@
               class="btn bg-dark text-white px-4 font-semibold hover:bg-primary"
               :class="{
                 '!bg-transparent !text-dark !border !border-dark hover:!text-primary hover:!border-primary':
-                  isEdit
+                  isEdit === comment.id
               }"
               @click="toggleEdit(comment.id)"
             >
-              <span v-if="isEdit">取消</span><span v-else>編輯</span>
+              <span v-if="isEdit === comment.id">取消</span><span v-else>編輯</span>
             </button>
             <button
-              v-if="isEdit"
+              v-if="isEdit === comment.id"
               type="button"
               class="btn bg-dark text-white px-4 font-semibold hover:bg-primary"
               @click="confirmEdit(comment)"
@@ -75,7 +75,7 @@
               確認
             </button>
             <button
-              v-if="!isEdit"
+              v-if="!(isEdit === comment.id)"
               type="button"
               class="btn border border-dark px-4 font-semibold hover:border-primary hover:text-primary"
               @click="deleteComment(comment.id)"
@@ -83,7 +83,7 @@
               刪除
             </button>
           </div>
-          <div v-if="!isEdit" class="flex justify-between items-center">
+          <div class="flex justify-between items-center">
             <div class="flex gap-2">
               <button
                 v-if="comment.reply?.id"
@@ -142,7 +142,6 @@ import { useCommentStore } from '../stores/commentStore'
 const commentStore = useCommentStore()
 const { memberCommentList } = storeToRefs(commentStore)
 const { fetchMemberComments, updateComment, deleteComment } = commentStore
-
 
 const isOpen = ref(null)
 const tempContent = ref('')
