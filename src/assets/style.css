@@ -26,9 +26,16 @@
   }
 
   .form-checkbox {
-    @apply text-primary focus:ring-primary
+    @apply text-primary focus:ring-primary;
   }
- 
+
+  .is-invalid {
+    @apply border-2 border-primary;
+  }
+
+  .form-error {
+    @apply text-primary text-sm;
+  }
 }
 
 @layer utilities {
