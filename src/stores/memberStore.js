@@ -4,7 +4,7 @@ import { useExhibitionStore } from './exhibitsStore'
 import { useCollectionStore } from './collectionStore'
 import axios from 'axios'
 
-const { VITE_JSON_SERVER, VITE_API, VITE_PATH } = import.meta.env
+const { VITE_JSON_SERVER } = import.meta.env
 
 export const useMemberStore = defineStore('member', () => {
   const exhibitionStore = useExhibitionStore()
@@ -134,19 +134,6 @@ export const useMemberStore = defineStore('member', () => {
     }
   }
 
-  // todo upload photo
-  const uploadImage = (imgFile) => {
-    const api = `${VITE_API}api/${VITE_PATH}/admin/upload`
-    // const img = this.$refs.fileInput.files[0]
-    const formData = new FormData()
-    formData.append('file-to-upload', img)
-
-    axios.post(api, formData).then((res) => {
-      if (res.data.success) {
-      }
-    })
-  }
-
   const signUp = async (user) => {
     const apiUrl = `${VITE_JSON_SERVER}users`
     try {
@@ -231,7 +218,6 @@ export const useMemberStore = defineStore('member', () => {
     favCollections,
     turnPage,
     updateFavorites,
-    uploadImage,
     signUp,
     logIn,
     getToken,

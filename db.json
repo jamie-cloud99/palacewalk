@@ -1841,6 +1841,13 @@
       "name": "漢克",
       "imageUrl": "https://images.unsplash.com/photo-1638803040283-7a5ffd48dad5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
       "id": 3
+    },
+    {
+      "email": "ann@gmail.com",
+      "password": "$2a$10$v.adIWHjIRi/yPhxgrRTluiK53NNlJ8/4z/LVDk5UnoN0oyqc.ufW",
+      "name": "安",
+      "imageUrl": "https://i.imgur.com/UtrqD9o.jpg",
+      "id": 4
     }
   ],
   "comments": [
@@ -1857,6 +1864,31 @@
       "createdAt": 1698115438,
       "userId": 3,
       "id": 2
+    },
+    {
+      "exhibitionId": 3,
+      "content": "從西周到清代，各種國寶文物都能在展覽中看見呢~~",
+      "createdAt": 1699110862,
+      "userId": 2,
+      "id": 3,
+      "exhibition": {
+        "id": 3,
+        "category": {
+          "code": "art",
+          "title": "藝術"
+        },
+        "exhibitionId": "U003",
+        "title": "故宮經典-藝術與文化策展",
+        "startDate": 1696003200,
+        "endDate": 1722614400,
+        "description": "「故宮經典—藝術與文化策展」呈現經典藝術品與文化的交匯。通過珍貴展品，深入探討中國的藝術、歷史和文化傳承。",
+        "content": "<ol><li>經典藝術珍品：展覽匯集了故宮的經典藝術珍品，包括古代繪畫、玉器、瓷器、書法等，向觀眾展現中國千年藝術的精髓。</li><li>文化策展視角：展覽通過策展視角，呈現這些藝術品背後的文化意義和歷史背景，幫助觀眾更深刻地理解中國文化的複雜性和豐富性。</li><li>互動體驗：除了欣賞展品，觀眾還可以參與各種互動活動，體驗中國藝術的獨特之處，加深對中國文化的體驗和理解</li></ol>",
+        "images": {
+          "sm": "/images/exhibitions/exhibition-U003.jpg",
+          "lg": "/images/exhibitions/exhibition-U003.jpg"
+        },
+        "userId": 2
+      }
     }
   ],
   "replies": [
@@ -1871,27 +1903,9 @@
   "favorites": [
     {
       "userId": 2,
-      "savedAt": 1696338840,
-      "exhibitionId": "1",
-      "id": 1
-    },
-    {
-      "userId": 2,
       "savedAt": 1696343108,
       "exhibitionId": "2",
       "id": 2
-    },
-    {
-      "userId": 2,
-      "savedAt": 1696343113,
-      "exhibitionId": "3",
-      "id": 3
-    },
-    {
-      "userId": 2,
-      "savedAt": 1696345278,
-      "collectionId": "2",
-      "id": 4
     },
     {
       "userId": 2,
@@ -1901,21 +1915,9 @@
     },
     {
       "userId": 2,
-      "savedAt": 1696345285,
-      "collectionId": "10",
-      "id": 6
-    },
-    {
-      "userId": 2,
       "savedAt": 1696345800,
       "collectionId": "7",
       "id": 7
-    },
-    {
-      "userId": 2,
-      "savedAt": 1696346983,
-      "exhibitionId": "5",
-      "id": 8
     },
     {
       "userId": 2,
@@ -1928,6 +1930,42 @@
       "savedAt": 1696381577,
       "collectionId": "17",
       "id": 10
+    },
+    {
+      "userId": 2,
+      "savedAt": 1698821343,
+      "collectionId": "27",
+      "id": 11
+    },
+    {
+      "userId": 2,
+      "savedAt": 1698821350,
+      "collectionId": "19",
+      "id": 12
+    },
+    {
+      "userId": 2,
+      "savedAt": 1698821439,
+      "exhibitionId": "3",
+      "id": 13
+    },
+    {
+      "userId": 2,
+      "savedAt": 1698894472,
+      "exhibitionId": "4",
+      "id": 14
+    },
+    {
+      "userId": 4,
+      "savedAt": 1699340934,
+      "collectionId": "17",
+      "id": 15
+    },
+    {
+      "userId": 4,
+      "savedAt": 1699340937,
+      "collectionId": "29",
+      "id": 16
     }
   ]
 }

@@ -199,6 +199,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useMemberStore } from '@/stores/memberStore'
 import { storeToRefs } from 'pinia'
+import { passwordRules } from '@/utils/useValidation'
 
 const modal = ref(null)
 const curModal = ref(null)
@@ -243,12 +244,6 @@ const registerMember = async (member) => {
   router.go(0)
 }
 
-const passwordRules = (password) => {
-  if (!password) return '密碼 為必填'
-  const regex = /^(?=.*\d)(?=.*[a-zA-Z]).{6,}$/
-  return regex.test(password) ? true : '密碼 6 位數以上，須包含至少一個數字和一個英文字母'
-}
-
 const checkPassword = (password) => {
   if (!password) return '確認密碼 為必填'
   return password === tempMember.value.password ? true : '兩次密碼輸入不同，請重新確認'
@@ -257,6 +252,7 @@ const checkPassword = (password) => {
 initTE({ Modal })
 
 onMounted(() => {
+  tempMember.value = {}
   curModal.value = new Modal(modal.value)
 })
 </script>
