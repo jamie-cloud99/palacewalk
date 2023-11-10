@@ -60,7 +60,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, watchEffect } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useStatusStore } from '@/stores/statusStore'
 import { useCollectionStore } from '@/stores/collectionStore'
@@ -94,38 +94,32 @@ const statusStore = useStatusStore()
 const { searchType, hasSearchRecord, searchNum } = storeToRefs(statusStore)
 
 const updateSearchResult = () => {
-  if (
-    (hasSearchRecord.value.exhibitions && hasSearchRecord.value.collections) ||
-    searchType.value?.code === 'all'
-  ) {
-    searchResult.value.exhibitions = exhibitionsFiltered.value
-    searchResult.value.collections = collectionsFiltered.value
+  const { exhibitions: hasExhibitions, collections: hasCollections } = hasSearchRecord.value
+  const { code: searchTypeCode } = searchType.value || {}
+
+  if (!hasExhibitions && !hasCollections) {
+    searchResult.value.collections = []
+    searchResult.value.exhibitions = []
     return
   }
-  if (searchType.value?.code === 'exhibitions' && hasSearchRecord.value.exhibitions) {
+
+  if (searchTypeCode === 'all' || (hasExhibitions && hasCollections)) {
+    searchResult.value.exhibitions = exhibitionsFiltered.value
+    searchResult.value.collections = collectionsFiltered.value
+  } else if (searchTypeCode === 'exhibitions' && hasExhibitions) {
     searchResult.value.exhibitions = exhibitionsFiltered.value
     searchResult.value.collections = []
-  } else if (searchType.value?.code === 'collections' || hasSearchRecord.value.collections) {
+  } else if (searchTypeCode === 'collections' || hasCollections) {
     searchResult.value.collections = collectionsFiltered.value
     searchResult.value.exhibitions = []
   }
 }
 
-watch(
-  () => exhibitionsFiltered,
-  () => {
+watchEffect(() => {
+  if (exhibitionsFiltered.value && collectionsFiltered.value) {
     updateSearchResult()
-  },
-  { deep: true, immediate: true }
-)
-
-watch(
-  () => collectionsFiltered,
-  () => {
-    updateSearchResult()
-  },
-  { deep: true, immediate: true }
-)
+  }
+})
 
 watch(
   () => searchNum,
@@ -133,11 +127,6 @@ watch(
     fetchCollectionsRecord()
     fetchExhibitionsRecord()
   },
-  { deep: true }
+  { deep: true, immediate: true }
 )
-
-fetchCollectionsRecord()
-fetchExhibitionsRecord()
 </script>
-
-<style scoped></style>

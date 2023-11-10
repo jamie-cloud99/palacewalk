@@ -14,7 +14,7 @@
       </figure>
     </swiper-slide>
     <swiper-slide>
-      <figure class="w-3/5  h-[210px] lg:h-[360px] bg-gradient-to-b from-dark/80 to-dark/90">
+      <figure class="w-3/5 h-[210px] lg:h-[360px] bg-gradient-to-b from-dark/80 to-dark/90">
         <img
           class="w-full h-full object-contain object-center"
           :src="collection.images?.main"
@@ -44,7 +44,8 @@
 </template>
 
 <script setup>
-import { onMounted, watch, nextTick, ref } from 'vue'
+import { onMounted, watch, nextTick, ref, watchEffect } from 'vue'
+import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useSlideStore } from '../../stores/slideStore'
 import { useCollectionStore } from '../../stores/collectionStore'
@@ -60,15 +61,13 @@ const breakpoints = ref({
   md: 768
 })
 
-watch(() => slides, turnSlide, { deep:true })
+const route = useRoute()
 
-const changeSlidesPerView = (windowWidth) => {
-  if (windowWidth < breakpoints.value?.md) {
-    curSlideShowed.value = slides.value.slideShowed.default
-  } else {
-    curSlideShowed.value = slides.value.slideShowed.md
+watchEffect(() => {
+  if (slides.value && route.path) {
+    turnSlide()
   }
-}
+})
 
 watch(
   () => collection.value.images,
@@ -78,9 +77,16 @@ watch(
   }
 )
 
-changeSlidesPerView(window.innerWidth)
+const changeSlidesPerView = (windowWidth) => {
+  if (windowWidth < breakpoints.value?.md) {
+    curSlideShowed.value = slides.value.slideShowed.default
+  } else {
+    curSlideShowed.value = slides.value.slideShowed.md
+  }
+}
 
 onMounted(() => {
+  changeSlidesPerView(window.innerWidth)
   window.addEventListener('resize', () => {
     const windowWidth = window.innerWidth
     changeSlidesPerView(windowWidth)

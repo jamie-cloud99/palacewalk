@@ -44,10 +44,22 @@
         </div>
       </div>
       <div v-if="exhibition.id" class="col-span-9 font-semibold">
-        <img
-          class="w-full aspect-[2/1] object-cover object-center mb-2 lg:mb-4"
-          :src="exhibition.images.lg"
-        />
+        <div class="relative">
+          <img
+            class="w-full aspect-[2/1] object-cover object-center mb-2 lg:mb-4"
+            :src="exhibition.images.lg"
+          />
+          <div
+            v-if="!hasStarted"
+            class="absolute top-0 w-full h-full bg-dark/70 flex gap-x-14 items-center px-6 text-white lg:px-16"
+          >
+            <div class="lg:text-xl">
+              <h4 class="">即將開展</h4>
+              <p class="font-cormo font-semibold">Coming Soon</p>
+            </div>
+            <hr class="flex-grow" />
+          </div>
+        </div>
         <div class="flex flex-col justify-between mb-8 lg:flex-row">
           <div class="mb-4 lg:mb-0">
             <h2 class="text-2xl font-bold mb-4">{{ exhibition.title }}</h2>
@@ -63,22 +75,41 @@
                 >回列表</RouterLink
               >
               <RouterLink
+                v-if="hasStarted"
                 :to="`/exhibitions/${exhibition.id}/content`"
                 target="_blank"
                 class="btn bg-primary text-white hover:bg-dark"
               >
                 前往看展
               </RouterLink>
+              <button
+                v-else
+                type="button"
+                class="btn bg-primary text-white cursor-not-allowed opacity-50"
+              >
+                即將開展
+              </button>
             </div>
             <ul class="flex justify-end text-2xl">
               <li class="me-4">
-                <a href="#"><i class="fa-regular fa-calendar"></i></a>
+                <button type="button" class="hover:text-primary">
+                  <i class="fa-regular fa-calendar"></i>
+                </button>
               </li>
               <li class="me-4">
-                <a href="#"><i class="fa-regular fa-heart"></i></a>
+                <button
+                  type="button"
+                  class="hover:text-primary"
+                  @click="updateFavorites(exhibition.id, 'exhibitions')"
+                >
+                  <i class="fa-regular fa-heart" :class="{ 'fa-solid text-primary': showFavorite }">
+                  </i>
+                </button>
               </li>
               <li>
-                <a href="#"><i class="fa-solid fa-share-nodes"></i></a>
+                <button type="button" class="hover:text-primary">
+                  <i class="fa-solid fa-share-nodes"></i>
+                </button>
               </li>
             </ul>
           </div>
@@ -88,10 +119,13 @@
           <p class="mb-8">{{ exhibition.description }}</p>
           <h3 class="font-bold mb-2">展覽亮點：</h3>
           <div v-html="exhibition.content" class="content mb-8"></div>
-          <h3 class="font-bold mb-2">展品資訊：</h3>
-          <div class="relative overflow-hidden mb-8">
-            <CollectionSlides />
+          <div v-if="hasStarted">
+            <h3 class="font-bold mb-2">展品資訊：</h3>
+            <div class="relative overflow-hidden mb-8">
+              <CollectionSlides />
+            </div>
           </div>
+          <div v-else class="mb-6 lg:mb-10"></div>
           <ExhibitionMessages />
         </div>
       </div>
@@ -113,12 +147,21 @@ import { storeToRefs } from 'pinia'
 import { useExhibitionStore } from '../stores/exhibitsStore'
 import { useRouterStore } from '../stores/routerStore'
 import { useSlideStore } from '../stores/slideStore'
+import { useMemberStore } from '../stores/memberStore'
 
 const routerStore = useRouterStore()
 const { exhibitionId } = storeToRefs(routerStore)
 
 const slideStore = useSlideStore()
-const { getSlide } = slideStore
+const { resetSlides } = slideStore
+
+const memberStore = useMemberStore()
+const { updateFavorites } = memberStore
+const { favExhibitions } = storeToRefs(memberStore)
+
+const showFavorite = computed(() => {
+  return favExhibitions.value.some((item) => item.id === exhibition.value.id)
+})
 
 const router = useRouter()
 
@@ -140,6 +183,7 @@ const breadList = reactive([
     path: '/exhibitionIntro'
   }
 ])
+
 const menuContent = reactive([
   {
     code: 'recent',
@@ -150,6 +194,7 @@ const menuContent = reactive([
     title: '近期展覽'
   }
 ])
+
 const curMenuItem = ref(menuContent[0])
 const changeMenuItem = (item) => {
   curMenuItem.value = item
@@ -162,17 +207,21 @@ const curBannerContent = computed(() => {
 })
 
 const exhibitionStore = useExhibitionStore()
-const { exhibition, exhibitionCollections } = storeToRefs(exhibitionStore)
+const { exhibition, exhibitionCollections, hasStarted } = storeToRefs(exhibitionStore)
 const { fetchExhibition } = exhibitionStore
 
-;(async () => {
+const renderExhibition = async () => {
   await fetchExhibition(exhibitionId.value)
-  getSlide(exhibitionCollections.value.length, {
-    default: 1,
-    md: 2,
-    lg: 3
-  })
-})()
+  if (hasStarted.value) {
+    resetSlides(exhibitionCollections.value?.length, {
+      default: 1,
+      md: 2,
+      lg: 3
+    })
+  }
+}
+
+renderExhibition()
 </script>
 
 <style>

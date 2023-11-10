@@ -11,14 +11,14 @@
         </div>
       </RouterLink>
       <div v-if="!isOpen.menu" class="flex gap-6 items-center lg:gap-10">
-        <button
-          type="button"
-          class="hidden lg:block text-2xl lg:text-[28px] p-2 transition-all duration-300 hover:text-primary"
-          @click="startSearch"
-        >
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
         <div class="gap-6 items-center hidden md:flex lg:gap-10">
+          <button
+            type="button"
+            class="text-2xl lg:text-[28px] p-2 transition-all duration-300 hover:text-primary"
+            @click="startSearch"
+          >
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
           <div class="relative">
             <button
               type="button"
@@ -38,11 +38,19 @@
             <button
               type="button"
               class="text-2xl lg:text-[28px] p-2 transition-all duration-300 hover:text-primary"
-              @click="enterMemberSpace('member')">
+              @mouseover="enterMemberSpace('member')"
+            >
               <div v-if="isLoggedIn" class="h-[42px] flex items-center">
-                <img :src="member.imageUrl" :alt="member.name" class="w-9 h-9 object-cover rounded-full">
+                <img
+                  :src="member.imageUrl"
+                  :alt="member.name"
+                  class="w-9 h-9 object-cover rounded-full"
+                />
               </div>
-              <i v-else class="fa-regular fa-circle-user"></i>
+              <span v-else class="flex items-center">
+                <i class="fa-regular fa-circle-user"></i>
+                <span class="ml-1 text-base lg:text-xl font-semibold sr-only">登入</span>
+              </span>
             </button>
             <div
               :class="menuClass.member"

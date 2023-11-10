@@ -3,6 +3,7 @@
     class="
     absolute -z-10
     top-[600px]
+    lg:top-[300px]
     bg-[url('../images/page-bg.svg')]
     bg-[position:center]
     object-cover

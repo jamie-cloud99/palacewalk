@@ -20,14 +20,14 @@
               class="btn bg-dark text-white px-4 font-semibold hover:bg-primary"
               :class="{
                 '!bg-transparent !text-dark !border !border-dark hover:!text-primary hover:!border-primary':
-                  isEdit
+                  isEdit === comment.id
               }"
               @click="toggleEdit(comment.id)"
             >
-              <span v-if="isEdit">取消</span><span v-else>編輯</span>
+              <span v-if="isEdit === comment.id">取消</span><span v-else>編輯</span>
             </button>
             <button
-              v-if="isEdit"
+              v-if="isEdit === comment.id"
               type="button"
               class="btn bg-dark text-white px-4 font-semibold hover:bg-primary"
               @click="confirmEdit(comment)"
@@ -35,9 +35,10 @@
               確認
             </button>
             <button
-              v-if="!isEdit"
+              v-if="!(isEdit === comment.id)"
               type="button"
               class="btn border border-dark px-4 font-semibold hover:border-primary hover:text-primary"
+              @click="deleteComment(comment.id)"
             >
               刪除
             </button>
@@ -45,10 +46,10 @@
         </div>
         <div class="pt-4 pb-2">
           <input
-            v-if="isEdit"
+            v-if="isEdit === comment.id"
             v-model="tempContent"
             type="text"
-            class="form-input w-full max-w-[800px] border-dark-400"
+            class="form-input w-full max-w-[800px] border-dark-400 mb-3"
           />
           <p v-else class="pb-2 lg:pb-4 min-h-[50px] font-medium">
             {{ comment.content }}
@@ -59,14 +60,14 @@
               class="btn bg-dark text-white px-4 font-semibold hover:bg-primary"
               :class="{
                 '!bg-transparent !text-dark !border !border-dark hover:!text-primary hover:!border-primary':
-                  isEdit
+                  isEdit === comment.id
               }"
               @click="toggleEdit(comment.id)"
             >
-              <span v-if="isEdit">取消</span><span v-else>編輯</span>
+              <span v-if="isEdit === comment.id">取消</span><span v-else>編輯</span>
             </button>
             <button
-              v-if="isEdit"
+              v-if="isEdit === comment.id"
               type="button"
               class="btn bg-dark text-white px-4 font-semibold hover:bg-primary"
               @click="confirmEdit(comment)"
@@ -74,14 +75,15 @@
               確認
             </button>
             <button
-              v-if="!isEdit"
+              v-if="!(isEdit === comment.id)"
               type="button"
               class="btn border border-dark px-4 font-semibold hover:border-primary hover:text-primary"
+              @click="deleteComment(comment.id)"
             >
               刪除
             </button>
           </div>
-          <div v-if="!isEdit" class="flex justify-between items-center">
+          <div class="flex justify-between items-center">
             <div class="flex gap-2">
               <button
                 v-if="comment.reply?.id"
@@ -92,7 +94,7 @@
                 <span v-if="isOpen !== comment.id">顯示</span><span v-else>隱藏</span>回覆
               </button>
               <RouterLink
-                :to="{path: `/exhibitions/${comment.exhibition?.id}`, hash: '#comments'}"
+                :to="{ path: `/exhibitions/${comment.exhibition?.id}`, hash: '#comments' }"
                 class="btn pl-0 text-dark-600 hover:text-dark"
                 >查看原始留言</RouterLink
               >
@@ -136,20 +138,10 @@ import { ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useDateFromUnix } from '@/composables/format'
 import { useCommentStore } from '../stores/commentStore'
-import { useExhibitionStore } from '../stores/exhibitsStore'
-// import { useMemberStore } from '../stores/memberStore'
-// import PageComponent from '../components/layout/PageComponent.vue'
 
 const commentStore = useCommentStore()
 const { memberCommentList } = storeToRefs(commentStore)
-const { fetchMemberComments, updateComment } = commentStore
-
-const exhibitionStore = useExhibitionStore()
-const { exhibitionsAll } = storeToRefs(exhibitionStore)
-const { fetchExhibitionsAll } = exhibitionStore
-
-// const memberStore = useMemberStore()
-// const { pages, turnPage } = memberStore
+const { fetchMemberComments, updateComment, deleteComment } = commentStore
 
 const isOpen = ref(null)
 const tempContent = ref('')
@@ -162,16 +154,6 @@ const isEdit = ref(null)
 
 const toggleEdit = (id) => {
   isEdit.value = isEdit.value === id ? null : id
-}
-
-const renderComments = async () => {
-  await fetchMemberComments()
-  if (!exhibitionsAll.value.length) await fetchExhibitionsAll()
-  memberCommentList.value.forEach((comment) => {
-    comment.exhibition = exhibitionsAll.value.find(
-      (exhibition) => exhibition.id === comment.exhibitionId
-    )
-  })
 }
 
 const confirmEdit = async (tempComment) => {
@@ -195,5 +177,5 @@ watch(
   { deep: true }
 )
 
-renderComments()
+fetchMemberComments()
 </script>
