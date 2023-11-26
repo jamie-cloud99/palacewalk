@@ -68,27 +68,27 @@
       <div class="relative mb-4 lg:mb-6 items-center space-y-2 cursor-pointer">
         <label for="collections" class="inline-block mr-2 font-bold flex-shrink-0">展品：</label>
         <p
-          v-show="targetList.length === 0"
+          v-show="targetList.length < 1"
           class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-dark-600 font-semibold text-lg mb-6 lg:mb-10 lg:text-2xl"
         >
           請從下方拖曳展品至此
         </p>
         <draggable
-          class="border border-dashed border-dark-600 py-12 lg:py-20 text-center flex gap-4 flex-wrap"
+          class="border border-dashed border-dark-600 py-12 px-5 lg:py-20 text-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           v-model="targetList"
           item-key="collectionId"
           group="collectionsGroup"
           @change="handleChange"
         >
           <template #item="{element}">
-            <div v-show="targetList.length > 0">
-              <div>{{ element.title }}</div>
-              <img
-                class="object-cover object-center h-full w-full"
-                :src="element.images?.main"
-                :alt="element.title"
-              />
-            </div>
+            <ul v-show="targetList.length > 0">
+              <li class="col-span-1" :key="element.collectionId">
+                <div>
+                  <CollectionListItem :collection-item="element" :show-fav-icon="false" />
+                </div>
+              </li>
+            </ul>
+
           </template>
           <!-- <button type="button" class="btn inline-block px-6 bg-dark text-white hover:bg-primary">
             預覽
@@ -130,10 +130,10 @@
     <draggable
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
       v-model="collectionList"
+      item-key="collectionId"
       group="collectionsGroup"
       @start="drag=true"
       @end="drag=false"
-      item-key="collectionId"
     >
       <template #item="{element}">
           <ul >
