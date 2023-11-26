@@ -1,4 +1,5 @@
 <template>
+  <!-- 目前沒被使用，但仍予保留，未來可能需用到-->
   <div class="h-[260px] mb-[68px] lg:bg-[size:350px,_cover] bg-[size:0px,_cover] bg-no-repeat
     bg-[url('/images/collection/collection-banner.png'),_url('/images/collection/banner-bg.jpg')]
     bg-[position:82%_-50%,_center_bottom]">
@@ -8,8 +9,8 @@
     </div>
   </div>
 </template>
+
 <script setup>
-import { reactive } from 'vue'
 import { toRefs } from 'vue'
 import BreadcrumbsComponent from '../layout/BreadcrumbsComponent.vue'
 
@@ -17,19 +18,4 @@ const props = defineProps({
   title: String,
 })
 const { title } = toRefs(props)
-
-const breadList = reactive([
-  {
-    title: '首頁',
-    path: '/'
-  },
-  {
-    title: '藝術展品',
-    path: '/collections'
-  },
-  {
-    title,
-    path: '/collections/masterpieces'
-  }
-])
 </script>

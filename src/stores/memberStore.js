@@ -4,7 +4,7 @@ import { useExhibitionStore } from './exhibitsStore'
 import { useCollectionStore } from './collectionStore'
 import axios from 'axios'
 
-const { VITE_JSON_SERVER, VITE_API, VITE_PATH } = import.meta.env
+const { VITE_JSON_SERVER } = import.meta.env
 
 export const useMemberStore = defineStore('member', () => {
   const exhibitionStore = useExhibitionStore()
@@ -16,7 +16,7 @@ export const useMemberStore = defineStore('member', () => {
   const { fetchCollectionsAll } = collectionStore
   const { collectionsAll } = storeToRefs(collectionStore)
 
-  const memberList = ref([{}])
+  const memberList = ref([])
   const isLoggedIn = ref(false)
   const tempMember = ref({})
   const member = ref({
@@ -63,13 +63,12 @@ export const useMemberStore = defineStore('member', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const filterFavorites = async (itemId, type) => {
+  const updateFavorites = async (itemId, type) => {
     const idField = type.slice(0, -1)
     const favList = favoriteList.value[type]
     const isFavorite = (id) => favList.some((item) => item?.[idField]?.id === id)
 
     if (isFavorite(itemId)) {
-      // !fix  api - delete (刪除一筆會把全部資料都刪掉)
       let favId
       if (type === 'exhibitions') {
         favId = favExhibitions.value.find((el) => el.id === itemId)?.favId
@@ -78,12 +77,7 @@ export const useMemberStore = defineStore('member', () => {
       }
 
       const apiUrl = `${VITE_JSON_SERVER}600/favorites/${favId}`
-      console.log(apiUrl)
-      // const res = await axios.delete(apiUrl)
-      const res = await axios.delete(apiUrl, (req) => {
-        req.options._noRemoveDependents = true
-      })
-      console.log(res)
+      await axios.delete(apiUrl)
       fetchFavorites()
     } else {
       const nowTimeStamp = Math.floor(new Date().getTime() / 1000)
@@ -130,21 +124,14 @@ export const useMemberStore = defineStore('member', () => {
     }
   }
 
-  const saveFavorites = async (id, type) => {
-    filterFavorites(id, type)
-  }
-
-  // todo upload photo
-  const uploadImage = (imgFile) => {
-    const api = `${VITE_API}api/${VITE_PATH}/admin/upload`
-    // const img = this.$refs.fileInput.files[0]
-    const formData = new FormData()
-    formData.append('file-to-upload', img)
-
-    axios.post(api, formData).then((res) => {
-      if (res.data.success) {
-      }
-    })
+  const fetchMembersAll = async () => {
+    const apiUrl = `${VITE_JSON_SERVER}users`
+    try {
+      const res = await axios.get(apiUrl)
+      memberList.value = res.data
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const signUp = async (user) => {
@@ -168,6 +155,8 @@ export const useMemberStore = defineStore('member', () => {
       const token = res.data.accessToken
       //set cookie expireation to 1 hour
       document.cookie = `palaceToken=${token};max-age=3600;`
+      getToken()
+      fetchFavorites()
     } catch (error) {
       console.log(error)
     }
@@ -228,14 +217,14 @@ export const useMemberStore = defineStore('member', () => {
     favExhibitions,
     favCollections,
     turnPage,
-    saveFavorites,
-    uploadImage,
+    updateFavorites,
     signUp,
     logIn,
     getToken,
     checkLogin,
     logOut,
     UpdateMember,
-    fetchFavorites
+    fetchFavorites,
+    fetchMembersAll
   }
 })

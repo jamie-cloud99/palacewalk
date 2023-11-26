@@ -17,8 +17,8 @@
             <button
               type="button"
               @click="changeForm(true)"
-              class="w-full text-2xl font-bold py-6"
-              :class="{ 'bg-black text-white': hasAccount }"
+              class="w-full text-2xl font-bold py-6 hover:bg-black/20"
+              :class="{ 'bg-black text-white hover:!bg-black': hasAccount }"
             >
               登入
             </button>
@@ -27,108 +27,167 @@
             <button
               type="button"
               @click="changeForm(false)"
-              class="w-full text-2xl font-bold py-6"
-              :class="{ 'bg-black text-white': !hasAccount }"
+              class="w-full text-2xl font-bold py-6 hover:bg-black/20"
+              :class="{ 'bg-black text-white hover:!bg-black': !hasAccount }"
             >
               註冊
             </button>
           </div>
         </div>
-
-        <div
-          v-if="hasAccount"
-          class="overflow-y-auto scrollbar-hidden max-h-[300px] px-8 py-4 lg:py-6"
-          data-te-modal-body-ref
-        >
-          <h5 class="mb-4 text-center text-xl font-semibold">會員登入，入宮暢行最自在</h5>
-          <div class="mb-4">
-            <label for="account" class="block mb-2">帳號</label>
-            <input id="account" type="email"
-            v-model="tempMember.email" placeholder="請輸入信箱" class="form-input w-full" />
-          </div>
-          <div class="mb-4">
-            <label for="password" class="block mb-2">密碼</label>
-            <input
-              id="password"
-              type="password"
-              v-model="tempMember.password"
-              placeholder="請輸入密碼"
-              class="form-input w-full"
-            />
-          </div>
-        </div>
-
-        <div
-          v-else
-          class="overflow-y-auto scrollbar-hidden max-h-[300px] px-8 py-4 lg:py-6"
-          data-te-modal-body-ref
-        >
-          <h5 class="mb-4 text-center text-xl font-semibold">加入會員，坐擁宮中頂級美學</h5>
-          <div class="mb-4">
-            <label for="name" class="block mb-2">顯示暱稱</label>
-            <input
-              type="text"
-              id="name"
-              v-model="tempMember.name"
-              class="form-input w-full"
-              placeholder="請輸入暱稱"
-            />
-          </div>
-          <div class="mb-4">
-            <label for="account" class="block mb-2">帳號</label>
-            <input
-              id="account"
-              type="email"
-              v-model="tempMember.email"
-              placeholder="請輸入信箱"
-              class="form-input w-full"
-            />
-          </div>
-          <div class="mb-4">
-            <label for="password" class="block mb-2">密碼</label>
-            <input
-              id="password"
-              type="password"
-              v-model="tempMember.password"
-              placeholder="請輸入密碼"
-              class="form-input w-full"
-            />
-          </div>
-          <div class="mb-4">
-            <label for="password-check" class="block mb-2">確認密碼</label>
-            <input
-              id="password-check"
-              type="password"
-              v-model="checkedPassword"
-              placeholder="請再次輸入密碼"
-              class="form-input w-full"
-            />
-          </div>
-        </div>
-
-        <div class="flex items-center justify-center gap-x-4 py-6">
-          <button
-            @click="closeModal"
-            type="button"
-            class="btn w-24 border border-dark hover:bg-dark hover:text-white"
-            data-te-modal-dismiss
-          >
-            取消
-          </button>
-
-          <button
+        <VForm v-slot="{ errors, isSubmitting, meta }" ref="formLogIn">
+          <div
             v-if="hasAccount"
-            type="button"
-            class="btn w-24 bg-primary text-white hover:bg-dark"
-            @click="logInMember(tempMember)"
+            class="overflow-y-auto scrollbar-hidden max-h-[300px] px-8 py-4 lg:py-6"
+            data-te-modal-body-ref
           >
-            登入
-          </button>
-          <button v-else type="button" class="btn w-24 bg-primary text-white hover:bg-dark"
-          @click="registerMember(tempMember)">
-            註冊
-          </button>
-        </div>
+            <h5 class="mb-4 text-center text-xl font-semibold">會員登入，入宮暢行最自在</h5>
+
+            <div class="mb-4">
+              <label for="account" class="block mb-2">帳號</label>
+              <VField
+                v-model.trim="tempMember.email"
+                type="email"
+                id="account"
+                placeholder="請輸入信箱"
+                class="form-input w-full"
+                name="email"
+                rules="email|required"
+                :class="{ 'is-invalid': errors['email'] }"
+              />
+              <ErrorMessage as="div" name="email" class="form-error" v-slot="{ message }">
+                <span class="mr-1"><i class="fa-solid fa-circle-exclamation"></i></span>
+                <span>{{ message }}</span>
+              </ErrorMessage>
+            </div>
+            <div class="mb-4">
+              <label for="password" class="block mb-2">密碼</label>
+              <VField
+                v-model.trim="tempMember.password"
+                id="password"
+                type="password"
+                placeholder="請輸入密碼"
+                label="密碼"
+                name="password"
+                :rules="passwordRules"
+                class="form-input w-full"
+                :class="{ 'is-invalid': errors['password'] }"
+              />
+              <ErrorMessage as="div" name="password" class="form-error" v-slot="{ message }">
+                <span class="mr-1"><i class="fa-solid fa-circle-exclamation"></i></span>
+                <span>{{ message }}</span>
+              </ErrorMessage>
+            </div>
+          </div>
+
+          <div
+            v-else
+            class="overflow-y-auto scrollbar-hidden max-h-[300px] px-8 py-4 lg:py-6"
+            data-te-modal-body-ref
+          >
+            <h5 class="mb-4 text-center text-xl font-semibold">加入會員，坐擁宮中頂級美學</h5>
+            <div class="mb-4">
+              <label for="name" class="block mb-2">顯示暱稱</label>
+              <VField
+                v-model.trim="tempMember.name"
+                id="name"
+                type="text"
+                placeholder="請輸入暱稱"
+                label="暱稱"
+                name="name"
+                rules="required"
+                class="form-input w-full"
+                :class="{ 'is-invalid': errors['name'] }"
+              />
+              <ErrorMessage as="div" name="name" class="form-error" v-slot="{ message }">
+                <span class="mr-1"><i class="fa-solid fa-circle-exclamation"></i></span>
+                <span>{{ message }}</span>
+              </ErrorMessage>
+            </div>
+            <div class="mb-4">
+              <label for="account" class="block mb-2">帳號</label>
+              <VField
+                v-model.trim="tempMember.email"
+                type="email"
+                id="account"
+                placeholder="請輸入信箱"
+                class="form-input w-full"
+                name="email"
+                rules="email|required"
+                :class="{ 'is-invalid': errors['email'] }"
+              />
+              <ErrorMessage as="div" name="email" class="form-error" v-slot="{ message }">
+                <span class="mr-1"><i class="fa-solid fa-circle-exclamation"></i></span>
+                <span>{{ message }}</span>
+              </ErrorMessage>
+            </div>
+            <div class="mb-4">
+              <label for="password" class="block mb-2">密碼</label>
+              <VField
+                v-model.trim="tempMember.password"
+                id="password"
+                type="password"
+                placeholder="請輸入密碼"
+                label="密碼"
+                name="password"
+                :rules="passwordRules"
+                class="form-input w-full"
+                :class="{ 'is-invalid': errors['password'] }"
+              />
+              <ErrorMessage as="div" name="password" class="form-error" v-slot="{ message }">
+                <span class="mr-1"><i class="fa-solid fa-circle-exclamation"></i></span>
+                <span>{{ message }}</span>
+              </ErrorMessage>
+            </div>
+            <div class="mb-4">
+              <label for="password-check" class="block mb-2">確認密碼</label>
+              <VField
+                v-model.trim="checkedPassword"
+                id="password-check"
+                type="password"
+                placeholder="請再次輸入密碼"
+                label="確認密碼"
+                name="password-check"
+                :rules="checkPassword"
+                class="form-input w-full"
+                :class="{ 'is-invalid': errors['password'] }"
+              />
+              <ErrorMessage as="div" name="password-check" class="form-error" v-slot="{ message }">
+                <span class="mr-1"><i class="fa-solid fa-circle-exclamation"></i></span>
+                <span>{{ message }}</span>
+              </ErrorMessage>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-center gap-x-4 py-6">
+            <button
+              @click="closeModal"
+              type="button"
+              class="btn w-24 border border-dark hover:bg-dark hover:text-white"
+              data-te-modal-dismiss
+            >
+              取消
+            </button>
+
+            <button
+              v-if="hasAccount"
+              type="submit"
+              class="btn w-24 bg-primary text-white hover:bg-dark disabled:bg-primary/50 disabled:cursor-not-allowed"
+              :disabled="isSubmitting || !(meta.valid && meta.touched)"
+              @click="logInMember(tempMember)"
+            >
+              登入
+            </button>
+            <button
+              v-else
+              type="submit"
+              class="btn w-24 bg-primary text-white hover:bg-dark disabled:bg-primary/50 disabled:cursor-not-allowed"
+              :disabled="isSubmitting || !(meta.valid && meta.touched)"
+              @click="registerMember(tempMember)"
+            >
+              註冊
+            </button>
+          </div>
+        </VForm>
       </div>
     </div>
   </div>
@@ -137,8 +196,10 @@
 <script setup>
 import { Modal, initTE } from 'tw-elements'
 import { ref, onMounted } from 'vue'
-import { useMemberStore } from '../../stores/memberStore'
+import { useRouter } from 'vue-router'
+import { useMemberStore } from '@/stores/memberStore'
 import { storeToRefs } from 'pinia'
+import { passwordRules } from '@/utils/useValidation'
 
 const modal = ref(null)
 const curModal = ref(null)
@@ -146,14 +207,16 @@ const hasAccount = ref(true)
 const memberStore = useMemberStore()
 const { tempMember } = storeToRefs(memberStore)
 const { signUp, logIn } = memberStore
-
-const checkedPassword = ref({})
+const checkedPassword = ref('')
+const formLogIn = ref(null)
+const router = useRouter()
 
 defineExpose({
   curModal
 })
 
 const closeModal = () => {
+  formLogIn.value.resetForm()
   curModal.value.hide()
 }
 
@@ -162,27 +225,34 @@ const changeForm = (status) => {
   tempMember.value = {}
 }
 
-const logInMember = (member) => {
+const logInMember = async (member) => {
   const account = { email: member.email, password: member.password }
-  logIn(account)
   curModal.value.hide()
+  await logIn(account)
+  router.go(0)
 }
 
-const registerMember = (member) => {
-  const data = { ...member, imageUrl: 'https://images.unsplash.com/photo-1638803040283-7a5ffd48dad5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80' }
-  signUp(data)
+const registerMember = async (member) => {
+  const data = {
+    ...member,
+    imageUrl:
+      'https://images.unsplash.com/photo-1638803040283-7a5ffd48dad5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80'
+  }
+
   curModal.value.hide()
+  await signUp(data)
+  router.go(0)
+}
+
+const checkPassword = (password) => {
+  if (!password) return '確認密碼 為必填'
+  return password === tempMember.value.password ? true : '兩次密碼輸入不同，請重新確認'
 }
 
 initTE({ Modal })
 
 onMounted(() => {
+  tempMember.value = {}
   curModal.value = new Modal(modal.value)
 })
 </script>
-
-<style>
-.form-input {
-  @apply focus:border-primary focus:ring-primary read-only:focus:border-dark-600 read-only:focus:ring-0;
-}
-</style>

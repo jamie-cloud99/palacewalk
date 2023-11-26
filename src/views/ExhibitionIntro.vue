@@ -22,22 +22,41 @@
                 >回列表</RouterLink
               >
               <RouterLink
-                to="/exhibitions/1/content"
+                v-if="hasStarted"
+                :to="`/exhibitions/${exhibition.id}/content`"
                 target="_blank"
                 class="btn bg-primary text-white hover:bg-dark"
               >
                 前往看展
               </RouterLink>
+              <button
+                v-else
+                type="button"
+                class="btn bg-primary text-white cursor-not-allowed opacity-50"
+              >
+                即將開展
+              </button>
             </div>
             <ul class="flex justify-end text-2xl">
               <li class="me-4">
-                <a href="#"><i class="fa-regular fa-calendar"></i></a>
+                <button type="button" class="hover:text-primary">
+                  <i class="fa-regular fa-calendar"></i>
+                </button>
               </li>
               <li class="me-4">
-                <a href="#"><i class="fa-regular fa-heart"></i></a>
+                <button
+                  type="button"
+                  class="hover:text-primary"
+                  @click="updateFavorites(exhibition.id, 'exhibitions')"
+                >
+                  <i class="fa-regular fa-heart" :class="{ 'fa-solid text-primary': showFavorite }">
+                  </i>
+                </button>
               </li>
               <li>
-                <a href="#"><i class="fa-solid fa-share-nodes"></i></a>
+                <button type="button" class="hover:text-primary">
+                  <i class="fa-solid fa-share-nodes"></i>
+                </button>
               </li>
             </ul>
           </div>
@@ -47,82 +66,14 @@
           <p class="mb-8">{{ exhibition.description }}</p>
           <h3 class="font-bold mb-2">展覽亮點：</h3>
           <div v-html="exhibition.content" class="content mb-8"></div>
-          <h3 class="font-bold mb-2">展品資訊：</h3>
-          <div class="relative overflow-hidden mb-8">
-            <CollectionSlides />
+          <div v-if="hasStarted">
+            <h3 class="font-bold mb-2">展品資訊：</h3>
+            <div class="relative overflow-hidden mb-8">
+              <CollectionSlides />
+            </div>
           </div>
-          <h4 class="font-bold mb-2">展覽留言<span class="comment-num">(2)</span></h4>
-          <div class="relative border-b pb-[24px] mb-3">
-            <input
-              type="text"
-              id="comment"
-              class="form-input bg-transparent border-dark-400 rounded-3xl w-full py-2 px-4 placeholder:text-dark-600"
-              placeholder="新增留言"
-            />
-            <button type="button" class="absolute right-4 top-2 hover:text-primary">
-              <i class="fa-solid fa-paper-plane"></i>
-            </button>
-          </div>
-          <ul class="space-y-5">
-            <li v-for="i in 1" :key="i + 'i'">
-              <div class="border-b border-dark-400 px-2">
-                <div class="pt-4 pb-2">
-                  <div class="flex items-center">
-                    <div class="w-[36px] h-[36px] mr-2">
-                      <img
-                        src="/images/user-3.webp"
-                        class="object-cover object-center"
-                        alt="文化探索者"
-                      />
-                    </div>
-                    <div class="font-semibold mr-2">文化探索者</div>
-                    <time class="text-primary">2023/08/10</time>
-                  </div>
-                </div>
-                <div class="pt-4 pb-2">
-                  <p class="pb-2 pl-11 lg:pb-4 min-h-[50px] font-medium">
-                    之前去故宮看過一次這檔展覽，沒想到還有線上展可以重溫，琺瑯彩瓷的美歷經百年也不會褪色！
-                  </p>
-                  <div class="flex justify-end flex-grow gap-2 mb-3 lg:hidden"></div>
-                  <div class="flex justify-between items-center">
-                    <div class="flex gap-2 pl-11">
-                      <button
-                        type="button"
-                        class="btn pl-0 text-dark-600 hover:text-dark"
-                        @click="toggleReply(i)"
-                      >
-                        <span v-if="isOpen === i">隱藏</span><span v-else>顯示</span>回覆
-                      </button>
-                    </div>
-                  </div>
-                  <div
-                    class="max-h-0 overflow-hidden transition-all duration-500"
-                    :class="{ '!max-h-[500px]': isOpen === i }"
-                  >
-                    <hr class="border-dark-400 mb-3" />
-                    <div class="pl-6 gap-2">
-                      <div class="flex items-center">
-                        <div class="w-[36px] h-[36px] mr-2">
-                          <img
-                            src="/images/user-2.webp"
-                            class="object-cover object-center"
-                            alt="策展者"
-                          />
-                        </div>
-                        <p class="font-semibold mr-2">策展人</p>
-                        <time class="text-primary">2023/08/10</time>
-                      </div>
-                      <div class="pt-4 pb-2">
-                        <p class="pl-11">
-                          銅胎畫琺瑯方盤是康熙御製的傑作，看來你跟皇帝有同樣獨到的眼光呢！
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
+          <div v-else class="mb-6 lg:mb-10"></div>
+          <ExhibitionMessages />
         </div>
       </div>
     </div>
@@ -136,17 +87,27 @@ import { usePeriod } from '../composables/format'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 import CollectionSlides from '../components/exhibition/CollectionSlides.vue'
 import BackgroundComponent from '../components/background/BackgroundComponent.vue'
+import ExhibitionMessages from '../components/exhibition/ExhibitionMessages.vue'
 
 import { storeToRefs } from 'pinia'
 import { useExhibitionStore } from '../stores/exhibitsStore'
 import { useRouterStore } from '../stores/routerStore'
 import { useSlideStore } from '../stores/slideStore'
+import { useMemberStore } from '../stores/memberStore'
 
 const routerStore = useRouterStore()
 const { exhibitionId } = storeToRefs(routerStore)
 
 const slideStore = useSlideStore()
-const { getSlide } = slideStore
+const { resetSlides } = slideStore
+
+const memberStore = useMemberStore()
+const { updateFavorites } = memberStore
+const { favExhibitions } = storeToRefs(memberStore)
+
+const showFavorite = computed(() => {
+  return favExhibitions.value.some((item) => item.id === exhibition.value.id)
+})
 
 // const router = useRouter()
 
@@ -186,23 +147,21 @@ const breadList = reactive([
 // }
 
 const exhibitionStore = useExhibitionStore()
-const { exhibition, exhibitionCollections } = storeToRefs(exhibitionStore)
+const { exhibition, exhibitionCollections, hasStarted } = storeToRefs(exhibitionStore)
 const { fetchExhibition } = exhibitionStore
 
-const isOpen = ref(1)
-
-const toggleReply = (id) => {
-  isOpen.value = isOpen.value === id ? '' : id
+const renderExhibition = async () => {
+  await fetchExhibition(exhibitionId.value)
+  if (hasStarted.value) {
+    resetSlides(exhibitionCollections.value?.length, {
+      default: 1,
+      md: 2,
+      lg: 3
+    })
+  }
 }
 
-;(async () => {
-  await fetchExhibition(exhibitionId.value)
-  getSlide(exhibitionCollections.value.length, {
-    default: 1,
-    md: 2,
-    lg: 3
-  })
-})()
+renderExhibition()
 </script>
 
 <style>
