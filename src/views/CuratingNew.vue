@@ -147,31 +147,24 @@
     </draggable>
 
     <div class="flex py-6 lg:py-10">
-      <PageComponent :pages="pages" @change="turnPage" />
+      <PageComponent :pages="pages" @change="selectPage" />
     </div>
   </div>
 </template>
 
 <script setup>
 import { reactive, ref } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useCollectionStore } from '../stores/collectionStore'
+import { usePageStore } from '../stores/pageStore'
 import draggable from 'vuedraggable'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 import PageComponent from '../components/layout/PageComponent.vue'
 import CollectionListItem from '../components/collection/CollectionListItem.vue'
 
-const pages = ref({
-  totalPages: 3,
-  curPage: 1,
-  havePre: false,
-  haveNext: true
-})
-
-const turnPage = (page) => {
-  pages.value.curPage = page
-  pages.value.havePre = page > 1
-  pages.value.haveNext = page < pages.value.totalPages
-  window.scrollTo({ top: 0, behavior: 'smooth' })
-}
+const pageStore = usePageStore()
+const { pages } = storeToRefs(pageStore)
+const { turnPage } = pageStore
 
 const breadList = reactive([
   {
@@ -188,64 +181,16 @@ const breadList = reactive([
   }
 ])
 
-const collectionList = ref([
-  {
-    id: '20',
-    collectionId: 'P020',
-    title: '具區林屋 軸',
-    author: '王蒙',
-    time: '元'
-  },
-  {
-    id: '204',
-    collectionId: 'A004',
-    title: '白套紅玻璃包袱紋鼻煙壺',
-    author: '不詳',
-    time: '清'
-  },
-  {
-    id: '21',
-    collectionId: 'P021',
-    title: '八駿圖　軸',
-    author: '郎世寧',
-    time: '清'
-  },
-  {
-    id: '16',
-    collectionId: 'P016',
-    title: '翠巘高秋圖　軸',
-    author: '愛新覺羅弘旿',
-    time: '清'
-  },
-  {
-    id: '201',
-    collectionId: 'A005',
-    title: '琺瑯彩柳燕碗',
-    author: '不詳',
-    time: '清'
-  },
-  {
-    id: '22',
-    collectionId: 'P022',
-    title: '摹顧愷之洛神圖 卷',
-    author: '丁觀鵬',
-    time: '清'
-  },
-  {
-    id: '206',
-    collectionId: 'A006',
-    title: '金胎內填兼畫琺瑯西方仕女圖執壺',
-    author: '不詳',
-    time: '清'
-  },
-  {
-    id: '23',
-    collectionId: 'P023',
-    title: '紅牡丹　單片',
-    author: '鄭曼青',
-    time: '民國'
-  }
-])
+const collectionStore = useCollectionStore()
+const { collectionList, curCategory } = storeToRefs(collectionStore)
+const { fetchPageCollections } = collectionStore
+
+const selectPage = (page) => {
+  turnPage(page, false)
+  fetchPageCollections(curCategory.value.id, page)
+}
+
+fetchPageCollections()
 
 const drag = ref(false)
 const targetList = reactive([])

@@ -77,7 +77,7 @@ const breadList = reactive([
 
 const selectPage = (page) => {
   turnPage(page)
-  fetchPageCollections(curCategory.value, page)
+  fetchPageCollections(curCategory.value.id, page)
   router.push({ path: '/collections', query: { category: curCategory.value.title, page } })
 }
 
@@ -92,7 +92,7 @@ const updateCurCategory = () => {
 watch(
   () => route.value?.query,
   async () => {
-    if(categoryList.value.length <= 1) await fetchCategoryList()
+    if (categoryList.value.length <= 1) await fetchCategoryList()
     await updateCurCategory()
     const queryPage = route.value?.query.page
     if (queryPage) {

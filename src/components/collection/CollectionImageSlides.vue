@@ -72,7 +72,8 @@
 </template>
 
 <script setup>
-import { onMounted, watch, nextTick, ref } from 'vue'
+import { onMounted, watch, nextTick, ref, watchEffect } from 'vue'
+import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { Thumbs } from 'swiper/modules';
 import { useSlideStore } from '../../stores/slideStore'
@@ -89,15 +90,13 @@ const breakpoints = ref({
   md: 768
 })
 
-watch(() => slides, turnSlide, { deep:true })
+const route = useRoute()
 
-const changeSlidesPerView = (windowWidth) => {
-  if (windowWidth < breakpoints.value?.md) {
-    curSlideShowed.value = slides.value.slideShowed.default
-  } else {
-    curSlideShowed.value = slides.value.slideShowed.md
+watchEffect(() => {
+  if (slides.value && route.path) {
+    turnSlide()
   }
-}
+})
 
 watch(
   () => collection.value.images,
@@ -107,9 +106,16 @@ watch(
   }
 )
 
-changeSlidesPerView(window.innerWidth)
+const changeSlidesPerView = (windowWidth) => {
+  if (windowWidth < breakpoints.value?.md) {
+    curSlideShowed.value = slides.value.slideShowed.default
+  } else {
+    curSlideShowed.value = slides.value.slideShowed.md
+  }
+}
 
 onMounted(() => {
+  changeSlidesPerView(window.innerWidth)
   window.addEventListener('resize', () => {
     const windowWidth = window.innerWidth
     changeSlidesPerView(windowWidth)

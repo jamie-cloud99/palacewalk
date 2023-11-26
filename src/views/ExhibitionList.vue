@@ -2,7 +2,7 @@
   <div class="mb-6 md:mb-10 lg:mb-[68px]">
     <ExhibitionBanner :banner-content="curBannerContent" />
   </div>
-  <div class="container mb-[60px]">
+  <div class="container mb-15 min-h-[1000px]">
     <div class="lg:grid grid-cols-12 gap-x-6">
       <div class="col-span-3">
         <h3 class="hidden lg:flex flex-col text-lg font-semibold">

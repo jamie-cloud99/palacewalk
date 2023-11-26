@@ -21,7 +21,6 @@ export const useCommentStore = defineStore('comment', () => {
       const { memberList } = storeToRefs(memberStore)
       const { fetchMembersAll } = memberStore
       if (!memberList.value.length) await fetchMembersAll()
-
       commentList.value.forEach(async (comment) => {
         reply.value = {}
         await fetchReplies(comment.id)
@@ -29,6 +28,7 @@ export const useCommentStore = defineStore('comment', () => {
           comment.reply = reply.value
           comment.reply.user = memberList.value.find((member) => member.id === comment.reply.userId)
         }
+
         comment.user = memberList.value.find((member) => member.id === comment.userId)
       })
     } catch (error) {
@@ -61,10 +61,11 @@ export const useCommentStore = defineStore('comment', () => {
       method = 'patch'
       data = { ...comment }
     }
+
     try {
       const res = await axios[method](apiUrl, data)
       if (res.data) {
-        fetchMemberComments()
+        id ? fetchMemberComments() : fetchComments(curExhibitionId.value)
       } else {
         console.log(res)
       }
@@ -75,11 +76,10 @@ export const useCommentStore = defineStore('comment', () => {
 
   const fetchMemberComments = async () => {
     const { member, memberList } = storeToRefs(memberStore)
-    const apiUrl = `${VITE_JSON_SERVER}600/comments/?userId=${member.value.id}`
+    const apiUrl = `${VITE_JSON_SERVER}600/comments/?userId=${member.value.id}&_expand=exhibition`
     try {
       const res = await axios.get(apiUrl)
       memberCommentList.value = res.data
-
       memberCommentList.value.forEach(async (comment) => {
         reply.value = {}
         await fetchReplies(comment.id)
@@ -93,12 +93,23 @@ export const useCommentStore = defineStore('comment', () => {
     }
   }
 
+  const deleteComment = async (id) => {
+    const apiUrl = `${VITE_JSON_SERVER}600/comments/${id}`
+    try {
+      await axios.delete(apiUrl)
+      fetchMemberComments()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return {
     commentList,
     memberCommentList,
     updateComment,
     fetchComments,
     fetchReplies,
-    fetchMemberComments
+    fetchMemberComments,
+    deleteComment
   }
 })
