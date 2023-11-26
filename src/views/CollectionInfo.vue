@@ -116,11 +116,10 @@ import { useRoute } from 'vue-router'
 import { useRouterStore } from '../stores/routerStore'
 import { useCollectionStore } from '../stores/collectionStore'
 import { useSlideStore } from '../stores/slideStore'
-import CollectionMasterSlides from '../components/collection/CollectionMasterSlides.vue'
 import BackgroundComponent from '../components/background/BackgroundComponent.vue'
+import CollectionRelatedSlides from '../components/collection/CollectionRelatedSlides.vue'
 import CollectionImageSlides from '../components/collection/CollectionImageSlides.vue'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
-
 
 const route = useRoute()
 
@@ -191,13 +190,6 @@ watch(
   },
   { immediate: true, deep: true }
 )
-;(async () => {
-  await fetchCollection(collectionId.value)
-  getSlide(collection.value.images.list.length + 1, {
-    default: 1,
-    md: 2
-  })
-})()
 </script>
 
 <style scoped>
