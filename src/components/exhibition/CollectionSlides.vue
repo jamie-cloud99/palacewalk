@@ -55,15 +55,11 @@ import { useSlideStore } from '@/stores/slideStore'
 import { useExhibitionStore } from '@/stores/exhibitsStore'
 import CollectionListItem from '@/components/collection/CollectionListItem.vue'
 
-<<<<<<< HEAD
+
 const exhibitionStore = useExhibitionStore()
 const { exhibitionCollections } = storeToRefs(exhibitionStore)
-
-=======
-const exhbitionStore = useExhibitionStore()
-const { exhibitionCollections } = storeToRefs(exhbitionStore)
 const route = useRoute()
->>>>>>> origin/dev
+
 const slideStore = useSlideStore()
 const { swiperEl, slides, curSlideShowed, curSlidePage } = storeToRefs(slideStore)
 const { goPrev, goNext, turnSlide } = slideStore

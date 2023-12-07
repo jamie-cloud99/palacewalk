@@ -81,7 +81,7 @@
   <BackgroundComponent />
 </template>
 <script setup>
-import { ref, reactive } from 'vue'
+import { reactive,computed } from 'vue'
 // import { useRouter } from 'vue-router'
 import { usePeriod } from '../composables/format'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
