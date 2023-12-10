@@ -3,18 +3,15 @@
     :grabCursor="true"
     :slidesPerView="'auto'"
     :slides-per-view="1"
-    :navigation="true"
-    :pagination="{
-      clickable: true,
-    }"
+    :navigation="{ nextEl: '.nextArrow', prevEl: '.prevArrow' }"
+    :pagination="{ clickable: true, el: '.comment-pagination' }"
     :space-between="20"
     :breakpoints="{ 
       768: { slidesPerView: 2, spaceBetween: 20 }, 
       1280: { slidesPerView: 4, spaceBetween: 20 } 
     }"
     ref="swiperEl"
-    class="mb-20 lg:mb-24"
-  >
+  > 
     <swiper-slide
       class="flex-shrink-0 sm:max-w-4/5"
       v-for="(item, i) in comments"
@@ -42,6 +39,21 @@
 
 <script setup>
 import { ref } from 'vue'
+import { Navigation, Pagination } from 'swiper/modules'
+
+const swiperEl = document.querySelector('swiper-container');
+
+const params = {
+  modules: [Navigation, Pagination],
+  injectStylesUrls: [
+    'path/to/navigation-element.min.css',
+    'path/to/pagination-element.min.css',
+  ],
+};
+
+Object.assign(swiperEl, params);
+
+swiperEl.initialize();
 
 const comments = ref([
   {
@@ -72,13 +84,36 @@ const comments = ref([
     content: '我很喜歡可以線上策展的功能！每個人都可以讓大家看到自己的策展精華觀點！'
   }
 ])
-
-const swiperEl = ref(null)
 </script>
 
 <style>
 swiper-container::part(container) {
   overflow: initial;
+}
+
+.arrow{
+  @apply absolute flex justify-center items-center drop-shadow text-black font-bold bg-white block w-[48px] h-[48px] rounded-full z-10 hover:bg-slate-200 hover:transition; 
+}
+.arrow.swiper-button-disabled{
+  opacity: 0.3;
+}
+
+.prevArrow{
+  top: calc(50% + 24px);
+  left: 96px;
+  right: auto;
+}
+.nextArrow{
+  top: calc(50% + 24px);
+  left: 160px;
+  right: auto;
+}
+
+.comment-pagination .swiper-pagination-bullet{
+  @apply bg-slate-300 block w-6 h-1 mr-2;
+}
+.comment-pagination .swiper-pagination-bullet-active{
+  @apply bg-primary
 }
 
 </style>
