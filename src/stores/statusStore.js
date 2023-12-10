@@ -56,7 +56,7 @@ export const useStatusStore = defineStore('status', () => {
   const isLoading = ref(false)
   const isFullPage = ref(true)
   const setLoading = () => {
-    return isLoading.value = true
+    isLoading.value = true
   }
   const clearLoading = () => {
     setTimeout(() => {
@@ -101,7 +101,7 @@ export const useStatusStore = defineStore('status', () => {
   // }
 
   const changeSearchType = (typeCode) => {
-    searchType.value = searchTypeList.value.find((type) => (type.code === typeCode))
+    searchType.value = searchTypeList.value.find((type) => type.code === typeCode)
     isFullPage.value = false
     isLoading.value = true
     clearLoading()
