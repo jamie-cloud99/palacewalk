@@ -1,5 +1,7 @@
 import { computed, ref } from 'vue'
 import { defineStore, storeToRefs } from 'pinia'
+import { useToastStore } from './toastStore'
+import { useStatusStore } from './statusStore'
 import { useExhibitionStore } from './exhibitsStore'
 import { useCollectionStore } from './collectionStore'
 import axios from 'axios'
@@ -9,12 +11,17 @@ const { VITE_JSON_SERVER } = import.meta.env
 export const useMemberStore = defineStore('member', () => {
   const exhibitionStore = useExhibitionStore()
   const collectionStore = useCollectionStore()
+  const toastStore = useToastStore()
+  const statusStore = useStatusStore()
 
   const { fetchExhibitionsAll } = exhibitionStore
   const { exhibitionsAll } = storeToRefs(exhibitionStore)
 
   const { fetchCollectionsAll } = collectionStore
   const { collectionsAll } = storeToRefs(collectionStore)
+
+  const { clearLoading, setLoading } = statusStore
+  const { handleError, showSuccessToast, showFailToast } = toastStore
 
   const memberList = ref([])
   const isLoggedIn = ref(false)
@@ -136,29 +143,37 @@ export const useMemberStore = defineStore('member', () => {
 
   const signUp = async (user) => {
     const apiUrl = `${VITE_JSON_SERVER}users`
+    setLoading()
     try {
       await axios.post(apiUrl, user)
       const account = { email: user.email, password: user.password }
+      showSuccessToast('註冊成功')
       logIn(account)
     } catch (error) {
-      console.log(error)
+      handleError()
+    } finally {
+      clearLoading()
     }
   }
 
   const logIn = async (account) => {
     const apiUrl = `${VITE_JSON_SERVER}login`
+    setLoading()
     try {
       const res = await axios.post(apiUrl, account)
       member.value = res.data.user
       localStorage.setItem('userId', res.data.user.id)
       isLoggedIn.value = true
       const token = res.data.accessToken
-      //set cookie expireation to 1 hour
+      // set cookie expireation to 1 hour
       document.cookie = `palaceToken=${token};max-age=3600;`
       getToken()
-      fetchFavorites()
+      await fetchFavorites()
+      showSuccessToast('登入成功')
     } catch (error) {
-      console.log(error)
+      showFailToast('帳號或密碼錯誤，請重新登入')
+    } finally {
+      clearLoading()
     }
   }
 
@@ -193,11 +208,15 @@ export const useMemberStore = defineStore('member', () => {
     // todo: check the orginPassword
     const id = localStorage.getItem('userId')
     const apiUrl = `${VITE_JSON_SERVER}600/users/${id}`
+    setLoading()
     try {
       await axios.patch(apiUrl, user)
       await fetchMember()
+      showSuccessToast('修改成功')
     } catch (error) {
-      console.log(error)
+      showFailToast('修改失敗，請稍後再試')
+    } finally {
+      clearLoading()
     }
   }
 

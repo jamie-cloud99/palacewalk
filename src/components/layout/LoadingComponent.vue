@@ -8,7 +8,7 @@
 
 <script setup>
 import { storeToRefs } from 'pinia'
-import { useStatusStore } from '../../stores/statusStore'
+import { useStatusStore } from '@/stores/statusStore'
 
 const statusStore = useStatusStore()
 const { isLoading } = storeToRefs(statusStore)
