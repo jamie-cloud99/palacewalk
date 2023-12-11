@@ -17,31 +17,6 @@
             @select-item="changeMenuItem"
           />
         </div>
-        <div class="hidden lg:block">
-          <h3 class="flex flex-col text-lg">
-            檢索
-            <span class="font-cormo text-2xl">SEARCH</span>
-          </h3>
-          <ul class="mb-4">
-            <li class="mb-3 relative">
-              <input type="text" id="search" class="form-input search" placeholder="展覽檢索" />
-              <button
-                type="button"
-                class="btn absolute top-1/2 right-0 -translate-y-1/2 hover:text-primary"
-              >
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </li>
-            <li class="relative">
-              <select name="" id="search" class="form-select search">
-                <option class="text-dark-600" value="" disabled selected>請選擇類別</option>
-                <option class="text-dark" value="">藝術</option>
-                <option class="text-dark" value="">文物</option>
-                <option class="text-dark" value="">綜合</option>
-              </select>
-            </li>
-          </ul>
-        </div>
       </div>
       <div class="col-span-9">
         <ul class="grid grid-cols-12 gap-4">

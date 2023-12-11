@@ -1,17 +1,26 @@
 <template>
   <swiper-container
+    :grabCursor="true"
+    :slidesPerView="'auto'"
     :slides-per-view="1"
-    :space-between="24"
-    :breakpoints="{ 768: { slidesPerView: 2 }, 1024: { slidesPerView: 4 } }"
+    :navigation="true"
+    :pagination="{
+      clickable: true,
+    }"
+    :space-between="20"
+    :breakpoints="{ 
+      768: { slidesPerView: 2, spaceBetween: 20 }, 
+      1280: { slidesPerView: 4, spaceBetween: 20 } 
+    }"
     ref="swiperEl"
     class="mb-20 lg:mb-24"
   >
     <swiper-slide
-      class="flex-shrink-0 sm:max-w-[300px]"
+      class="flex-shrink-0 sm:max-w-4/5"
       v-for="(item, i) in comments"
       :key="item.content"
     >
-      <div class="p-6 bg-dark-200">
+      <div class="p-6 bg-slate-100 border-y-4 border-slate-00 rounded-lg mx-auto">
         <div class="mb-4 flex gap-2 items-center">
           <img
             :src="`/images/user-${i + 1}.webp`"
@@ -56,6 +65,11 @@ const comments = ref([
     name: '匿名藝術家',
     date: '2023.09.02',
     content: '搜尋展品很方便，看大家自己策展也很新奇呢！'
+  },
+  {
+    name: '王牌藝術家',
+    date: '2023.09.10',
+    content: '我很喜歡可以線上策展的功能！每個人都可以讓大家看到自己的策展精華觀點！'
   }
 ])
 
@@ -66,4 +80,5 @@ const swiperEl = ref(null)
 swiper-container::part(container) {
   overflow: initial;
 }
+
 </style>
