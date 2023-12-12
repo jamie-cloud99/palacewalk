@@ -1,5 +1,5 @@
 <template>
-  <div class="container mb-[60px]">
+  <div class="container mb-15">
     <div class="lg:grid grid-cols-12 gap-x-12">
       <div v-if="exhibition.id" class="col-start-2 col-span-10 font-semibold">
         <BreadcrumbsComponent class="my-5 justify-end" :nav-list="breadList" /> 
