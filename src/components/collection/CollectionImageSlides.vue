@@ -1,9 +1,10 @@
 <template>
   <swiper-container
-    class="overflow-hidden w-[90%] lg:w-3/5 my-10"
-    :slides-per-view="1"
+    class="overflow-hidden w-full"
+    :modules="[Thumbs]"
+    :thumbs="{ swiper: thumbsSwiper }"
     ref="swiperEl"
-  >
+    >
     <swiper-slide v-for="image in collection.images?.list" :key="image">
       <figure class="w-full h-[210px] lg:h-[415px]">
         <img
@@ -23,13 +24,40 @@
       </figure>
     </swiper-slide>
   </swiper-container>
+  <swiper-container
+    class="my-thumbs overflow-hidden w-[90%] lg:w-full my-10 h-1/2"
+    :slides-per-view="3"
+    :spaceBetween="10"
+    :modules="[Thumbs]"
+    :freeMode="true"
+    watch-slides-progress
+    @swiper="setThumbsSwiper"
+  >
+    <swiper-slide v-for="image in collection.images?.list" :key="image">
+      <figure class="w-full h-[100px]">
+        <img
+          class="w-full h-full object-cover object-center"
+          :src="image"
+          :alt="`${collection.title}-細節圖`"
+        />
+      </figure>
+    </swiper-slide>
+    <swiper-slide>
+      <figure class="w-1/2 h-[100px] bg-gradient-to-b from-dark/80 to-dark/90">
+        <img
+          class="w-full h-full object-contain object-center"
+          :src="collection.images?.main"
+          :alt="`${collection.title}-細節圖`"
+        />
+      </figure>
+    </swiper-slide>
+  </swiper-container>
   <!-- 左箭頭 -->
   <button
     v-if="slides.havePrev"
     type="button"
     @click="goPrev"
-    class="absolute top-1/2 md:top-[16%] lg:top-1/2 -translate-y-1/2 left-3 lg:left-6 -translate-x-1/2 w-10 h-10 text-dark text-2xl z-10 flex items-center justify-center"
-  >
+    class="absolute top-[30%] md:top-[15%] lg:top-[35%] -translate-y-1/2 left-4 lg:left-6 -translate-x-1/2 w-10 h-10 text-dark text-2xl z-10 flex items-center justify-center"  >
     <i class="fa-solid fa-chevron-left"></i>
   </button>
   <!-- 右箭頭 -->
@@ -37,16 +65,17 @@
     v-if="slides.haveNext"
     type="button"
     @click="goNext"
-    class="absolute top-1/2 md:top-[16%] lg:top-1/2 -translate-y-1/2 right-3 lg:right-[36%] translate-x-1/2 w-10 h-10 text-dark text-2xl z-10 flex items-center justify-center"
-  >
+    class="absolute top-[30%] md:top-[15%] lg:top-[35%] -translate-y-1/2 right-6 lg:right-[51%] translate-x-1/2 w-10 h-10 text-dark text-2xl z-10 flex items-center justify-center"    >
     <i class="fa-solid fa-chevron-right"></i>
   </button>
+
 </template>
 
 <script setup>
 import { onMounted, watch, nextTick, ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
+import { Thumbs } from 'swiper/modules';
 import { useSlideStore } from '../../stores/slideStore'
 import { useCollectionStore } from '../../stores/collectionStore'
 
@@ -92,4 +121,9 @@ onMounted(() => {
     changeSlidesPerView(windowWidth)
   })
 })
+
+const thumbsSwiper = ref(null)
+const setThumbsSwiper = (swiper) => {
+  thumbsSwiper.value = swiper
+}
 </script>

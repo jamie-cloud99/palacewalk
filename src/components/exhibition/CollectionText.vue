@@ -62,7 +62,7 @@ const { collection } = toRefs(props)
   @apply space-y-3;
 }
 
-.content p {
+::v-deep(.content) p {
   @apply mb-2;
 }
 </style>
