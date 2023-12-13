@@ -39,11 +39,17 @@
                 v-if="!(isEdit === comment.id)"
                 type="button"
                 class="btn border border-dark px-4 font-semibold hover:border-primary hover:text-primary"
-                @click="deleteComment(comment.id)"
+                data-toggle="modal"
+                @click="openModal()"
               >
                 刪除
               </button>
-            </div>
+              <DeleteConfirmModal
+                :id="comment.id"
+                :isVisible="isModalVisible"
+                @updateModalVisible="isModalVisible = $event"
+              />
+          </div>
           </div>
           <div class="pt-4 pb-2">
             <input
@@ -79,11 +85,15 @@
                 v-if="!(isEdit === comment.id)"
                 type="button"
                 class="btn border border-dark px-4 font-semibold hover:border-primary hover:text-primary"
-                @click="deleteComment(comment.id)"
               >
                 刪除
               </button>
-            </div>
+              <DeleteConfirmModal
+                :id="comment.id"
+                :isVisible="isModalVisible"
+                @updateModalVisible="isModalVisible = $event"
+              />
+          </div>
             <div class="flex justify-between items-center">
               <div class="flex gap-2">
                 <button
@@ -140,16 +150,22 @@ import { ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useDateFromUnix } from '@/composables/format'
 import { useCommentStore } from '../stores/commentStore'
+import DeleteConfirmModal from '@/components/modal/DeleteConfirmModal.vue'
 
 const commentStore = useCommentStore()
 const { memberCommentList } = storeToRefs(commentStore)
-const { fetchMemberComments, updateComment, deleteComment } = commentStore
+const { fetchMemberComments, updateComment } = commentStore
 
 const isOpen = ref(null)
 const tempContent = ref('')
 
 const toggleReply = (id) => {
   isOpen.value = isOpen.value === id ? null : id
+}
+// TODO: 整合 openModal()
+const isModalVisible = ref(false)
+const openModal = () => {
+  isModalVisible.value = true
 }
 
 const isEdit = ref(null)
