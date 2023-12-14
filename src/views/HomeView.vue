@@ -48,8 +48,8 @@
   </div>
 
   <div class="relative overflow-hidden">
-    <div class="inline-block bg-primary absolute w-6 h-[130px]"></div>
-    <div class="ml-[96px] mb-12">
+    <div class="inline-block bg-primary absolute w-4 md:w-6 h-[110px] md:h-[130px]"></div>
+    <div class="ml-[40px] md:ml-[96px] mb-12">
       <p class="mb-4 font-cormo font-semibold text-5xl lg:text-7xl text-dark-400 uppercase" :section="section">
         {{ section[2].engTitle }}
       </p>
@@ -57,16 +57,7 @@
         <h2 class="text-2xl lg:text-4xl font-bold  leading-normal" :section="section">{{ section[2].title }}</h2>
       </div>
     </div>
-    <div class="mx-3 mb-20 lg:mb-24 xl:ms-[18%] lg:ms-[20%] md:ms-[30%] relative overflow-hidden">
-      <CommentCards data-aos="fade-up" data-aos-anchor-placement="center-bottom" />
-    </div>
-    <div class="prevArrow arrow">
-      <i class="fa-solid fa-chevron-left"></i>
-    </div>
-    <div class="nextArrow arrow">
-      <i class="fa-solid fa-chevron-right"></i>
-    </div>
-    <div class="comment-pagination relative left-24 top-auto bottom-24 flex justify-start w-[120px]"></div>
+    <CommentCards data-aos="fade-up" data-aos-anchor-placement="center-bottom" />
   </div>
   <div class="relative overflow-hidden bg-gray-50 py-20">
     <div class="container">
