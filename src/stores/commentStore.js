@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import { defineStore, storeToRefs } from 'pinia'
 import { useMemberStore } from './memberStore'
+import { useToastStore } from './toastStore'
 
 import axios from 'axios'
 
@@ -8,6 +9,8 @@ const { VITE_JSON_SERVER } = import.meta.env
 
 export const useCommentStore = defineStore('comment', () => {
   const memberStore = useMemberStore()
+  const toastStore = useToastStore()
+  const { showSuccessToast } = toastStore
   const commentList = ref([])
   const reply = ref({})
   const curExhibitionId = ref(null)
@@ -98,6 +101,7 @@ export const useCommentStore = defineStore('comment', () => {
     try {
       await axios.delete(apiUrl)
       fetchMemberComments()
+      showSuccessToast('刪除成功')
     } catch (error) {
       console.log(error)
     }

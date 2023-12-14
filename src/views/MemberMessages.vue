@@ -40,7 +40,7 @@
                 type="button"
                 class="btn border border-dark px-4 font-semibold hover:border-primary hover:text-primary"
                 data-toggle="modal"
-                @click="openModal()"
+                @click="openModal"
               >
                 刪除
               </button>
@@ -85,6 +85,7 @@
                 v-if="!(isEdit === comment.id)"
                 type="button"
                 class="btn border border-dark px-4 font-semibold hover:border-primary hover:text-primary"
+                @click="openModal"
               >
                 刪除
               </button>
@@ -162,7 +163,7 @@ const tempContent = ref('')
 const toggleReply = (id) => {
   isOpen.value = isOpen.value === id ? null : id
 }
-// TODO: 整合 openModal()
+
 const isModalVisible = ref(false)
 const openModal = () => {
   isModalVisible.value = true
