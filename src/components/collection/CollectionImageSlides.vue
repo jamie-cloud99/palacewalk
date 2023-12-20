@@ -15,7 +15,7 @@
       </figure>
     </swiper-slide>
     <swiper-slide>
-      <figure class="w-3/5 h-[210px] lg:h-[360px] bg-gradient-to-b from-dark/80 to-dark/90">
+      <figure class="w-3/5 h-[210px] lg:h-[415px] bg-gradient-to-b from-dark/80 to-dark/90">
         <img
           class="w-full h-full object-contain object-center"
           :src="collection.images?.main"
@@ -57,7 +57,7 @@
     v-if="slides.havePrev"
     type="button"
     @click="goPrev"
-    class="absolute top-[30%] md:top-[15%] lg:top-[35%] -translate-y-1/2 left-4 lg:left-6 -translate-x-1/2 w-10 h-10 text-dark text-2xl z-10 flex items-center justify-center"  >
+    class="absolute top-[30%] md:top-[15%] lg:top-[35%] -translate-y-1/2 left-6 -translate-x-1/2 w-10 h-10 text-dark text-2xl z-10 flex items-center justify-center"  >
     <i class="fa-solid fa-chevron-left"></i>
   </button>
   <!-- 右箭頭 -->
@@ -72,23 +72,23 @@
 </template>
 
 <script setup>
-import { onMounted, watch, nextTick, ref, watchEffect } from 'vue'
+import { watch, nextTick, ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { Thumbs } from 'swiper/modules';
-import { useSlideStore } from '../../stores/slideStore'
-import { useCollectionStore } from '../../stores/collectionStore'
+import { useSlideStore } from '@/stores/slideStore'
+import { useCollectionStore } from '@/stores/collectionStore'
 
 const slideStore = useSlideStore()
-const { swiperEl, slides, curSlideShowed } = storeToRefs(slideStore)
+const { swiperEl, slides } = storeToRefs(slideStore)
 const { turnSlide, goNext, goPrev } = slideStore
 
 const collectionStore = useCollectionStore()
 const { collection } = storeToRefs(collectionStore)
 
-const breakpoints = ref({
-  md: 768
-})
+// const breakpoints = ref({
+//   md: 768
+// })
 
 const route = useRoute()
 
@@ -105,22 +105,22 @@ watch(
     swiperEl.value.swiper.update()
   }
 )
+// 手機和電腦版顯示無差異，所以先註解
+// const changeSlidesPerView = (windowWidth) => {
+//   if (windowWidth < breakpoints.value?.md) {
+//     curSlideShowed.value = slides.value.slideShowed.default
+//   } else {
+//     curSlideShowed.value = slides.value.slideShowed.md
+//   }
+// }
 
-const changeSlidesPerView = (windowWidth) => {
-  if (windowWidth < breakpoints.value?.md) {
-    curSlideShowed.value = slides.value.slideShowed.default
-  } else {
-    curSlideShowed.value = slides.value.slideShowed.md
-  }
-}
-
-onMounted(() => {
-  changeSlidesPerView(window.innerWidth)
-  window.addEventListener('resize', () => {
-    const windowWidth = window.innerWidth
-    changeSlidesPerView(windowWidth)
-  })
-})
+// onMounted(() => {
+//   changeSlidesPerView(window.innerWidth)
+//   window.addEventListener('resize', () => {
+//     const windowWidth = window.innerWidth
+//     changeSlidesPerView(windowWidth)
+//   })
+// })
 
 const thumbsSwiper = ref(null)
 const setThumbsSwiper = (swiper) => {
