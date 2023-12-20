@@ -1,9 +1,9 @@
 <template>
   <ol class="flex whitespace-nowrap">
-    <li v-for="(item, index) in navList" :key="item.title">
+    <li v-for="(item, index) in navList" :key="item.title" class="">
       <RouterLink
         :to="item.path"
-        class="inline-block px-2 font-medium"
+        class="inline-block px-2 font-medium last:max-w-[100px] last:truncate"
         :class="{
           'hover:underline': item.title,
           '!no-underline cursor-text': item.path === route.path
