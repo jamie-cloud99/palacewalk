@@ -1,5 +1,5 @@
 <template>
-  <ol class="flex">
+  <ol class="flex whitespace-nowrap">
     <li v-for="(item, index) in navList" :key="item.title">
       <RouterLink
         :to="item.path"
