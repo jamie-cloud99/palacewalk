@@ -15,7 +15,7 @@
       </figure>
     </swiper-slide>
     <swiper-slide>
-      <figure class="w-3/5 h-[210px] lg:h-[415px] bg-gradient-to-b from-dark/80 to-dark/90">
+      <figure class="w-full h-[210px] lg:h-[415px] bg-gradient-to-b from-dark/80 to-dark/90">
         <img
           class="w-full h-full object-contain object-center"
           :src="collection.images?.main"
@@ -43,7 +43,7 @@
       </figure>
     </swiper-slide>
     <swiper-slide>
-      <figure class="w-1/2 h-[100px] bg-gradient-to-b from-dark/80 to-dark/90">
+      <figure class="w-full h-[100px] bg-gradient-to-b from-dark/80 to-dark/90">
         <img
           class="w-full h-full object-contain object-center"
           :src="collection.images?.main"

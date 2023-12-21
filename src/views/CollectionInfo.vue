@@ -9,7 +9,7 @@
     <!-- 詳細資訊  -->
     <div v-show="windowInnerWidth > breakPoint" class="w-full lg:w-1/2 lg:h-[415px] bg-dark-200 text-dark-800">
       <div class="container">
-        <div class="px-2 md:w-4/5 2xl:w-3/5 mx-auto">
+        <div class="px-2 md:w-4/5 md:mb-5 2xl:w-3/5 mx-auto">
           <ul class="">
             <li
               v-for="item in collectionDetail"
@@ -27,46 +27,48 @@
     </div>
   </div>
   <!-- 簡介 -->
-  <article class="px-2 md:w-4/5 2xl:w-3/5 mx-auto mb-8">
-    <h2 class="text-2xl lg:text-3xl font-bold mb-1 md:mb-0">{{ collection.title }}</h2>
-    <div
-      class="md:flex justify-between items-center border-black border-solid border-0 border-b mb-2"
-    >
-      <div class="text-dark-600 font-semibold">
-        <span class="mr-4">{{ collection.author }}</span>
-        <span class="text-sm">{{ collection.time }}</span>
+  <div class="container">
+    <article class="px-2 md:w-4/5 2xl:w-3/5 mr-auto mb-8">
+      <h2 class="text-2xl lg:text-3xl font-bold mb-1 md:mb-0">{{ collection.title }}</h2>
+      <div
+        class="md:flex justify-between items-center border-black border-solid border-0 border-b mb-2"
+      >
+        <div class="text-dark-600 font-semibold">
+          <span class="mr-4">{{ collection.author }}</span>
+          <span class="text-sm">{{ collection.time }}</span>
+        </div>
+        <ul class="flex justify-end md:gap-x-1 md:text-xl lg: text-2xl">
+          <li>
+            <button type="button" class="btn hover:text-primary">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="btn hover:text-primary">
+              <i class="fa-solid fa-link"></i>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="btn hover:text-primary">
+              <i class="fa-solid fa-share-nodes"></i>
+            </button>
+          </li>
+        </ul>
       </div>
-      <ul class="flex justify-end md:gap-x-1 md:text-xl lg: text-2xl">
-        <li>
-          <button type="button" class="btn hover:text-primary">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="btn hover:text-primary">
-            <i class="fa-solid fa-link"></i>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="btn hover:text-primary">
-            <i class="fa-solid fa-share-nodes"></i>
-          </button>
-        </li>
-      </ul>
-    </div>
-    <!-- 藝品賞析 -->
-    <div v-if="collection.description" class="font-semibold space-y-10">
-      <div v-html="collection.description" class="space-y-2"></div>
-      <div v-if="collection.appreciation">
-        <h3 class="text-lg lg:text-2xl font-bold mb-3 lg:mb-4">藝品賞析</h3>
-        <div v-html="collection.appreciation" class="space-y-2"></div>
+      <!-- 藝品賞析 -->
+      <div v-if="collection.description" class="font-semibold space-y-10">
+        <div v-html="collection.description" class="space-y-2"></div>
+        <div v-if="collection.appreciation">
+          <h3 class="text-lg lg:text-2xl font-bold mb-3 lg:mb-4">藝品賞析</h3>
+          <div v-html="collection.appreciation" class="space-y-2"></div>
+        </div>
+        <div v-if="collection.authorIntro">
+          <h3 class="text-lg lg:text-2xl font-bold mb-3 lg:mb-4">作者簡介</h3>
+          <div v-html="collection.authorIntro" class="space-y-2"></div>
+        </div>
       </div>
-      <div v-if="collection.authorIntro">
-        <h3 class="text-lg lg:text-2xl font-bold mb-3 lg:mb-4">作者簡介</h3>
-        <div v-html="collection.authorIntro" class="space-y-2"></div>
-      </div>
-    </div>
-  </article>
+    </article>
+  </div>
   <!-- 詳細資訊 -->
   <div v-show="windowInnerWidth < breakPoint" class="bg-dark-200 text-dark-800 pb-6 mb-10 lg:mb-20">
     <div class="container">
