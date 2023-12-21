@@ -26,7 +26,7 @@
   <div class="left-auto right-10 lg:left-40 nextArrow arrow">
     <i class="fa-solid fa-chevron-right"></i>
   </div>
-  <div class="comment-pagination relative left-24 top-auto bottom-12 md:bottom-24 flex justify-start w-[120px]"></div>
+  <div class="comment-pagination relative left-1/2 md:left-24 -translate-x-2/4 md:translate-x-0 top-auto bottom-12 md:bottom-24 flex justify-start w-[120px]"></div>
 </template>
 
 <script setup>
