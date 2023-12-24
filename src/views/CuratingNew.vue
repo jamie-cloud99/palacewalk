@@ -86,16 +86,35 @@
         <input id="content" type="text" class="form-input w-full border-dark-400 bg-dark-200" />
       </div>
 
-      <div class="mb-4 lg:mb-6 items-center space-y-2">
+      <div class="relative mb-4 lg:mb-6 items-center space-y-2 cursor-pointer">
         <label for="collections" class="inline-block mr-2 font-bold flex-shrink-0">展品：</label>
-        <div class="border border-dashed border-dark-600 py-12 lg:py-20 text-center">
-          <p class="text-dark-600 font-semibold text-lg mb-6 lg:mb-10 lg:text-2xl">
-            請從下方拖曳展品至此
-          </p>
+        <p
+          v-show="targetList.length < 1"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-dark-600 font-semibold text-lg mb-6 lg:mb-10 lg:text-2xl"
+        >
+          請從下方拖曳展品至此
+        </p>
+        <draggable
+          class="border border-dashed border-dark-600 py-12 px-5 lg:py-20 text-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          v-model="targetList"
+          item-key="collectionId"
+          group="collectionsGroup"
+          @change="handleChange"
+        >
+          <template #item="{element}">
+            <ul v-show="targetList.length > 0">
+              <li class="col-span-1" :key="element.collectionId">
+                <div>
+                  <CollectionListItem :collection-item="element" :show-fav-icon="false" />
+                </div>
+              </li>
+            </ul>
+
+          </template>
           <!-- <button type="button" class="btn inline-block px-6 bg-dark text-white hover:bg-primary">
             預覽
           </button> -->
-        </div>
+        </draggable>
       </div>
     </VForm>
 
@@ -129,13 +148,24 @@
       </div>
     </div>
 
-    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <li class="col-span-1" v-for="item in collectionList" :key="item.collectionId">
-        <div class="h-full">
-          <CollectionListItem :collection-item="item" :show-fav-icon="false" />
-        </div>
-      </li>
-    </ul>
+    <draggable
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+      v-model="collectionList"
+      item-key="collectionId"
+      group="collectionsGroup"
+      @start="drag=true"
+      @end="drag=false"
+    >
+      <template #item="{element}">
+          <ul >
+            <li class="col-span-1" :key="element.collectionId">
+              <div class="h-full">
+                <CollectionListItem :collection-item="element" :show-fav-icon="false" />
+              </div>
+            </li>
+          </ul>
+      </template>
+    </draggable>
 
     <div class="flex py-6 lg:py-10">
       <PageComponent :pages="pages" @change="selectPage" />
@@ -148,6 +178,7 @@ import { reactive, ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useCollectionStore } from '../stores/collectionStore'
 import { usePageStore } from '../stores/pageStore'
+import draggable from 'vuedraggable'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 import PageComponent from '../components/layout/PageComponent.vue'
 import CollectionListItem from '../components/collection/CollectionListItem.vue'
@@ -196,6 +227,18 @@ const uploadImage = (imgFile) => {
 }
 
 fetchPageCollections()
+
+const drag = ref(false)
+const targetList = reactive([])
+const handleChange = (event) => {
+  if (event.added) {
+    targetList.push(event.added)
+  } else if (event.removed) {
+    const removedIdx = event.removed.oldIndex;
+    if (removedIdx < 0) return;
+    targetList.splice(removedIdx, 1);
+  }
+}
 </script>
 
 <style>

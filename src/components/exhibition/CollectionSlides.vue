@@ -55,9 +55,11 @@ import { useSlideStore } from '@/stores/slideStore'
 import { useExhibitionStore } from '@/stores/exhibitsStore'
 import CollectionListItem from '@/components/collection/CollectionListItem.vue'
 
-const exhbitionStore = useExhibitionStore()
-const { exhibitionCollections } = storeToRefs(exhbitionStore)
+
+const exhibitionStore = useExhibitionStore()
+const { exhibitionCollections } = storeToRefs(exhibitionStore)
 const route = useRoute()
+
 const slideStore = useSlideStore()
 const { swiperEl, slides, curSlideShowed, curSlidePage } = storeToRefs(slideStore)
 const { goPrev, goNext, turnSlide } = slideStore
@@ -112,6 +114,6 @@ onMounted(() => {
 }
 
 .exhibit-item-title {
-  @apply font-bold bg-amber-400 px-2 inline-block absolute left-0 bottom-2;
+  @apply font-bold px-2 inline-block absolute left-0 bottom-2 opacity-0  group-hover:opacity-100 group-hover:transition-all group-hover:duration-300 group-hover:ease-in-out;
 }
 </style>

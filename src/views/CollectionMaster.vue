@@ -1,6 +1,6 @@
 <template>
+  <CollectionBanner :title="'精選展品'" :bread-list="breadList"/>
   <div class="container">
-    <BreadcrumbsComponent class="my-5 justify-end" :nav-list="breadList"/>
     <div class="counter flex lg:flex-row flex-col flex-wrap -mx-3 items-start">
       <div
         class="relative flex flex-wrap w-full h-full lg:w-1/2 px-3 mb-[26px]"
@@ -33,16 +33,30 @@
   <BackgroundComponent />
 </template>
 <script setup>
+import { reactive } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useCollectionStore } from '../stores/collectionStore'
-
 import CollectionBanner from '../components/collection/CollectionBanner.vue'
 import BackgroundComponent from '../components/background/BackgroundComponent.vue'
-import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 
 const collectionStore = useCollectionStore()
 const { masterpieceIds, collectionsFiltered } = storeToRefs(collectionStore)
 const { filterCollectionsByIds } = collectionStore
+
+const breadList = reactive([
+  {
+    title: '首頁',
+    path: '/'
+  },
+  {
+    title: '藝術展品',
+    path: '/collections'
+  },
+  {
+    title: "精選展品",
+    path: '/collections/masterpieces'
+  }
+])
 
 filterCollectionsByIds(masterpieceIds.value)
 </script>

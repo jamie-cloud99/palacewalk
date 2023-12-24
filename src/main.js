@@ -10,6 +10,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
+import { VueImageZoomer } from 'vue-image-zoomer'
+import 'vue-image-zoomer/dist/style.css';
 
 import { register } from 'swiper/element/bundle'
 register()
@@ -57,7 +59,6 @@ app.use(router)
 app.use(setupCalendar, {})
 app.use(VueAxios, axios)
 app.provide('axios', app.config.globalProperties.axios)
-app.use(Loading.Plugin)
 app.use(Toast, options)
 
 // Global Component
@@ -66,5 +67,6 @@ app.component('loading-component', Loading)
 app.component('VField', Field)
 app.component('VForm', Form)
 app.component('ErrorMessage', ErrorMessage)
+app.component('vue-image-zoomer', VueImageZoomer)
 
 app.mount('#app')
