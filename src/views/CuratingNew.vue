@@ -24,15 +24,36 @@
 
     <div class="border border-dashed border-dark-600 py-12 lg:py-20 text-center mb-6 lg:mb-10">
       <p class="text-dark-600 font-semibold text-lg mb-6 lg:mb-10 lg:text-2xl">請上傳展覽封面</p>
-      <button type="button" class="btn inline-block px-6 bg-dark text-white hover:bg-primary">
-        上傳圖片
-      </button>
+
+      <label for="photo" class="btn w-32 inline-block px-6 bg-dark text-white hover:bg-primary"
+        ><input
+          type="file"
+          id="photo"
+          ref="fileInput"
+          @change="uploadImage(newPhoto)"
+          class="hidden"
+        />上傳圖片
+      </label>
     </div>
 
-    <form action="submit">
+    <VForm v-slot="{ errors, isSubmitting, meta }" action="submit">
       <div class="mb-4 lg:mb-6 items-center space-y-2 md:flex md:space-y-0">
         <label for="title" class="inline-block mr-2 font-bold flex-shrink-0">展覽名稱：</label>
-        <input id="title" type="text" class="form-input w-full border-dark-400 bg-dark-200" />
+        <VField
+          v-model.trim="curatingForm.title"
+          id="title"
+          type="text"
+          placeholder="請輸入展覽名稱"
+          label="展覽名稱"
+          name="title"
+          rules="required"
+          class="form-input bg-dark-200  border-dark-400 w-full py-3 px-4 placeholder:text-dark-600"
+          :class="{ 'is-invalid  !border-0': errors['title'] }"
+        />
+        <ErrorMessage as="div" name="title" class="form-error" v-slot="{ message }">
+          <span class="mr-1"><i class="fa-solid fa-circle-exclamation"></i></span>
+          <span>{{ message }}</span>
+        </ErrorMessage>
       </div>
       <div class="mb-4 lg:mb-6 items-center space-y-2 md:flex md:space-y-0">
         <label class="inline-block mr-2 font-bold flex-shrink-0">展覽時間：</label>
@@ -76,7 +97,7 @@
           </button> -->
         </div>
       </div>
-    </form>
+    </VForm>
 
     <div class="mb-4 lg:mb-8 items-center space-y-2">
       <div class="lg:flex justify-between items-center space-y-2 lg:space-y-0">
@@ -123,7 +144,7 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useCollectionStore } from '../stores/collectionStore'
 import { usePageStore } from '../stores/pageStore'
@@ -134,6 +155,10 @@ import CollectionListItem from '../components/collection/CollectionListItem.vue'
 const pageStore = usePageStore()
 const { pages } = storeToRefs(pageStore)
 const { turnPage } = pageStore
+
+const collectionStore = useCollectionStore()
+const { collectionList, curCategory } = storeToRefs(collectionStore)
+const { fetchPageCollections } = collectionStore
 
 const breadList = reactive([
   {
@@ -150,13 +175,24 @@ const breadList = reactive([
   }
 ])
 
-const collectionStore = useCollectionStore()
-const { collectionList, curCategory } = storeToRefs(collectionStore)
-const { fetchPageCollections } = collectionStore
+const fileInput = ref(null)
+const curatingForm = ref({})
+
+const newPhoto = computed(() => fileInput.value.files[0])
 
 const selectPage = (page) => {
   turnPage(page, false)
   fetchPageCollections(curCategory.value.id, page)
+}
+
+const uploadImage = (imgFile) => {
+  if (imgFile) {
+    const reader = new FileReader()
+    reader.readAsDataURL(imgFile)
+    reader.addEventListener('load', () => {
+      curatingForm.value.banner = reader.result
+    })
+  }
 }
 
 fetchPageCollections()
