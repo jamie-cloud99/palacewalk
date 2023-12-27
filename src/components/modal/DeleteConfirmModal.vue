@@ -72,6 +72,7 @@ const closeModal = () => {
 }
 
 const delConfirm = () => {
+  console.log('id.value)',id.value);
   deleteComment(id.value)
   emit('updateModalVisible', false)
 }
