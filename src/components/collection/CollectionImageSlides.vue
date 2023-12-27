@@ -3,6 +3,7 @@
     class="overflow-hidden w-full"
     :modules="[Thumbs]"
     :thumbs="{ swiper: thumbsSwiper }"
+    thumbs-swiper=".my-thumbs"
     ref="swiperEl"
     >
     <swiper-slide v-for="image in collection.images?.list" :key="image">
@@ -25,13 +26,13 @@
     </swiper-slide>
   </swiper-container>
   <swiper-container
-    class="my-thumbs overflow-hidden w-[90%] lg:w-full my-10 h-1/2"
+    class="my-thumbs overflow-hidden w-[90%] lg:w-full my-10 h-1/2 cursor-pointer"
+    @swiper="setThumbsSwiper"
     :slides-per-view="3"
     :spaceBetween="10"
     :modules="[Thumbs]"
     :freeMode="true"
     watch-slides-progress
-    @swiper="setThumbsSwiper"
   >
     <swiper-slide v-for="image in collection.images?.list" :key="image">
       <figure class="w-full h-[100px]">
