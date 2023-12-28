@@ -1,8 +1,8 @@
 <template>
-  <!-- 初次載入的 loading -->
-  <div class="bg-black h-screen z-[190] absolute" :style="{ opacity: opacityComputed }"></div>
+  <!-- 初次載入/重整 loading -->
   <div
-    class="text-5xl text-black absolute z-[200] top-1/2 left-1/2 -translate-x-1/2 -translate-y-[calc(50%-100px)]"
+    class="text-5xl text-black fixed z-[3000] top-1/2 left-1/2
+    -translate-x-1/2 -translate-y-[calc(50%-100px)] pointer-events-none"
     :style="{ opacity:  opacityComputed }">
     {{ load }} %
   </div>
@@ -52,25 +52,5 @@ const blurring = () => {
   }
 }
 
-const int = setInterval(blurring, 10) // 每 10 毫秒增加 1%
+const int = setInterval(blurring, 5) // 每 5 毫秒增加 1%
 </script>
-
-<style scoped>
-.bg {
-  background: white;
-  opacity: 0.5;
-  position: absolute;
-  top: -30px;
-  left: -30px;
-  width: calc(100vw + 60px);
-  height: calc(100vh + 60px);
-  z-index: -1;
-  filter: blur(0px);
-  z-index: 250;
-}
-.loading-text {
-  font-size: 50px;
-  /* color: white; */
-}
-
-</style>
