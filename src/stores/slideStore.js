@@ -42,5 +42,26 @@ export const useSlideStore = defineStore('slide', () => {
       slides.value.curSlide < slides.value.totalSlides - (curSlideShowed.value - 1)
   }
 
-  return { swiperEl, slides, curSlideShowed, curSlidePage, goNext, goPrev, getSlide, turnSlide }
+  const goSlideNum = (index) => {
+    swiperEl.value.swiper.slideTo(index)
+    slides.value.curSlide = index + 1
+  }
+
+  const resetSlides = (total, showed) => {
+    slides.value.curSlide = 1,
+    getSlide(total, showed)
+  }
+
+  return {
+    swiperEl,
+    slides,
+    curSlideShowed,
+    curSlidePage,
+    goNext,
+    goPrev,
+    getSlide,
+    turnSlide,
+    goSlideNum,
+    resetSlides
+  }
 })

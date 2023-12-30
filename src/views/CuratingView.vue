@@ -84,12 +84,12 @@
             </div>
             <div v-if="item.status === 'released'" class="flex gap-x-5">
               <RouterLink
-                to="/curating/1/messages"
+                to="/curating/2/messages"
                 class="btn px-6 border border-dark hover:bg-dark hover:text-white"
               >
                 查看留言
               </RouterLink>
-              <RouterLink to="/exhibitions/1" class="btn px-6 text-white bg-primary hover:bg-dark">
+              <RouterLink to="/exhibitions/2" class="btn px-6 text-white bg-primary hover:bg-dark">
                 前往展覽
               </RouterLink>
             </div>

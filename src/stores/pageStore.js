@@ -9,33 +9,33 @@ export const usePageStore = defineStore('page', () => {
     haveNext: true
   })
 
-   const turnPage = (page) => {
+  const turnPage = (page, scrollToTop = true) => {
     pages.value.curPage = page
-    pages.value.havePre = page > 1
+    pages.value.havePrev = page > 1
     pages.value.haveNext = page < pages.value.totalPages
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    if (scrollToTop) window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const paginate = (items, curPage = 1, perPage = 12) => {
     const totalPages = Math.ceil(items.length / perPage)
-      if (curPage > totalPages) {
-        curPage = totalPages
-      }
+    if (curPage > totalPages) {
+      curPage = totalPages
+    }
 
-      const minIndex = (curPage - 1) * perPage
-      const maxIndex = curPage * perPage
-      const itemPaginated = items.slice(minIndex, maxIndex)
+    const minIndex = (curPage - 1) * perPage
+    const maxIndex = curPage * perPage
+    const itemPaginated = items.slice(minIndex, maxIndex)
 
-      const page = {
-        curPage,
-        totalPages,
-        havePrev: curPage > 1,
-        haveNext: curPage < totalPages
-      }
+    const page = {
+      curPage,
+      totalPages,
+      havePrev: curPage > 1,
+      haveNext: curPage < totalPages
+    }
 
-      pages.value = { ...page }
-      return [...itemPaginated]
+    pages.value = { ...page }
+    return [...itemPaginated]
   }
 
-  return{ pages, turnPage, paginate}
+  return { pages, turnPage, paginate }
 })

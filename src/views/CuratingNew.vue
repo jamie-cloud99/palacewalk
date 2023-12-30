@@ -65,16 +65,34 @@
         <input id="content" type="text" class="form-input w-full border-dark-400 bg-dark-200" />
       </div>
 
-      <div class="mb-4 lg:mb-6 items-center space-y-2">
+      <div class="relative mb-4 lg:mb-6 items-center space-y-2 cursor-pointer">
         <label for="collections" class="inline-block mr-2 font-bold flex-shrink-0">展品：</label>
-        <div class="border border-dashed border-dark-600 py-12 lg:py-20 text-center">
-          <p class="text-dark-600 font-semibold text-lg mb-6 lg:mb-10 lg:text-2xl">
-            請從下方拖曳展品至此
-          </p>
+        <p
+          v-show="targetList.length < 1"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-dark-600 font-semibold text-lg mb-6 lg:mb-10 lg:text-2xl"
+        >
+          請從下方拖曳展品至此
+        </p>
+        <draggable
+          class="border border-dashed border-dark-600 py-12 px-5 lg:py-20 text-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          :list="targetList"
+          item-key="id"
+          group="collectionsGroup"
+        >
+          <template #item="{element}">
+            <ul v-show="targetList.length > 0">
+              <li class="col-span-1" :key="element.id">
+                <div>
+                  <CollectionListItem :collection-item="element" :show-fav-icon="false" />
+                </div>
+              </li>
+            </ul>
+
+          </template>
           <!-- <button type="button" class="btn inline-block px-6 bg-dark text-white hover:bg-primary">
             預覽
           </button> -->
-        </div>
+        </draggable>
       </div>
     </form>
 
@@ -108,39 +126,44 @@
       </div>
     </div>
 
-    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <li class="col-span-1" v-for="item in collectionList" :key="item.collectionId">
-        <div class="h-full">
-          <CollectionListItem :collection-item="item" :show-fav-icon="false" />
-        </div>
-      </li>
-    </ul>
+    <draggable
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+      :list="collectionList"
+      item-key="collectionId"
+      group="collectionsGroup"
+      @start="drag=true"
+      @end="drag=false"
+    >
+      <template #item="{element}">
+          <ul >
+            <li class="col-span-1" :key="element.collectionId">
+              <div class="h-full">
+                <CollectionListItem :collection-item="element" :show-fav-icon="false" />
+              </div>
+            </li>
+          </ul>
+      </template>
+    </draggable>
 
     <div class="flex py-6 lg:py-10">
-      <PageComponent :pages="pages" @change="turnPage" />
+      <PageComponent :pages="pages" @change="selectPage" />
     </div>
   </div>
 </template>
 
 <script setup>
 import { reactive, ref } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useCollectionStore } from '../stores/collectionStore'
+import { usePageStore } from '../stores/pageStore'
+import draggable from 'vuedraggable'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 import PageComponent from '../components/layout/PageComponent.vue'
 import CollectionListItem from '../components/collection/CollectionListItem.vue'
 
-const pages = ref({
-  totalPages: 3,
-  curPage: 1,
-  havePre: false,
-  haveNext: true
-})
-
-const turnPage = (page) => {
-  pages.value.curPage = page
-  pages.value.havePre = page > 1
-  pages.value.haveNext = page < pages.value.totalPages
-  window.scrollTo({ top: 0, behavior: 'smooth' })
-}
+const pageStore = usePageStore()
+const { pages } = storeToRefs(pageStore)
+const { turnPage } = pageStore
 
 const breadList = reactive([
   {
@@ -157,64 +180,29 @@ const breadList = reactive([
   }
 ])
 
-const collectionList = ref([
-  {
-    id: '20',
-    collectionId: 'P020',
-    title: '具區林屋 軸',
-    author: '王蒙',
-    time: '元'
-  },
-  {
-    id: '204',
-    collectionId: 'A004',
-    title: '白套紅玻璃包袱紋鼻煙壺',
-    author: '不詳',
-    time: '清'
-  },
-  {
-    id: '21',
-    collectionId: 'P021',
-    title: '八駿圖　軸',
-    author: '郎世寧',
-    time: '清'
-  },
-  {
-    id: '16',
-    collectionId: 'P016',
-    title: '翠巘高秋圖　軸',
-    author: '愛新覺羅弘旿',
-    time: '清'
-  },
-  {
-    id: '201',
-    collectionId: 'A005',
-    title: '琺瑯彩柳燕碗',
-    author: '不詳',
-    time: '清'
-  },
-  {
-    id: '22',
-    collectionId: 'P022',
-    title: '摹顧愷之洛神圖 卷',
-    author: '丁觀鵬',
-    time: '清'
-  },
-  {
-    id: '206',
-    collectionId: 'A006',
-    title: '金胎內填兼畫琺瑯西方仕女圖執壺',
-    author: '不詳',
-    time: '清'
-  },
-  {
-    id: '23',
-    collectionId: 'P023',
-    title: '紅牡丹　單片',
-    author: '鄭曼青',
-    time: '民國'
-  }
-])
+const collectionStore = useCollectionStore()
+const { collectionList, curCategory } = storeToRefs(collectionStore)
+const { fetchPageCollections } = collectionStore
+
+const selectPage = (page) => {
+  turnPage(page, false)
+  fetchPageCollections(curCategory.value.id, page)
+}
+
+fetchPageCollections()
+
+const drag = ref(false)
+const targetList = reactive([])
+// 下方先註解，暫時用不到。可看官方 example/components/two-lists.vue
+// const handleChange = (e) => {
+//   if (e.added) {
+//     targetList.push(e.added)
+//   } else if (e.removed) {
+//     const removedIdx = e.removed.oldIndex;
+//     if (removedIdx < 0) return;
+//     targetList.splice(removedIdx, 1);
+//   }
+// }
 </script>
 
 <style>
