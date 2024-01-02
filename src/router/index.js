@@ -101,7 +101,7 @@ const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
-    } 
+    }
     else if(to.hash) {
       return { el: to.hash }
     }
@@ -114,15 +114,16 @@ const router = createRouter({
   }
 })
 
+// https://pinia.vuejs.org/core-concepts/outside-component-usage.html
 router.beforeEach((to, from, next) => {
   const statusStore = useStatusStore()
-  statusStore.setLoading();
-  next();
-});
+  statusStore.setLoading()
+  next()
+})
 
 router.afterEach(() => {
   const statusStore = useStatusStore()
-  statusStore.clearLoading();
-});
+  statusStore.clearLoading()
+})
 
 export default router
