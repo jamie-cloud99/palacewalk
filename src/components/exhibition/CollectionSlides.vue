@@ -15,7 +15,7 @@
   </swiper-container>
   <div class="absolute bottom-0 z-10 right-0 w-full h-15 text-dark">
     <div class="flex justify-between items-center">
-      <ul class="flex gap-x-2">
+      <ul v-if="curSlideShowed" class="flex gap-x-2">
         <li
           v-for="item in Math.ceil(slides.totalSlides / curSlideShowed)"
           :key="'slide' + item"
@@ -49,33 +49,24 @@
 
 <script setup>
 import { storeToRefs } from 'pinia'
-import { onMounted, watch, nextTick, ref } from 'vue'
+import { useRoute } from 'vue-router'
+import { onMounted, watch, nextTick, ref, watchEffect } from 'vue'
 import { useSlideStore } from '@/stores/slideStore'
 import { useExhibitionStore } from '@/stores/exhibitsStore'
 import CollectionListItem from '@/components/collection/CollectionListItem.vue'
 
-const exhbitionStore = useExhibitionStore()
-const { exhibitionCollections } = storeToRefs(exhbitionStore)
+
+const exhibitionStore = useExhibitionStore()
+const { exhibitionCollections } = storeToRefs(exhibitionStore)
+const route = useRoute()
 
 const slideStore = useSlideStore()
 const { swiperEl, slides, curSlideShowed, curSlidePage } = storeToRefs(slideStore)
 const { goPrev, goNext, turnSlide } = slideStore
-
 const breakpoints = ref({
   md: 768,
   lg: 1280
 })
-
-watch(
-  () => exhibitionCollections,
-  async () => {
-    await nextTick()
-    swiperEl.value.swiper.update()
-  },
-  { deep: true }
-)
-
-watch(() => slides, turnSlide, { deep: true })
 
 const changeSlidesPerView = (windowWidth) => {
   if (windowWidth < breakpoints.value?.md) {
@@ -87,9 +78,29 @@ const changeSlidesPerView = (windowWidth) => {
   }
 }
 
-changeSlidesPerView(window.innerWidth)
+watch(
+  () => exhibitionCollections,
+  async () => {
+    await nextTick()
+    swiperEl.value.swiper.update()
+  },
+  { deep: true }
+)
+
+watchEffect(() => {
+  if (slides.value && route.path) {
+    turnSlide()
+  }
+})
+
+watchEffect(() => {
+  if (window.innerWidth && swiperEl.value) {
+    changeSlidesPerView(window.innerWidth)
+  }
+})
 
 onMounted(() => {
+  changeSlidesPerView(window.innerWidth)
   window.addEventListener('resize', () => {
     const windowWidth = window.innerWidth
     changeSlidesPerView(windowWidth)
@@ -103,6 +114,6 @@ onMounted(() => {
 }
 
 .exhibit-item-title {
-  @apply font-bold bg-amber-400 px-2 inline-block absolute left-0 bottom-2;
+  @apply font-bold px-2 inline-block absolute left-0 bottom-2 opacity-0  group-hover:opacity-100 group-hover:transition-all group-hover:duration-300 group-hover:ease-in-out;
 }
 </style>

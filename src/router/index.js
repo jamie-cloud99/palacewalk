@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { useStatusStore } from '../stores/statusStore'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
@@ -100,7 +101,11 @@ const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
-    } else {
+    } 
+    else if(to.hash) {
+      return { el: to.hash }
+    }
+    else {
       return {
         top: 0,
         behavior: 'smooth'
@@ -108,5 +113,16 @@ const router = createRouter({
     }
   }
 })
+
+router.beforeEach((to, from, next) => {
+  const statusStore = useStatusStore()
+  statusStore.setLoading();
+  next();
+});
+
+router.afterEach(() => {
+  const statusStore = useStatusStore()
+  statusStore.clearLoading();
+});
 
 export default router
