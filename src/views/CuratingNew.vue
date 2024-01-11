@@ -58,32 +58,54 @@
       <div class="mb-4 lg:mb-6 items-center space-y-2 md:flex md:space-y-0">
         <label class="inline-block mr-2 font-bold flex-shrink-0">展覽時間：</label>
         <div class="flex items-center">
-          <input
-            id="startDate"
-            type="text"
-            onfocus="(this.type='date')"
-            onblur="(this.type='text')"
-            class="form-input border-dark-400 bg-dark-200 w-40"
-            placeholder="請填入開始時間"
-          />
+          <div>
+            <VField
+              v-model.trim="curatingForm.startDate"
+              id="startDate"
+              type="text"
+              onfocus="(this.type='date')"
+              onblur="(this.type='text')"
+              placeholder="請填入展覽起始日"
+              label="展覽起始日"
+              name="startDate"
+              rules="required"
+              class="form-input bg-dark-200  border-dark-400 w-full w-40 placeholder:text-dark-600"
+              :class="{ 'is-invalid  !border-0': errors['startDate'] }"
+            />
+            <ErrorMessage as="div" name="startDate" class="form-error" v-slot="{ message }">
+              <span class="mr-1"><i class="fa-solid fa-circle-exclamation"></i></span>
+              <span>{{ message }}</span>
+            </ErrorMessage>
+          </div>
           <p class="mx-2">—</p>
-          <input
-            id="endDate"
-            type="text"
-            onfocus="(this.type='date')"
-            onblur="(this.type='text')"
-            class="form-input border-dark-400 bg-dark-200 w-40"
-            placeholder="請填入結束時間"
-          />
+          <div>
+            <VField
+              v-model.trim="curatingForm.endDate"
+              id="endDate"
+              type="text"
+              onfocus="(this.type='date')"
+              onblur="(this.type='text')"
+              placeholder="請填入展覽結束日"
+              label="展覽結束日"
+              name="endDate"
+              rules="required"
+              class="form-input bg-dark-200  border-dark-400 w-full w-40 placeholder:text-dark-600"
+              :class="{ 'is-invalid  !border-0': errors['endDate'] }"
+            />
+            <ErrorMessage as="div" name="endDate" class="form-error" v-slot="{ message }">
+              <span class="mr-1"><i class="fa-solid fa-circle-exclamation"></i></span>
+              <span>{{ message }}</span>
+            </ErrorMessage>
+          </div>
         </div>
       </div>
       <div class="mb-4 lg:mb-6 items-center space-y-2">
-        <label for="disciption" class="inline-block mr-2 font-bold flex-shrink-0">展覽概述：</label>
-        <input id="disciption" type="text" class="form-input w-full border-dark-400 bg-dark-200" />
+        <label for="description" class="inline-block mr-2 font-bold flex-shrink-0">展覽概述：</label>
+        <input id="description" v-model="curatingForm.description" type="text" class="form-input w-full border-dark-400 bg-dark-200" />
       </div>
       <div class="mb-4 lg:mb-6 items-center space-y-2">
         <label for="content" class="block mr-2 font-bold flex-shrink-0">展覽亮點：</label>
-        <input id="content" type="text" class="form-input w-full border-dark-400 bg-dark-200" />
+        <input id="content" v-model="curatingForm.content" type="text" class="form-input w-full border-dark-400 bg-dark-200" />
       </div>
 
       <div class="relative mb-4 lg:mb-6 items-center space-y-2 cursor-pointer">
