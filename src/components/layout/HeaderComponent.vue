@@ -38,7 +38,7 @@
             <button
               type="button"
               class="text-2xl lg:text-[28px] p-2 transition-all duration-300 hover:text-primary"
-              @mouseover="enterMemberSpace('member')"
+              @click="enterMemberSpace('member')"
             >
               <div v-if="isLoggedIn" class="h-[42px] flex items-center">
                 <img
