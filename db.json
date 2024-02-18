@@ -2004,5 +2004,26 @@
       "exhibitionId": "6",
       "id": 21
     }
+  ],
+  "curatings": [
+    {
+      "id": 1,
+      "category": {
+        "code": "art",
+        "title": "藝術"
+      },
+      "curating": "T023",
+      "title": "光影錯金—銅鍍金畫琺瑯懷錶展",
+      "startDate": 1856003200,
+      "endDate": 1892614400,
+      "description": "「故宮經典—藝術與文化策展」呈現經典藝術品與文化的交匯。通過珍貴展品，深入探討中國的藝術、歷史和文化傳承。",
+      "content": "<ol><li>經典藝術珍品：展覽匯集了故宮的經典藝術珍品，包括古代繪畫、玉器、瓷器、書法等，向觀眾展現中國千年藝術的精髓。</li><li>文化策展視角：展覽通過策展視角，呈現這些藝術品背後的文化意義和歷史背景，幫助觀眾更深刻地理解中國文化的複雜性和豐富性。</li><li>互動體驗：除了欣賞展品，觀眾還可以參與各種互動活動，體驗中國藝術的獨特之處，加深對中國文化的體驗和理解</li></ol>",
+      "images": {
+        "sm": "/images/exhibitions/exhibition-U003-1.jpg",
+        "lg": "/images/exhibitions/exhibition-U003.jpg"
+      },
+      "userId": 2,
+      "status": "draft"
+    }
   ]
 }
