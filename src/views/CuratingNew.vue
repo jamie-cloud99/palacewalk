@@ -118,14 +118,13 @@
         </p>
         <draggable
           class="border border-dashed border-dark-600 py-12 px-5 lg:py-20 text-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-          v-model="targetList"
-          item-key="collectionId"
+          :list="targetList"
+          item-key="id"
           group="collectionsGroup"
-          @change="handleChange"
         >
           <template #item="{element}">
             <ul v-show="targetList.length > 0">
-              <li class="col-span-1" :key="element.collectionId">
+              <li class="col-span-1" :key="element.id">
                 <div>
                   <CollectionListItem :collection-item="element" :show-fav-icon="false" />
                 </div>
@@ -172,7 +171,7 @@
 
     <draggable
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-      v-model="collectionList"
+      :list="collectionList"
       item-key="collectionId"
       group="collectionsGroup"
       @start="drag=true"
@@ -252,15 +251,16 @@ fetchPageCollections()
 
 const drag = ref(false)
 const targetList = reactive([])
-const handleChange = (event) => {
-  if (event.added) {
-    targetList.push(event.added)
-  } else if (event.removed) {
-    const removedIdx = event.removed.oldIndex;
-    if (removedIdx < 0) return;
-    targetList.splice(removedIdx, 1);
-  }
-}
+// 下方先註解，暫時用不到。可看官方 example/components/two-lists.vue
+// const handleChange = (e) => {
+//   if (e.added) {
+//     targetList.push(e.added)
+//   } else if (e.removed) {
+//     const removedIdx = e.removed.oldIndex;
+//     if (removedIdx < 0) return;
+//     targetList.splice(removedIdx, 1);
+//   }
+// }
 </script>
 
 <style>
