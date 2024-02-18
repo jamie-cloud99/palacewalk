@@ -123,30 +123,26 @@
       <div class="relative mb-4 lg:mb-6 items-center space-y-2 cursor-pointer">
         <label for="collections" class="inline-block mr-2 font-bold flex-shrink-0">展品：</label>
         <p
-          v-show="targetList.length < 1"
+          v-show="curatingForm.content?.length < 1"
           class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-dark-600 font-semibold text-lg mb-6 lg:mb-10 lg:text-2xl"
         >
           請從下方拖曳展品至此
         </p>
         <draggable
           class="border border-dashed border-dark-600 py-12 px-5 lg:py-20 text-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-          v-model="targetList"
-          item-key="collectionId"
+          :list="curatingForm.collectionList"
+          item-key="id"
           group="collectionsGroup"
-          @change="handleChange"
         >
           <template #item="{ element }">
-            <ul v-show="targetList.length > 0">
-              <li class="col-span-1" :key="element.collectionId">
+            <ul v-show="curatingForm.content?.length > 0">
+              <li class="col-span-1" :key="element.id">
                 <div>
                   <CollectionListItem :collection-item="element" :show-fav-icon="false" />
                 </div>
               </li>
             </ul>
           </template>
-          <!-- <button type="button" class="btn inline-block px-6 bg-dark text-white hover:bg-primary">
-            預覽
-          </button> -->
         </draggable>
       </div>
     </VForm>
@@ -183,7 +179,7 @@
 
     <draggable
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-      v-model="collectionList"
+      :list="collectionList"
       item-key="collectionId"
       group="collectionsGroup"
       @start="drag = true"
@@ -264,29 +260,23 @@ const uploadImage = (imgFile) => {
 fetchPageCollections()
 
 const drag = ref(false)
-// REVIEW: change from reactive to ref for resetting the form
-const targetList = ref([])
-const handleChange = (event) => {
-  if (event.added) {
-    targetList.value.push(event.added)
-  } else if (event.removed) {
-    const removedIdx = event.removed.oldIndex
-    if (removedIdx < 0) return
-    targetList.value.splice(removedIdx, 1)
-  }
-}
 
 const resetCuratingForm = () => {
   curatingForm.value = {}
-  targetList.value = []
 }
 
 const route = useRoute()
+const getCurating = async () => {
+  if (!route.meta.isNew) {
+    const { previewId } = route.params
+    curatingForm.value = await fetchCurating(previewId)
+    console.log(curatingForm.value)
+  }
+}
 
 onMounted(() => {
   resetCuratingForm()
-  if (!route.meta.isNew) {
-  }
+  getCurating()
 })
 </script>
 

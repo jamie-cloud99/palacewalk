@@ -6,7 +6,7 @@ export const fetchCuratingsAll = async () => {
 
   try {
     const res = await axios.get(apiUrl)
-    return res
+    return res.data
   } catch (error) {
     console.log(error)
   }
@@ -16,7 +16,7 @@ export const fetchCurating = async (id) => {
   const apiUrl = `${VITE_JSON_SERVER}curatings/${id}`
   try {
     const res = await axios.get(apiUrl)
-    return res
+    return res.data
   } catch (error) {
     console.log(error)
   }
