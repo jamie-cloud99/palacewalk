@@ -9,7 +9,9 @@
       利用故宮的珍貴展品，結合你的獨特視角，打造屬於自己的展覽。翻閱千年文物，選擇你心儀的藝術品，並按照自己的喜好、主題或故事串聯起來，營造出一場獨一無二的展覽體驗。
     </p>
     <div class="flex justify-center border-b-2 border-dark py-2 md:hidden mb-4 lg:mb-6">
-      <RouterLink to="/curating/new" class="btn w-full bg-black text-white order-2">新增展覽</RouterLink>
+      <RouterLink to="/curating/new" class="btn w-full bg-black text-white order-2"
+        >新增展覽</RouterLink
+      >
     </div>
     <div class="md:flex justify-between mb-6 lg:mb-8">
       <RouterLink to="/curating/new" class="hidden btn bg-black text-white order-2 px-6 md:block">
@@ -105,6 +107,7 @@
                 預覽
               </button>
               <button
+                @click="$router.push(`/curating/edit/1`)"
                 type="button"
                 class="btn px-6 text-white bg-dark hover:bg-primary disabled:border disabled:border-dark-600 disabled:text-dark-600 disabled:bg-white"
                 :disabled="item.status === 'underReview' || item.status === 'prepared'"

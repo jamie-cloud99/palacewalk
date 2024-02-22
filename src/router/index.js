@@ -76,11 +76,17 @@ const router = createRouter({
     {
       path: '/curating/new',
       name: 'curatingNew',
-      component: () => import('@/views/CuratingNew.vue')
+      meta: {
+        isNew: true
+      },
+      component: () => import('@/views/CuratingEdit.vue')
     },
     {
-      path: '/curating/edit/:previewId/',
+      path: '/curating/edit/:previewId',
       name: 'curatingEdit',
+      meta: {
+        isNew: false
+      },
       component: () => import('@/views/CuratingEdit.vue')
     },
     {
