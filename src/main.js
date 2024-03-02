@@ -10,6 +10,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
+import vuePhotoZoomPro from 'vue-photo-zoom-pro'
+import 'vue-photo-zoom-pro/dist/style/vue-photo-zoom-pro.css'
 
 import { register } from 'swiper/element/bundle'
 register()
@@ -65,5 +67,6 @@ app.component('loading-component', Loading)
 app.component('VField', Field)
 app.component('VForm', Form)
 app.component('ErrorMessage', ErrorMessage)
+app.component('photo-zoom',vuePhotoZoomPro)
 
 app.mount('#app')
