@@ -21,7 +21,7 @@
               >({{ searchResult.exhibitions?.length }})</span
             >
           </p>
-          <ul class="grid grid-cols-12 gap-4 py-10">
+          <ul class="grid grid-cols-12 gap-4 py-28">
             <li
               v-for="item in searchResult.exhibitions"
               :key="item.exhibitionId"
@@ -40,7 +40,7 @@
               >({{ searchResult.collections?.length }})</span
             >
           </p>
-          <ul class="grid grid-cols-12 gap-4 py-10">
+          <ul class="grid grid-cols-12 gap-4 py-28">
             <li
               v-for="item in searchResult.collections"
               :key="item.collectionId"
