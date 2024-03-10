@@ -53,7 +53,7 @@
 
 <script setup>
 import { toRefs, ref, watch } from 'vue'
-import { usePeriod } from '../../composables/format'
+import { usePeriod } from '@/utils/useDate'
 
 const props = defineProps({
   exhibitionList: Array
