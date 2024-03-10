@@ -220,6 +220,7 @@ export const useCollectionStore = defineStore('collection', () => {
     try {
       const res = await axios.get(apiUrl)
       storeFilteredCollections(res.data)
+      return res.data
     } catch (error) {
       console.log(error)
     }

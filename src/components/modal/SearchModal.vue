@@ -30,7 +30,7 @@
         </div>
         <div class="pt-14 lg:pt-20"></div>
         <!-- CHECK: 待修 -->
-        <LoadingComponent/>
+        <LoadingComponent />
         <div
           v-if="!isOpen.advancedSearch"
           class="flex flex-wrap items-center gap-x-4 px-4 py-3 lg:px-10 lg:pt-5"
