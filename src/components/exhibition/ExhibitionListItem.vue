@@ -13,7 +13,7 @@
     />
     <div class="w-full bg-black/50 text-white px-4 py-2 absolute bottom-0 left-0">
       <h3 class="font-semibold text-xl line-clamp-1 mb-1">{{ exhibitionItem.title }}</h3>
-      <p class="font-medium">{{ usePeriod(exhibitionItem.startDate, exhibitionItem.endDate)}}</p>
+      <p class="font-medium">{{ usePeriod(exhibitionItem.startDate, exhibitionItem.endDate) }}</p>
     </div>
 
     <RouterLink
@@ -27,7 +27,7 @@
 import { toRefs, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMemberStore } from '@/stores/memberStore'
-import { usePeriod } from '@/composables/format';
+import { usePeriod } from '@/utils/useDate'
 
 const props = defineProps({
   exhibitionItem: Object
@@ -39,8 +39,6 @@ const { updateFavorites } = memberStore
 const { favExhibitions } = storeToRefs(memberStore)
 
 const showFavorite = computed(() => {
-  return favExhibitions.value.some(
-    (item) => item.id === exhibitionItem.value.id
-  )
+  return favExhibitions.value.some((item) => item.id === exhibitionItem.value.id)
 })
 </script>

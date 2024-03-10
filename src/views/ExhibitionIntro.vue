@@ -2,7 +2,7 @@
   <div class="container mb-15">
     <div class="lg:grid grid-cols-12 gap-x-12">
       <div v-if="exhibition.id" class="col-start-2 col-span-10 font-semibold">
-        <BreadcrumbsComponent class="my-5 justify-end" :nav-list="breadList" /> 
+        <BreadcrumbsComponent class="my-5 justify-end" :nav-list="breadList" />
         <img
           class="w-full aspect-[2/1] object-cover object-center mb-2 lg:mb-4"
           :src="exhibition.images.lg"
@@ -81,9 +81,9 @@
   <BackgroundComponent />
 </template>
 <script setup>
-import { reactive,computed } from 'vue'
+import { reactive, computed } from 'vue'
 // import { useRouter } from 'vue-router'
-import { usePeriod } from '../composables/format'
+import { usePeriod } from '@/utils/useDate'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 import CollectionSlides from '../components/exhibition/CollectionSlides.vue'
 import BackgroundComponent from '../components/background/BackgroundComponent.vue'

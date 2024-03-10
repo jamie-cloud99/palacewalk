@@ -49,7 +49,7 @@
                 :isVisible="isModalVisible"
                 @updateModalVisible="isModalVisible = $event"
               />
-          </div>
+            </div>
           </div>
           <div class="pt-4 pb-2">
             <input
@@ -94,7 +94,7 @@
                 :isVisible="isModalVisible"
                 @updateModalVisible="isModalVisible = $event"
               />
-          </div>
+            </div>
             <div class="flex justify-between items-center">
               <div class="flex gap-2">
                 <button
@@ -149,7 +149,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useDateFromUnix } from '@/composables/format'
+import { useDateFromUnix } from '@/utils/useDate'
 import { useCommentStore } from '../stores/commentStore'
 import DeleteConfirmModal from '@/components/modal/DeleteConfirmModal.vue'
 
