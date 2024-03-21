@@ -182,17 +182,12 @@ export const useMemberStore = defineStore('member', () => {
 
   const logOut = () => {
     setLoading()
-    try {
-      isLoggedIn.value = false
-      document.cookie = 'palaceToken=;max-age=0;'
-      member.value = {}
-      router.push('/')
-    } catch (error) {
-      showFailToast('登出過程發生錯誤，請稍後再試')
-      console.error('登出過程發生錯誤', error)
-    } finally {
-      clearLoading()
-    }
+    isLoggedIn.value = false
+    document.cookie = 'palaceToken=;max-age=0;'
+    member.value = {}
+    router.push('/')
+    clearLoading()
+    showSuccessToast('登出成功')
   }
 
   const getToken = () => {
