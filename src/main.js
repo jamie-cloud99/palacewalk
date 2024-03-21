@@ -10,8 +10,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
-import { VueImageZoomer } from 'vue-image-zoomer'
-import 'vue-image-zoomer/dist/style.css';
+import vuePhotoZoomPro from 'vue-photo-zoom-pro'
+import 'vue-photo-zoom-pro/dist/style/vue-photo-zoom-pro.css'
 
 import { register } from 'swiper/element/bundle'
 register()
@@ -39,10 +39,10 @@ const options = {
   maxToasts: 5,
   newestOnTop: true,
   position: 'top-right',
-  timeout: 5000,
+  timeout: 1200,
   closeOnClick: true,
   pauseOnFocusLoss: true,
-  pauseOnHover: true,
+  pauseOnHover: false,
   draggable: true,
   draggablePercent: 0.7,
   showCloseButtonOnHover: false,
@@ -67,6 +67,6 @@ app.component('loading-component', Loading)
 app.component('VField', Field)
 app.component('VForm', Form)
 app.component('ErrorMessage', ErrorMessage)
-app.component('vue-image-zoomer', VueImageZoomer)
+app.component('photo-zoom',vuePhotoZoomPro)
 
 app.mount('#app')

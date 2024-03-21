@@ -1,18 +1,28 @@
 <template>
   <swiper-container
+    ref="swiperEl"
     class="overflow-hidden w-full"
+    thumbs-swiper=".collection-thumbs"
     :modules="[Thumbs]"
     :thumbs="{ swiper: thumbsSwiper }"
-    thumbs-swiper=".my-thumbs"
-    ref="swiperEl"
-    >
+  >
     <swiper-slide v-for="image in collection.images?.list" :key="image">
-      <figure class="w-full h-[210px] lg:h-[415px]">
-        <img
+      <figure class="w-full h-[210px] lg:h-[415px]  object-contain object-center">
+        <div class="w-full h-full object-contain object-center">
+          <photo-zoom
+            :url="image"
+            :scale="1.5"
+            :mask="true"
+            :width="130"
+            :alt="`${collection.title}-細節圖`"
+          >
+          </photo-zoom>
+        </div>
+        <!-- <img
           class="w-full h-full object-cover object-center"
           :src="image"
           :alt="`${collection.title}-細節圖`"
-        />
+        /> -->
       </figure>
     </swiper-slide>
     <swiper-slide>
@@ -26,14 +36,14 @@
     </swiper-slide>
   </swiper-container>
   <swiper-container
-    class="my-thumbs overflow-hidden w-[90%] lg:w-full my-10 h-1/2 cursor-pointer"
-    @swiper="setThumbsSwiper"
+    class="collection-thumbs overflow-hidden w-[90%] lg:w-full my-10 h-1/2 cursor-pointer"
     :slides-per-view="3"
     :spaceBetween="10"
     :modules="[Thumbs]"
     :freeMode="true"
     watch-slides-progress
-  >
+    @swiper="setThumbsSwiper"
+    >
     <swiper-slide v-for="image in collection.images?.list" :key="image">
       <figure class="w-full h-[100px]">
         <img
@@ -87,9 +97,6 @@ const { turnSlide, goNext, goPrev } = slideStore
 const collectionStore = useCollectionStore()
 const { collection } = storeToRefs(collectionStore)
 
-// const breakpoints = ref({
-//   md: 768
-// })
 
 const route = useRoute()
 
@@ -104,24 +111,9 @@ watch(
   async () => {
     await nextTick()
     swiperEl.value.swiper.update()
-  }
+    setThumbsSwiper()
+  },
 )
-// 手機和電腦版顯示無差異，所以先註解
-// const changeSlidesPerView = (windowWidth) => {
-//   if (windowWidth < breakpoints.value?.md) {
-//     curSlideShowed.value = slides.value.slideShowed.default
-//   } else {
-//     curSlideShowed.value = slides.value.slideShowed.md
-//   }
-// }
-
-// onMounted(() => {
-//   changeSlidesPerView(window.innerWidth)
-//   window.addEventListener('resize', () => {
-//     const windowWidth = window.innerWidth
-//     changeSlidesPerView(windowWidth)
-//   })
-// })
 
 const thumbsSwiper = ref(null)
 const setThumbsSwiper = (swiper) => {
