@@ -29,8 +29,7 @@
           </div>
         </div>
         <div class="pt-14 lg:pt-20"></div>
-        <!-- CHECK: 待修 -->
-        <LoadingComponent/>
+        <LoadingComponent />
         <div
           v-if="!isOpen.advancedSearch"
           class="flex flex-wrap items-center gap-x-4 px-4 py-3 lg:px-10 lg:pt-5"
@@ -202,7 +201,7 @@
             <button
               @click="goSearch(filterFields)"
               type="button"
-              class="btn w-24 bg-primary text-white hover:bg-dark"
+              class="relative btn w-24 bg-primary text-white hover:bg-dark"
             >
               <span>搜尋</span>
             </button>
@@ -298,6 +297,7 @@ const goSearch = async (fields) => {
 }
 
 fetchCategoryList()
+
 
 onMounted(() => {
   isOpen.value.advancedSearch = false
