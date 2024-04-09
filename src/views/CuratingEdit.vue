@@ -121,25 +121,21 @@
       <div class="relative mb-4 lg:mb-6 items-center space-y-2 cursor-pointer">
         <label for="collections" class="inline-block mr-2 font-bold shrink-0">展品：</label>
         <p
-          v-show="curatingForm.content?.length < 1"
+          v-show="!selectedCollectionIds.length"
           class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-dark-600 font-semibold text-lg mb-6 lg:mb-10 lg:text-2xl"
         >
           請從下方拖曳展品至此
         </p>
         <draggable
           class="border border-dashed border-dark-600 py-12 px-5 lg:py-20 text-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-          :list="curatingForm.collectionList"
+          :list="selectedCollections"
           item-key="id"
           group="collectionsGroup"
         >
           <template #item="{ element }">
-            <ul v-show="curatingForm.content?.length > 0">
-              <li class="col-span-1" :key="element.id">
-                <div>
-                  <CollectionListItem :collection-item="element" :show-fav-icon="false" />
-                </div>
-              </li>
-            </ul>
+            <div class="col-span-1">
+              <CollectionListItem :collection-item="element" :show-fav-icon="false" />
+            </div>
           </template>
         </draggable>
       </div>
@@ -180,19 +176,13 @@
     <draggable
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
       :list="collectionList"
-      item-key="collectionId"
+      item-key="id"
       group="collectionsGroup"
-      @start="drag = true"
-      @end="drag = false"
     >
       <template #item="{ element }">
-        <ul>
-          <li class="col-span-1" :key="element.collectionId">
-            <div class="h-full">
-              <CollectionListItem :collection-item="element" :show-fav-icon="false" />
-            </div>
-          </li>
-        </ul>
+        <div class="col-span-1">
+          <CollectionListItem :collection-item="element" :show-fav-icon="false" />
+        </div>
       </template>
     </draggable>
 
@@ -206,9 +196,10 @@
 import { reactive, ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
+import draggable from 'vuedraggable'
+import { sortByIndexList } from '@/utils/useSort'
 import { useCollectionStore } from '../stores/collectionStore'
 import { usePageStore } from '../stores/pageStore'
-import draggable from 'vuedraggable'
 import { useDateFromUnix, useUnixFromDate, formatDate } from '@/utils/useDate'
 import { fetchCurating } from '@/services/curatingServices'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
@@ -220,8 +211,8 @@ const { pages } = storeToRefs(pageStore)
 const { turnPage } = pageStore
 
 const collectionStore = useCollectionStore()
-const { collectionList, curCategory } = storeToRefs(collectionStore)
-const { fetchPageCollections, searchCollections } = collectionStore
+const { collectionList, curCategory, collectionsAll } = storeToRefs(collectionStore)
+const { fetchPageCollections, fetchCollectionsAll, searchCollections } = collectionStore
 
 const route = useRoute()
 const breadList = reactive([
@@ -241,6 +232,8 @@ const breadList = reactive([
 
 const fileInput = ref(null)
 const curatingForm = ref({})
+const selectedCollectionIds = ref([])
+
 const newPhoto = computed(() => fileInput.value.files[0])
 const startDate = computed({
   get() {
@@ -260,6 +253,8 @@ const endDate = computed({
   }
 })
 
+const selectedCollections = ref([])
+
 const selectPage = (page) => {
   turnPage(page, false)
   fetchPageCollections(curCategory.value.id, page)
@@ -275,7 +270,9 @@ const uploadImage = (imgFile) => {
   }
 }
 
-const drag = ref(false)
+const mapCollections = (collectionIds) => {
+  selectedCollections.value = sortByIndexList(collectionsAll.value, collectionIds)
+}
 
 const resetCuratingForm = () => {
   curatingForm.value = {}
@@ -284,7 +281,13 @@ const resetCuratingForm = () => {
 const getCurating = async () => {
   if (!route.meta.isNew) {
     const { previewId } = route.params
-    curatingForm.value = await fetchCurating(previewId)
+    const [curatingInfo, collectionInfo] = await fetchCurating(previewId)
+    curatingForm.value = curatingInfo
+    selectedCollectionIds.value = collectionInfo.collectionId
+
+    await fetchPageCollections(curCategory.value.id, 1)
+    await fetchCollectionsAll()
+    mapCollections(selectedCollectionIds.value)
   }
 }
 
