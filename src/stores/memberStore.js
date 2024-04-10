@@ -1,5 +1,6 @@
 import { computed, ref } from 'vue'
 import { defineStore, storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
 import { useToastStore } from './toastStore'
 import { useStatusStore } from './statusStore'
 import { useExhibitionStore } from './exhibitsStore'
@@ -13,6 +14,8 @@ export const useMemberStore = defineStore('member', () => {
   const collectionStore = useCollectionStore()
   const toastStore = useToastStore()
   const statusStore = useStatusStore()
+
+  const router = useRouter()
 
   const { fetchExhibitionsAll } = exhibitionStore
   const { exhibitionsAll } = storeToRefs(exhibitionStore)
@@ -178,9 +181,13 @@ export const useMemberStore = defineStore('member', () => {
   }
 
   const logOut = () => {
+    setLoading()
     isLoggedIn.value = false
     document.cookie = 'palaceToken=;max-age=0;'
     member.value = {}
+    router.push('/')
+    clearLoading()
+    showSuccessToast('登出成功')
   }
 
   const getToken = () => {
