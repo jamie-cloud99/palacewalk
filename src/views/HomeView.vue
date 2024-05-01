@@ -63,11 +63,16 @@
   <div class="relative overflow-hidden">
     <div class="inline-block bg-primary absolute w-6 h-[130px]"></div>
     <div class="ml-[96px] mb-12">
-      <p class="mb-4 font-cormo font-semibold text-5xl lg:text-7xl text-dark-400 uppercase" :section="section">
+      <p
+        class="mb-4 font-cormo font-semibold text-5xl lg:text-7xl text-dark-400 uppercase"
+        :section="section"
+      >
         {{ section[2].engTitle }}
       </p>
       <div class="relative">
-        <h2 class="text-2xl lg:text-4xl font-bold  leading-normal" :section="section">{{ section[2].title }}</h2>
+        <h2 class="text-2xl lg:text-4xl font-bold leading-normal" :section="section">
+          {{ section[2].title }}
+        </h2>
       </div>
     </div>
     <div class="mx-3 lg:ms-[15%] md:ms-[20%]">
@@ -76,45 +81,45 @@
     <div class="bg-gray-50 py-9">
       <div class="container">
         <div class="mb-12 lg:mb-16">
-          <p class="mb-4 font-cormo font-semibold text-5xl lg:text-7xl text-dark-400 uppercase" :section="section">
+          <p
+            class="mb-4 font-cormo font-semibold text-5xl lg:text-7xl text-dark-400 uppercase"
+            :section="section"
+          >
             {{ section[3].engTitle }}
           </p>
           <div class="relative">
-            <h2 class="text-2xl lg:text-4xl font-bold  leading-normal" :section="section">{{ section[3].title }}</h2>
+            <h2 class="text-2xl lg:text-4xl font-bold leading-normal" :section="section">
+              {{ section[3].title }}
+            </h2>
           </div>
         </div>
-          <div data-aos="fade-up">
-            <ul class="mb-12 lg:mb-0 flex flex-wrap">
-              <li
-                v-for="item in newsList"
-                :key="item.title"
-                class="px-4 mr-0 lg:mr-4 lg:last-of-type:mr-0 mb-4 2xl:mb-0
-                  border box-border border-gray-200 h-[200px] 
-                  w-full xl:max-w-[23%] lg:max-w-[48%]"
-              >
-                <div class="flex flex-col justify-between space-y-2 pt-4 h-full">
-                  <div class="lg:gap-x-2">
-                    <p class="text-dark-600">{{ item.date.split('.')[0] }}</p>
-                    <p
-                      class="inline-block px-4 py-0 bg-primary text-white mb-4"
-                      :class="{ '!bg-warning': item.category !== '活動公告' }"
-                    >
-                      {{ item.category }}
-                    </p>
-                    <p class="text-xl font-medium line-clamp-3 md:line-clamp-2">{{ item.title }}</p>
-                  </div>
-                  <p 
-                    class="relative text-right 
-                    before:absolute before:left-0 before:top-1/2 before:w-3/5 before:h-[0.5px] before:bg-gray-200 before:z-[-1]
-                    after:absolute after:right-[-16px] after:bottom-0 after:w-[30px] after:h-[30px] after:bg-gray-200 after:z-[-1]
-                    "
-                    >
-                    {{ item.date.split('.')[1] }}/{{ item.date.split('.')[2] }}
+        <div data-aos="fade-up">
+          <ul class="mb-12 lg:mb-0 flex flex-wrap">
+            <li
+              v-for="item in newsList"
+              :key="item.title"
+              class="px-4 mr-0 lg:mr-4 lg:last-of-type:mr-0 mb-4 2xl:mb-0 border box-border border-gray-200 h-[200px] w-full xl:max-w-[23%] lg:max-w-[48%]"
+            >
+              <div class="flex flex-col justify-between space-y-2 pt-4 h-full">
+                <div class="lg:gap-x-2">
+                  <p class="text-dark-600">{{ item.date.split('.')[0] }}</p>
+                  <p
+                    class="inline-block px-4 py-0 bg-primary text-white mb-4"
+                    :class="{ '!bg-warning': item.category !== '活動公告' }"
+                  >
+                    {{ item.category }}
                   </p>
+                  <p class="text-xl font-medium line-clamp-3 md:line-clamp-2">{{ item.title }}</p>
                 </div>
-              </li>
-            </ul>
-          </div>
+                <p
+                  class="relative text-right before:absolute before:left-0 before:top-1/2 before:w-3/5 before:h-[0.5px] before:bg-gray-200 before:z-[-1] after:absolute after:right-[-16px] after:bottom-0 after:w-[30px] after:h-[30px] after:bg-gray-200 after:z-[-1]"
+                >
+                  {{ item.date.split('.')[1] }}/{{ item.date.split('.')[2] }}
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -128,7 +133,6 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useHomeStore } from '../stores/homeStore'
-// import CalendarComponent from '../components/home/CalendarComponent.vue'
 import SectionTitle from '../components/home/SectionTitle.vue'
 import ImageMarquee from '../components/home/ImageMarquee.vue'
 import CommentCards from '../components/home/CommentCards.vue'
@@ -136,7 +140,7 @@ import ExhibitionSlides from '../components/home/ExhibitionSlides.vue'
 
 const router = useRouter()
 const homeStore = useHomeStore()
-const { fetchFeaturedCollections} = homeStore
+const { fetchFeaturedCollections } = homeStore
 const { newsList, recentExhibitionList, featuredCollectionList } = storeToRefs(homeStore)
 
 const section = ref([
@@ -155,7 +159,7 @@ const section = ref([
   {
     title: '公告訊息',
     engTitle: 'News'
-  },
+  }
 ])
 
 fetchFeaturedCollections()

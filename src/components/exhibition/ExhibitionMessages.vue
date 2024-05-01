@@ -1,5 +1,7 @@
 <template>
-  <h4 class="font-bold mb-2">展覽留言<span class="comment-num">{{ `(${commentList.length })`}}</span></h4>
+  <h4 class="font-bold mb-2">
+    展覽留言<span class="comment-num">{{ `(${commentList.length})` }}</span>
+  </h4>
   <div class="relative border-b pb-[24px] mb-3">
     <input
       type="text"
@@ -91,7 +93,7 @@ import { ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRouterStore } from '@/stores/routerStore'
 import { useCommentStore } from '@/stores/commentStore'
-import { useDateFromUnix } from '@/composables/format'
+import { useDateFromUnix } from '@/utils/useDate'
 
 const commentStore = useCommentStore()
 const { commentList } = storeToRefs(commentStore)

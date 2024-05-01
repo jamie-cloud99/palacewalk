@@ -23,7 +23,7 @@
 
 <script setup>
 import { toRefs } from 'vue'
-import { getZeroBaseOrder } from '@/composables/format'
+import { getZeroBaseOrder } from '@/utils/useDate'
 
 const props = defineProps({
   collectionList: Array

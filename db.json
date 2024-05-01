@@ -2012,7 +2012,6 @@
         "code": "art",
         "title": "藝術"
       },
-      "curating": "T023",
       "title": "光影錯金—銅鍍金畫琺瑯懷錶展",
       "startDate": 1856003200,
       "endDate": 1892614400,
@@ -2024,6 +2023,21 @@
       },
       "userId": 2,
       "status": "draft"
+    }
+  ],
+  "curatingCollections": [
+    {
+      "id": 1,
+      "curatingId": 1,
+      "collectionId": [
+        3,
+        5,
+        11,
+        12,
+        36,
+        37,
+        51
+      ]
     }
   ]
 }

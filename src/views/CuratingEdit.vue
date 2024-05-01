@@ -40,7 +40,7 @@
 
     <VForm v-slot="{ errors, isSubmitting, meta }" action="submit">
       <div class="mb-4 lg:mb-6 items-center space-y-2 md:flex md:space-y-0">
-        <label for="title" class="inline-block mr-2 font-bold flex-shrink-0">展覽名稱：</label>
+        <label for="title" class="inline-block mr-2 font-bold shrink-0">展覽名稱：</label>
         <div class="w-full flex items-center">
           <VField
             v-model.trim="curatingForm.title"
@@ -50,7 +50,7 @@
             label="展覽名稱"
             name="title"
             rules="required"
-            class="form-input bg-dark-200 border-dark-400 w-3/5 py-2 px-4 placeholder:text-dark-600"
+            class="form-input bg-dark-200 border-dark-400 lg:w-1/2 py-2 px-4 placeholder:text-dark-600"
             :class="{ 'is-invalid  !border-0': errors['title'] }"
           />
           <ErrorMessage as="div" name="title" class="form-error ml-2" v-slot="{ message }">
@@ -60,10 +60,10 @@
         </div>
       </div>
       <div class="mb-4 lg:mb-6 items-center space-y-2 md:flex md:space-y-0">
-        <label class="inline-block mr-2 font-bold flex-shrink-0">展覽時間：</label>
+        <label class="inline-block mr-2 font-bold shrink-0">展覽時間：</label>
         <div class="flex items-center">
           <VField
-            v-model.trim="curatingForm.startDate"
+            v-model="startDate"
             id="startDate"
             type="text"
             onfocus="(this.type='date')"
@@ -72,12 +72,12 @@
             label="展覽起始日"
             name="startDate"
             rules="required"
-            class="form-input bg-dark-200 border-dark-400 w-80 placeholder:text-dark-600"
+            class="form-input bg-dark-200 border-dark-400 w-40 placeholder:text-dark-600"
             :class="{ 'is-invalid  !border-0': errors['startDate'] }"
           />
           <p class="mx-2">—</p>
           <VField
-            v-model.trim="curatingForm.endDate"
+            v-model="endDate"
             id="endDate"
             type="text"
             onfocus="(this.type='date')"
@@ -86,7 +86,7 @@
             label="展覽結束日"
             name="endDate"
             rules="required"
-            class="form-input bg-dark-200 border-dark-400 w-80 placeholder:text-dark-600"
+            class="form-input bg-dark-200 border-dark-400 w-40 placeholder:text-dark-600"
             :class="{ 'is-invalid  !border-0': errors['endDate'] }"
           />
           <ErrorMessage as="div" name="startDate" class="form-error ml-2">
@@ -100,48 +100,42 @@
         </div>
       </div>
       <div class="mb-4 lg:mb-6 items-center space-y-2">
-        <label for="description" class="inline-block mr-2 font-bold flex-shrink-0"
-          >展覽概述：</label
-        >
-        <input
+        <label for="description" class="inline-block mr-2 font-bold shrink-0">展覽概述：</label>
+        <textarea
           id="description"
           v-model="curatingForm.description"
           type="text"
-          class="form-input w-full border-dark-400 bg-dark-200"
+          class="form-input w-full h-32 border-dark-400 bg-dark-200"
         />
       </div>
       <div class="mb-4 lg:mb-6 items-center space-y-2">
-        <label for="content" class="block mr-2 font-bold flex-shrink-0">展覽亮點：</label>
-        <input
+        <label for="content" class="block mr-2 font-bold shrink-0">展覽亮點：</label>
+        <textarea
           id="content"
           v-model="curatingForm.content"
           type="text"
-          class="form-input w-full border-dark-400 bg-dark-200"
+          class="form-input w-full h-32 border-dark-400 bg-dark-200"
         />
       </div>
 
       <div class="relative mb-4 lg:mb-6 items-center space-y-2 cursor-pointer">
-        <label for="collections" class="inline-block mr-2 font-bold flex-shrink-0">展品：</label>
+        <label for="collections" class="inline-block mr-2 font-bold shrink-0">展品：</label>
         <p
-          v-show="curatingForm.content?.length < 1"
+          v-show="!selectedCollectionIds.length"
           class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-dark-600 font-semibold text-lg mb-6 lg:mb-10 lg:text-2xl"
         >
           請從下方拖曳展品至此
         </p>
         <draggable
           class="border border-dashed border-dark-600 py-12 px-5 lg:py-20 text-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-          :list="curatingForm.collectionList"
+          :list="selectedCollections"
           item-key="id"
           group="collectionsGroup"
         >
           <template #item="{ element }">
-            <ul v-show="curatingForm.content?.length > 0">
-              <li class="col-span-1" :key="element.id">
-                <div>
-                  <CollectionListItem :collection-item="element" :show-fav-icon="false" />
-                </div>
-              </li>
-            </ul>
+            <div class="col-span-1">
+              <CollectionListItem :collection-item="element" :show-fav-icon="false" />
+            </div>
           </template>
         </draggable>
       </div>
@@ -149,16 +143,18 @@
 
     <div class="mb-4 lg:mb-8 items-center space-y-2">
       <div class="lg:flex justify-between items-center space-y-2 lg:space-y-0">
-        <p class="mr-2 font-bold flex-shrink-0">展品列表：</p>
-        <div class="flex gap-3 flex-wrap lg:flex-nowrap">
+        <p class="mr-2 font-bold shrink-0">展品列表：</p>
+        <div class="flex gap-3 flex-wrap lg:flex-nowrap shrink">
           <div class="flex items-center w-full max-w-[430px] lg:w-[600px]">
             <input
+              v-model="queries"
               class="peer form-input h-10 border-dark-400 bg-dark-200 flex-grow"
               type="text"
               placeholder="搜尋展品"
             />
             <button
               type="button"
+              @click="getSearchResults(queries)"
               class="btn border border-dark h-10 w-10 bg-dark text-white ring-primary hover:bg-primary hover:border-primary peer-focus:ring-1"
             >
               <i class="fa-solid fa-magnifying-glass"></i>
@@ -180,19 +176,13 @@
     <draggable
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
       :list="collectionList"
-      item-key="collectionId"
+      item-key="id"
       group="collectionsGroup"
-      @start="drag = true"
-      @end="drag = false"
     >
       <template #item="{ element }">
-        <ul>
-          <li class="col-span-1" :key="element.collectionId">
-            <div class="h-full">
-              <CollectionListItem :collection-item="element" :show-fav-icon="false" />
-            </div>
-          </li>
-        </ul>
+        <div class="col-span-1">
+          <CollectionListItem :collection-item="element" :show-fav-icon="false" />
+        </div>
       </template>
     </draggable>
 
@@ -206,9 +196,11 @@
 import { reactive, ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
+import draggable from 'vuedraggable'
+import { sortByIndexList } from '@/utils/useSort'
 import { useCollectionStore } from '../stores/collectionStore'
 import { usePageStore } from '../stores/pageStore'
-import draggable from 'vuedraggable'
+import { useDateFromUnix, useUnixFromDate, formatDate } from '@/utils/useDate'
 import { fetchCurating } from '@/services/curatingServices'
 import BreadcrumbsComponent from '../components/layout/BreadcrumbsComponent.vue'
 import PageComponent from '../components/layout/PageComponent.vue'
@@ -219,9 +211,10 @@ const { pages } = storeToRefs(pageStore)
 const { turnPage } = pageStore
 
 const collectionStore = useCollectionStore()
-const { collectionList, curCategory } = storeToRefs(collectionStore)
-const { fetchPageCollections } = collectionStore
+const { collectionList, curCategory, collectionsAll } = storeToRefs(collectionStore)
+const { fetchPageCollections, fetchCollectionsAll, searchCollections } = collectionStore
 
+const route = useRoute()
 const breadList = reactive([
   {
     title: '首頁',
@@ -232,15 +225,35 @@ const breadList = reactive([
     path: '/curating'
   },
   {
-    title: '新增展覽',
-    path: '/curating/new'
+    title: `${route.meta.isNew ? '新增' : '編輯'}展覽`,
+    path: `/curating/${route.meta.isNew ? 'new' : `edit/${route.params.previewId}`}`
   }
 ])
 
 const fileInput = ref(null)
 const curatingForm = ref({})
+const selectedCollectionIds = ref([])
 
 const newPhoto = computed(() => fileInput.value.files[0])
+const startDate = computed({
+  get() {
+    return formatDate(useDateFromUnix(curatingForm.value.startDate).fullDate)
+  },
+  set(value) {
+    curatingForm.value.startDate = useUnixFromDate(value)
+  }
+})
+
+const endDate = computed({
+  get() {
+    return formatDate(useDateFromUnix(curatingForm.value.endDate).fullDate)
+  },
+  set(value) {
+    curatingForm.value.endDate = useUnixFromDate(value)
+  }
+})
+
+const selectedCollections = ref([])
 
 const selectPage = (page) => {
   turnPage(page, false)
@@ -257,25 +270,36 @@ const uploadImage = (imgFile) => {
   }
 }
 
-fetchPageCollections()
-
-const drag = ref(false)
+const mapCollections = (collectionIds) => {
+  selectedCollections.value = sortByIndexList(collectionsAll.value, collectionIds)
+}
 
 const resetCuratingForm = () => {
   curatingForm.value = {}
 }
 
-const route = useRoute()
 const getCurating = async () => {
   if (!route.meta.isNew) {
     const { previewId } = route.params
-    curatingForm.value = await fetchCurating(previewId)
-    console.log(curatingForm.value)
+    const [curatingInfo, collectionInfo] = await fetchCurating(previewId)
+    curatingForm.value = curatingInfo
+    selectedCollectionIds.value = collectionInfo.collectionId
+
+    await fetchPageCollections(curCategory.value.id, 1)
+    await fetchCollectionsAll()
+    mapCollections(selectedCollectionIds.value)
   }
+}
+
+const queries = ref('')
+
+const getSearchResults = async (text) => {
+  collectionList.value = await searchCollections(text)
 }
 
 onMounted(() => {
   resetCuratingForm()
+  fetchPageCollections()
   getCurating()
 })
 </script>
