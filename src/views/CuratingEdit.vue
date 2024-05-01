@@ -24,21 +24,39 @@
       <button type="button" class="btn px-6 bg-dark text-white hover:bg-primary">預覽</button>
     </div>
 
-    <div class="border border-dashed border-dark-600 py-12 lg:py-20 text-center mb-6 lg:mb-10">
-      <p class="text-dark-600 font-semibold text-lg mb-6 lg:mb-10 lg:text-2xl">請上傳展覽封面</p>
-
-      <label for="photo" class="btn w-32 inline-block px-6 bg-dark text-white hover:bg-primary"
-        ><input
-          type="file"
-          id="photo"
-          ref="fileInput"
-          @change="uploadImage(newPhoto)"
-          class="hidden"
-        />上傳圖片
-      </label>
-    </div>
-
     <VForm v-slot="{ errors, isSubmitting, meta }" action="submit">
+      <div v-if="curatingForm.banner" class="mb-6 relative group/banner">
+        <img :src="curatingForm.banner" :alt="curatingForm.title" />
+        <button
+          type="button"
+          class="hidden peer/btn absolute top-1 right-1 text-xl bg-white/70 text-dark/80 size-10 rounded-full !p-0 group-hover/banner:btn hover:scale-110 hover:bg-white hover:text-dark"
+          @click="clearBanner"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <span
+          class="hidden absolute top-[52px] right-1 w-fit h-fit px-1 py-0.5 text-xs bg-dark/80 text-white peer-hover/btn:block transition-all duration-700"
+          >取消上傳</span
+        >
+      </div>
+      <div
+        v-else
+        class="border border-dashed border-dark-600 py-12 lg:py-20 text-center mb-6 lg:mb-10"
+      >
+        <p class="text-dark-600 font-semibold text-lg mb-6 lg:mb-10 lg:text-2xl">請上傳展覽封面</p>
+
+        <label for="photo" class="btn w-32 inline-block px-6 bg-dark text-white hover:bg-primary"
+          ><input
+            type="file"
+            id="photo"
+            ref="fileInput"
+            accept="image/*"
+            @change="uploadImage(newPhoto)"
+            class="hidden"
+          />上傳圖片
+        </label>
+      </div>
+
       <div class="mb-4 lg:mb-6 items-center space-y-2 md:flex md:space-y-0">
         <label for="title" class="inline-block mr-2 font-bold shrink-0">展覽名稱：</label>
         <div class="w-full flex items-center">
@@ -262,12 +280,13 @@ const selectPage = (page) => {
 
 const uploadImage = (imgFile) => {
   if (imgFile) {
-    const reader = new FileReader()
-    reader.readAsDataURL(imgFile)
-    reader.addEventListener('load', () => {
-      curatingForm.value.banner = reader.result
-    })
+    const imgUrl = window.URL.createObjectURL(imgFile)
+    curatingForm.value.banner = imgUrl
   }
+}
+
+const clearBanner = () => {
+  curatingForm.value.banner = ''
 }
 
 const mapCollections = (collectionIds) => {
