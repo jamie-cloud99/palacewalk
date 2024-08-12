@@ -1,9 +1,9 @@
 <template>
   <CollectionBanner :title="'精選展品'" :bread-list="breadList"/>
   <div class="container">
-    <div class="counter flex lg:flex-row flex-col flex-wrap -mx-3 items-start">
+    <div class="counter flex lg:flex-row flex-col flex-wrap -mx-3 items-start hover:cursor-pointer">
       <div
-        class="relative flex flex-wrap w-full h-full lg:w-1/2 px-3 mb-[26px]"
+        class="flip-card relative flex flex-wrap w-full h-full lg:w-1/2 px-3 mb-[26px]"
         v-for="item in collectionsFiltered"
         :key="item.id"
       >
@@ -26,6 +26,14 @@
         >
           查看展品
         </router-link>
+        <!-- Back -->
+        <div class="flip-card-back absolute h-full text-center flex items-center justify-center bg-white rotate-y-180">
+          <div>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.author }}</p>
+            <p>{{ item.time }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -73,4 +81,18 @@ filterCollectionsByIds(masterpieceIds.value)
 .description {
   @apply space-y-2;
 }
+
+.flip-card:hover {
+  transform: rotateY(180deg);
+}
+.flip-card {
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+}
+.flip-card-back {
+  width: calc(100% - 24px);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
 </style>

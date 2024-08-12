@@ -25,7 +25,7 @@
         </h1>
         <button
           type="button"
-          class="py-3 px-10 bg-white font-bold hover:bg-primary hover:text-white transition-all duration-300"
+          class="py-3 px-10 bg-white font-bold hover:text-white transition-all duration-300 hover:shadow-custom-inset"
           @click="router.push('/exhibitions')"
         >
           立即看展

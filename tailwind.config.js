@@ -60,12 +60,23 @@ module.exports = {
       },
       animation: {
         bgSlowIn: 'wiggle 1.2s ease-in-out 1',
+      },
+      boxShadow: {
+        'custom-inset': 'inset 0 -3em 0 0 #E43B30',
       }
     }
   },
   plugins: [
     require('tw-elements/dist/plugin.cjs'),
     require('@tailwindcss/forms'),
-    require('tailwind-scrollbar')({ nocompatible: true })
+    require('tailwind-scrollbar')({ nocompatible: true }),
+    // rotate: https://github.com/tailwindlabs/tailwindcss/discussions/3521
+    require('tailwindcss/plugin')(function ({ addUtilities }) {
+      addUtilities({
+        '.rotate-y-180': {
+          transform: 'rotateY(180deg)',
+        }
+      })
+    })
   ]
 }
